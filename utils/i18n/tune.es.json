@@ -1,0 +1,20 @@
+{
+  "PP_TuneButton": "Ajustar",
+  "PP_TuneButtonTip": "Ajustes rápidos de este juego: zonas muertas y curvas de respuesta",
+  "PP_TuneTitle": "Ajustes rápidos",
+  "PP_TuneEditingProfile": "Editando el perfil:",
+  "PP_TuneSharedWarning": "Este perfil es compartido (perfil normal u otros juegos). Los cambios afectan a todos. Usa \"Perfil propio para este juego\" para cambiar solo este juego.",
+  "PP_TuneOwnProfile": "Perfil propio para este juego",
+  "PP_TuneOwnProfileTip": "Crea una copia del perfil con el nombre del juego y se la asigna a este juego",
+  "PP_TunePresets": "Preajustes",
+  "PP_TunePresetPrecision": "Precisión",
+  "PP_TunePresetPrecisionTip": "Zona muerta pequeña y curva de precisión mejorada: apuntado fino",
+  "PP_TunePresetFast": "Rápido",
+  "PP_TunePresetFastTip": "Zona muerta mínima y curva lineal: reacciones rápidas",
+  "PP_TunePresetSmooth": "Suave",
+  "PP_TunePresetSmoothTip": "Curva cuadrática: suave cerca del centro y a toda velocidad en el borde",
+  "PP_TunePresetDefault": "Valores de fábrica",
+  "PP_TuneGraphTip": "Vista previa aproximada: entrada (horizontal) frente a salida (vertical). Línea discontinua = lineal",
+  "PP_TuneSave": "Guardar",
+  "PP_TuneHint": "Los cambios se aplican al mando al guardar."
+}

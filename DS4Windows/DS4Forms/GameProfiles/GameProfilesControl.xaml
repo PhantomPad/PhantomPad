@@ -1,0 +1,313 @@
+﻿<UserControl x:Class="DS4WinWPF.DS4Forms.GameProfiles.GameProfilesControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:lex="http://wpflocalizeextension.codeplex.com"
+             lex:LocalizeDictionary.DesignCulture=""
+             lex:ResxLocalizationProvider.DefaultAssembly="PhantomPad"
+             lex:ResxLocalizationProvider.DefaultDictionary="Strings"
+             mc:Ignorable="d" d:DesignHeight="560" d:DesignWidth="900">
+    <!-- PhantomPad: seccion "Juegos" estilo app de NVIDIA (lista a la izquierda, detalle a la derecha) -->
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PhantomPad;component/DS4Forms/Themes/PhantomPadStyles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <BooleanToVisibilityConverter x:Key="BoolToVis" />
+
+            <Style x:Key="SourceChip" TargetType="{x:Type Border}">
+                <Setter Property="CornerRadius" Value="4" />
+                <Setter Property="Padding" Value="6,1" />
+                <Setter Property="Margin" Value="8,0,0,0" />
+                <Setter Property="VerticalAlignment" Value="Center" />
+                <Setter Property="Background" Value="{DynamicResource ChipColor}" />
+            </Style>
+
+            <Style x:Key="IconBtn" TargetType="{x:Type Button}">
+                <Setter Property="Cursor" Value="Hand" />
+                <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border x:Name="bd" Background="Transparent" CornerRadius="6" Padding="6">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="bd" Property="Background" Value="{DynamicResource SecondaryColor}" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <!-- Elemento de la lista de juegos -->
+            <Style x:Key="GameListItem" TargetType="{x:Type ListBoxItem}">
+                <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                            <Grid x:Name="row" Background="Transparent">
+                                <Border x:Name="bar" Width="3" HorizontalAlignment="Left" Background="Transparent" />
+                                <ContentPresenter Margin="14,8,10,8" />
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="row" Property="Background" Value="{DynamicResource SecondaryColor}" />
+                                </Trigger>
+                                <Trigger Property="IsSelected" Value="True">
+                                    <Setter TargetName="row" Property="Background" Value="{DynamicResource SelectedNavColor}" />
+                                    <Setter TargetName="bar" Property="Background" Value="{DynamicResource Accent2Color}" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="270" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- ============ Lista de juegos ============ -->
+        <Border Background="{DynamicResource HeaderBarColor}" BorderBrush="{DynamicResource BorderColor}" BorderThickness="1" CornerRadius="10" Margin="0,0,14,0">
+            <DockPanel>
+                <DockPanel DockPanel.Dock="Top" Margin="14,12,8,10">
+                    <Button x:Name="listMenuBtn" DockPanel.Dock="Right" Style="{StaticResource IconBtn}" Click="ListMenuBtn_Click" ToolTip="{lex:Loc PP_HubMoreOptions}">
+                        <TextBlock Text="&#xE712;" FontFamily="{StaticResource IconFont}" FontSize="16" Foreground="{DynamicResource MutedForegroundColor}" />
+                    </Button>
+                    <Button DockPanel.Dock="Right" Style="{StaticResource IconBtn}" Click="RescanBtn_Click" ToolTip="{lex:Loc PP_HubRescan}">
+                        <TextBlock Text="&#xE72C;" FontFamily="{StaticResource IconFont}" FontSize="15" Foreground="{DynamicResource MutedForegroundColor}" />
+                    </Button>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <TextBlock FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center">
+                            <Run Text="{Binding GamesCount, Mode=OneWay}" /><Run Text=" " /><Run Text="{lex:Loc PP_HubGamesWord}" />
+                        </TextBlock>
+                        <TextBlock Text="&#xE73E;" FontFamily="{StaticResource IconFont}" FontSize="13" Foreground="#FF34D399" VerticalAlignment="Center" Margin="8,0,0,0"
+                                   ToolTip="{lex:Loc PP_HubAllOptimizedTip}" />
+                    </StackPanel>
+                </DockPanel>
+                <TextBlock DockPanel.Dock="Top" Text="{lex:Loc PP_GamesScanning}" Foreground="{DynamicResource MutedForegroundColor}" FontSize="11"
+                           Margin="14,0,10,8" TextWrapping="Wrap" Visibility="{Binding IsScanning, Converter={StaticResource BoolToVis}}" />
+
+                <ListBox x:Name="gamesList" ItemsSource="{Binding Games}" SelectedItem="{Binding SelectedGame}" Background="Transparent" BorderThickness="0"
+                         ItemContainerStyle="{StaticResource GameListItem}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <DockPanel>
+                                <Border Width="34" Height="34" CornerRadius="7" Background="{DynamicResource TileColor}" Margin="0,0,10,0">
+                                    <Grid>
+                                        <TextBlock x:Name="glyph" Text="&#xE7FC;" FontFamily="{StaticResource IconFont}" FontSize="16" Foreground="{DynamicResource AccentLightColor}"
+                                                   HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                        <Image Source="{Binding Icon}" Width="26" Height="26" RenderOptions.BitmapScalingMode="HighQuality" />
+                                    </Grid>
+                                </Border>
+                                <StackPanel VerticalAlignment="Center">
+                                    <TextBlock Text="{Binding Name}" FontWeight="SemiBold" TextTrimming="CharacterEllipsis" />
+                                    <TextBlock Text="{Binding Subtitle}" FontSize="11" Foreground="{DynamicResource MutedForegroundColor}" TextTrimming="CharacterEllipsis" />
+                                </StackPanel>
+                            </DockPanel>
+                            <DataTemplate.Triggers>
+                                <DataTrigger Binding="{Binding IsGeneral}" Value="True">
+                                    <Setter TargetName="glyph" Property="Text" Value="&#xE71D;" />
+                                </DataTrigger>
+                            </DataTemplate.Triggers>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </DockPanel>
+        </Border>
+
+        <!-- ============ Detalle del juego seleccionado ============ -->
+        <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+            <StackPanel x:Name="detailPanel" DataContext="{Binding SelectedGame}" Margin="0,0,6,0">
+                <!-- Cabecera -->
+                <Border Style="{StaticResource SectionCardStyle}" Margin="0,0,0,12" Padding="14,12">
+                    <DockPanel>
+                        <Button x:Name="gameMenuBtn" DockPanel.Dock="Right" Style="{StaticResource IconBtn}" Click="GameMenuBtn_Click" Margin="8,0,0,0" VerticalAlignment="Center"
+                                ToolTip="{lex:Loc PP_HubMoreOptions}">
+                            <TextBlock Text="&#xE712;" FontFamily="{StaticResource IconFont}" FontSize="18" Foreground="{DynamicResource MutedForegroundColor}" />
+                        </Button>
+                        <Button DockPanel.Dock="Right" Style="{StaticResource OutlineAccentButtonStyle}" Height="34" Padding="20,0" VerticalAlignment="Center"
+                                Click="PlayBtn_Click" Visibility="{Binding CanLaunch, Converter={StaticResource BoolToVis}}">
+                            <TextBlock Text="{lex:Loc PP_HubPlay, Converter={StaticResource UpperCaseConverter}}" />
+                        </Button>
+                        <Border Width="46" Height="46" CornerRadius="9" Background="{DynamicResource TileColor}" Margin="0,0,14,0">
+                            <Grid>
+                                <TextBlock Text="&#xE7FC;" FontFamily="{StaticResource IconFont}" FontSize="22" Foreground="{DynamicResource AccentLightColor}"
+                                           HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                <Image Source="{Binding Icon}" Width="34" Height="34" RenderOptions.BitmapScalingMode="HighQuality" />
+                            </Grid>
+                        </Border>
+                        <StackPanel VerticalAlignment="Center">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Name}" FontSize="17" FontWeight="SemiBold" TextTrimming="CharacterEllipsis" />
+                                <Border Style="{StaticResource SourceChip}" x:Name="sourceChip">
+                                    <TextBlock Text="{Binding Source}" FontSize="10" Foreground="{DynamicResource Accent2Color}" />
+                                </Border>
+                            </StackPanel>
+                            <DockPanel Margin="0,3,0,0">
+                                <TextBlock Text="&#xE73E;" FontFamily="{StaticResource IconFont}" FontSize="12" Foreground="#FF34D399" VerticalAlignment="Top" Margin="0,2,6,0" />
+                                <TextBlock Text="{Binding StatusText}" Foreground="#FF34D399" FontSize="12" TextWrapping="Wrap" />
+                            </DockPanel>
+                        </StackPanel>
+                    </DockPanel>
+                </Border>
+
+                <!-- Barra de estilo (Suave ... Competitivo) con marca "Recomendado" -->
+                <Border Style="{StaticResource SectionCardStyle}" Margin="0,0,0,12" Padding="18,14">
+                    <StackPanel>
+                        <UniformGrid x:Name="styleLabels" Columns="4" Margin="0,0,0,4" />
+                        <Slider x:Name="styleSlider" Minimum="0" Maximum="3" TickFrequency="1" IsSnapToTickEnabled="True" TickPlacement="BottomRight"
+                                ValueChanged="StyleSlider_ValueChanged" SizeChanged="StyleArea_SizeChanged" />
+                        <UniformGrid x:Name="recommendedMarks" Columns="4" Margin="0,4,0,0" />
+                        <TextBlock x:Name="customNote" Text="{lex:Loc PP_HubCustomNote}" Foreground="{DynamicResource AccentLightColor}" FontSize="12"
+                                   HorizontalAlignment="Center" Margin="0,6,0,0" TextWrapping="Wrap" Visibility="Collapsed" />
+                    </StackPanel>
+                </Border>
+
+                <!-- Precision al disparar (apagado por defecto; nunca mueve la mira por si solo) -->
+                <Border x:Name="precisionCard" Style="{StaticResource SectionCardStyle}" Margin="0,0,0,12" Padding="18,14">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Width="230" Margin="0,0,24,0">
+                            <StackPanel Orientation="Horizontal" Margin="0,0,0,6">
+                                <TextBlock Text="&#xE945;" FontFamily="{StaticResource IconFont}" FontSize="15" Foreground="{DynamicResource Accent2Color}"
+                                           VerticalAlignment="Center" Margin="0,0,10,0" />
+                                <TextBlock Text="{lex:Loc PP_AimPrecSection, Converter={StaticResource UpperCaseConverter}}" FontSize="11" FontWeight="SemiBold" VerticalAlignment="Center" />
+                            </StackPanel>
+                            <CheckBox x:Name="precisionToggle" Content="{lex:Loc PP_AimPrecOn}" Style="{StaticResource ToggleSwitchStyle}" Padding="0,6"
+                                      Checked="PrecisionToggle_Changed" Unchecked="PrecisionToggle_Changed" ToolTip="{lex:Loc PP_AimPrecTip}" />
+                        </StackPanel>
+                        <StackPanel Grid.Column="1" VerticalAlignment="Top">
+                            <StackPanel x:Name="precisionSliders">
+                                <!-- Apuntando (solo L2) -->
+                                <DockPanel Margin="0,0,0,6">
+                                    <TextBlock x:Name="precisionAimValue" DockPanel.Dock="Right" FontWeight="SemiBold" Text="100 %" />
+                                    <TextBlock Text="{lex:Loc PP_AimPrecAim, Converter={StaticResource UpperCaseConverter}}" FontSize="10" FontWeight="SemiBold"
+                                               Foreground="{DynamicResource MutedForegroundColor}" VerticalAlignment="Center" />
+                                </DockPanel>
+                                <Slider x:Name="precisionAimSlider" Minimum="40" Maximum="150" SmallChange="1" LargeChange="5" IsSnapToTickEnabled="True" TickFrequency="5"
+                                        ValueChanged="PrecisionAimSlider_ValueChanged" Margin="0,0,0,12" />
+                                <!-- Apuntando y disparando (L2 + R2) -->
+                                <DockPanel Margin="0,0,0,6">
+                                    <TextBlock x:Name="precisionFireValue" DockPanel.Dock="Right" FontWeight="SemiBold" Text="75 %" />
+                                    <TextBlock Text="{lex:Loc PP_AimPrecFire, Converter={StaticResource UpperCaseConverter}}" FontSize="10" FontWeight="SemiBold"
+                                               Foreground="{DynamicResource MutedForegroundColor}" VerticalAlignment="Center" />
+                                </DockPanel>
+                                <Slider x:Name="precisionFireSlider" Minimum="40" Maximum="150" SmallChange="1" LargeChange="5" IsSnapToTickEnabled="True" TickFrequency="5"
+                                        ValueChanged="PrecisionFireSlider_ValueChanged" />
+                            </StackPanel>
+                            <TextBlock Text="{lex:Loc PP_AimPrecNote}" TextWrapping="Wrap" FontSize="11" Margin="0,8,0,0" Foreground="{DynamicResource MutedForegroundColor}" />
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+                <!-- Vibracion de este juego -->
+                <Border x:Name="rumbleCard" Style="{StaticResource SectionCardStyle}" Margin="0,0,0,12" Padding="18,14">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Width="230" Margin="0,0,24,0">
+                            <StackPanel Orientation="Horizontal" Margin="0,0,0,6">
+                                <TextBlock Text="&#xE877;" FontFamily="{StaticResource IconFont}" FontSize="15" Foreground="{DynamicResource Accent2Color}"
+                                           VerticalAlignment="Center" Margin="0,0,10,0" />
+                                <TextBlock Text="{lex:Loc PP_RumbleSection, Converter={StaticResource UpperCaseConverter}}" FontSize="11" FontWeight="SemiBold" VerticalAlignment="Center" />
+                            </StackPanel>
+                            <TextBlock x:Name="rumbleState" TextWrapping="Wrap" Margin="0,6,0,0" FontWeight="SemiBold" />
+                        </StackPanel>
+                        <StackPanel Grid.Column="1" VerticalAlignment="Top">
+                            <DockPanel Margin="0,0,0,6">
+                                <TextBlock x:Name="rumbleValue" DockPanel.Dock="Right" FontWeight="SemiBold" Text="100 %" />
+                                <TextBlock Text="{lex:Loc PP_RumbleIntensity, Converter={StaticResource UpperCaseConverter}}" FontSize="10" FontWeight="SemiBold"
+                                           Foreground="{DynamicResource MutedForegroundColor}" VerticalAlignment="Center" />
+                            </DockPanel>
+                            <Slider x:Name="rumbleSlider" Minimum="0" Maximum="200" SmallChange="10" LargeChange="25" IsSnapToTickEnabled="True" TickFrequency="10"
+                                    ValueChanged="RumbleSlider_ValueChanged" />
+                            <TextBlock Text="{lex:Loc PP_RumbleNote}" TextWrapping="Wrap" FontSize="11" Margin="0,8,0,0" Foreground="{DynamicResource MutedForegroundColor}" />
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+                <!-- Turbo de este juego (apagado por defecto, solo offline) -->
+                <Border x:Name="turboCard" Style="{StaticResource SectionCardStyle}" Margin="0,0,0,12" Padding="18,14">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Width="230" Margin="0,0,24,0">
+                            <StackPanel Orientation="Horizontal" Margin="0,0,0,6">
+                                <TextBlock Text="&#xE945;" FontFamily="{StaticResource IconFont}" FontSize="15" Foreground="{DynamicResource Accent2Color}"
+                                           VerticalAlignment="Center" Margin="0,0,10,0" />
+                                <TextBlock Text="{lex:Loc PP_TurboSection, Converter={StaticResource UpperCaseConverter}}" FontSize="11" FontWeight="SemiBold" VerticalAlignment="Center" />
+                            </StackPanel>
+                            <CheckBox x:Name="turboToggle" Content="{lex:Loc PP_TurboOn}" Style="{StaticResource ToggleSwitchStyle}" Padding="0,6"
+                                      Checked="TurboToggle_Changed" Unchecked="TurboToggle_Changed" />
+                        </StackPanel>
+                        <StackPanel Grid.Column="1" VerticalAlignment="Top">
+                            <StackPanel x:Name="turboOptions">
+                                <DockPanel Margin="0,0,0,10">
+                                    <ComboBox x:Name="turboButtonCombo" DockPanel.Dock="Right" MinWidth="160" SelectionChanged="TurboButtonCombo_SelectionChanged" />
+                                    <TextBlock Text="{lex:Loc PP_TurboButton, Converter={StaticResource UpperCaseConverter}}" FontSize="10" FontWeight="SemiBold"
+                                               Foreground="{DynamicResource MutedForegroundColor}" VerticalAlignment="Center" />
+                                </DockPanel>
+                                <DockPanel Margin="0,0,0,6">
+                                    <TextBlock x:Name="turboRateValue" DockPanel.Dock="Right" FontWeight="SemiBold" Text="10" />
+                                    <TextBlock Text="{lex:Loc PP_TurboRate, Converter={StaticResource UpperCaseConverter}}" FontSize="10" FontWeight="SemiBold"
+                                               Foreground="{DynamicResource MutedForegroundColor}" VerticalAlignment="Center" />
+                                </DockPanel>
+                                <Slider x:Name="turboRateSlider" Minimum="5" Maximum="20" SmallChange="1" LargeChange="5" IsSnapToTickEnabled="True" TickFrequency="1"
+                                        ValueChanged="TurboRateSlider_ValueChanged" />
+                            </StackPanel>
+                            <TextBlock x:Name="turboNote" TextWrapping="Wrap" FontSize="11" Margin="0,8,0,0" Foreground="{DynamicResource MutedForegroundColor}" />
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+                <!-- Tabla de configuracion del mando -->
+                <Border Style="{StaticResource SectionCardStyle}" Margin="0,0,0,12" Padding="0">
+                    <StackPanel>
+                        <Grid Margin="18,12,18,10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1.3*" /><ColumnDefinition Width="*" /><ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="{lex:Loc PP_HubColSetting}" FontWeight="SemiBold" TextWrapping="Wrap" Margin="0,0,8,0" />
+                            <TextBlock Grid.Column="1" Text="{lex:Loc PP_HubColCurrent}" FontWeight="SemiBold" TextWrapping="Wrap" Margin="0,0,8,0" />
+                            <TextBlock Grid.Column="2" Text="{lex:Loc PP_HubColRecommended}" FontWeight="SemiBold" TextWrapping="Wrap" />
+                        </Grid>
+                        <ItemsControl ItemsSource="{Binding Rows}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Border BorderBrush="{DynamicResource BorderColor}" BorderThickness="0,1,0,0" Padding="18,10">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="1.3*" /><ColumnDefinition Width="*" /><ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Text="{Binding Name}" Foreground="{DynamicResource MutedForegroundColor}" TextWrapping="Wrap" Margin="0,0,8,0" />
+                                            <TextBlock Grid.Column="1" Text="{Binding Current}" TextWrapping="Wrap" Margin="0,0,8,0" />
+                                            <TextBlock Grid.Column="2" Text="{Binding Recommended}" Foreground="{DynamicResource MutedForegroundColor}" TextWrapping="Wrap" />
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </Border>
+
+                <TextBlock Text="{lex:Loc PP_HubRecommendedNote}" Foreground="{DynamicResource MutedForegroundColor}" FontSize="11" TextWrapping="Wrap" Margin="4,0,4,8" />
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

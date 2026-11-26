@@ -1,0 +1,7 @@
+{
+  "PP_CompatMode": "Non-original controller",
+  "PP_CompatModeTip": "For DS4 controllers that are not made by Sony: changes how the light and rumble are sent. Turn it on if the light does not change or turn off.",
+  "PP_PowerOffTip": "Press this combo to turn off this controller at once. The game does not receive those buttons.",
+  "PP_PowerOffHint": "Press it and the controller turns off at once. Bluetooth only (by USB, unplug the cable).",
+  "PPC_CloneCompatOn": "Controller {0} looks non-original: compatible mode was turned on so the light works."
+}

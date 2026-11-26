@@ -1,0 +1,9 @@
+{
+  "PP_AimPrecSection": "Sensibilidad al apuntar",
+  "PP_AimPrecOn": "Activar (L2 y L2 + R2)",
+  "PP_AimPrecTip": "Cambia la velocidad del stick derecho mientras apuntas (L2) y mientras apuntas y disparas (L2 + R2). Nunca mueve la mira por sí sola.",
+  "PP_AimPrecAim": "Apuntando (L2)",
+  "PP_AimPrecFire": "Apuntando y disparando (L2 + R2)",
+  "PP_AimPrecNote": "100 % = normal. Menos = la mira va más lenta y precisa; más = más rápida. Nunca mueve la mira por sí sola: siempre mandas tú.",
+  "PPC_AimPrecisionSaveFailed": "No se pudo guardar la sensibilidad al apuntar: {0}"
+}

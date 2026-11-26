@@ -1,0 +1,22 @@
+{
+  "PP_LightSection": "Controller light",
+  "PP_LightOn": "Light on",
+  "PP_LightCustomColor": "Use my own color",
+  "PP_LightCustomColorTip": "On: use the color chosen here. Off: use the color defined in the profile",
+  "PP_LightQuickColors": "Quick colors",
+  "PP_LightBrightness": "Brightness",
+  "PP_LightMoreColors": "More colors...",
+  "PP_ColorViolet": "Violet",
+  "PP_ColorCyan": "Cyan",
+  "PP_ColorBlue": "Blue",
+  "PP_ColorGreen": "Green",
+  "PP_ColorYellow": "Yellow",
+  "PP_ColorOrange": "Orange",
+  "PP_ColorRed": "Red",
+  "PP_ColorPink": "Pink",
+  "PP_ColorWhite": "White",
+  "PPN_UseProfileColor": "Use Profile Color",
+  "PPN_UseCustomColor": "Use Custom Color",
+  "PPC_LightPrefsLoadFailed": "Could not read lightbar preferences: {0}",
+  "PPC_LightPrefsSaveFailed": "Could not save lightbar preferences: {0}"
+}

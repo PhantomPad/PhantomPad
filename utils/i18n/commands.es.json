@@ -1,0 +1,17 @@
+{
+  "PP_ConnSection": "Conexión",
+  "PP_SectionCommands": "Comandos",
+  "PP_CommandsIntro": "Acciones que se activan con los botones del mando. Aquí ves qué hace cada una, con qué botones se activa y dónde se ajusta.",
+  "PP_CmdPowerOffName": "Apagar el mando",
+  "PP_CmdPowerOffDesc": "Apaga al instante el mando que pulsa el combo (Bluetooth). Mientras lo pulsas, el juego no recibe esos botones. Por cable USB no se puede apagar: desconecta el cable.",
+  "PP_CmdPowerOffWhere": "Vale para todos los mandos. Elige los botones aquí.",
+  "PP_CmdGyroName": "Gyro aim",
+  "PP_CmdGyroDesc": "Mientras mantienes L2, inclinar el mando mueve la mira. Al soltar L2 se detiene. Se pausa en juegos de carreras si lo eliges.",
+  "PP_CmdGyroWhere": "Se activa en Mandos → Ajustes del mando (en cada mando).",
+  "PP_BtnHoldL2": "Mantener L2",
+  "PP_BtnTilt": "Inclinar el mando",
+  "PP_CmdAimSensName": "Sensibilidad al apuntar",
+  "PP_CmdAimSensDesc": "Cambia la velocidad del stick derecho mientras apuntas y mientras apuntas y disparas. Nunca mueve la mira por sí sola.",
+  "PP_CmdAimSensWhere": "Se activa en Juegos → cada juego (apagado por defecto).",
+  "PPC_CommandsSaveFailed": "No se pudieron guardar los comandos: {0}"
+}

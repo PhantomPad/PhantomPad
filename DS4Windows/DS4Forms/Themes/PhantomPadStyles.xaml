@@ -1,0 +1,291 @@
+<!--
+    PhantomPad: estilos del diseno nuevo (barra de iconos, barra superior, tarjeta del mando,
+    secciones con interruptores). Los colores vienen de DarkTheme.xaml / DefaultTheme.xaml
+    via DynamicResource, asi que funcionan con el tema oscuro y con el claro.
+-->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:conv="clr-namespace:DS4WinWPF.DS4Forms.Converters">
+
+    <!-- Iconos de Windows (Segoe Fluent en Windows 11, MDL2 en Windows 10) -->
+    <FontFamily x:Key="IconFont">Segoe Fluent Icons, Segoe MDL2 Assets</FontFamily>
+    <conv:UpperCaseConverter x:Key="UpperCaseConverter" />
+
+    <!-- ===== Barra de iconos (pestanas principales) ===== -->
+    <Style x:Key="RailTabItemStyle" TargetType="{x:Type TabItem}">
+        <Setter Property="Foreground" Value="{DynamicResource MutedForegroundColor}" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TabItem}">
+                    <Grid x:Name="railItem" Background="Transparent" Margin="0,2">
+                        <Border x:Name="indicator" Width="3" HorizontalAlignment="Left" Background="Transparent" CornerRadius="0,2,2,0" Margin="0,6" />
+                        <StackPanel Margin="6,9" HorizontalAlignment="Center">
+                            <TextBlock x:Name="railIcon" Text="{TemplateBinding Tag}" FontFamily="{StaticResource IconFont}" FontSize="20"
+                                       HorizontalAlignment="Center" Foreground="{TemplateBinding Foreground}" />
+                            <!-- Palabras largas (p. ej. CONFIGURACIONES) se achican un poco en vez de cortarse -->
+                            <Viewbox StretchDirection="DownOnly" MaxWidth="72" Margin="0,5,0,0" HorizontalAlignment="Center">
+                                <TextBlock Text="{Binding Header, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource UpperCaseConverter}}"
+                                           FontSize="9.5" FontWeight="SemiBold" TextAlignment="Center"
+                                           Foreground="{TemplateBinding Foreground}" />
+                            </Viewbox>
+                        </StackPanel>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="{DynamicResource ForegroundColor}" />
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter TargetName="railItem" Property="Background" Value="{DynamicResource SelectedNavColor}" />
+                            <Setter TargetName="indicator" Property="Background" Value="{DynamicResource Accent2Color}" />
+                            <Setter Property="Foreground" Value="{DynamicResource Accent2Color}" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="railItem" Property="Opacity" Value="0.35" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="RailTabControlStyle" TargetType="{x:Type TabControl}">
+        <Setter Property="ItemContainerStyle" Value="{StaticResource RailTabItemStyle}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TabControl}">
+                    <Grid KeyboardNavigation.TabNavigation="Local">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="86" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Border Background="{DynamicResource SidebarColor}" BorderBrush="{DynamicResource BorderColor}" BorderThickness="0,0,1,0">
+                            <DockPanel>
+                                <Border DockPanel.Dock="Top" Width="40" Height="40" Margin="0,12,0,14" CornerRadius="10" Background="{DynamicResource TileColor}">
+                                    <Image Source="/PhantomPad;component/Resources/PhantomPad-logo.png" Width="34" Height="34"
+                                           RenderOptions.BitmapScalingMode="HighQuality" />
+                                </Border>
+                                <StackPanel IsItemsHost="True" />
+                            </DockPanel>
+                        </Border>
+                        <!-- Margen superior/inferior: deja sitio para la barra superior y la barra de estado de MainWindow -->
+                        <ContentPresenter x:Name="PART_SelectedContentHost" Grid.Column="1" ContentSource="SelectedContent" Margin="0,60,0,36" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- ===== Interruptor ON/OFF (para CheckBox) ===== -->
+    <Style x:Key="ToggleSwitchStyle" TargetType="{x:Type CheckBox}">
+        <Setter Property="Foreground" Value="{DynamicResource ForegroundColor}" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Padding" Value="16,9" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type CheckBox}">
+                    <Border x:Name="rowBorder" Background="Transparent" Padding="{TemplateBinding Padding}">
+                        <DockPanel LastChildFill="True">
+                            <Grid DockPanel.Dock="Right" Width="38" Height="20" Margin="14,0,0,0" VerticalAlignment="Center">
+                                <Border x:Name="track" CornerRadius="10" Background="{DynamicResource ToggleOffColor}" />
+                                <Ellipse x:Name="knob" Width="14" Height="14" HorizontalAlignment="Left" Margin="3,0"
+                                         Fill="{DynamicResource MutedForegroundColor}" />
+                            </Grid>
+                            <ContentPresenter VerticalAlignment="Center" RecognizesAccessKey="True">
+                                <ContentPresenter.Resources>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="TextWrapping" Value="Wrap" />
+                                        <Setter Property="Foreground" Value="{DynamicResource ForegroundColor}" />
+                                    </Style>
+                                </ContentPresenter.Resources>
+                            </ContentPresenter>
+                        </DockPanel>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="rowBorder" Property="Background" Value="{DynamicResource SecondaryColor}" />
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="track" Property="Background" Value="{DynamicResource Accent2Color}" />
+                            <Setter TargetName="knob" Property="HorizontalAlignment" Value="Right" />
+                            <Setter TargetName="knob" Property="Fill" Value="{DynamicResource SidebarColor}" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="rowBorder" Property="Opacity" Value="0.45" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- ===== Menu interno de una pagina (p. ej. Configuraciones: General / Comandos) ===== -->
+    <Style x:Key="SubNavItemStyle" TargetType="{x:Type ListBoxItem}">
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                    <Grid x:Name="row" Background="Transparent" Margin="6,2">
+                        <Border x:Name="bg" CornerRadius="7" Background="Transparent" />
+                        <Border x:Name="bar" Width="3" Height="18" CornerRadius="2" HorizontalAlignment="Left" Background="Transparent" />
+                        <ContentPresenter Margin="14,10,10,10" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="bg" Property="Background" Value="{DynamicResource SecondaryColor}" />
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter TargetName="bg" Property="Background" Value="{DynamicResource SelectedNavColor}" />
+                            <Setter TargetName="bar" Property="Background" Value="{DynamicResource Accent2Color}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- ===== Secciones (tarjetas con encabezado en mayusculas) ===== -->
+    <Style x:Key="SectionCardStyle" TargetType="{x:Type Border}">
+        <Setter Property="Background" Value="{DynamicResource SurfaceColor}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource BorderColor}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="CornerRadius" Value="10" />
+        <Setter Property="Margin" Value="0,0,14,14" />
+    </Style>
+
+    <Style x:Key="SectionHeaderStyle" TargetType="{x:Type Border}">
+        <Setter Property="BorderBrush" Value="{DynamicResource BorderColor}" />
+        <Setter Property="BorderThickness" Value="0,0,0,1" />
+        <Setter Property="Padding" Value="16,11" />
+    </Style>
+
+    <Style x:Key="SectionTitleStyle" TargetType="{x:Type TextBlock}">
+        <Setter Property="FontSize" Value="11" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="Foreground" Value="{DynamicResource ForegroundColor}" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+
+    <Style x:Key="SectionIconStyle" TargetType="{x:Type TextBlock}">
+        <Setter Property="FontFamily" Value="{StaticResource IconFont}" />
+        <Setter Property="FontSize" Value="15" />
+        <Setter Property="Foreground" Value="{DynamicResource Accent2Color}" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Margin" Value="0,0,10,0" />
+    </Style>
+
+    <!-- Fila de ajuste con etiqueta a la izquierda y control a la derecha -->
+    <Style x:Key="SettingRowStyle" TargetType="{x:Type DockPanel}">
+        <Setter Property="Margin" Value="16,7" />
+        <Setter Property="LastChildFill" Value="False" />
+    </Style>
+
+    <!-- ===== Chip (etiqueta pequena con fondo) ===== -->
+    <Style x:Key="ChipStyle" TargetType="{x:Type Border}">
+        <Setter Property="Background" Value="{DynamicResource ChipColor}" />
+        <Setter Property="CornerRadius" Value="6" />
+        <Setter Property="Padding" Value="10,4" />
+        <Setter Property="Margin" Value="0,0,8,0" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+
+    <!-- ===== Boton con borde de acento (Iniciar/Detener) ===== -->
+    <Style x:Key="OutlineAccentButtonStyle" TargetType="{x:Type Button}">
+        <Setter Property="Foreground" Value="{DynamicResource Accent2Color}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Accent2Color}" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="bd" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1.5"
+                            CornerRadius="6" Padding="{TemplateBinding Padding}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <ContentPresenter.Resources>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}" />
+                                </Style>
+                            </ContentPresenter.Resources>
+                        </ContentPresenter>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="bd" Property="Background" Value="{DynamicResource Accent2Color}" />
+                            <Setter Property="Foreground" Value="{DynamicResource SidebarColor}" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="bd" Property="Opacity" Value="0.4" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Enlace sin fondo (utilidades) -->
+    <Style x:Key="LinkButtonStyle" TargetType="{x:Type Button}">
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="bd" Background="Transparent" CornerRadius="6" Padding="16,8">
+                        <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Center" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="bd" Property="Background" Value="{DynamicResource SecondaryColor}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- ===== Barra de bateria ===== -->
+    <Style x:Key="BatteryBarStyle" TargetType="{x:Type ProgressBar}">
+        <Setter Property="Height" Value="6" />
+        <Setter Property="Minimum" Value="0" />
+        <Setter Property="Maximum" Value="100" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ProgressBar}">
+                    <Grid>
+                        <Border x:Name="PART_Track" CornerRadius="3" Background="{DynamicResource ToggleOffColor}" />
+                        <Border x:Name="PART_Indicator" CornerRadius="3" Background="{DynamicResource Accent2Color}" HorizontalAlignment="Left" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- ===== Tarjeta grande de cada mando ===== -->
+    <Style x:Key="ControllerHeroItemStyle" TargetType="{x:Type ListViewItem}">
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ListViewItem}">
+                    <Border x:Name="card" Margin="0,0,0,14" Padding="18,16" CornerRadius="12" BorderThickness="1"
+                            Background="{DynamicResource HeroColor}" BorderBrush="{DynamicResource BorderColor}">
+                        <ContentPresenter />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="card" Property="BorderBrush" Value="{DynamicResource AccentLightColor}" />
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter TargetName="card" Property="BorderBrush" Value="{DynamicResource Accent2Color}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

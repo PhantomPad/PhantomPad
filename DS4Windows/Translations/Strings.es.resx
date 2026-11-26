@@ -1,0 +1,3611 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Accel" xml:space="preserve">
+    <value>Acelerómetro</value>
+  </data>
+  <data name="Action" xml:space="preserve">
+    <value>Acción</value>
+  </data>
+  <data name="AddDirectory" xml:space="preserve">
+    <value>Añadir directorio</value>
+  </data>
+  <data name="AddPrograms" xml:space="preserve">
+    <value>Añadir programas</value>
+  </data>
+  <data name="AddStartMenuPrograms" xml:space="preserve">
+    <value>Añadir al Menú de Inicio de programas</value>
+  </data>
+  <data name="AddSteamGames" xml:space="preserve">
+    <value>Añadir juegos de Steam</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>Todo</value>
+  </data>
+  <data name="AutoProfiles" xml:space="preserve">
+    <value>Perfiles automáticos</value>
+  </data>
+  <data name="Battery" xml:space="preserve">
+    <value>Batería</value>
+  </data>
+  <data name="Browse" xml:space="preserve">
+    <value>Examinar...</value>
+  </data>
+  <data name="BrowseOtherPrograms" xml:space="preserve">
+    <value>Navegar en otros programas</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="CheckUpdateNow" xml:space="preserve">
+    <value>Buscar actualizaciones</value>
+  </data>
+  <data name="CheckUpdateStartup" xml:space="preserve">
+    <value>Buscar actualizaciones de PhantomPad al iniciar</value>
+  </data>
+  <data name="Clear" xml:space="preserve">
+    <value>Vaciar</value>
+  </data>
+  <data name="CloseMinimizes" xml:space="preserve">
+    <value>Cerrar minimizado</value>
+  </data>
+  <data name="Color" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="Controller1Text" xml:space="preserve">
+    <value>Mando 1</value>
+  </data>
+  <data name="Controller2Text" xml:space="preserve">
+    <value>Mando 2</value>
+  </data>
+  <data name="Controller3Text" xml:space="preserve">
+    <value>Mando 3</value>
+  </data>
+  <data name="Controller4Text" xml:space="preserve">
+    <value>Mando 4</value>
+  </data>
+  <data name="Controllers" xml:space="preserve">
+    <value>Mandos</value>
+  </data>
+  <data name="ControlPanel" xml:space="preserve">
+    <value>Panel de Control</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Eliminar</value>
+  </data>
+  <data name="DriverSetup" xml:space="preserve">
+    <value>Configuración del mando/driver</value>
+  </data>
+  <data name="Duplicate" xml:space="preserve">
+    <value>Duplicar</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Editar</value>
+  </data>
+  <data name="EditAction" xml:space="preserve">
+    <value>Editar acción</value>
+  </data>
+  <data name="Export" xml:space="preserve">
+    <value>Exportar</value>
+  </data>
+  <data name="Full" xml:space="preserve">
+    <value>Todo</value>
+  </data>
+  <data name="Gyro" xml:space="preserve">
+    <value>Giroscopio</value>
+  </data>
+  <data name="HideUnchecked" xml:space="preserve">
+    <value>Ocultar desmarcado</value>
+  </data>
+  <data name="Import" xml:space="preserve">
+    <value>Importar</value>
+  </data>
+  <data name="LeftStick" xml:space="preserve">
+    <value>Stick izquierdo</value>
+  </data>
+  <data name="Log" xml:space="preserve">
+    <value>Registro</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="New" xml:space="preserve">
+    <value>Nuevo</value>
+  </data>
+  <data name="NewAction" xml:space="preserve">
+    <value>Nueva acción</value>
+  </data>
+  <data name="NewProfile" xml:space="preserve">
+    <value>Nuevo perfil</value>
+  </data>
+  <data name="None" xml:space="preserve">
+    <value>Ninguno</value>
+  </data>
+  <data name="Path" xml:space="preserve">
+    <value>Ruta</value>
+  </data>
+  <data name="Profile" xml:space="preserve">
+    <value>Perfil</value>
+  </data>
+  <data name="ProfileFolder" xml:space="preserve">
+    <value>Carpeta de perfil</value>
+  </data>
+  <data name="QuickCharge" xml:space="preserve">
+    <value>Carga rápida</value>
+  </data>
+  <data name="RecordText" xml:space="preserve">
+    <value>Guardar</value>
+  </data>
+  <data name="Remove" xml:space="preserve">
+    <value>Quitar</value>
+  </data>
+  <data name="RemoveAction" xml:space="preserve">
+    <value>Quitar acción</value>
+  </data>
+  <data name="RightStick" xml:space="preserve">
+    <value>Stick derecho</value>
+  </data>
+  <data name="Rumble" xml:space="preserve">
+    <value>Vibración</value>
+  </data>
+  <data name="RunAtStartup" xml:space="preserve">
+    <value>Ejecutar en el arranque</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Guardar</value>
+  </data>
+  <data name="SaveProfile" xml:space="preserve">
+    <value>Guardar</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Opciones</value>
+  </data>
+  <data name="ShowNotifications" xml:space="preserve">
+    <value>Mostrar notificaciones</value>
+  </data>
+  <data name="StartMinimized" xml:space="preserve">
+    <value>Iniciar minimizado</value>
+  </data>
+  <data name="StartText" xml:space="preserve">
+    <value>Iniciar</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Estado</value>
+  </data>
+  <data name="StopText" xml:space="preserve">
+    <value>Detener</value>
+  </data>
+  <data name="TouchScroll" xml:space="preserve">
+    <value>Desplazar</value>
+  </data>
+  <data name="TouchSlide" xml:space="preserve">
+    <value>Deslizar</value>
+  </data>
+  <data name="TouchTap" xml:space="preserve">
+    <value>Pulsar</value>
+  </data>
+  <data name="Trigger" xml:space="preserve">
+    <value>Disparador</value>
+  </data>
+  <data name="WarningsOnly" xml:space="preserve">
+    <value>Solo advertencias</value>
+  </data>
+  <data name="RumbleMaxSecs" xml:space="preserve">
+    <value>segundos</value>
+  </data>
+  <data name="RumbleMaxSecsTip" xml:space="preserve">
+    <value>Parada automática de la vibración en segundos (0 = parada automática desactivada)</value>
+  </data>
+  <data name="WindowTitle" xml:space="preserve">
+    <value>Título de la ventana</value>
+  </data>
+  <data name="MoveUp" xml:space="preserve">
+    <value>Subir</value>
+  </data>
+  <data name="MoveDown" xml:space="preserve">
+    <value>Bajar</value>
+  </data>
+  <data name="AutoProfPathTip" xml:space="preserve">
+    <value>Ruta de proceso. ^ABC = Coincidencia al principio de la cadena (^) | ABC$ = Coincidencia al final de la cadena ($) | *ABC = Contiene una cadena (*)</value>
+  </data>
+  <data name="AutoProfTitleTip" xml:space="preserve">
+    <value>Título de la ventana. ^ABC = Coincidencia al principio de la cadena (^) | ABC$ = Coincidencia al final de la cadena ($) | *ABC = Contiene una cadena (*)</value>
+  </data>
+  <data name="GamepadTest" xml:space="preserve">
+    <value>Prueba de gamepad</value>
+  </data>
+  <data name="EnableOutputDataToDS4" xml:space="preserve">
+    <value>Habilitar la salida de datos a DS4</value>
+  </data>
+  <data name="EnableOutputDataToDS4Tip" xml:space="preserve">
+    <value>Envía periódicamente datos de la barra de luces y de las vibraciones al gamepad de DS4. Desmarca si el gamepad no soporta la recepción de datos.
+    Los cambios en esta opción tienen efecto a partir de la conexión del gamepad.</value>
+    <comment>Para introducir un salto de línea en un valor de recurso de cadena en el editor de recursos de VisualStudio, pulse Shift+Enter.</comment>
+  </data>
+  <data name="Apply" xml:space="preserve">
+    <value>Aplicar</value>
+  </data>
+  <data name="HidNinja" xml:space="preserve">
+    <value>HidNinja</value>
+  </data>
+  <data name="CustomExeName" xml:space="preserve">
+    <value>Nombre del exe personalizado</value>
+  </data>
+  <data name="CustomExeNameInfo" xml:space="preserve">
+    <value>Algunos juegos implementan un bloqueo que hace que la entrada de DS4 sea ignorada si un juego detecta que PhantomPad.exe o InputMapper.exe se está ejecutando en ese momento. Una solución alternativa al bloqueo es cambiar el nombre de PhantomPad.exe para que la comprobación del juego falle. Si especifica un nombre de exe personalizado aquí, DS4Updater podrá actualizar automáticamente una copia personalizada de PhantomPad con el nombre de archivo deseado. Asegúrese de omitir la extensión.
+    
+    Ejemplo: oculto_PhantomPad</value>
+  </data>
+  <data name="XInputChecker" xml:space="preserve">
+    <value>XInputChecker</value>
+  </data>
+  <data name="Controller5Text" xml:space="preserve">
+    <value>Mando 5</value>
+  </data>
+  <data name="Controller6Text" xml:space="preserve">
+    <value>Mando 6</value>
+  </data>
+  <data name="Controller7Text" xml:space="preserve">
+    <value>Mando 7</value>
+  </data>
+  <data name="Controller8Text" xml:space="preserve">
+    <value>Mando 8</value>
+  </data>
+  <data name="GamepadGyroCameraDescription" xml:space="preserve">
+    <value>Asigna la salida del mando a un gamepad XInput estándar o DS4. El giroscopio se asigna a un joystick que actúa como ratón.</value>
+  </data>
+  <data name="GamepadGyroCameraName" xml:space="preserve">
+    <value>Gamepad con joystick tipo ratón</value>
+  </data>
+  <data name="GamepadPresetDescription" xml:space="preserve">
+    <value>Asigna la salida del mando a un gamepad estándar</value>
+  </data>
+  <data name="GamepadPresetName" xml:space="preserve">
+    <value>Gamepad</value>
+  </data>
+  <data name="KBMGyroMouseDescription" xml:space="preserve">
+    <value>Asigna la salida del mando a teclado y ratón virtuales. Útil para juegos de disparos sin soporte de mando. El giroscopio se asigna a un ratón virtual.</value>
+  </data>
+  <data name="KBMGyroMouseName" xml:space="preserve">
+    <value>Teclado y ratón con giroscopio como ratón</value>
+  </data>
+  <data name="KBMPresetDescription" xml:space="preserve">
+    <value>Asigna la salida del mando a teclado y ratón virtuales. Útil para juegos de disparos sin soporte de mando.</value>
+  </data>
+  <data name="KBMPresetName" xml:space="preserve">
+    <value>Teclado y ratón</value>
+  </data>
+  <data name="MixedGyroMousePresetDescription" xml:space="preserve">
+    <value>Asigna botones y ejes a un gamepad estándar. El giroscopio se asigna a un ratón virtual</value>
+  </data>
+  <data name="MixedGyroMousePresetName" xml:space="preserve">
+    <value>Gamepad con giroscopio como ratón</value>
+  </data>
+  <data name="MixedPresetDescription" xml:space="preserve">
+    <value>Asigna la salida del mando a un gamepad XInput mixto con el stick derecho como ratón.</value>
+  </data>
+  <data name="MixedPresetName" xml:space="preserve">
+    <value>Gamepad con cámara de alta precisión</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Descripción</value>
+  </data>
+  <data name="PresetIntroText" xml:space="preserve">
+    <value>¿Quieres usar un preajuste? Si eliges No, el editor de perfiles usará un perfil de gamepad vacío.</value>
+  </data>
+  <data name="Presets" xml:space="preserve">
+    <value>Preajustes</value>
+  </data>
+  <data name="Changelog" xml:space="preserve">
+    <value>Novedades</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Cerrar</value>
+  </data>
+  <data name="Profiles" xml:space="preserve">
+    <value>Perfiles</value>
+  </data>
+  <data name="NoControllersConnected" xml:space="preserve">
+    <value>No hay mandos conectados (máx. {0})</value>
+  </data>
+  <data name="FlickThreshold" xml:space="preserve">
+    <value>Umbral de flick</value>
+  </data>
+  <data name="FlickTime" xml:space="preserve">
+    <value>Tiempo de flick</value>
+  </data>
+  <data name="MinAngleThreshold" xml:space="preserve">
+    <value>Umbral de ángulo mínimo</value>
+  </data>
+  <data name="RealWorldCalibration" xml:space="preserve">
+    <value>Calibración real</value>
+  </data>
+  <data name="PP_ConnectHint" xml:space="preserve">
+    <value>Enciende tu mando o conéctalo por USB o Bluetooth</value>
+  </data>
+  <data name="PP_RightClickDisconnect" xml:space="preserve">
+    <value>Clic derecho para desconectar el mando inalámbrico</value>
+  </data>
+  <data name="PP_LightColor" xml:space="preserve">
+    <value>Color de la luz</value>
+  </data>
+  <data name="PP_SectionGeneral" xml:space="preserve">
+    <value>General</value>
+  </data>
+  <data name="PP_SectionNotifications" xml:space="preserve">
+    <value>Notificaciones y luz</value>
+  </data>
+  <data name="PP_SectionAppearance" xml:space="preserve">
+    <value>Apariencia e idioma</value>
+  </data>
+  <data name="PP_SectionAdvanced" xml:space="preserve">
+    <value>Avanzado</value>
+  </data>
+  <data name="PP_LatencyLimit" xml:space="preserve">
+    <value>Límite de latencia</value>
+  </data>
+  <data name="PP_LogTime" xml:space="preserve">
+    <value>Hora</value>
+  </data>
+  <data name="PP_LogMessage" xml:space="preserve">
+    <value>Mensaje</value>
+  </data>
+  <data name="ViGEmPluginFailure" xml:space="preserve">
+    <value>Falló la conexión del mando virtual de ViGEm. Código de error {0}. Probablemente es un problema interno de ViGEmBus. Se cerrará la conexión. Si el problema continúa, cierra PhantomPad y reinicia Windows.</value>
+  </data>
+  <data name="CRC32Fail" xml:space="preserve">
+    <value>La comprobación de integridad de datos del mando inalámbrico falló. Se cerrará el dispositivo.</value>
+  </data>
+  <data name="FutureNetNotInstalled" xml:space="preserve">
+    <value>No se detectó .NET 5 Runtime en tu sistema. Descarga e instala .NET 5 Runtime para asegurar la compatibilidad con futuras versiones de PhantomPad. Al cerrar esta ventana se abrirá la página de descarga de .NET 5 Runtime.</value>
+  </data>
+  <data name="UpgradeNetCaption" xml:space="preserve">
+    <value>Actualiza .NET Runtime</value>
+  </data>
+  <data name="HidHide" xml:space="preserve">
+    <value>HidHide</value>
+  </data>
+  <data name="HidHideConfigClient" xml:space="preserve">
+    <value>Configuración de HidHide</value>
+  </data>
+  <data name="ExclusiveAccess" xml:space="preserve">
+    <value>Acceso exclusivo</value>
+  </data>
+  <data name="HidGuardianAccess" xml:space="preserve">
+    <value>Acceso con HidGuardian</value>
+  </data>
+  <data name="HidHideAccess" xml:space="preserve">
+    <value>Acceso con HidHide</value>
+  </data>
+  <data name="SharedAccess" xml:space="preserve">
+    <value>Acceso compartido</value>
+  </data>
+  <data name="RenameProfile" xml:space="preserve">
+    <value>Renombrar</value>
+  </data>
+  <data name="DisableVirtualController" xml:space="preserve">
+    <value>Desactivar mando virtual</value>
+  </data>
+  <data name="DisableVirtualControllerTip" xml:space="preserve">
+    <value>No crear ni asociar mandos virtuales para los mandos conectados que usen este perfil (se aplica al guardar el perfil)</value>
+  </data>
+  <data name="EmulatedController" xml:space="preserve">
+    <value>Mando emulado</value>
+  </data>
+  <data name="OutContNotice" xml:space="preserve">
+    <value>Elige el tipo de mando virtual de salida (se aplica al guardar el perfil)</value>
+  </data>
+  <data name="VirtualControllerSettings" xml:space="preserve">
+    <value>Ajustes del mando virtual</value>
+  </data>
+  <data name="ChangeOnNewDeviceConn" xml:space="preserve">
+    <value>Los cambios se aplican al conectar un dispositivo nuevo</value>
+  </data>
+  <data name="StickFuzzTooltip" xml:space="preserve">
+    <value>Fuzz indica el mínimo de unidades que debe moverse el stick analógico, dentro de la zona activa, antes de que el cambio se registre. Es útil para sticks gastados que no mantienen una posición estable. El valor se expresa en unidades crudas del stick.</value>
+  </data>
+  <data name="StickMaxOutputForceTooltip" xml:space="preserve">
+    <value>Aplicar siempre la salida máxima. Útil con 100% de salida máxima y para limitar el valor a una salida circular</value>
+  </data>
+  <data name="StickMaxOutputTooltip" xml:space="preserve">
+    <value>En algunos casos puede ser útil limitar el valor máximo que entrega el stick analógico de salida. La salida máxima permite recortar el valor final del stick.</value>
+  </data>
+  <data name="AntiDeadzoneTooltip" xml:space="preserve">
+    <value>La anti-zona muerta actúa como un desplazamiento para indicar el valor mínimo de salida cuando un eje sale de su zona muerta. Sirve sobre todo para compensar la zona muerta que usa el juego. Por ejemplo, la zona muerta típica del stick izquierdo XInput en un juego es de unos 8000 (25%). Sin anti-zona muerta, el eje tendría que superar la zona muerta de PhantomPad y además la del juego.</value>
+  </data>
+  <data name="StickInputCurveTooltip" xml:space="preserve">
+    <value>AJUSTE ANTIGUO Y OBSOLETO. Intenta aplicar una curva sobre las coordenadas crudas antes de aplicar la zona muerta. Poco fiable</value>
+  </data>
+  <data name="TouchpadMinThresholdTooltip" xml:space="preserve">
+    <value>Recorrido mínimo calculado antes de enviar un evento de ratón al sistema</value>
+  </data>
+  <data name="TouchpadRotationTooltip" xml:space="preserve">
+    <value>Rota el deslizamiento del touchpad el ángulo indicado. Útil cuando un deslizamiento normal no sale en línea recta. Rango de -180 a 180. Por defecto es 0.</value>
+  </data>
+  <data name="TouchpadSlideTooltip" xml:space="preserve">
+    <value>Sensibilidad para activar el desplazamiento con la rueda del ratón usando varios dedos</value>
+  </data>
+  <data name="TouchpadTapTooltip" xml:space="preserve">
+    <value>Hacer clic izquierdo con un toque en el touchpad. El intervalo máximo es (valor * 2) ms.</value>
+  </data>
+  <data name="TouchpadTrackballEnableTooltip" xml:space="preserve">
+    <value>Añade inercia al deslizamiento del touchpad al levantar el dedo. Permite mover el cursor más lejos de lo que permite el espacio del touchpad</value>
+  </data>
+  <data name="TouchpadTrackballFrictionTooltip" xml:space="preserve">
+    <value>Añade fricción al trackball virtual. Menos fricción hace que el cursor siga moviéndose más tiempo</value>
+  </data>
+  <data name="StickOuterBindDeadTooltip" xml:space="preserve">
+    <value>Umbral a partir del cual se ejecuta la acción</value>
+  </data>
+  <data name="StickOuterBindInvertTooltip" xml:space="preserve">
+    <value>Ejecutar la acción exterior antes de llegar al umbral. La acción se suelta al superar el umbral</value>
+  </data>
+  <data name="StickOuterBindTooltip" xml:space="preserve">
+    <value>Acción a ejecutar cuando el stick supera un umbral. Útil para asignar teclas de caminar o correr. Invertir hace que la acción se ejecute hasta llegar al umbral</value>
+  </data>
+  <data name="SASteeringWheelFuzzTooltip" xml:space="preserve">
+    <value>Fuzz indica el mínimo de unidades del dispositivo, dentro de la zona activa, que debe girarse el acelerómetro antes de que el cambio se registre. El valor se expresa en unidades crudas del acelerómetro.</value>
+  </data>
+  <data name="StickRotationTooltip" xml:space="preserve">
+    <value>+ = sentido horario. - = sentido antihorario.
+
+La rotación ayuda a corregir la orientación de un stick analógico si tu pulgar se desvía un poco al moverlo. Por ejemplo, al empujar el stick totalmente hacia arriba el pulgar puede desviarse un poco del centro. El valor indica cuántos grados se ajusta el valor final del eje. Rango de -180 a 180. Por defecto es 0.</value>
+  </data>
+  <data name="TouchpadJitterCompTooltip" xml:space="preserve">
+    <value>Suaviza los movimientos muy pequeños del touchpad. Reduce los movimientos accidentales del cursor al mantener el dedo casi quieto</value>
+  </data>
+  <data name="DS4BTPollRate" xml:space="preserve">
+    <value>Frecuencia de sondeo BT del DS4</value>
+  </data>
+  <data name="DS4LightbarPassthruDisabled" xml:space="preserve">
+    <value>Función desactivada temporalmente por problemas del driver. Esperamos que se solucione en una próxima actualización.</value>
+  </data>
+  <data name="DualSRumbleForceGenericRescale" xml:space="preserve">
+    <value>Forzar ambos niveles de intensidad</value>
+  </data>
+  <data name="DualSRumbleModeDisabled" xml:space="preserve">
+    <value>Desactivado</value>
+  </data>
+  <data name="DualSRumbleModeAccurate" xml:space="preserve">
+    <value>Preciso</value>
+  </data>
+  <data name="DualSRumbleModeLegacy" xml:space="preserve">
+    <value>Clásico</value>
+  </data>
+  <data name="DualSRumbleModeNPowerLevelTxt" xml:space="preserve">
+    <value>Modo de vibración y nivel de intensidad:</value>
+  </data>
+  <data name="DualSRumbleModePassthru" xml:space="preserve">
+    <value>Directo</value>
+  </data>
+  <data name="DualSRumbleSpecificSettings" xml:space="preserve">
+    <value>Ajustes de vibración de DualSense</value>
+  </data>
+  <data name="DualSRumbleForceGenericRescale_Tip" xml:space="preserve">
+    <value>Se recomienda dejarlo DESACTIVADO.
+
+- Desactivado: el propio mando ajusta la vibración según el nivel de intensidad elegido (mejor calidad)
+
+- Activado: se aplican a la vez el ajuste general de PhantomPad y el control nativo del DualSense</value>
+  </data>
+  <data name="DualSRumbleModes_Tip" xml:space="preserve">
+    <value>Modo preciso (recomendado):
+- Reproduce mejor la sensación de vibración del DualShock 4 / mando de Xbox 360
+- Ejecuta con más fidelidad los efectos de vibración del juego
+- La vibración tiene más matices. Con el mismo nivel de intensidad hay más diferencia entre la vibración mínima y máxima del juego,
+desde muy suave hasta la intensidad máxima del nivel elegido
+
+Modo clásico:
+- Más fuerte en general, pero con menos matices
+- Sensación más "seca"
+- La vibración mínima y máxima del juego quedarán solo un poco por debajo y por encima del nivel elegido
+
+Desactivado:
+- Desactiva por completo la vibración</value>
+  </data>
+  <data name="DualSRumblePowerLevel_Tip" xml:space="preserve">
+    <value>Ajuste nativo del nivel de intensidad de vibración del DualSense.
+
+- En modo preciso, la vibración [ mín // máx ] será [ 1% /// nivel elegido ]
+    - Ejemplo (62%): [ mín = 1% /// máx = 62% ]
+
+- En modo clásico, la vibración [ mín /// máx ] será aproximadamente [ nivel - 12% /// nivel + 12% ]
+    - Ejemplo (62%): [ mín = 50% /// máx = 74% ]</value>
+  </data>
+  <data name="Accept" xml:space="preserve">
+    <value>Aceptar</value>
+  </data>
+  <data name="Black" xml:space="preserve">
+    <value>Negro</value>
+  </data>
+  <data name="Colored" xml:space="preserve">
+    <value>A color</value>
+  </data>
+  <data name="Default" xml:space="preserve">
+    <value>Predeterminado</value>
+  </data>
+  <data name="DeviceType" xml:space="preserve">
+    <value>Tipo de dispositivo</value>
+  </data>
+  <data name="DisconnectFromBtWhenStopping" xml:space="preserve">
+    <value>Desconectar Bluetooth al detener</value>
+  </data>
+  <data name="Dynamic" xml:space="preserve">
+    <value>Dinámico</value>
+  </data>
+  <data name="FlashLightbarAtHighLatency" xml:space="preserve">
+    <value>Parpadear la luz con latencia alta</value>
+  </data>
+  <data name="HideDS4Controller" xml:space="preserve">
+    <value>Ocultar el mando DS4</value>
+  </data>
+  <data name="HotkeysAbout" xml:space="preserve">
+    <value>Atajos / Acerca de</value>
+  </data>
+  <data name="IconChoice" xml:space="preserve">
+    <value>Icono de la bandeja</value>
+  </data>
+  <data name="MinimizeToTaskbar" xml:space="preserve">
+    <value>Minimizar a la barra de tareas</value>
+  </data>
+  <data name="MinimizeToTaskbarTip" xml:space="preserve">
+    <value>Minimizar a la barra de tareas en lugar de a la bandeja del sistema</value>
+  </data>
+  <data name="OutputSlots" xml:space="preserve">
+    <value>Salidas</value>
+  </data>
+  <data name="Permanent" xml:space="preserve">
+    <value>Permanente</value>
+  </data>
+  <data name="Plug" xml:space="preserve">
+    <value>Conectar</value>
+  </data>
+  <data name="RevertToDefaultProfileOnUnknown" xml:space="preserve">
+    <value>Volver al perfil predeterminado si el programa es desconocido</value>
+  </data>
+  <data name="ShowAutoProfileDebugMessages" xml:space="preserve">
+    <value>Mostrar mensajes de depuración de perfiles automáticos</value>
+  </data>
+  <data name="SwipeTouchpadToSwitchProfiles" xml:space="preserve">
+    <value>Cambiar de perfil deslizando en el touchpad</value>
+  </data>
+  <data name="TurnOffDS4WindowsTemporarily" xml:space="preserve">
+    <value>Desactivar PhantomPad temporalmente</value>
+  </data>
+  <data name="Unplug" xml:space="preserve">
+    <value>Desconectar</value>
+  </data>
+  <data name="White" xml:space="preserve">
+    <value>Blanco</value>
+  </data>
+  <data name="AppTheme" xml:space="preserve">
+    <value>Tema de la app</value>
+  </data>
+  <data name="CheckEvery" xml:space="preserve">
+    <value>Comprobar cada</value>
+  </data>
+  <data name="OscServerHeading" xml:space="preserve">
+    <value>Control y monitoreo OSC externo</value>
+  </data>
+  <data name="EnableOscServer" xml:space="preserve">
+    <value>Activar servidor de control</value>
+  </data>
+  <data name="EnableInterpretingOscMonitoring" xml:space="preserve">
+    <value>Interpretar mensajes de monitoreo</value>
+  </data>
+  <data name="EnableOscSender" xml:space="preserve">
+    <value>Activar servicio de monitoreo</value>
+  </data>
+  <data name="ControllerSupportDS4" xml:space="preserve">
+    <value>Soporte para mandos DS4</value>
+  </data>
+  <data name="ControllerSupportDualSense" xml:space="preserve">
+    <value>Soporte para mandos DualSense</value>
+  </data>
+  <data name="ControllerSupportJoyCon" xml:space="preserve">
+    <value>Soporte para mandos JoyCon</value>
+  </data>
+  <data name="ControllerSupportSwitchPro" xml:space="preserve">
+    <value>Soporte para mandos Switch Pro</value>
+  </data>
+  <data name="Copycat" xml:space="preserve">
+    <value>Clon</value>
+  </data>
+  <data name="CopycatTip" xml:space="preserve">
+    <value>Cambia algunos indicadores usados para mandos DS4 que no son de Sony. Puede arreglar la vibración y la luz en algunos clones de DS4</value>
+  </data>
+  <data name="Dark" xml:space="preserve">
+    <value>Oscuro</value>
+  </data>
+  <data name="Days" xml:space="preserve">
+    <value>Días</value>
+  </data>
+  <data name="DetectedControllers" xml:space="preserve">
+    <value>Mandos detectados</value>
+  </data>
+  <data name="DeviceOptions" xml:space="preserve">
+    <value>Opciones de dispositivos</value>
+  </data>
+  <data name="EnableVerboseLog" xml:space="preserve">
+    <value>Activar registro detallado</value>
+  </data>
+  <data name="EnableVerboseLogTip" xml:space="preserve">
+    <value>Mostrar mensajes adicionales en el registro al conectar un mando</value>
+  </data>
+  <data name="Hours" xml:space="preserve">
+    <value>Horas</value>
+  </data>
+  <data name="UseCustomSteamFolder" xml:space="preserve">
+    <value>Usar carpeta de Steam personalizada</value>
+  </data>
+  <data name="Utils" xml:space="preserve">
+    <value>Utilidades</value>
+  </data>
+  <data name="Program" xml:space="preserve">
+    <value>Programa</value>
+  </data>
+  <data name="RunAs" xml:space="preserve">
+    <value>Ejecutar como</value>
+  </data>
+  <data name="Task" xml:space="preserve">
+    <value>Tarea</value>
+  </data>
+  <data name="GyroTriggerJitterCompensationTooltip" xml:space="preserve">
+    <value>Suaviza más el extremo bajo de la curva para compensar el temblor del dispositivo</value>
+  </data>
+  <data name="WakeupFromSuspend" xml:space="preserve">
+    <value>Saliendo de la suspensión</value>
+  </data>
+  <data name="ControllerSupportDS3" xml:space="preserve">
+    <value>Soporte para mandos DS3</value>
+  </data>
+  <data name="FirstLaunch.DeviceIntroText" xml:space="preserve">
+    <value>Como otros programas de mapeo activan por defecto varios tipos de mando (por ejemplo Steam Input), PhantomPad solo lee mandos DS4 por defecto. Aquí puedes activar otros tipos de mando compatibles. Ten cuidado si usas PhantomPad junto con otros programas de mapeo al mismo tiempo.</value>
+  </data>
+  <data name="FirstLaunch.DS3EnableCkbLabel" xml:space="preserve">
+    <value>Soporte para DS3</value>
+  </data>
+  <data name="FirstLaunch.DS3EnableText" xml:space="preserve">
+    <value>Soporte para mandos DualShock 3 (PS3). Requiere el driver DsHidMini del proyecto ViGEm (nefarius).</value>
+  </data>
+  <data name="FirstLaunch.DS4EnableCkbLabel" xml:space="preserve">
+    <value>Soporte para DS4</value>
+  </data>
+  <data name="FirstLaunch.DS4EnableText" xml:space="preserve">
+    <value>Soporte para mandos DualShock 4 conocidos</value>
+  </data>
+  <data name="FirstLaunch.DSEnableCkbLabel" xml:space="preserve">
+    <value>Soporte para DualSense</value>
+  </data>
+  <data name="FirstLaunch.DSEnableText" xml:space="preserve">
+    <value>Soporte para mandos DualSense (PS5). Modelo base y DualSense Edge</value>
+  </data>
+  <data name="FirstLaunch.Header" xml:space="preserve">
+    <value>Tipos de mando activados</value>
+  </data>
+  <data name="FirstLaunch.JoyConEnableCkbLabel" xml:space="preserve">
+    <value>Soporte para JoyCon</value>
+  </data>
+  <data name="FirstLaunch.JoyConEnableText" xml:space="preserve">
+    <value>Soporte para mandos JoyCon (Nintendo Switch)</value>
+  </data>
+  <data name="FirstLaunch.SwitchProEnableCkbLabel" xml:space="preserve">
+    <value>Soporte para Switch Pro</value>
+  </data>
+  <data name="FirstLaunch.SwitchProEnableText" xml:space="preserve">
+    <value>Soporte para mandos Switch Pro (Nintendo Switch)</value>
+  </data>
+  <data name="FirstLaunch.WinTitle" xml:space="preserve">
+    <value>Primer inicio</value>
+  </data>
+  <data name="AutoProfiles.DisplaySwitchVia" xml:space="preserve">
+    <value>Mostrar cambio de perfil mediante</value>
+  </data>
+  <data name="AutoProfiles.LogAndNotification" xml:space="preserve">
+    <value>Registro + notificación</value>
+  </data>
+  <data name="Notification" xml:space="preserve">
+    <value>Notificación</value>
+  </data>
+  <data name="Light" xml:space="preserve">
+    <value>Claro</value>
+  </data>
+  <data name="ProfileEditor.VirtualDS4TrigOutput" xml:space="preserve">
+    <value>Modo de salida de gatillos DS4</value>
+  </data>
+  <data name="Analog" xml:space="preserve">
+    <value>Analógico</value>
+  </data>
+  <data name="Buttons" xml:space="preserve">
+    <value>Botones</value>
+  </data>
+  <data name="DS4OutputTriggersDefault" xml:space="preserve">
+    <value>Predet. (analógico + botones)</value>
+  </data>
+  <data name="DeadZone" xml:space="preserve">
+    <value>Zona muerta</value>
+  </data>
+  <data name="MaxZone" xml:space="preserve">
+    <value>Zona máxima</value>
+  </data>
+  <data name="AntiDeadZone" xml:space="preserve">
+    <value>Anti-zona muerta</value>
+  </data>
+  <data name="Axial" xml:space="preserve">
+    <value>Axial</value>
+  </data>
+  <data name="AxisConfig" xml:space="preserve">
+    <value>Configuración de ejes</value>
+  </data>
+  <data name="Controls" xml:space="preserve">
+    <value>Controles</value>
+  </data>
+  <data name="Cubic" xml:space="preserve">
+    <value>Cúbica</value>
+  </data>
+  <data name="DeadZone X" xml:space="preserve">
+    <value>Zona muerta X</value>
+  </data>
+  <data name="DeadZone Y" xml:space="preserve">
+    <value>Zona muerta Y</value>
+  </data>
+  <data name="DeadZoneType" xml:space="preserve">
+    <value>Tipo de zona muerta</value>
+  </data>
+  <data name="EaseoutCubic" xml:space="preserve">
+    <value>Suavizado cúbico</value>
+  </data>
+  <data name="EaseoutQuad" xml:space="preserve">
+    <value>Suavizado cuadrático</value>
+  </data>
+  <data name="EnhancedPrecision" xml:space="preserve">
+    <value>Precisión mejorada</value>
+  </data>
+  <data name="FlickStick" xml:space="preserve">
+    <value>Flick Stick</value>
+  </data>
+  <data name="Linear" xml:space="preserve">
+    <value>Lineal</value>
+  </data>
+  <data name="MaxOutput" xml:space="preserve">
+    <value>Salida máxima</value>
+  </data>
+  <data name="MouseOffset" xml:space="preserve">
+    <value>Desplazamiento del ratón</value>
+  </data>
+  <data name="MouseVerticalScale" xml:space="preserve">
+    <value>Escala vertical del ratón</value>
+  </data>
+  <data name="OutputCurve" xml:space="preserve">
+    <value>Curva de salida</value>
+  </data>
+  <data name="OutputMode" xml:space="preserve">
+    <value>Modo de salida</value>
+  </data>
+  <data name="Quadratic" xml:space="preserve">
+    <value>Cuadrática</value>
+  </data>
+  <data name="Radial" xml:space="preserve">
+    <value>Radial</value>
+  </data>
+  <data name="Sensitivity" xml:space="preserve">
+    <value>Sensibilidad</value>
+  </data>
+  <data name="SixAxisAccel" xml:space="preserve">
+    <value>Seis ejes (acelerómetro)</value>
+  </data>
+  <data name="SquareStick" xml:space="preserve">
+    <value>Stick cuadrado</value>
+  </data>
+  <data name="VerticalScale" xml:space="preserve">
+    <value>Escala vertical</value>
+  </data>
+  <data name="AntiSnapback" xml:space="preserve">
+    <value>Anti rebote</value>
+  </data>
+  <data name="AntiSnapbackTiming" xml:space="preserve">
+    <value>Tiempo de anti rebote</value>
+  </data>
+  <data name="Touchpad" xml:space="preserve">
+    <value>Touchpad</value>
+  </data>
+  <data name="ViGEm117MinNeeded" xml:space="preserve">
+    <value>Solo funciona con ViGEmBus 1.17.333.0 o posterior</value>
+  </data>
+  <data name="AbsoluteMouse" xml:space="preserve">
+    <value>Ratón absoluto</value>
+  </data>
+  <data name="AbsoluteMouseOptions" xml:space="preserve">
+    <value>Opciones de ratón absoluto</value>
+  </data>
+  <data name="AntiRadius" xml:space="preserve">
+    <value>Anti radio</value>
+  </data>
+  <data name="BindingWin.AbsMouse" xml:space="preserve">
+    <value>Ratón absoluto</value>
+  </data>
+  <data name="BindingWin.AbsMouseDown" xml:space="preserve">
+    <value>Ratón absoluto abajo</value>
+  </data>
+  <data name="BindingWin.AbsMouseLeft" xml:space="preserve">
+    <value>Ratón absoluto izquierda</value>
+  </data>
+  <data name="BindingWin.AbsMouseRight" xml:space="preserve">
+    <value>Ratón absoluto derecha</value>
+  </data>
+  <data name="BindingWin.AbsMouseUp" xml:space="preserve">
+    <value>Ratón absoluto arriba</value>
+  </data>
+  <data name="BindingWin.ChangeLight" xml:space="preserve">
+    <value>Cambiar luz</value>
+  </data>
+  <data name="BindingWin.ChangeMouseSensitivity" xml:space="preserve">
+    <value>Cambiar sensibilidad del ratón</value>
+  </data>
+  <data name="BindingWin.KeyAndRelMouse" xml:space="preserve">
+    <value>Teclado y ratón relativo</value>
+  </data>
+  <data name="BindingWin.KeyboardAndMouse" xml:space="preserve">
+    <value>Teclado y ratón</value>
+  </data>
+  <data name="BindingWin.MacroOn" xml:space="preserve">
+    <value>Macro activa. Elige una tecla para desactivarla o cierra esta ventana para guardar</value>
+  </data>
+  <data name="BindingWin.RecordAMacro" xml:space="preserve">
+    <value>Grabar una macro</value>
+  </data>
+  <data name="BindingWin.SelectShiftTrigger" xml:space="preserve">
+    <value>Elegir activador de Shift</value>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>Confirmar</value>
+  </data>
+  <data name="ControllerRegOptWin.EnableHomeLED" xml:space="preserve">
+    <value>Activar LED de Home</value>
+  </data>
+  <data name="ControllerRegOptWin.JoinedGyroProvider" xml:space="preserve">
+    <value>Proveedor de giroscopio unido</value>
+  </data>
+  <data name="ControllerRegOptWin.LinkMode" xml:space="preserve">
+    <value>Modo de enlace</value>
+  </data>
+  <data name="ControllerRegOptWin.MuteLEDMode" xml:space="preserve">
+    <value>Modo del LED de silencio</value>
+  </data>
+  <data name="ControllerRegOptWin.PlayerLEDMode" xml:space="preserve">
+    <value>Modo del LED de jugador</value>
+  </data>
+  <data name="ControllerRegOptWin.WinTitle" xml:space="preserve">
+    <value>Opciones por tipo de mando</value>
+  </data>
+  <data name="DeltaAcceleration" xml:space="preserve">
+    <value>Aceleración delta</value>
+  </data>
+  <data name="DirectionalSwipe" xml:space="preserve">
+    <value>Deslizamiento direccional</value>
+  </data>
+  <data name="EasingDuration" xml:space="preserve">
+    <value>Duración del suavizado</value>
+  </data>
+  <data name="Enabled" xml:space="preserve">
+    <value>Activado</value>
+  </data>
+  <data name="EnableTouchpadToggle" xml:space="preserve">
+    <value>Activar alternar touchpad</value>
+  </data>
+  <data name="Extra" xml:space="preserve">
+    <value>Extra</value>
+  </data>
+  <data name="FirstLaunch.DeviceSupport" xml:space="preserve">
+    <value>Soporte de dispositivos</value>
+  </data>
+  <data name="FlashRate" xml:space="preserve">
+    <value>Velocidad de parpadeo</value>
+  </data>
+  <data name="FullBtnPull" xml:space="preserve">
+    <value>Pulsación completa</value>
+  </data>
+  <data name="Fuzz" xml:space="preserve">
+    <value>Fuzz</value>
+  </data>
+  <data name="GyroControlsAccel" xml:space="preserve">
+    <value>Controles (acelerómetro)</value>
+  </data>
+  <data name="Heavy" xml:space="preserve">
+    <value>Fuerte</value>
+  </data>
+  <data name="Height" xml:space="preserve">
+    <value>Altura</value>
+  </data>
+  <data name="HipFireDelay" xml:space="preserve">
+    <value>Retraso de disparo desde la cadera</value>
+  </data>
+  <data name="ID" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="IdleDisconnect" xml:space="preserve">
+    <value>Desconectar por inactividad</value>
+  </data>
+  <data name="LangPackControl.UseLangPack" xml:space="preserve">
+    <value>Idioma</value>
+  </data>
+  <data name="LaunchProgramWithProfile" xml:space="preserve">
+    <value>Abrir programa con el perfil</value>
+  </data>
+  <data name="Lightbar" xml:space="preserve">
+    <value>Luz</value>
+  </data>
+  <data name="LinkProfileId" xml:space="preserve">
+    <value>Vincular perfil a este mando</value>
+  </data>
+  <data name="MainWin.AbsDisplayMonitor" xml:space="preserve">
+    <value>Monitor para ratón absoluto</value>
+  </data>
+  <data name="MainWin.EnableServer" xml:space="preserve">
+    <value>Activar servidor</value>
+  </data>
+  <data name="MainWin.OneEuroBeta" xml:space="preserve">
+    <value>Beta del filtro 1€</value>
+  </data>
+  <data name="MainWin.OneEuroMinCutoff" xml:space="preserve">
+    <value>Corte mínimo del filtro 1€</value>
+  </data>
+  <data name="MaxTravel" xml:space="preserve">
+    <value>Recorrido máximo</value>
+  </data>
+  <data name="MinFactor" xml:space="preserve">
+    <value>Factor mínimo</value>
+  </data>
+  <data name="MinTravel" xml:space="preserve">
+    <value>Recorrido mínimo</value>
+  </data>
+  <data name="Mode" xml:space="preserve">
+    <value>Modo</value>
+  </data>
+  <data name="Mouse" xml:space="preserve">
+    <value>Ratón</value>
+  </data>
+  <data name="MouseAcceleration" xml:space="preserve">
+    <value>Aceleración del ratón</value>
+  </data>
+  <data name="MouseJoystick" xml:space="preserve">
+    <value>Joystick como ratón</value>
+  </data>
+  <data name="MouseSensitivity" xml:space="preserve">
+    <value>Sensibilidad del ratón</value>
+  </data>
+  <data name="Multiplier" xml:space="preserve">
+    <value>Multiplicador</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="Normal" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="Other" xml:space="preserve">
+    <value>Otro</value>
+  </data>
+  <data name="OuterBind" xml:space="preserve">
+    <value>Acción exterior</value>
+  </data>
+  <data name="OuterBtn" xml:space="preserve">
+    <value>Botón exterior</value>
+  </data>
+  <data name="OuterBtnDead" xml:space="preserve">
+    <value>Zona muerta del botón exterior</value>
+  </data>
+  <data name="Passthru" xml:space="preserve">
+    <value>Directo</value>
+  </data>
+  <data name="Port" xml:space="preserve">
+    <value>Puerto</value>
+  </data>
+  <data name="RecordBox.AddRumble" xml:space="preserve">
+    <value>Añadir vibración</value>
+  </data>
+  <data name="RecordBox.ChangeLightbarColor" xml:space="preserve">
+    <value>Cambiar color de la luz</value>
+  </data>
+  <data name="RecordBox.DoubleClickWaitEdit" xml:space="preserve">
+    <value>Haz doble clic en una espera para editar el tiempo</value>
+  </data>
+  <data name="RecordBox.FifthMB" xml:space="preserve">
+    <value>5.º botón del ratón</value>
+  </data>
+  <data name="RecordBox.FourthMB" xml:space="preserve">
+    <value>4.º botón del ratón</value>
+  </data>
+  <data name="RecordBox.InsertWait" xml:space="preserve">
+    <value>Insertar espera</value>
+  </data>
+  <data name="RecordBox.LoadPreset" xml:space="preserve">
+    <value>Cargar preajuste</value>
+  </data>
+  <data name="RecordBox.MacroOrder" xml:space="preserve">
+    <value>Orden de la macro</value>
+  </data>
+  <data name="RecordBox.PlayOnce" xml:space="preserve">
+    <value>Reproducir una vez</value>
+  </data>
+  <data name="RecordBox.RecordDelays" xml:space="preserve">
+    <value>Grabar pausas</value>
+  </data>
+  <data name="RecordBox.RepeatWhileHeld" xml:space="preserve">
+    <value>Repetir mientras se mantiene</value>
+  </data>
+  <data name="RecordBox.SavePreset" xml:space="preserve">
+    <value>Guardar preajuste</value>
+  </data>
+  <data name="RecordBox.UseActionToRecord" xml:space="preserve">
+    <value>Usa teclado/ratón + mando 1 para grabar</value>
+  </data>
+  <data name="RecordBoxWin.WinTitle" xml:space="preserve">
+    <value>Editar macro</value>
+  </data>
+  <data name="Regular" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="RenameProfileWin.TypeNewProfileName" xml:space="preserve">
+    <value>Escribe el nuevo nombre para el archivo XML del perfil seleccionado.</value>
+  </data>
+  <data name="RenameProfileWin.WinTitle" xml:space="preserve">
+    <value>Renombrar perfil</value>
+  </data>
+  <data name="Rotation" xml:space="preserve">
+    <value>Rotación</value>
+  </data>
+  <data name="ScanCode" xml:space="preserve">
+    <value>Código de escaneo</value>
+  </data>
+  <data name="SelectedProfile" xml:space="preserve">
+    <value>Perfil activo</value>
+  </data>
+  <data name="ShiftModifier" xml:space="preserve">
+    <value>Modificador Shift</value>
+  </data>
+  <data name="SkipVersion" xml:space="preserve">
+    <value>Omitir versión</value>
+  </data>
+  <data name="SnapToCenter" xml:space="preserve">
+    <value>Ajustar al centro</value>
+  </data>
+  <data name="Test" xml:space="preserve">
+    <value>Probar</value>
+  </data>
+  <data name="TestHeavy" xml:space="preserve">
+    <value>Probar fuerte</value>
+  </data>
+  <data name="TestLight" xml:space="preserve">
+    <value>Probar suave</value>
+  </data>
+  <data name="Toggle" xml:space="preserve">
+    <value>Alternar</value>
+  </data>
+  <data name="TriggerEffect" xml:space="preserve">
+    <value>Efecto de gatillo</value>
+  </data>
+  <data name="TwoStageMode" xml:space="preserve">
+    <value>Modo de dos etapas</value>
+  </data>
+  <data name="UDPServer" xml:space="preserve">
+    <value>Servidor UDP</value>
+  </data>
+  <data name="Unbound" xml:space="preserve">
+    <value>Sin asignar</value>
+  </data>
+  <data name="UpdaterWin.WinTitle" xml:space="preserve">
+    <value>Actualización</value>
+  </data>
+  <data name="UseController" xml:space="preserve">
+    <value>Usar mando</value>
+  </data>
+  <data name="UseSmoothing" xml:space="preserve">
+    <value>Usar suavizado</value>
+  </data>
+  <data name="Width" xml:space="preserve">
+    <value>Ancho</value>
+  </data>
+  <data name="XCenter" xml:space="preserve">
+    <value>Centro X</value>
+  </data>
+  <data name="YCenter" xml:space="preserve">
+    <value>Centro Y</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Sí</value>
+  </data>
+  <data name="Active" xml:space="preserve">
+    <value>Activo</value>
+  </data>
+  <data name="Current" xml:space="preserve">
+    <value>Actual</value>
+  </data>
+  <data name="Intro" xml:space="preserve">
+    <value>Introducción</value>
+  </data>
+  <data name="OutputSlotMan.InputNum" xml:space="preserve">
+    <value>Entrada n.º</value>
+  </data>
+  <data name="OutputSlotMan.XInputNum" xml:space="preserve">
+    <value>XInput n.º</value>
+  </data>
+  <data name="Pitch" xml:space="preserve">
+    <value>Cabeceo</value>
+  </data>
+  <data name="PresetOptWin.OutputController" xml:space="preserve">
+    <value>Mando de salida</value>
+  </data>
+  <data name="PresetOptWin.PresetMenu" xml:space="preserve">
+    <value>Menú de preajustes</value>
+  </data>
+  <data name="ReadingsControl.BatteryZero" xml:space="preserve">
+    <value>Batería: 0%</value>
+  </data>
+  <data name="ReadingsControl.InputDelayNA" xml:space="preserve">
+    <value>Retraso de entrada: N/D</value>
+  </data>
+  <data name="ReadingsControl.SixAxisXText" xml:space="preserve">
+    <value>SixAxis: el eje X está invertido para que sea más fácil de leer</value>
+  </data>
+  <data name="Requested" xml:space="preserve">
+    <value>Solicitado</value>
+  </data>
+  <data name="Roll" xml:space="preserve">
+    <value>Alabeo</value>
+  </data>
+  <data name="Yaw" xml:space="preserve">
+    <value>Guiñada</value>
+  </data>
+  <data name="Appdata" xml:space="preserve">
+    <value>Appdata</value>
+  </data>
+  <data name="ProgramFolder" xml:space="preserve">
+    <value>Carpeta del programa</value>
+  </data>
+  <data name="SaveWhere.AppDataDescText" xml:space="preserve">
+    <value>Para quienes prefieren una instalación normal. La configuración se guarda en %appdata%\PhantomPad</value>
+  </data>
+  <data name="SaveWhere.DontDelete" xml:space="preserve">
+    <value>No borrar todavía la otra configuración</value>
+  </data>
+  <data name="SaveWhere.MultipleSaves" xml:space="preserve">
+    <value>Se encontraron varias ubicaciones de configuración</value>
+  </data>
+  <data name="SaveWhere.PickWhere" xml:space="preserve">
+    <value>Elige dónde guardar los perfiles y la configuración</value>
+  </data>
+  <data name="SaveWhere.ProgramFolderDescText" xml:space="preserve">
+    <value>Para quienes prefieren un programa portátil.
+Nota: esta opción no funciona en una carpeta de administrador sin UAC</value>
+  </data>
+  <data name="SaveWhere.WinTitle" xml:space="preserve">
+    <value>Dónde guardar</value>
+  </data>
+  <data name="Welcome.BluetoothSettings" xml:space="preserve">
+    <value>Configuración de Bluetooth</value>
+  </data>
+  <data name="Welcome.Step1HelpText" xml:space="preserve">
+    <value>Si esta ventana vuelve a aparecer después de instalar, puede que tengas que reiniciar el PC.</value>
+  </data>
+  <data name="Welcome.Step1Text" xml:space="preserve">
+    <value>Paso 1: Instalar el driver ViGEmBus</value>
+  </data>
+  <data name="Welcome.Step2HelpText" xml:space="preserve">
+    <value>Si ya usaste un mando de Xbox 360 en este PC, puedes saltarte este paso.</value>
+  </data>
+  <data name="Welcome.Step2Text" xml:space="preserve">
+    <value>Paso 2: Si usas Windows 7, instala el driver del mando 360</value>
+  </data>
+  <data name="Welcome.Step3BluetoothHelpText" xml:space="preserve">
+    <value>Cuando parpadee, ve a la configuración de Bluetooth y conecta "Wireless Controller". Si te pide un código, escribe 0000. Una vez emparejado, ¡listo para jugar!</value>
+  </data>
+  <data name="Welcome.Step3HelpText" xml:space="preserve">
+    <value>Paso 3: Conectar el mando DualShock 4.
+Por cable/USB:
+Conecta un cable micro-USB al PC y al DualShock 4.
+
+Por Bluetooth (opcional): mantén pulsados PS y Share durante 3 segundos. La luz empezará a parpadear dos veces seguidas.</value>
+  </data>
+  <data name="Welcome.Step4HelpText" xml:space="preserve">
+    <value>Usa HidHide para ocultar los mandos físicos a las demás aplicaciones del sistema. Algunos juegos necesitan que solo haya un mando, o la entrada doble causará problemas.</value>
+  </data>
+  <data name="Welcome.Step4Text" xml:space="preserve">
+    <value>(Opcional) Paso 4: Instalar el driver HidHide</value>
+  </data>
+  <data name="Welcome.Step5HelpText" xml:space="preserve">
+    <value>Usa el driver FakerInput para ofrecer un teclado, ratón relativo y ratón absoluto virtuales a todo el sistema. Permite usar teclado y ratón virtuales cuando SendInput falla, por ejemplo en procesos y juegos con permisos de administrador, avisos de UAC y sistemas anti-trampas que bloquean SendInput. FakerInput es necesario para que PhantomPad funcione con algunos juegos con anti-trampas, como Valorant.</value>
+  </data>
+  <data name="Welcome.Step5Text" xml:space="preserve">
+    <value>(Opcional) Paso 5: Instalar el driver FakerInput</value>
+  </data>
+  <data name="Welcome.WinTitle" xml:space="preserve">
+    <value>Bienvenido a PhantomPad</value>
+  </data>
+  <data name="SpecialActionEdit.CheckBattery" xml:space="preserve">
+    <value>Ver nivel de batería</value>
+  </data>
+  <data name="SpecialActionEdit.DisconnectBT" xml:space="preserve">
+    <value>Desconectar Bluetooth</value>
+  </data>
+  <data name="SpecialActionEdit.DoubleTapTrigger" xml:space="preserve">
+    <value>Activador de doble toque</value>
+  </data>
+  <data name="SpecialActionEdit.HoldFor" xml:space="preserve">
+    <value>Mantener durante</value>
+  </data>
+  <data name="SpecialActionEdit.HoldTrigger" xml:space="preserve">
+    <value>Activador por mantener</value>
+  </data>
+  <data name="SpecialActionEdit.KeepKeyState" xml:space="preserve">
+    <value>Mantener estado de la tecla</value>
+  </data>
+  <data name="SpecialActionEdit.LaunchProgram" xml:space="preserve">
+    <value>Abrir un programa</value>
+  </data>
+  <data name="SpecialActionEdit.LoadProfile" xml:space="preserve">
+    <value>Cargar un perfil</value>
+  </data>
+  <data name="SpecialActionEdit.MacroRecorded" xml:space="preserve">
+    <value>Macro grabada</value>
+  </data>
+  <data name="SpecialActionEdit.MultiAction" xml:space="preserve">
+    <value>Botón de varias acciones</value>
+  </data>
+  <data name="SpecialActionEdit.PressingUnloadTrigger" xml:space="preserve">
+    <value>al pulsar el activador de descarga</value>
+  </data>
+  <data name="SpecialActionEdit.PressKey" xml:space="preserve">
+    <value>Pulsar/alternar tecla</value>
+  </data>
+  <data name="SpecialActionEdit.RecordMacro" xml:space="preserve">
+    <value>Grabar una macro</value>
+  </data>
+  <data name="SpecialActionEdit.ReleasingUnloadTrigger" xml:space="preserve">
+    <value>al soltar el activador de descarga</value>
+  </data>
+  <data name="SpecialActionEdit.RepeatWhileHeld" xml:space="preserve">
+    <value>Repetir mientras se mantiene</value>
+  </data>
+  <data name="SpecialActionEdit.RunTriggerRelease" xml:space="preserve">
+    <value>Ejecutar al soltar el activador</value>
+  </data>
+  <data name="SpecialActionEdit.SelectAction" xml:space="preserve">
+    <value>-Elige una acción-</value>
+  </data>
+  <data name="SpecialActionEdit.SelectKey" xml:space="preserve">
+    <value>Elegir una tecla</value>
+  </data>
+  <data name="SpecialActionEdit.SelectMacro" xml:space="preserve">
+    <value>Elegir una macro</value>
+  </data>
+  <data name="SpecialActionEdit.SetUnloadTrigger" xml:space="preserve">
+    <value>Definir activador de descarga</value>
+  </data>
+  <data name="SpecialActionEdit.SixAxisWheelCalib" xml:space="preserve">
+    <value>Calibración del volante por sensor de movimiento</value>
+  </data>
+  <data name="SpecialActionEdit.SyncRun" xml:space="preserve">
+    <value>Ejecución sincronizada</value>
+  </data>
+  <data name="SpecialActionEdit.TapTrigger" xml:space="preserve">
+    <value>Activador por toque</value>
+  </data>
+  <data name="SpecialActionEdit.UnloadTriggerRelease" xml:space="preserve">
+    <value>Descargar al soltar el activador</value>
+  </data>
+  <data name="SpecialActionEdit.UntoggleKeyBy" xml:space="preserve">
+    <value>Desactivar la tecla</value>
+  </data>
+  <data name="SpecialActionEdit.ViaLightbar" xml:space="preserve">
+    <value>con la luz</value>
+  </data>
+  <data name="SpecialActionEdit.ViaNotification" xml:space="preserve">
+    <value>con una notificación</value>
+  </data>
+  <data name="UnloadTrigger" xml:space="preserve">
+    <value>Activador de descarga</value>
+  </data>
+  <data name="Net8NoticeWin.WinTitle" xml:space="preserve">
+    <value>No se encontró .NET 8</value>
+  </data>
+  <data name="Net8NotInstalledWinNotice" xml:space="preserve">
+    <value>PhantomPad necesita tener instalado .NET 8 Desktop Runtime en tu sistema  
+[https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-desktop-8.0.0-windows-{0}-installer](https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-desktop-8.0.0-windows-{0}-installer)  
+
+Pulsa Aceptar para confirmar que leíste el mensaje. Pulsa Cancelar para que te lo recordemos en el próximo inicio.</value>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>Aceptar</value>
+  </data>
+  <data name="Custom" xml:space="preserve">
+    <value>Personalizado</value>
+  </data>
+  <data name="ControllerSupportMoonlight" xml:space="preserve">
+    <value>Soporte para mandos virtuales</value>
+  </data>
+  <data name="AdvancedSupport" xml:space="preserve">
+    <value>Soporte avanzado</value>
+  </data>
+  <data name="UseDs3PitchRollSim" xml:space="preserve">
+    <value>[EXPERIMENTAL] Usar simulación de giroscopio DS3</value>
+  </data>
+  <data name="StickCalibration" xml:space="preserve">
+    <value>Calibración del stick</value>
+  </data>
+  <data name="XAxisOffset" xml:space="preserve">
+    <value>Desplazamiento del eje X</value>
+  </data>
+  <data name="YAxisOffset" xml:space="preserve">
+    <value>Desplazamiento del eje Y</value>
+  </data>
+  <data name="AutomaticallyRecalibrateStick" xml:space="preserve">
+    <value>Recalibrar el stick automáticamente</value>
+  </data>
+  <data name="ProcessPriority" xml:space="preserve">
+    <value>Prioridad del proceso</value>
+  </data>
+  <data name="RealTimeNoAdmin" xml:space="preserve">
+    <value>La prioridad en tiempo real requiere ejecutar la aplicación como administrador.</value>
+  </data>
+  <data name="ProfileSwitchNotification" xml:space="preserve">
+    <value>Avisar al cambiar de perfil</value>
+  </data>
+  <data name="CreateLightbarMacro" xml:space="preserve">
+    <value>Crear macro de luz</value>
+  </data>
+  <data name="LightbarMode" xml:space="preserve">
+    <value>Modo de la luz</value>
+  </data>
+  <data name="SolidColor" xml:space="preserve">
+    <value>Color fijo</value>
+  </data>
+  <data name="Macro" xml:space="preserve">
+    <value>Macro</value>
+  </data>
+  <data name="Add" xml:space="preserve">
+    <value>Añadir</value>
+  </data>
+  <data name="ColorAndLength" xml:space="preserve">
+    <value>Color y duración</value>
+  </data>
+  <data name="SpecialActionEdit.CalibrateGyro" xml:space="preserve">
+    <value>Calibrar giroscopio</value>
+  </data>
+  <data name="HoldFor" xml:space="preserve">
+    <value>Mantener durante</value>
+  </data>
+  <data name="FailedToRetrieveLatestVersion" xml:space="preserve">
+    <value>No se pudo obtener la última versión</value>
+  </data>
+  <data name="CancelCurrentMacro" xml:space="preserve">
+    <value>Cancelar la macro actual</value>
+  </data>
+  <data name="CancelCurrentMacroTooltip" xml:space="preserve">
+    <value>Indica si al ejecutar esta macro se debe detener otra que esté en curso</value>
+  </data>
+  <data name="ExportSpecialActions" xml:space="preserve">
+    <value>Exportar acciones</value>
+  </data>
+  <data name="InverseMotors" xml:space="preserve">
+    <value>Invertir motores</value>
+  </data>
+  <data name="PPX_Translators" xml:space="preserve">
+    <value>Traductores:</value>
+  </data>
+  <data name="PPX_ProjectURL" xml:space="preserve">
+    <value>Web del proyecto:</value>
+  </data>
+  <data name="PPX_None" xml:space="preserve">
+    <value>(ninguno)</value>
+  </data>
+  <data name="PPX_WindowTitle" xml:space="preserve">
+    <value>Título de la ventana...</value>
+  </data>
+  <data name="PPX_SelectAction" xml:space="preserve">
+    <value>Elegir acción</value>
+  </data>
+  <data name="PPX_LeftTouch" xml:space="preserve">
+    <value>Toque izquierdo</value>
+  </data>
+  <data name="PPX_UpperTouch" xml:space="preserve">
+    <value>Toque superior</value>
+  </data>
+  <data name="PPX_RightTouch" xml:space="preserve">
+    <value>Toque derecho</value>
+  </data>
+  <data name="PPX_SixaxisUp" xml:space="preserve">
+    <value>Movimiento arriba</value>
+  </data>
+  <data name="PPX_SixaxisDown" xml:space="preserve">
+    <value>Movimiento abajo</value>
+  </data>
+  <data name="PPX_SixaxisLeft" xml:space="preserve">
+    <value>Movimiento izquierda</value>
+  </data>
+  <data name="PPX_SixaxisRight" xml:space="preserve">
+    <value>Movimiento derecha</value>
+  </data>
+  <data name="PPX_FingerOnTouchpad" xml:space="preserve">
+    <value>Dedo en el touchpad</value>
+  </data>
+  <data name="PPX_DSEFunctionLeft" xml:space="preserve">
+    <value>Función izquierda (DSE)</value>
+  </data>
+  <data name="PPX_DSEFunctionRight" xml:space="preserve">
+    <value>Función derecha (DSE)</value>
+  </data>
+  <data name="PPX_DSELeftPaddle" xml:space="preserve">
+    <value>Pala izquierda (DSE)</value>
+  </data>
+  <data name="PPX_DSERightPaddle" xml:space="preserve">
+    <value>Pala derecha (DSE)</value>
+  </data>
+  <data name="PPX_SideL" xml:space="preserve">
+    <value>Lateral I</value>
+  </data>
+  <data name="PPX_SideR" xml:space="preserve">
+    <value>Lateral D</value>
+  </data>
+  <data name="PPX_TX" xml:space="preserve">
+    <value>TX: </value>
+  </data>
+  <data name="PPX_TY" xml:space="preserve">
+    <value>TY: </value>
+  </data>
+  <data name="PPX_JoyConGlobalOptions" xml:space="preserve">
+    <value>Opciones globales de JoyCon</value>
+  </data>
+  <data name="PPX_LightbarMacroCreator" xml:space="preserve">
+    <value>Creador de macros de luz</value>
+  </data>
+  <data name="PPX_SelectPreset" xml:space="preserve">
+    <value>Elegir preajuste</value>
+  </data>
+  <data name="PPX_KeepThisWindowSizeAfterClosing" xml:space="preserve">
+    <value>Mantener este tamaño de ventana al cerrar</value>
+  </data>
+  <data name="PPX_InvertedX" xml:space="preserve">
+    <value>X invertido</value>
+  </data>
+  <data name="PPX_InvertedY" xml:space="preserve">
+    <value>Y invertido</value>
+  </data>
+  <data name="PPX_Rotate90xb0" xml:space="preserve">
+    <value>Rotar 90°</value>
+  </data>
+  <data name="PPX_Rotate90xb02" xml:space="preserve">
+    <value>Rotar -90°</value>
+  </data>
+  <data name="PPX_LeftStick" xml:space="preserve">
+    <value>Stick izquierdo</value>
+  </data>
+  <data name="PPX_RightStick" xml:space="preserve">
+    <value>Stick derecho</value>
+  </data>
+  <data name="PPX_FaceButtons" xml:space="preserve">
+    <value>Botones frontales</value>
+  </data>
+  <data name="PPX_ArrowKeys" xml:space="preserve">
+    <value>Teclas de flecha</value>
+  </data>
+  <data name="PPX_FunctionLeft" xml:space="preserve">
+    <value>Función izquierda</value>
+  </data>
+  <data name="PPX_FunctionRight" xml:space="preserve">
+    <value>Función derecha</value>
+  </data>
+  <data name="PPX_BottomLeftPaddle" xml:space="preserve">
+    <value>Pala inferior izquierda</value>
+  </data>
+  <data name="PPX_BottomRightPaddle" xml:space="preserve">
+    <value>Pala inferior derecha</value>
+  </data>
+  <data name="PPX_MultiTouch" xml:space="preserve">
+    <value>Multitáctil</value>
+  </data>
+  <data name="PPX_TopTouch" xml:space="preserve">
+    <value>Toque superior</value>
+  </data>
+  <data name="PPX_SpecialActions" xml:space="preserve">
+    <value>Acciones especiales</value>
+  </data>
+  <data name="PPX_ControllerReadings" xml:space="preserve">
+    <value>Lecturas del mando</value>
+  </data>
+  <data name="PPX_Sec" xml:space="preserve">
+    <value>s</value>
+  </data>
+  <data name="PPX_Rotation" xml:space="preserve">
+    <value>Rotación:</value>
+  </data>
+  <data name="PPX_L2AndR2" xml:space="preserve">
+    <value>L2 y R2</value>
+  </data>
+  <data name="PPX_FlashAt" xml:space="preserve">
+    <value>Parpadear al</value>
+  </data>
+  <data name="PPX_PulseAt" xml:space="preserve">
+    <value>Latir al</value>
+  </data>
+  <data name="PPX_WhileCharging" xml:space="preserve">
+    <value>Mientras carga:</value>
+  </data>
+  <data name="PPX_ColorByBattery" xml:space="preserve">
+    <value>Color según % de batería</value>
+  </data>
+  <data name="PPX_Secscycle" xml:space="preserve">
+    <value>s/ciclo</value>
+  </data>
+  <data name="PPX_JitterCompensation" xml:space="preserve">
+    <value>Compensar temblor</value>
+  </data>
+  <data name="PPX_DoubleTap" xml:space="preserve">
+    <value>Doble toque</value>
+  </data>
+  <data name="PPX_LowerRightAsRMB" xml:space="preserve">
+    <value>Esquina como clic derecho</value>
+  </data>
+  <data name="PPX_PassthruClickActionDS4Mode" xml:space="preserve">
+    <value>Pasar clic directo (modo DS4)</value>
+  </data>
+  <data name="PPX_StartWithSlideScrollOff" xml:space="preserve">
+    <value>Empezar con deslizar/desplazar desactivado</value>
+  </data>
+  <data name="PPX_MinThreshold" xml:space="preserve">
+    <value>Umbral mínimo</value>
+  </data>
+  <data name="PPX_Friction" xml:space="preserve">
+    <value>Fricción:</value>
+  </data>
+  <data name="PPX_DisableInvert" xml:space="preserve">
+    <value>Desactivar/invertir</value>
+  </data>
+  <data name="PPX_TouchpadClick" xml:space="preserve">
+    <value>Clic del touchpad</value>
+  </data>
+  <data name="PPX_SwipeUp" xml:space="preserve">
+    <value>Deslizar arriba</value>
+  </data>
+  <data name="PPX_SwipeDown" xml:space="preserve">
+    <value>Deslizar abajo</value>
+  </data>
+  <data name="PPX_SwipeLeft" xml:space="preserve">
+    <value>Deslizar a la izquierda</value>
+  </data>
+  <data name="PPX_SwipeRight" xml:space="preserve">
+    <value>Deslizar a la derecha</value>
+  </data>
+  <data name="PPX_OutputStick" xml:space="preserve">
+    <value>Stick de salida</value>
+  </data>
+  <data name="PPX_OutputAxes" xml:space="preserve">
+    <value>Ejes de salida</value>
+  </data>
+  <data name="PPX_HorizontalAndVertical" xml:space="preserve">
+    <value>Horizontal y vertical</value>
+  </data>
+  <data name="PPX_HorizontalOnly" xml:space="preserve">
+    <value>Solo horizontal</value>
+  </data>
+  <data name="PPX_VerticalOnly" xml:space="preserve">
+    <value>Solo vertical</value>
+  </data>
+  <data name="PPX_MinimumX" xml:space="preserve">
+    <value>Mínimo X</value>
+  </data>
+  <data name="PPX_MinimumY" xml:space="preserve">
+    <value>Mínimo Y</value>
+  </data>
+  <data name="PPX_InvertX" xml:space="preserve">
+    <value>Invertir X</value>
+  </data>
+  <data name="PPX_InvertY" xml:space="preserve">
+    <value>Invertir Y</value>
+  </data>
+  <data name="PPX_SmoothingOptions" xml:space="preserve">
+    <value>Opciones de suavizado</value>
+  </data>
+  <data name="PPX_MaxZoneX" xml:space="preserve">
+    <value>Zona máxima X:</value>
+  </data>
+  <data name="PPX_MaxZoneY" xml:space="preserve">
+    <value>Zona máxima Y:</value>
+  </data>
+  <data name="PPX_SnapToCenterOnRelease" xml:space="preserve">
+    <value>Volver al centro al soltar:</value>
+  </data>
+  <data name="PPX_TiltUp" xml:space="preserve">
+    <value>Inclinar arriba</value>
+  </data>
+  <data name="PPX_TiltDown" xml:space="preserve">
+    <value>Inclinar abajo</value>
+  </data>
+  <data name="PPX_TiltLeft" xml:space="preserve">
+    <value>Inclinar izq.</value>
+  </data>
+  <data name="PPX_TiltRight" xml:space="preserve">
+    <value>Inclinar der.</value>
+  </data>
+  <data name="PPX_TurnBehaviorTurnsGyro" xml:space="preserve">
+    <value>Comportamiento: activa/desactiva el giroscopio</value>
+  </data>
+  <data name="PPX_EvalCond" xml:space="preserve">
+    <value>Condición</value>
+  </data>
+  <data name="PPX_SteeringWheelAxis" xml:space="preserve">
+    <value>Eje del volante</value>
+  </data>
+  <data name="PPX_LeftXAxis" xml:space="preserve">
+    <value>Eje X izquierdo</value>
+  </data>
+  <data name="PPX_LeftYAxis" xml:space="preserve">
+    <value>Eje Y izquierdo</value>
+  </data>
+  <data name="PPX_RightXAxis" xml:space="preserve">
+    <value>Eje X derecho</value>
+  </data>
+  <data name="PPX_RightYAxis" xml:space="preserve">
+    <value>Eje Y derecho</value>
+  </data>
+  <data name="PPX_TriggerLRAxis" xml:space="preserve">
+    <value>Eje de gatillos L+R</value>
+  </data>
+  <data name="PPX_VJoy1XAxis" xml:space="preserve">
+    <value>VJoy1 eje X</value>
+  </data>
+  <data name="PPX_VJoy1YAxis" xml:space="preserve">
+    <value>VJoy1 eje Y</value>
+  </data>
+  <data name="PPX_VJoy1ZAxis" xml:space="preserve">
+    <value>VJoy1 eje Z</value>
+  </data>
+  <data name="PPX_VJoy2XAxis" xml:space="preserve">
+    <value>VJoy2 eje X</value>
+  </data>
+  <data name="PPX_VJoy2YAxis" xml:space="preserve">
+    <value>VJoy2 eje Y</value>
+  </data>
+  <data name="PPX_VJoy2ZAxis" xml:space="preserve">
+    <value>VJoy2 eje Z</value>
+  </data>
+  <data name="PPX_SteeringWheelRange" xml:space="preserve">
+    <value>Rango del volante</value>
+  </data>
+  <data name="PPX_UseSmoothing" xml:space="preserve">
+    <value>Usar suavizado</value>
+  </data>
+  <data name="PPX_GyroCalibration" xml:space="preserve">
+    <value>Calibrar giroscopio</value>
+  </data>
+  <data name="PPX_GyroSensitivity" xml:space="preserve">
+    <value>Sensibilidad del giroscopio:</value>
+  </data>
+  <data name="PPX_XAxis" xml:space="preserve">
+    <value>Eje X</value>
+  </data>
+  <data name="PPX_WeightedAverage" xml:space="preserve">
+    <value>Promedio ponderado</value>
+  </data>
+  <data name="PPX_SmoothWeight" xml:space="preserve">
+    <value>Peso del suavizado</value>
+  </data>
+  <data name="PPX_XAxis2" xml:space="preserve">
+    <value>Eje X</value>
+  </data>
+  <data name="PPX_Degsec" xml:space="preserve">
+    <value>grados/s</value>
+  </data>
+  <data name="PPX_DelayTime" xml:space="preserve">
+    <value>Tiempo de retraso</value>
+  </data>
+  <data name="PPX_ForReadout" xml:space="preserve">
+    <value>para lectura</value>
+  </data>
+  <data name="PPX_Max1Ms" xml:space="preserve">
+    <value>Máx. (1 ms)</value>
+  </data>
+  <data name="PPX_CyclePrograms" xml:space="preserve">
+    <value>Recorrer programas</value>
+  </data>
+  <data name="PPX_FromFile" xml:space="preserve">
+    <value>Desde archivo...</value>
+  </data>
+  <data name="PPX_Name" xml:space="preserve">
+    <value>Nombre:</value>
+  </data>
+  <data name="PPX_L2FullPull" xml:space="preserve">
+    <value>L2 a fondo</value>
+  </data>
+  <data name="PPX_R2FullPull" xml:space="preserve">
+    <value>R2 a fondo</value>
+  </data>
+  <data name="PPX_FunctionL" xml:space="preserve">
+    <value>Función I</value>
+  </data>
+  <data name="PPX_FunctionR" xml:space="preserve">
+    <value>Función D</value>
+  </data>
+  <data name="PPX_PaddleL" xml:space="preserve">
+    <value>Pala I</value>
+  </data>
+  <data name="PPX_PaddleR" xml:space="preserve">
+    <value>Pala D</value>
+  </data>
+  <data name="PPX_LeftStickUp" xml:space="preserve">
+    <value>Stick izquierdo arriba</value>
+  </data>
+  <data name="PPX_LeftStickDown" xml:space="preserve">
+    <value>Stick izquierdo abajo</value>
+  </data>
+  <data name="PPX_LeftStickLeft" xml:space="preserve">
+    <value>Stick izquierdo a la izquierda</value>
+  </data>
+  <data name="PPX_LeftStickRight" xml:space="preserve">
+    <value>Stick izquierdo a la derecha</value>
+  </data>
+  <data name="PPX_RightStickUp" xml:space="preserve">
+    <value>Stick derecho arriba</value>
+  </data>
+  <data name="PPX_RightStickDown" xml:space="preserve">
+    <value>Stick derecho abajo</value>
+  </data>
+  <data name="PPX_RightStickLeft" xml:space="preserve">
+    <value>Stick derecho a la izquierda</value>
+  </data>
+  <data name="PPX_RightStickRight" xml:space="preserve">
+    <value>Stick derecho a la derecha</value>
+  </data>
+  <data name="PPX_TouchStarted" xml:space="preserve">
+    <value>Toque iniciado</value>
+  </data>
+  <data name="PPX_TouchEnded" xml:space="preserve">
+    <value>Toque terminado</value>
+  </data>
+  <data name="PPX_LaunchProgram" xml:space="preserve">
+    <value>Abrir programa</value>
+  </data>
+  <data name="PPX_LoadProfile" xml:space="preserve">
+    <value>Cargar perfil</value>
+  </data>
+  <data name="PPX_PressKey" xml:space="preserve">
+    <value>Pulsar tecla</value>
+  </data>
+  <data name="PPX_CheckBattery" xml:space="preserve">
+    <value>Ver batería</value>
+  </data>
+  <data name="PPX_SixaxisWheel" xml:space="preserve">
+    <value>Volante por movimiento</value>
+  </data>
+  <data name="PPX_Hotkeys" xml:space="preserve">
+    <value>Atajos</value>
+  </data>
+  <data name="PPX_License" xml:space="preserve">
+    <value>Licencia</value>
+  </data>
+  <data name="PPX_Credits" xml:space="preserve">
+    <value>Créditos</value>
+  </data>
+  <data name="PPX_Extras" xml:space="preserve">
+    <value>Extras</value>
+  </data>
+  <data name="PPX_Description" xml:space="preserve">
+    <value>Descripción</value>
+  </data>
+  <data name="PPX_Cross" xml:space="preserve">
+    <value>Equis</value>
+  </data>
+  <data name="PPX_Circle" xml:space="preserve">
+    <value>Círculo</value>
+  </data>
+  <data name="PPX_Square" xml:space="preserve">
+    <value>Cuadrado</value>
+  </data>
+  <data name="PPX_Triangle" xml:space="preserve">
+    <value>Triángulo</value>
+  </data>
+  <data name="PPX_Options" xml:space="preserve">
+    <value>Options</value>
+  </data>
+  <data name="PPX_Share" xml:space="preserve">
+    <value>Share</value>
+  </data>
+  <data name="PPX_Up" xml:space="preserve">
+    <value>Arriba</value>
+  </data>
+  <data name="PPX_Down" xml:space="preserve">
+    <value>Abajo</value>
+  </data>
+  <data name="PPX_Left" xml:space="preserve">
+    <value>Izquierda</value>
+  </data>
+  <data name="PPX_Right" xml:space="preserve">
+    <value>Derecha</value>
+  </data>
+  <data name="PPX_Multitouch2" xml:space="preserve">
+    <value>Multitáctil</value>
+  </data>
+  <data name="PPX_Mute" xml:space="preserve">
+    <value>Silencio</value>
+  </data>
+  <data name="PPX_Capture" xml:space="preserve">
+    <value>Captura</value>
+  </data>
+  <data name="PPX_Blank" xml:space="preserve">
+    <value>Vacío</value>
+  </data>
+  <data name="PPX_Log" xml:space="preserve">
+    <value>Registro</value>
+  </data>
+  <data name="PPX_No" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="PPX_Yes" xml:space="preserve">
+    <value>Sí</value>
+  </data>
+  <data name="PPX_Name2" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="PPX_Default" xml:space="preserve">
+    <value>Predeterminado</value>
+  </data>
+  <data name="PPX_Normal" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="PPX_Inverted" xml:space="preserve">
+    <value>Invertido</value>
+  </data>
+  <data name="PPX_Mouse" xml:space="preserve">
+    <value>Ratón</value>
+  </data>
+  <data name="PPX_Unbound" xml:space="preserve">
+    <value>Sin asignar</value>
+  </data>
+  <data name="PPX_Radial" xml:space="preserve">
+    <value>Radial</value>
+  </data>
+  <data name="PPX_Force" xml:space="preserve">
+    <value>Forzar</value>
+  </data>
+  <data name="PPX_Units" xml:space="preserve">
+    <value>unidades</value>
+  </data>
+  <data name="PPX_Invert" xml:space="preserve">
+    <value>Invertir</value>
+  </data>
+  <data name="PPX_Settings" xml:space="preserve">
+    <value>Ajustes</value>
+  </data>
+  <data name="PPX_Sec2" xml:space="preserve">
+    <value>s</value>
+  </data>
+  <data name="PPX_Empty" xml:space="preserve">
+    <value>Vacío</value>
+  </data>
+  <data name="PPX_Pulse" xml:space="preserve">
+    <value>Latido</value>
+  </data>
+  <data name="PPX_Rainbow" xml:space="preserve">
+    <value>Arcoíris</value>
+  </data>
+  <data name="PPX_Color" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="PPX_Rotation2" xml:space="preserve">
+    <value>Rotación</value>
+  </data>
+  <data name="PPX_Trackball" xml:space="preserve">
+    <value>Trackball</value>
+  </data>
+  <data name="PPX_None2" xml:space="preserve">
+    <value>Ninguno</value>
+  </data>
+  <data name="PPX_Smoothing" xml:space="preserve">
+    <value>Suavizado</value>
+  </data>
+  <data name="PPX_Triggers" xml:space="preserve">
+    <value>Gatillos</value>
+  </data>
+  <data name="PPX_Toggle" xml:space="preserve">
+    <value>Alternar</value>
+  </data>
+  <data name="PPX_And" xml:space="preserve">
+    <value>Y</value>
+  </data>
+  <data name="PPX_Or" xml:space="preserve">
+    <value>O</value>
+  </data>
+  <data name="PPX_Calibrate" xml:space="preserve">
+    <value>Calibrar</value>
+  </data>
+  <data name="PPX_Yaw" xml:space="preserve">
+    <value>Guiñada</value>
+  </data>
+  <data name="PPX_Roll" xml:space="preserve">
+    <value>Alabeo</value>
+  </data>
+  <data name="PPX_Weight" xml:space="preserve">
+    <value>Peso</value>
+  </data>
+  <data name="PPX_Debouncing" xml:space="preserve">
+    <value>Antirrebote</value>
+  </data>
+  <data name="PPX_Mins" xml:space="preserve">
+    <value>min</value>
+  </data>
+  <data name="PPX_Macro" xml:space="preserve">
+    <value>Macro</value>
+  </data>
+  <data name="PPX_Secs" xml:space="preserve">
+    <value>s</value>
+  </data>
+  <data name="PPX_Arguments" xml:space="preserve">
+    <value>Argumentos</value>
+  </data>
+  <data name="PPX_DisBT" xml:space="preserve">
+    <value>Desconectar BT</value>
+  </data>
+  <data name="PPX_MultiAct" xml:space="preserve">
+    <value>Varias acciones</value>
+  </data>
+  <data name="PPX_StickCalibration" xml:space="preserve">
+    <value>Calibración del stick</value>
+  </data>
+  <data name="PPX_Cancel" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="PPX_Save" xml:space="preserve">
+    <value>Guardar</value>
+  </data>
+  <data name="PPX_Finished" xml:space="preserve">
+    <value>Terminar</value>
+  </data>
+  <data name="PP_AboutHeader" xml:space="preserve">
+    <value>PhantomPad - basado en DS4Windows de Jays2Kings, Ryochan7 y schmaldeo, GPL v3 (Versión </value>
+  </data>
+  <data name="PP_HotkeysHelp" xml:space="preserve">
+    <value>Ocultar el mando DS4: oculta la entrada normal del DS4 (DInput) a otros programas. Actívalo si tienes entrada doble en los juegos o si R2 pausa el juego
+Clic en el lado izquierdo del touchpad: toque izquierdo
+Clic en el lado derecho del touchpad: toque derecho
+Clic en el touchpad con 2 dedos: multitáctil
+Clic en la parte superior del touchpad: toque superior
+PS + Options o mantener PS 10 segundos: desconectar el mando (solo Bluetooth)
+Tocar el touchpad + PS: desactivar el movimiento del touchpad (el clic sigue funcionando)
+Clic en la esquina inferior derecha: clic derecho (mejor cuando el lado derecho se usa como botón del ratón)
+Dos dedos arriba/abajo en el touchpad*: desplazar arriba/abajo
+Tocar y mantener el touchpad*: arrastrar con clic izquierdo
+Deslizar 2 dedos a la izquierda o derecha: cambiar de perfil
+Modificador Shift: mantén una acción para usar otro conjunto de controles
+Al asignar teclado y ratón:
+Alternar: la tecla queda "pulsada" hasta que la vuelvas a pulsar
+Macro: asigna varias teclas a una sola entrada
+Código de escaneo: las teclas se interpretan de otra forma. Puede hacer falta en algunos juegos
+*Si está activado</value>
+  </data>
+  <data name="PP_SourceCode" xml:space="preserve">
+    <value>Código fuente</value>
+  </data>
+  <data name="PP_InhexsterCredit" xml:space="preserve">
+    <value>InhexSTER (creador de DS4Tool)</value>
+  </data>
+  <data name="PP_ElectrobrainsCredit" xml:space="preserve">
+    <value>electrobrains (proyecto del que se derivó)</value>
+  </data>
+  <data name="PP_Contributors" xml:space="preserve">
+    <value>Colaboradores</value>
+  </data>
+  <data name="PPC_CannotCreateConfigFolderStructureInExiting" xml:space="preserve">
+    <value>No se pudo crear la carpeta de configuración en {0}. Se cerrará el programa</value>
+  </data>
+  <data name="PPC_RunningAs" xml:space="preserve">
+    <value>Ejecutando como {0}</value>
+  </data>
+  <data name="PPC_CannotWriteAtCurrentLocationCopySettings" xml:space="preserve">
+    <value>No se puede escribir en la ubicación actual
+¿Copiar la configuración a appdata?</value>
+  </data>
+  <data name="PPC_CopyCompletePleaseRelaunchPhantomPadAndRemove" xml:space="preserve">
+    <value>Copia completa. Vuelve a abrir PhantomPad y borra la configuración de la carpeta del programa</value>
+  </data>
+  <data name="PPC_PhantomPadCannotEditSettingsHereThisWill" xml:space="preserve">
+    <value>PhantomPad no puede editar la configuración aquí. Se cerrará ahora</value>
+  </data>
+  <data name="PPC_WARNINGInvalidCustomBezierCurveInAxis" xml:space="preserve">
+    <value>AVISO. Curva Bézier personalizada no válida "{0}, {1}, {2}, {3}" en el eje {4}. x1 y x2 deben estar entre 0 y 1. Se usará una curva lineal.</value>
+  </data>
+  <data name="PPC_ErrorReceivingOSCMessage" xml:space="preserve">
+    <value>Error al recibir un mensaje OSC: {0}</value>
+  </data>
+  <data name="PPC_ReceivedMalformedOSCAddress" xml:space="preserve">
+    <value>Se recibió una dirección OSC mal formada: {0}</value>
+  </data>
+  <data name="PPC_BatteryLevelRequestedButTheOSCSender" xml:space="preserve">
+    <value>Se pidió el nivel de batería, pero el emisor OSC no está activo. Actívalo en Ajustes.</value>
+  </data>
+  <data name="PPC_HidHideControlDeviceFound" xml:space="preserve">
+    <value>Se encontró el dispositivo de control de HidHide</value>
+  </data>
+  <data name="PPC_NotFoundInHidHideWhitelistAddingTo" xml:space="preserve">
+    <value>{0} no está en la lista permitida de HidHide. Agregándolo</value>
+  </data>
+  <data name="PPC_FoundInHidHideWhitelistRemovingFromList" xml:space="preserve">
+    <value>{0} está en la lista permitida de HidHide. Quitándolo</value>
+  </data>
+  <data name="PPC_UDPServerListeningOnAddressPort" xml:space="preserve">
+    <value>Servidor UDP escuchando en la dirección {0}, puerto {1}</value>
+  </data>
+  <data name="PPC_ClosedUDPServer" xml:space="preserve">
+    <value>Servidor UDP cerrado</value>
+  </data>
+  <data name="PPC_OSCLISTENERSTARTEDATPORT" xml:space="preserve">
+    <value>RECEPTOR OSC INICIADO EN EL PUERTO: {0}</value>
+  </data>
+  <data name="PPC_OSCLISTENERSTOPPED" xml:space="preserve">
+    <value>RECEPTOR OSC DETENIDO</value>
+  </data>
+  <data name="PPC_OSCSENDERSTARTEDATIPPORT" xml:space="preserve">
+    <value>EMISOR OSC INICIADO EN LA IP: {0} PUERTO: {1}</value>
+  </data>
+  <data name="PPC_OSCSENDERSTOPPED" xml:space="preserve">
+    <value>EMISOR OSC DETENIDO</value>
+  </data>
+  <data name="PPC_FailedNoOpenOutputSlotFound" xml:space="preserve">
+    <value>Error. No hay ninguna salida libre</value>
+  </data>
+  <data name="PPC_AssociatedInputControllerToVirtualControllerIn" xml:space="preserve">
+    <value>Mando de entrada n.º {0} ({1}) asociado al mando virtual {2} en la salida{3} n.º {4}</value>
+  </data>
+  <data name="PPC_DisassociatedVirtualControllerInOutputSlotFrom" xml:space="preserve">
+    <value>Mando virtual {0} de la salida{1} n.º {2} desasociado del mando de entrada n.º {3} ({4})</value>
+  </data>
+  <data name="PPC_PermanentSuffix" xml:space="preserve">
+    <value> permanente</value>
+  </data>
+  <data name="PPC_SomeApplicationsMayBlockControllerInputsWindows" xml:space="preserve">
+    <value>Algunas aplicaciones pueden bloquear la entrada del mando (conflictos con el UAC de Windows). Visita {0} para más información y soluciones.</value>
+  </data>
+  <data name="PPC_UsingOutputKBMHandler" xml:space="preserve">
+    <value>Usando el controlador de teclado y ratón: {0}</value>
+  </data>
+  <data name="PPC_ConnectionToViGEmBusEstablished" xml:space="preserve">
+    <value>Conexión con ViGEmBus {0} establecida</value>
+  </data>
+  <data name="PPC_ClosingConnectionToViGEmBus" xml:space="preserve">
+    <value>Cerrando la conexión con ViGEmBus</value>
+  </data>
+  <data name="PPC_ClosingConnectionToOutputHandler" xml:space="preserve">
+    <value>Cerrando la conexión con el controlador de salida {0}</value>
+  </data>
+  <data name="PPC_OutputDataToDS4DisabledLightbarAnd" xml:space="preserve">
+    <value>Salida de datos al DS4 desactivada. La luz y la vibración no se envían al mando. Si el mando está conectado por Bluetooth, se recomienda la opción de desconexión por inactividad para que PhantomPad cierre la conexión tras un rato sin uso.</value>
+  </data>
+  <data name="PPC_Controller" xml:space="preserve">
+    <value>Mando {0}: {1}</value>
+  </data>
+  <data name="PPC_ControllerActivatedReCalibrationOfSASteering" xml:space="preserve">
+    <value>El mando {0} inició la recalibración de la emulación de volante</value>
+  </data>
+  <data name="PPC_ControllerCompletedTheCalibrationOfSASteering" xml:space="preserve">
+    <value>El mando {0} terminó la calibración de la emulación de volante. centro=({1}, {2})  90I=({3}, {4})  90D=({5}, {6})</value>
+  </data>
+  <data name="PPC_ControllerCancelledTheCalibrationOfSASteering" xml:space="preserve">
+    <value>El mando {0} canceló la calibración de la emulación de volante.</value>
+  </data>
+  <data name="PPC_ControllerSixaxisSteeringWheelCalibrationDataMissing" xml:space="preserve">
+    <value>Faltan los datos de calibración del volante por movimiento del mando {0}. Se recomienda calibrarlo con la acción especial de calibración del volante. Se usarán valores estimados hasta calibrar el mando al menos una vez.</value>
+  </data>
+  <data name="PPC_ControllerSteeringWheelEmulationCalibrationValuesCenter" xml:space="preserve">
+    <value>Valores de calibración del volante del mando {0}. Centro=({1}, {2})  90I=({3}, {4})  90D=({5}, {6})  Rango={7}</value>
+  </data>
+  <data name="PPC_PluggingInVirtualX360ControllerXInputSlot" xml:space="preserve">
+    <value>Conectando mando virtual X360 (XInput n.º {0}) en la salida n.º {1}</value>
+  </data>
+  <data name="PPC_PluggingInVirtualControllerInOutputSlot" xml:space="preserve">
+    <value>Conectando mando virtual {0} en la salida n.º {1}</value>
+  </data>
+  <data name="PPC_UnpluggingVirtualControllerFromOutputSlot" xml:space="preserve">
+    <value>Desconectando mando virtual {0} de la salida n.º {1}</value>
+  </data>
+  <data name="PPC_OutputSlotHasPermanentType" xml:space="preserve">
+    <value>La salida n.º {0} tiene el tipo permanente {1}</value>
+  </data>
+  <data name="PPC_UnauthorizedAccessSaveFailedToPath" xml:space="preserve">
+    <value>Acceso denegado: no se pudo guardar en {0}</value>
+  </data>
+  <data name="PPC_FailedToLoad" xml:space="preserve">
+    <value>No se pudo cargar {0}. {1}</value>
+  </data>
+  <data name="PPC_FailedToLoadInvalidXML" xml:space="preserve">
+    <value>No se pudo cargar {0}. XML no válido. {1}</value>
+  </data>
+  <data name="PPC_FailedToLoadProfilesXml" xml:space="preserve">
+    <value>No se pudo cargar Profiles.xml.</value>
+  </data>
+  <data name="PPC_ActionsXmlContainsInvalidDataCouldNot" xml:space="preserve">
+    <value>Actions.xml contiene datos no válidos. No se pudo leer. {0}</value>
+  </data>
+  <data name="PPC_ActionsXmlCouldNotBeReadInvalid" xml:space="preserve">
+    <value>No se pudo leer Actions.xml. Sintaxis XML no válida. {0}</value>
+  </data>
+  <data name="PPC_LinkedProfilesXmlContainsInvalidDataCouldNot" xml:space="preserve">
+    <value>LinkedProfiles.xml contiene datos no válidos. No se pudo leer. {0}</value>
+  </data>
+  <data name="PPC_LinkedProfilesXmlCouldNotBeReadInvalid" xml:space="preserve">
+    <value>No se pudo leer LinkedProfiles.xml. Sintaxis XML no válida. {0}</value>
+  </data>
+  <data name="PPC_LinkedProfilesXmlCanTBeFound" xml:space="preserve">
+    <value>No se encuentra LinkedProfiles.xml.</value>
+  </data>
+  <data name="PPC_ControllerConfigsXmlCanTBeFound" xml:space="preserve">
+    <value>No se encuentra ControllerConfigs.xml.</value>
+  </data>
+  <data name="PPC_FailedToApplyWindowPlacement" xml:space="preserve">
+    <value>No se pudo aplicar la posición de la ventana: {0}</value>
+  </data>
+  <data name="PPC_TheAppHasToBeRestartedFor" xml:space="preserve">
+    <value>Hay que reiniciar la app para que funcione la simulación de giroscopio DS3.</value>
+  </data>
+  <data name="PPC_StickRecalibrationIsOnlyAvailableIfThe" xml:space="preserve">
+    <value>La recalibración del stick solo está disponible si abres el editor de perfiles con el botón Editar del mando que quieres recalibrar, en la ventana principal.</value>
+  </data>
+  <data name="PPC_ProfileWithNameAlreadyExistsPleaseTry" xml:space="preserve">
+    <value>Ya existe un perfil con ese nombre. Prueba con otro.</value>
+  </data>
+  <data name="PPC_InvalidCharactersUsedInFilenamePleaseChange" xml:space="preserve">
+    <value>El nombre tiene caracteres no válidos. Cámbialo.</value>
+  </data>
+  <data name="PPC_CannotDeleteOldSettingsPleaseManaullyDelete" xml:space="preserve">
+    <value>No se pudo borrar la configuración antigua. Bórrala manualmente</value>
+  </data>
+  <data name="PPC_DetectedDriftXAxisYAxis" xml:space="preserve">
+    <value>Desviación detectada:
+Eje X: {0}, eje Y: {1}</value>
+  </data>
+  <data name="PPC_ERRORFailedToOpenBezierCurveEditorIndexHtml" xml:space="preserve">
+    <value>ERROR. No se pudo abrir la app web {0}\BezierCurveEditor\index.html. Comprueba que el archivo existe o ábrelo fuera de PhantomPad. {1}</value>
+  </data>
+  <data name="PPC_TheGamepadUsesCustomFeatureSet" xml:space="preserve">
+    <value>El mando {0} ({1}) usa un conjunto de funciones personalizado ({2})</value>
+  </data>
+  <data name="PPC_GyroCalibrationFailed" xml:space="preserve">
+    <value>Falló la calibración del giroscopio</value>
+  </data>
+  <data name="PPC_AutomaticallyFixedInvertedYAWGyroAxisIn" xml:space="preserve">
+    <value>Se corrigió automáticamente el eje de guiñada invertido del giroscopio en el mando DS4 v.1 por Bluetooth ({0})</value>
+  </data>
+  <data name="PPC_FailedCRC32ChecksTimesDisconnecting" xml:space="preserve">
+    <value>{0} falló la comprobación CRC-32 {1} veces. Desconectando</value>
+  </data>
+  <data name="PPC_DisconnectedDueToTimeout" xml:space="preserve">
+    <value>{0} se desconectó por tiempo de espera agotado</value>
+  </data>
+  <data name="PPC_DisconnectedDueToReadFailure" xml:space="preserve">
+    <value>{0} se desconectó por un error de lectura: {1}</value>
+  </data>
+  <data name="PPC_DisconnectingDueToIdleDisconnect" xml:space="preserve">
+    <value>{0} se desconecta por inactividad</value>
+  </data>
+  <data name="PPC_GamepadDataWriteConnectionIsLostDisconnecting" xml:space="preserve">
+    <value>Se perdió la conexión de escritura con el mando. Desconectándolo. Código de error={0}</value>
+  </data>
+  <data name="PPC_FeatureReportReadFailure" xml:space="preserve">
+    <value>Error al leer el informe de funciones</value>
+  </data>
+  <data name="PPC_ControllerFailedToInitializeClosingDevice" xml:space="preserve">
+    <value>El mando {0} no se pudo iniciar. Cerrando el dispositivo</value>
+  </data>
+  <data name="PPC_WARNINGFailedToReadSerialFromA" xml:space="preserve">
+    <value>AVISO: no se pudo leer el número de serie de un mando ({0}/{1}). Se generará una dirección MAC a partir de la ruta del dispositivo. A partir de ahora conecta este mando siempre al mismo puerto USB o al mismo equipo Bluetooth para mantener la misma ruta.</value>
+  </data>
+  <data name="PPC_ERRORFailedToGenerateRuntimeMACAddress" xml:space="preserve">
+    <value>ERROR: no se pudo generar una dirección MAC a partir de la ruta del dispositivo {0}. {1}</value>
+  </data>
+  <data name="PPC_InitializingVJoyVirtualJoystickDriverViaVJoyInterface" xml:space="preserve">
+    <value>Iniciando el driver de joystick virtual VJoy mediante vJoyInterface.dll</value>
+  </data>
+  <data name="PPC_ConnectionToVJoyVirtualJoystickEstablished" xml:space="preserve">
+    <value>Conexión con el joystick virtual VJoy establecida</value>
+  </data>
+  <data name="PPC_VJoyDriverVendorProductVersionDeviceAxis" xml:space="preserve">
+    <value>Driver VJoy. Fabricante={0}  Producto={1}  Versión={2}  Dispositivo n.º={3}  Eje={4}</value>
+  </data>
+  <data name="PPC_WARNINGVJoyVersionOfDriverDrvVerDoes" xml:space="preserve">
+    <value>AVISO. La versión del driver VJoy ({{DrvVer}}) no coincide con la versión de la DLL de interfaz ({{DllVer}}). Puede causar problemas o cierres inesperados. Actualiza el driver VJoy y vJoyInterface.dll</value>
+  </data>
+  <data name="PPC_ERRORFailedToAcquireVJoyDeviceVJoyID" xml:space="preserve">
+    <value>ERROR. No se pudo obtener el dispositivo vJoy n.º {{vJoyID}}. Usa otro dispositivo VJoy o comprueba que ninguna otra app lo esté usando</value>
+  </data>
+  <data name="PPC_ERRORVJoyDeviceOrAxisNotAvailable" xml:space="preserve">
+    <value>ERROR. El dispositivo VJoy n.º {0} o el eje {1} no están disponibles. Revisa la instalación y configuración del driver vJoy</value>
+  </data>
+  <data name="PPC_ERRORVJoyInitializationFailedMakeSureThat" xml:space="preserve">
+    <value>ERROR. Falló el inicio de vJoy. Comprueba que PhantomPad encuentra el archivo vJoyInterface.dll</value>
+  </data>
+  <data name="PPN_2FingersOnTouchpad" xml:space="preserve">
+    <value>2 dedos en el touchpad</value>
+  </data>
+  <data name="PPN_4thMouseButton" xml:space="preserve">
+    <value>4.º botón del ratón</value>
+  </data>
+  <data name="PPN_5thMouseButton" xml:space="preserve">
+    <value>5.º botón del ratón</value>
+  </data>
+  <data name="PPN_AButton" xml:space="preserve">
+    <value>Botón A</value>
+  </data>
+  <data name="PPN_AbsMouseDown" xml:space="preserve">
+    <value>Ratón absoluto abajo</value>
+  </data>
+  <data name="PPN_AbsMouseLeft" xml:space="preserve">
+    <value>Ratón absoluto izquierda</value>
+  </data>
+  <data name="PPN_AbsMouseRight" xml:space="preserve">
+    <value>Ratón absoluto derecha</value>
+  </data>
+  <data name="PPN_AbsMouseUp" xml:space="preserve">
+    <value>Ratón absoluto arriba</value>
+  </data>
+  <data name="PPN_AddRumble" xml:space="preserve">
+    <value>Añadir vibración</value>
+  </data>
+  <data name="PPN_AlwaysOn" xml:space="preserve">
+    <value>Siempre activo</value>
+  </data>
+  <data name="PPN_BButton" xml:space="preserve">
+    <value>Botón B</value>
+  </data>
+  <data name="PPN_BottomLeftPaddle" xml:space="preserve">
+    <value>Pala inferior izquierda</value>
+  </data>
+  <data name="PPN_BottomRightPaddle" xml:space="preserve">
+    <value>Pala inferior derecha</value>
+  </data>
+  <data name="PPN_Browse" xml:space="preserve">
+    <value>Examinar</value>
+  </data>
+  <data name="PPN_Capture" xml:space="preserve">
+    <value>Captura</value>
+  </data>
+  <data name="PPN_ChangeLightbarColor" xml:space="preserve">
+    <value>Cambiar color de la luz</value>
+  </data>
+  <data name="PPN_Circle" xml:space="preserve">
+    <value>Círculo</value>
+  </data>
+  <data name="PPN_ClickTheLightbarForColorPicker" xml:space="preserve">
+    <value>Haz clic en la luz para elegir el color</value>
+  </data>
+  <data name="PPN_Cross" xml:space="preserve">
+    <value>Equis</value>
+  </data>
+  <data name="PPN_Default" xml:space="preserve">
+    <value>Predeterminado</value>
+  </data>
+  <data name="PPN_Down" xml:space="preserve">
+    <value>Abajo</value>
+  </data>
+  <data name="PPN_DownButton" xml:space="preserve">
+    <value>Botón abajo</value>
+  </data>
+  <data name="PPN_DPad" xml:space="preserve">
+    <value>Cruceta</value>
+  </data>
+  <data name="PPN_DpadDown" xml:space="preserve">
+    <value>Cruceta abajo</value>
+  </data>
+  <data name="PPN_DpadLeft" xml:space="preserve">
+    <value>Cruceta izquierda</value>
+  </data>
+  <data name="PPN_DpadRight" xml:space="preserve">
+    <value>Cruceta derecha</value>
+  </data>
+  <data name="PPN_DpadUp" xml:space="preserve">
+    <value>Cruceta arriba</value>
+  </data>
+  <data name="PPN_Dynamic" xml:space="preserve">
+    <value>Dinámico</value>
+  </data>
+  <data name="PPN_Empty" xml:space="preserve">
+    <value>Vacío</value>
+  </data>
+  <data name="PPN_FaceButtons" xml:space="preserve">
+    <value>Botones frontales</value>
+  </data>
+  <data name="PPN_FingerOnTouchpad" xml:space="preserve">
+    <value>Dedo en el touchpad</value>
+  </data>
+  <data name="PPN_FullClick" xml:space="preserve">
+    <value>Clic completo</value>
+  </data>
+  <data name="PPN_FunctionLeft" xml:space="preserve">
+    <value>Función izquierda</value>
+  </data>
+  <data name="PPN_FunctionRight" xml:space="preserve">
+    <value>Función derecha</value>
+  </data>
+  <data name="PPN_GyroSwipeDown" xml:space="preserve">
+    <value>Gesto de giroscopio abajo</value>
+  </data>
+  <data name="PPN_GyroSwipeLeft" xml:space="preserve">
+    <value>Gesto de giroscopio izquierda</value>
+  </data>
+  <data name="PPN_GyroSwipeRight" xml:space="preserve">
+    <value>Gesto de giroscopio derecha</value>
+  </data>
+  <data name="PPN_GyroSwipeUp" xml:space="preserve">
+    <value>Gesto de giroscopio arriba</value>
+  </data>
+  <data name="PPN_L2FullPull" xml:space="preserve">
+    <value>L2 a fondo</value>
+  </data>
+  <data name="PPN_Left" xml:space="preserve">
+    <value>Izquierda</value>
+  </data>
+  <data name="PPN_LeftBumper" xml:space="preserve">
+    <value>Bumper izquierdo</value>
+  </data>
+  <data name="PPN_LeftButton" xml:space="preserve">
+    <value>Botón izquierda</value>
+  </data>
+  <data name="PPN_LeftMouseButton" xml:space="preserve">
+    <value>Botón izquierdo del ratón</value>
+  </data>
+  <data name="PPN_LeftStick" xml:space="preserve">
+    <value>Stick izquierdo</value>
+  </data>
+  <data name="PPN_LeftTouch" xml:space="preserve">
+    <value>Toque izquierdo</value>
+  </data>
+  <data name="PPN_LeftTrigger" xml:space="preserve">
+    <value>Gatillo izquierdo</value>
+  </data>
+  <data name="PPN_LeftXAxisMinus" xml:space="preserve">
+    <value>Eje X izquierdo-</value>
+  </data>
+  <data name="PPN_LeftXAxisPlus" xml:space="preserve">
+    <value>Eje X izquierdo+</value>
+  </data>
+  <data name="PPN_LeftYAxisMinus" xml:space="preserve">
+    <value>Eje Y izquierdo-</value>
+  </data>
+  <data name="PPN_LeftYAxisPlus" xml:space="preserve">
+    <value>Eje Y izquierdo+</value>
+  </data>
+  <data name="PPN_LSDown" xml:space="preserve">
+    <value>Stick izq. abajo</value>
+  </data>
+  <data name="PPN_LSLeft" xml:space="preserve">
+    <value>Stick izq. izquierda</value>
+  </data>
+  <data name="PPN_LSOuter" xml:space="preserve">
+    <value>Stick izq. exterior</value>
+  </data>
+  <data name="PPN_LSRight" xml:space="preserve">
+    <value>Stick izq. derecha</value>
+  </data>
+  <data name="PPN_LSUp" xml:space="preserve">
+    <value>Stick izq. arriba</value>
+  </data>
+  <data name="PPN_MiddleMouseButton" xml:space="preserve">
+    <value>Botón central del ratón</value>
+  </data>
+  <data name="PPN_MouseDown" xml:space="preserve">
+    <value>Ratón abajo</value>
+  </data>
+  <data name="PPN_MouseLeft" xml:space="preserve">
+    <value>Ratón izquierda</value>
+  </data>
+  <data name="PPN_MouseRight" xml:space="preserve">
+    <value>Ratón derecha</value>
+  </data>
+  <data name="PPN_MouseUp" xml:space="preserve">
+    <value>Ratón arriba</value>
+  </data>
+  <data name="PPN_MouseWheelDown" xml:space="preserve">
+    <value>Rueda del ratón abajo</value>
+  </data>
+  <data name="PPN_MouseWheelUp" xml:space="preserve">
+    <value>Rueda del ratón arriba</value>
+  </data>
+  <data name="PPN_Mute" xml:space="preserve">
+    <value>Silencio</value>
+  </data>
+  <data name="PPN_None" xml:space="preserve">
+    <value>Ninguno</value>
+  </data>
+  <data name="PPN_Pulse" xml:space="preserve">
+    <value>Pulso</value>
+  </data>
+  <data name="PPN_R2FullPull" xml:space="preserve">
+    <value>R2 a fondo</value>
+  </data>
+  <data name="PPN_Record" xml:space="preserve">
+    <value>Grabar</value>
+  </data>
+  <data name="PPN_ResetLightbarColor" xml:space="preserve">
+    <value>Restablecer color de la luz</value>
+  </data>
+  <data name="PPN_Right" xml:space="preserve">
+    <value>Derecha</value>
+  </data>
+  <data name="PPN_RightBumper" xml:space="preserve">
+    <value>Bumper derecho</value>
+  </data>
+  <data name="PPN_RightButton" xml:space="preserve">
+    <value>Botón derecha</value>
+  </data>
+  <data name="PPN_RightMouseButton" xml:space="preserve">
+    <value>Botón derecho del ratón</value>
+  </data>
+  <data name="PPN_RightStick" xml:space="preserve">
+    <value>Stick derecho</value>
+  </data>
+  <data name="PPN_RightTouch" xml:space="preserve">
+    <value>Toque derecho</value>
+  </data>
+  <data name="PPN_RightTrigger" xml:space="preserve">
+    <value>Gatillo derecho</value>
+  </data>
+  <data name="PPN_RightXAxisMinus" xml:space="preserve">
+    <value>Eje X derecho-</value>
+  </data>
+  <data name="PPN_RightXAxisPlus" xml:space="preserve">
+    <value>Eje X derecho+</value>
+  </data>
+  <data name="PPN_RightYAxisMinus" xml:space="preserve">
+    <value>Eje Y derecho-</value>
+  </data>
+  <data name="PPN_RightYAxisPlus" xml:space="preserve">
+    <value>Eje Y derecho+</value>
+  </data>
+  <data name="PPN_Rigid" xml:space="preserve">
+    <value>Rígido</value>
+  </data>
+  <data name="PPN_RSDown" xml:space="preserve">
+    <value>Stick der. abajo</value>
+  </data>
+  <data name="PPN_RSLeft" xml:space="preserve">
+    <value>Stick der. izquierda</value>
+  </data>
+  <data name="PPN_RSOuter" xml:space="preserve">
+    <value>Stick der. exterior</value>
+  </data>
+  <data name="PPN_RSRight" xml:space="preserve">
+    <value>Stick der. derecha</value>
+  </data>
+  <data name="PPN_RSUp" xml:space="preserve">
+    <value>Stick der. arriba</value>
+  </data>
+  <data name="PPN_SelectAction" xml:space="preserve">
+    <value>Elegir acción</value>
+  </data>
+  <data name="PPN_SelectExportFile" xml:space="preserve">
+    <value>Elegir archivo para exportar</value>
+  </data>
+  <data name="PPN_SelectPresetFile" xml:space="preserve">
+    <value>Elegir archivo de preajuste</value>
+  </data>
+  <data name="PPN_SelectProfileToExportFile" xml:space="preserve">
+    <value>Elegir dónde exportar el perfil</value>
+  </data>
+  <data name="PPN_SelectProfileToImportFile" xml:space="preserve">
+    <value>Elegir perfil para importar</value>
+  </data>
+  <data name="PPN_SelectProgram" xml:space="preserve">
+    <value>Elegir programa</value>
+  </data>
+  <data name="PPN_SetRegularTrigger" xml:space="preserve">
+    <value>Definir activador normal</value>
+  </data>
+  <data name="PPN_SetUnloadTrigger" xml:space="preserve">
+    <value>Definir activador de descarga</value>
+  </data>
+  <data name="PPN_SideL" xml:space="preserve">
+    <value>Lateral I</value>
+  </data>
+  <data name="PPN_SideR" xml:space="preserve">
+    <value>Lateral D</value>
+  </data>
+  <data name="PPN_Square" xml:space="preserve">
+    <value>Cuadrado</value>
+  </data>
+  <data name="PPN_Stop" xml:space="preserve">
+    <value>Detener</value>
+  </data>
+  <data name="PPN_StopRumble" xml:space="preserve">
+    <value>Detener vibración</value>
+  </data>
+  <data name="PPN_SwipeDown" xml:space="preserve">
+    <value>Deslizar abajo</value>
+  </data>
+  <data name="PPN_SwipeLeft" xml:space="preserve">
+    <value>Deslizar a la izquierda</value>
+  </data>
+  <data name="PPN_SwipeRight" xml:space="preserve">
+    <value>Deslizar a la derecha</value>
+  </data>
+  <data name="PPN_SwipeUp" xml:space="preserve">
+    <value>Deslizar arriba</value>
+  </data>
+  <data name="PPN_TiltDown" xml:space="preserve">
+    <value>Inclinar abajo</value>
+  </data>
+  <data name="PPN_TiltLeft" xml:space="preserve">
+    <value>Inclinar izq.</value>
+  </data>
+  <data name="PPN_TiltRight" xml:space="preserve">
+    <value>Inclinar der.</value>
+  </data>
+  <data name="PPN_TiltUp" xml:space="preserve">
+    <value>Inclinar arriba</value>
+  </data>
+  <data name="PPN_TouchEnded" xml:space="preserve">
+    <value>Toque terminado</value>
+  </data>
+  <data name="PPN_TouchStarted" xml:space="preserve">
+    <value>Toque iniciado</value>
+  </data>
+  <data name="PPN_TouchpadClick" xml:space="preserve">
+    <value>Clic del touchpad</value>
+  </data>
+  <data name="PPN_Triangle" xml:space="preserve">
+    <value>Triángulo</value>
+  </data>
+  <data name="PPN_Unassigned" xml:space="preserve">
+    <value>Sin asignar</value>
+  </data>
+  <data name="PPN_Unbound" xml:space="preserve">
+    <value>Sin acción</value>
+  </data>
+  <data name="PPN_Up" xml:space="preserve">
+    <value>Arriba</value>
+  </data>
+  <data name="PPN_UpButton" xml:space="preserve">
+    <value>Botón arriba</value>
+  </data>
+  <data name="PPN_UpperTouch" xml:space="preserve">
+    <value>Toque superior</value>
+  </data>
+  <data name="PPN_XButton" xml:space="preserve">
+    <value>Botón X</value>
+  </data>
+  <data name="PPN_YButton" xml:space="preserve">
+    <value>Botón Y</value>
+  </data>
+  <data name="PPC_SelectActionFor" xml:space="preserve">
+    <value>Elegir acción para {0}</value>
+  </data>
+  <data name="PPN_Multitouch" xml:space="preserve">
+    <value>Multitáctil</value>
+  </data>
+  <data name="PP_MaxLight" xml:space="preserve">
+    <value>Brillo máx.</value>
+  </data>
+  <data name="PP_SteeringWheel360" xml:space="preserve">
+    <value>Volante 360</value>
+  </data>
+  <data name="PP_YawShort" xml:space="preserve">
+    <value>Giro</value>
+  </data>
+  <data name="PP_PitchShort" xml:space="preserve">
+    <value>Incl.</value>
+  </data>
+  <data name="PP_RollShort" xml:space="preserve">
+    <value>Rot.</value>
+  </data>
+  <data name="PP_ButtonActivationMode" xml:space="preserve">
+    <value>Modo de activación del botón</value>
+  </data>
+  <data name="PPN_Off" xml:space="preserve">
+    <value>Apagado</value>
+  </data>
+  <data name="PPN_On" xml:space="preserve">
+    <value>Encendido</value>
+  </data>
+  <data name="PPN_OnlyForMultipleControllers" xml:space="preserve">
+    <value>Solo con varios mandos</value>
+  </data>
+  <data name="PPN_BatteryPercentage" xml:space="preserve">
+    <value>Porcentaje de batería</value>
+  </data>
+  <data name="PPN_Split" xml:space="preserve">
+    <value>Separados</value>
+  </data>
+  <data name="PPN_Joined" xml:space="preserve">
+    <value>Unidos</value>
+  </data>
+  <data name="PPN_Normal" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="PPN_Disabled" xml:space="preserve">
+    <value>Desactivado</value>
+  </data>
+  <data name="PPN_Exclusive" xml:space="preserve">
+    <value>Exclusivo</value>
+  </data>
+  <data name="PPN_HairTrigger" xml:space="preserve">
+    <value>Gatillo sensible</value>
+  </data>
+  <data name="PPN_HipFire" xml:space="preserve">
+    <value>Disparo desde la cadera</value>
+  </data>
+  <data name="PPN_HipFireExclusive" xml:space="preserve">
+    <value>Disparo desde la cadera exclusivo</value>
+  </data>
+  <data name="PPN_Click" xml:space="preserve">
+    <value>Clic</value>
+  </data>
+  <data name="PPN_Touch" xml:space="preserve">
+    <value>Toque</value>
+  </data>
+  <data name="PPN_Release" xml:space="preserve">
+    <value>Al soltar</value>
+  </data>
+  <data name="PP_LightSection" xml:space="preserve">
+    <value>Luz del mando</value>
+  </data>
+  <data name="PP_LightOn" xml:space="preserve">
+    <value>Luz encendida</value>
+  </data>
+  <data name="PP_LightCustomColor" xml:space="preserve">
+    <value>Usar mi propio color</value>
+  </data>
+  <data name="PP_LightCustomColorTip" xml:space="preserve">
+    <value>Activado: usa el color elegido aquí. Desactivado: usa el color definido en el perfil</value>
+  </data>
+  <data name="PP_LightQuickColors" xml:space="preserve">
+    <value>Colores rápidos</value>
+  </data>
+  <data name="PP_LightBrightness" xml:space="preserve">
+    <value>Brillo</value>
+  </data>
+  <data name="PP_LightMoreColors" xml:space="preserve">
+    <value>Más colores...</value>
+  </data>
+  <data name="PP_ColorViolet" xml:space="preserve">
+    <value>Violeta</value>
+  </data>
+  <data name="PP_ColorCyan" xml:space="preserve">
+    <value>Cian</value>
+  </data>
+  <data name="PP_ColorBlue" xml:space="preserve">
+    <value>Azul</value>
+  </data>
+  <data name="PP_ColorGreen" xml:space="preserve">
+    <value>Verde</value>
+  </data>
+  <data name="PP_ColorYellow" xml:space="preserve">
+    <value>Amarillo</value>
+  </data>
+  <data name="PP_ColorOrange" xml:space="preserve">
+    <value>Naranja</value>
+  </data>
+  <data name="PP_ColorRed" xml:space="preserve">
+    <value>Rojo</value>
+  </data>
+  <data name="PP_ColorPink" xml:space="preserve">
+    <value>Rosa</value>
+  </data>
+  <data name="PP_ColorWhite" xml:space="preserve">
+    <value>Blanco</value>
+  </data>
+  <data name="PPN_UseProfileColor" xml:space="preserve">
+    <value>Usar color del perfil</value>
+  </data>
+  <data name="PPN_UseCustomColor" xml:space="preserve">
+    <value>Usar color personalizado</value>
+  </data>
+  <data name="PPC_LightPrefsLoadFailed" xml:space="preserve">
+    <value>No se pudieron leer las preferencias de luz: {0}</value>
+  </data>
+  <data name="PPC_LightPrefsSaveFailed" xml:space="preserve">
+    <value>No se pudieron guardar las preferencias de luz: {0}</value>
+  </data>
+  <data name="PP_GamesTitle" xml:space="preserve">
+    <value>Perfiles por juego</value>
+  </data>
+  <data name="PP_GamesSubtitle" xml:space="preserve">
+    <value>Cuando un juego está en primer plano, PhantomPad carga su perfil automáticamente.</value>
+  </data>
+  <data name="PP_GamesAdd" xml:space="preserve">
+    <value>Añadir juego</value>
+  </data>
+  <data name="PP_GamesAdvancedEditor" xml:space="preserve">
+    <value>Editor avanzado</value>
+  </data>
+  <data name="PP_GamesBackToGames" xml:space="preserve">
+    <value>Volver a perfiles por juego</value>
+  </data>
+  <data name="PP_GamesRevertOnClose" xml:space="preserve">
+    <value>Volver al perfil normal al salir del juego</value>
+  </data>
+  <data name="PP_GamesRevertOnCloseTip" xml:space="preserve">
+    <value>Al cerrar el juego o cambiar a otra ventana, el mando vuelve a su perfil de siempre</value>
+  </data>
+  <data name="PP_GamesNotify" xml:space="preserve">
+    <value>Avisar al cambiar de perfil</value>
+  </data>
+  <data name="PP_GamesDetected" xml:space="preserve">
+    <value>Juegos detectados</value>
+  </data>
+  <data name="PP_GamesSearch" xml:space="preserve">
+    <value>Buscar juego</value>
+  </data>
+  <data name="PP_GamesScanning" xml:space="preserve">
+    <value>Buscando juegos instalados (Steam, Epic, GOG)...</value>
+  </data>
+  <data name="PP_GamesBrowseExe" xml:space="preserve">
+    <value>Buscar .exe manualmente</value>
+  </data>
+  <data name="PP_GamesEmpty" xml:space="preserve">
+    <value>Aún no hay juegos. Pulsa "Añadir juego" para elegir uno.</value>
+  </data>
+  <data name="PP_GamesProfile" xml:space="preserve">
+    <value>Perfil</value>
+  </data>
+  <data name="PPC_BackToNormalProfile" xml:space="preserve">
+    <value>El mando {0} volvió al perfil "{1}"</value>
+  </data>
+  <data name="PP_TuneButton" xml:space="preserve">
+    <value>Ajustar</value>
+  </data>
+  <data name="PP_TuneButtonTip" xml:space="preserve">
+    <value>Ajustes rápidos de este juego: zonas muertas y curvas de respuesta</value>
+  </data>
+  <data name="PP_TuneTitle" xml:space="preserve">
+    <value>Ajustes rápidos</value>
+  </data>
+  <data name="PP_TuneEditingProfile" xml:space="preserve">
+    <value>Editando el perfil:</value>
+  </data>
+  <data name="PP_TuneSharedWarning" xml:space="preserve">
+    <value>Este perfil es compartido (perfil normal u otros juegos). Los cambios afectan a todos. Usa "Perfil propio para este juego" para cambiar solo este juego.</value>
+  </data>
+  <data name="PP_TuneOwnProfile" xml:space="preserve">
+    <value>Perfil propio para este juego</value>
+  </data>
+  <data name="PP_TuneOwnProfileTip" xml:space="preserve">
+    <value>Crea una copia del perfil con el nombre del juego y se la asigna a este juego</value>
+  </data>
+  <data name="PP_TunePresets" xml:space="preserve">
+    <value>Preajustes</value>
+  </data>
+  <data name="PP_TunePresetPrecision" xml:space="preserve">
+    <value>Precisión</value>
+  </data>
+  <data name="PP_TunePresetPrecisionTip" xml:space="preserve">
+    <value>Zona muerta pequeña y curva de precisión mejorada: apuntado fino</value>
+  </data>
+  <data name="PP_TunePresetFast" xml:space="preserve">
+    <value>Rápido</value>
+  </data>
+  <data name="PP_TunePresetFastTip" xml:space="preserve">
+    <value>Zona muerta mínima y curva lineal: reacciones rápidas</value>
+  </data>
+  <data name="PP_TunePresetSmooth" xml:space="preserve">
+    <value>Suave</value>
+  </data>
+  <data name="PP_TunePresetSmoothTip" xml:space="preserve">
+    <value>Curva cuadrática: suave cerca del centro y a toda velocidad en el borde</value>
+  </data>
+  <data name="PP_TunePresetDefault" xml:space="preserve">
+    <value>Valores de fábrica</value>
+  </data>
+  <data name="PP_TuneGraphTip" xml:space="preserve">
+    <value>Vista previa aproximada: entrada (horizontal) frente a salida (vertical). Línea discontinua = lineal</value>
+  </data>
+  <data name="PP_TuneSave" xml:space="preserve">
+    <value>Guardar</value>
+  </data>
+  <data name="PP_TuneHint" xml:space="preserve">
+    <value>Los cambios se aplican al mando al guardar.</value>
+  </data>
+  <data name="PP_HubTab" xml:space="preserve">
+    <value>Juegos</value>
+  </data>
+  <data name="PP_HubGamesWord" xml:space="preserve">
+    <value>juegos</value>
+  </data>
+  <data name="PP_HubAllOptimizedTip" xml:space="preserve">
+    <value>Cada juego recibe una configuración recomendada automáticamente</value>
+  </data>
+  <data name="PP_HubMoreOptions" xml:space="preserve">
+    <value>Más opciones</value>
+  </data>
+  <data name="PP_HubRescan" xml:space="preserve">
+    <value>Buscar juegos de nuevo</value>
+  </data>
+  <data name="PP_HubAddExe" xml:space="preserve">
+    <value>Añadir un juego a mano (.exe)...</value>
+  </data>
+  <data name="PP_HubUseSteam" xml:space="preserve">
+    <value>Consultar el tipo de juego en Steam (solo se envía el número del juego)</value>
+  </data>
+  <data name="PP_HubManageProfiles" xml:space="preserve">
+    <value>Administrar perfiles (avanzado)</value>
+  </data>
+  <data name="PP_HubRulesEditor" xml:space="preserve">
+    <value>Editor de reglas (avanzado)</value>
+  </data>
+  <data name="PP_HubPlay" xml:space="preserve">
+    <value>Jugar</value>
+  </data>
+  <data name="PP_HubCustomize" xml:space="preserve">
+    <value>Personalizar a mano...</value>
+  </data>
+  <data name="PP_HubGameType" xml:space="preserve">
+    <value>Tipo de juego</value>
+  </data>
+  <data name="PP_HubReset" xml:space="preserve">
+    <value>Restablecer lo recomendado</value>
+  </data>
+  <data name="PP_HubFullEditor" xml:space="preserve">
+    <value>Editor completo del perfil (expertos)</value>
+  </data>
+  <data name="PP_HubRemove" xml:space="preserve">
+    <value>Quitar de la lista</value>
+  </data>
+  <data name="PP_HubRecommended" xml:space="preserve">
+    <value>Recomendado</value>
+  </data>
+  <data name="PP_HubCustomNote" xml:space="preserve">
+    <value>Personalizado a mano. Mueve la barra para volver a un estilo listo.</value>
+  </data>
+  <data name="PP_HubColSetting" xml:space="preserve">
+    <value>Configuración del mando</value>
+  </data>
+  <data name="PP_HubColCurrent" xml:space="preserve">
+    <value>Valor actual</value>
+  </data>
+  <data name="PP_HubColRecommended" xml:space="preserve">
+    <value>Recomendado</value>
+  </data>
+  <data name="PP_HubRecommendedNote" xml:space="preserve">
+    <value>Los valores recomendados dependen del tipo de juego (disparos, carreras, acción...). Son un punto de partida: puedes mover la barra o personalizar a mano.</value>
+  </data>
+  <data name="PP_HubAllGames" xml:space="preserve">
+    <value>Todos los juegos</value>
+  </data>
+  <data name="PP_HubAllGamesSub" xml:space="preserve">
+    <value>Perfil normal: {0}</value>
+  </data>
+  <data name="PP_HubGeneralStatus" xml:space="preserve">
+    <value>Se usa en cualquier juego sin configuración propia (perfil "{0}")</value>
+  </data>
+  <data name="PP_HubStatusCustom" xml:space="preserve">
+    <value>Personalizado por ti (perfil "{0}")</value>
+  </data>
+  <data name="PP_HubStatusOptimized" xml:space="preserve">
+    <value>Optimizado para {0}</value>
+  </data>
+  <data name="PP_HubStatusStyle" xml:space="preserve">
+    <value>Estilo: {0} (recomendado: {1})</value>
+  </data>
+  <data name="PP_HubCustomShort" xml:space="preserve">
+    <value>personalizado</value>
+  </data>
+  <data name="PP_HubOptimizedShort" xml:space="preserve">
+    <value>optimizado</value>
+  </data>
+  <data name="PP_CatShooter" xml:space="preserve">
+    <value>Disparos</value>
+  </data>
+  <data name="PP_CatRacing" xml:space="preserve">
+    <value>Carreras</value>
+  </data>
+  <data name="PP_CatAction" xml:space="preserve">
+    <value>Acción / Aventura</value>
+  </data>
+  <data name="PP_CatFighting" xml:space="preserve">
+    <value>Lucha / Plataformas</value>
+  </data>
+  <data name="PP_CatGeneral" xml:space="preserve">
+    <value>General</value>
+  </data>
+  <data name="PP_StyleSmooth" xml:space="preserve">
+    <value>Suave</value>
+  </data>
+  <data name="PP_StyleBalanced" xml:space="preserve">
+    <value>Equilibrado</value>
+  </data>
+  <data name="PP_StylePrecise" xml:space="preserve">
+    <value>Preciso</value>
+  </data>
+  <data name="PP_StyleCompetitive" xml:space="preserve">
+    <value>Competitivo</value>
+  </data>
+  <data name="PP_RowDeadZone" xml:space="preserve">
+    <value>Zona muerta (sticks)</value>
+  </data>
+  <data name="PP_RowAntiDeadZone" xml:space="preserve">
+    <value>Anti-zona muerta</value>
+  </data>
+  <data name="PP_RowCurve" xml:space="preserve">
+    <value>Curva de respuesta</value>
+  </data>
+  <data name="PP_RowGyro" xml:space="preserve">
+    <value>Gyro aim</value>
+  </data>
+  <data name="PP_RowGyroSoon" xml:space="preserve">
+    <value>Apagado (próximamente)</value>
+  </data>
+  <data name="PPC_StyleProfileFailed" xml:space="preserve">
+    <value>No se pudo crear el perfil {0}: {1}</value>
+  </data>
+  <data name="PPC_GameLaunchFailed" xml:space="preserve">
+    <value>No se pudo abrir el juego: {0}</value>
+  </data>
+  <data name="PP_GyroOff" xml:space="preserve">
+    <value>Apagado</value>
+  </data>
+  <data name="PP_GyroWhileAiming" xml:space="preserve">
+    <value>Al apuntar (L2)</value>
+  </data>
+  <data name="PP_GyroAlways" xml:space="preserve">
+    <value>Siempre</value>
+  </data>
+  <data name="PP_GyroHint" xml:space="preserve">
+    <value>Mantén L2 e inclina el mando para apuntar. Suelta L2 para parar.</value>
+  </data>
+  <data name="PP_GyroMode" xml:space="preserve">
+    <value>Modo</value>
+  </data>
+  <data name="PP_GyroSmoothingTip" xml:space="preserve">
+    <value>Mira más estable</value>
+  </data>
+  <data name="PP_HubStatusStyle2" xml:space="preserve">
+    <value>Estilo: {0} · Gyro aim: {1} (recomendado: {2} · {3})</value>
+  </data>
+  <data name="PP_CtrlSettingsSection" xml:space="preserve">
+    <value>Ajustes del mando</value>
+  </data>
+  <data name="PP_GyroAimOn" xml:space="preserve">
+    <value>Gyro aim (al apuntar con L2)</value>
+  </data>
+  <data name="PP_GyroAimTip" xml:space="preserve">
+    <value>En todos los juegos, mantén L2 e inclina el mando para apuntar. Mueve el stick derecho, así que funciona en cualquier juego.</value>
+  </data>
+  <data name="PP_GyroPauseRacing" xml:space="preserve">
+    <value>Pausar en juegos de carreras</value>
+  </data>
+  <data name="PP_GyroPauseRacingTip" xml:space="preserve">
+    <value>En los juegos de carreras L2 es el freno, por eso ahí el gyro se pausa.</value>
+  </data>
+  <data name="PP_GyroSensitivity" xml:space="preserve">
+    <value>Sensibilidad del gyro</value>
+  </data>
+  <data name="PP_AimPrecSection" xml:space="preserve">
+    <value>Sensibilidad al apuntar</value>
+  </data>
+  <data name="PP_AimPrecOn" xml:space="preserve">
+    <value>Activar (L2 y L2 + R2)</value>
+  </data>
+  <data name="PP_AimPrecTip" xml:space="preserve">
+    <value>Cambia la velocidad del stick derecho mientras apuntas (L2) y mientras apuntas y disparas (L2 + R2). Nunca mueve la mira por sí sola.</value>
+  </data>
+  <data name="PP_AimPrecNote" xml:space="preserve">
+    <value>100 % = normal. Menos = la mira va más lenta y precisa; más = más rápida. Nunca mueve la mira por sí sola: siempre mandas tú.</value>
+  </data>
+  <data name="PPC_AimPrecisionSaveFailed" xml:space="preserve">
+    <value>No se pudo guardar la sensibilidad al apuntar: {0}</value>
+  </data>
+  <data name="PP_AimPrecAim" xml:space="preserve">
+    <value>Apuntando (L2)</value>
+  </data>
+  <data name="PP_AimPrecFire" xml:space="preserve">
+    <value>Apuntando y disparando (L2 + R2)</value>
+  </data>
+  <data name="PP_ConnSection" xml:space="preserve">
+    <value>Conexión</value>
+  </data>
+  <data name="PP_PowerOffCombo" xml:space="preserve">
+    <value>Apagar con</value>
+  </data>
+  <data name="PP_PowerOffTip" xml:space="preserve">
+    <value>Pulsa este combo para apagar este mando al instante. El juego no recibe esos botones.</value>
+  </data>
+  <data name="PP_PowerOffHint" xml:space="preserve">
+    <value>Púlsalo y el mando se apaga al instante. Solo por Bluetooth (por USB, desconecta el cable).</value>
+  </data>
+  <data name="PP_ComboNone" xml:space="preserve">
+    <value>Desactivado</value>
+  </data>
+  <data name="PP_ComboPSCross" xml:space="preserve">
+    <value>PS + X</value>
+  </data>
+  <data name="PP_ComboPSCircle" xml:space="preserve">
+    <value>PS + Círculo</value>
+  </data>
+  <data name="PP_ComboPSSquare" xml:space="preserve">
+    <value>PS + Cuadrado</value>
+  </data>
+  <data name="PP_ComboPSTriangle" xml:space="preserve">
+    <value>PS + Triángulo</value>
+  </data>
+  <data name="PP_PollRate" xml:space="preserve">
+    <value>Frecuencia de lectura (Bluetooth)</value>
+  </data>
+  <data name="PP_PollAuto" xml:space="preserve">
+    <value>Automática</value>
+  </data>
+  <data name="PP_PollUsb" xml:space="preserve">
+    <value>Cable USB: la frecuencia la fija el propio mando.</value>
+  </data>
+  <data name="PP_PollFixed" xml:space="preserve">
+    <value>Este mando fija su propia frecuencia.</value>
+  </data>
+  <data name="PP_PollManual" xml:space="preserve">
+    <value>Pedida: {0} Hz (cada {1} ms).</value>
+  </data>
+  <data name="PP_PollAutoSingle" xml:space="preserve">
+    <value>Automática: {0} Hz, 100 % para el único mando.</value>
+  </data>
+  <data name="PP_PollAutoMulti" xml:space="preserve">
+    <value>Automática: {0} Hz para cada uno de los {1} mandos.</value>
+  </data>
+  <data name="PP_LatencyReading" xml:space="preserve">
+    <value>Latencia de lectura</value>
+  </data>
+  <data name="PP_LatencyValue" xml:space="preserve">
+    <value>{0} ms entre lecturas (≈ {1} Hz)</value>
+  </data>
+  <data name="PP_PollNote" xml:space="preserve">
+    <value>PhantomPad solo le pide al mando cada cuánto enviar datos. Cómo se reparte de verdad el Bluetooth entre los mandos lo decide el adaptador y Windows. La lectura real muestra lo que llega de verdad.</value>
+  </data>
+  <data name="PPC_PowerOffCombo" xml:space="preserve">
+    <value>Mando {0}: apagando (combo de botones).</value>
+  </data>
+  <data name="PPC_PowerOffUsb" xml:space="preserve">
+    <value>El mando {0} está conectado por cable USB: no se puede apagar desde aquí. Desconecta el cable.</value>
+  </data>
+  <data name="PPC_ControllerPrefsSaveFailed" xml:space="preserve">
+    <value>No se pudieron guardar los ajustes del mando: {0}</value>
+  </data>
+  <data name="PPC_ReloadFailed" xml:space="preserve">
+    <value>Mando {0}: no se pudo aplicar el cambio ahora. Inténtalo de nuevo.</value>
+  </data>
+  <data name="PP_CompatMode" xml:space="preserve">
+    <value>Mando no original</value>
+  </data>
+  <data name="PP_CompatModeTip" xml:space="preserve">
+    <value>Para mandos DS4 que no son de Sony: cambia cómo se envían la luz y la vibración. Actívalo si la luz no cambia o no se apaga.</value>
+  </data>
+  <data name="PPC_CloneCompatOn" xml:space="preserve">
+    <value>El mando {0} parece no original: se activó el modo compatible para que funcione la luz.</value>
+  </data>
+  <data name="PPC_PlayersReordered" xml:space="preserve">
+    <value>Se apagó un mando: los que quedan subieron de puesto (el primero pasa a ser el jugador 1).</value>
+  </data>
+  <data name="PP_SectionCommands" xml:space="preserve">
+    <value>Comandos</value>
+  </data>
+  <data name="PP_CommandsIntro" xml:space="preserve">
+    <value>Acciones que se activan con los botones del mando. Aquí ves qué hace cada una, con qué botones se activa y dónde se ajusta.</value>
+  </data>
+  <data name="PP_CommandButtons" xml:space="preserve">
+    <value>Se activa con</value>
+  </data>
+  <data name="PP_CmdPowerOffName" xml:space="preserve">
+    <value>Apagar el mando</value>
+  </data>
+  <data name="PP_CmdPowerOffDesc" xml:space="preserve">
+    <value>Apaga al instante el mando que pulsa el combo (Bluetooth). Mientras lo pulsas, el juego no recibe esos botones. Por cable USB no se puede apagar: desconecta el cable.</value>
+  </data>
+  <data name="PP_CmdPowerOffWhere" xml:space="preserve">
+    <value>Vale para todos los mandos. Elige los botones aquí.</value>
+  </data>
+  <data name="PP_CmdGyroName" xml:space="preserve">
+    <value>Gyro aim</value>
+  </data>
+  <data name="PP_CmdGyroDesc" xml:space="preserve">
+    <value>Mientras mantienes L2, inclinar el mando mueve la mira. Al soltar L2 se detiene. Se pausa en juegos de carreras si lo eliges.</value>
+  </data>
+  <data name="PP_CmdGyroWhere" xml:space="preserve">
+    <value>Se activa en Mandos → Ajustes del mando (en cada mando).</value>
+  </data>
+  <data name="PP_BtnHoldL2" xml:space="preserve">
+    <value>Mantener L2</value>
+  </data>
+  <data name="PP_BtnTilt" xml:space="preserve">
+    <value>Inclinar el mando</value>
+  </data>
+  <data name="PP_CmdAimSensName" xml:space="preserve">
+    <value>Sensibilidad al apuntar</value>
+  </data>
+  <data name="PP_CmdAimSensDesc" xml:space="preserve">
+    <value>Cambia la velocidad del stick derecho mientras apuntas y mientras apuntas y disparas. Nunca mueve la mira por sí sola.</value>
+  </data>
+  <data name="PP_CmdAimSensWhere" xml:space="preserve">
+    <value>Se activa en Juegos → cada juego (apagado por defecto).</value>
+  </data>
+  <data name="PPC_CommandsSaveFailed" xml:space="preserve">
+    <value>No se pudieron guardar los comandos: {0}</value>
+  </data>
+  <data name="PP_SettingsTab" xml:space="preserve">
+    <value>Configuraciones</value>
+  </data>
+  <data name="PP_SettingsGeneral" xml:space="preserve">
+    <value>General</value>
+  </data>
+  <data name="PP_CalNav" xml:space="preserve">
+    <value>Calibración</value>
+  </data>
+  <data name="PP_CalTitle" xml:space="preserve">
+    <value>Calibración de sticks</value>
+  </data>
+  <data name="PP_CalIntro" xml:space="preserve">
+    <value>Si un stick se mueve solo (drift) o no llega al borde, este asistente lo mide y lo corrige. La calibración se guarda en cada mando y se aplica en todos los juegos y perfiles.</value>
+  </data>
+  <data name="PP_CalController" xml:space="preserve">
+    <value>Mando</value>
+  </data>
+  <data name="PP_CalControllerItem" xml:space="preserve">
+    <value>Mando {0} · {1} · {2}</value>
+  </data>
+  <data name="PP_CalNoController" xml:space="preserve">
+    <value>No hay ningún mando conectado</value>
+  </data>
+  <data name="PP_CalNoControllerText" xml:space="preserve">
+    <value>Enciende un mando para calibrarlo.</value>
+  </data>
+  <data name="PP_CalNotSaved" xml:space="preserve">
+    <value>Este mando todavía no tiene calibración.</value>
+  </data>
+  <data name="PP_CalSavedInfo" xml:space="preserve">
+    <value>Calibración guardada ({0}): zona muerta izquierda {1} %, derecha {2} % (anti-drift activo).</value>
+  </data>
+  <data name="PP_CalIdleTitle" xml:space="preserve">
+    <value>Listo para calibrar</value>
+  </data>
+  <data name="PP_CalIdleText" xml:space="preserve">
+    <value>Tarda unos 10 segundos: primero suelta los sticks y luego gíralos en círculos completos.</value>
+  </data>
+  <data name="PP_CalStart" xml:space="preserve">
+    <value>Iniciar calibración</value>
+  </data>
+  <data name="PP_CalSave" xml:space="preserve">
+    <value>Guardar</value>
+  </data>
+  <data name="PP_CalClear" xml:space="preserve">
+    <value>Quitar calibración</value>
+  </data>
+  <data name="PP_CalRetry" xml:space="preserve">
+    <value>Repetir</value>
+  </data>
+  <data name="PP_CalStep1Title" xml:space="preserve">
+    <value>Paso 1 de 2: no toques los sticks</value>
+  </data>
+  <data name="PP_CalStep1Text" xml:space="preserve">
+    <value>Deja el mando sobre la mesa o suelta los dos sticks. Midiendo cuánto se mueven solos...</value>
+  </data>
+  <data name="PP_CalStep2Title" xml:space="preserve">
+    <value>Paso 2 de 2: gira los dos sticks en círculos</value>
+  </data>
+  <data name="PP_CalStep2Text" xml:space="preserve">
+    <value>Empújalos hasta el borde y gíralos despacio en círculos completos, los dos a la vez.</value>
+  </data>
+  <data name="PP_CalDoneTitle" xml:space="preserve">
+    <value>Resultado</value>
+  </data>
+  <data name="PP_CalDoneText" xml:space="preserve">
+    <value>Revísalo y pulsa Guardar para usarlo en todos los juegos.</value>
+  </data>
+  <data name="PP_CalResultStick" xml:space="preserve">
+    <value>{0}: se movía solo un {1} % → zona muerta anti-drift {2} %.</value>
+  </data>
+  <data name="PP_CalReachNotMeasured" xml:space="preserve">
+    <value>Alcance: sin medir (gira el stick en círculos completos para medirlo).</value>
+  </data>
+  <data name="PP_CalReachOk" xml:space="preserve">
+    <value>Alcance: llega bien al borde.</value>
+  </data>
+  <data name="PP_CalReachShort" xml:space="preserve">
+    <value>Alcance: solo llega al {0} % → desde ahí da la salida máxima.</value>
+  </data>
+  <data name="PP_CalSavedTitle" xml:space="preserve">
+    <value>Calibración guardada</value>
+  </data>
+  <data name="PP_CalSavedText" xml:space="preserve">
+    <value>Ya se aplica en todos los juegos y perfiles de este mando.</value>
+  </data>
+  <data name="PP_CalLeftStick" xml:space="preserve">
+    <value>Stick izquierdo</value>
+  </data>
+  <data name="PP_CalRightStick" xml:space="preserve">
+    <value>Stick derecho</value>
+  </data>
+  <data name="PP_CalPosition" xml:space="preserve">
+    <value>Posición: {0} %</value>
+  </data>
+  <data name="PP_CalLegend" xml:space="preserve">
+    <value>En el dibujo: el punto es la posición del stick en vivo, el círculo morado es la zona muerta (dentro de ella el juego no recibe movimiento) y la línea punteada es el alcance (desde ahí se da la salida máxima).</value>
+  </data>
+  <data name="PPC_ControllerPrefsReadFailed" xml:space="preserve">
+    <value>No se pudieron leer los ajustes de los mandos (archivo en uso). No se tocan; reinicia PhantomPad.</value>
+  </data>
+  <data name="PP_RumbleSection" xml:space="preserve">
+    <value>Vibración</value>
+  </data>
+  <data name="PP_RumbleIntensity" xml:space="preserve">
+    <value>Intensidad en este juego</value>
+  </data>
+  <data name="PP_RumbleNote" xml:space="preserve">
+    <value>100 % = la vibración normal del perfil. 0 % = sin vibración. Más de 100 % = más fuerte. Solo se usa mientras juegas a este juego.</value>
+  </data>
+  <data name="PP_RumbleOff" xml:space="preserve">
+    <value>Sin vibración</value>
+  </data>
+  <data name="PP_RumbleNormal" xml:space="preserve">
+    <value>Vibración normal</value>
+  </data>
+  <data name="PP_RumbleSoft" xml:space="preserve">
+    <value>Vibración más suave</value>
+  </data>
+  <data name="PP_RumbleStrong" xml:space="preserve">
+    <value>Vibración más fuerte</value>
+  </data>
+  <data name="PPC_RumbleSaveFailed" xml:space="preserve">
+    <value>No se pudo guardar la vibración: {0}</value>
+  </data>
+  <data name="PP_BatNav" xml:space="preserve">
+    <value>Batería</value>
+  </data>
+  <data name="PP_BatTitle" xml:space="preserve">
+    <value>Batería</value>
+  </data>
+  <data name="PP_BatIntro" xml:space="preserve">
+    <value>Te avisa cuando un mando se está quedando sin batería, para que lo cargues antes de que se apague en medio de una partida.</value>
+  </data>
+  <data name="PP_BatWarn" xml:space="preserve">
+    <value>Avisar cuando la batería esté baja</value>
+  </data>
+  <data name="PP_BatWarnText" xml:space="preserve">
+    <value>Muestra un aviso de Windows una sola vez cuando el mando baja del límite (no avisa mientras se está cargando).</value>
+  </data>
+  <data name="PP_BatThreshold" xml:space="preserve">
+    <value>Avisar al llegar a</value>
+  </data>
+  <data name="PP_BatFlash" xml:space="preserve">
+    <value>Parpadear la luz del mando en rojo</value>
+  </data>
+  <data name="PP_BatFlashText" xml:space="preserve">
+    <value>Por debajo del límite, la luz del mando parpadea en rojo para que lo notes sin mirar la pantalla.</value>
+  </data>
+  <data name="PP_BatStatus" xml:space="preserve">
+    <value>Estado de los mandos</value>
+  </data>
+  <data name="PP_BatCharging" xml:space="preserve">
+    <value>cargando</value>
+  </data>
+  <data name="PP_BatLow" xml:space="preserve">
+    <value>batería baja</value>
+  </data>
+  <data name="PP_BatOk" xml:space="preserve">
+    <value>bien</value>
+  </data>
+  <data name="PP_BatRow" xml:space="preserve">
+    <value>Mando {0} · {1} · {2} %</value>
+  </data>
+  <data name="PPC_LowBattery" xml:space="preserve">
+    <value>Mando {0}: batería al {1} %. Cárgalo pronto.</value>
+  </data>
+  <data name="PPC_BatterySaveFailed" xml:space="preserve">
+    <value>No se pudo guardar el ajuste de batería: {0}</value>
+  </data>
+  <data name="PP_StartNav" xml:space="preserve">
+    <value>Inicio</value>
+  </data>
+  <data name="PP_StartTitle" xml:space="preserve">
+    <value>Inicio</value>
+  </data>
+  <data name="PP_StartIntro" xml:space="preserve">
+    <value>Cómo se abre PhantomPad y qué hace al cerrar la ventana. Cada opción tiene su interruptor para encenderla o apagarla.</value>
+  </data>
+  <data name="PP_StartWithWindows" xml:space="preserve">
+    <value>Iniciar PhantomPad con Windows</value>
+  </data>
+  <data name="PP_StartWithWindowsText" xml:space="preserve">
+    <value>Se abre solo al encender el PC.</value>
+  </data>
+  <data name="PP_StartHidden" xml:space="preserve">
+    <value>Abrir escondido en la bandeja</value>
+  </data>
+  <data name="PP_StartHiddenText" xml:space="preserve">
+    <value>Al abrirse no aparece la ventana, solo el icono del fantasma junto al reloj. Haz clic en el icono para verla.</value>
+  </data>
+  <data name="PP_StartCloseTray" xml:space="preserve">
+    <value>Al cerrar la ventana, dejarlo en la bandeja</value>
+  </data>
+  <data name="PP_StartCloseTrayText" xml:space="preserve">
+    <value>La X esconde la ventana y PhantomPad sigue funcionando, sin preguntar. Para salir del todo: clic derecho en el icono → Salir.</value>
+  </data>
+  <data name="PP_StartAutoConnect" xml:space="preserve">
+    <value>Conectar los mandos automáticamente</value>
+  </data>
+  <data name="PP_StartAutoConnectText" xml:space="preserve">
+    <value>Al abrir PhantomPad, los mandos encendidos quedan listos para jugar sin pulsar "Iniciar". Si lo apagas, tendrás que pulsar "Iniciar" cada vez.</value>
+  </data>
+  <data name="PP_StartTip" xml:space="preserve">
+    <value>Con las cuatro opciones encendidas: enciendes el PC y el mando, y ya puedes jugar.</value>
+  </data>
+  <data name="PPC_StartupSaveFailed" xml:space="preserve">
+    <value>No se pudieron guardar las opciones de inicio: {0}</value>
+  </data>
+  <data name="PP_TrayStart" xml:space="preserve">
+    <value>Iniciar</value>
+  </data>
+  <data name="PP_TrayStop" xml:space="preserve">
+    <value>Detener</value>
+  </data>
+  <data name="PP_TrayOpen" xml:space="preserve">
+    <value>Abrir</value>
+  </data>
+  <data name="PP_TrayMinimize" xml:space="preserve">
+    <value>Minimizar</value>
+  </data>
+  <data name="PP_TrayFolder" xml:space="preserve">
+    <value>Abrir la carpeta del programa</value>
+  </data>
+  <data name="PP_TrayExit" xml:space="preserve">
+    <value>Salir</value>
+  </data>
+  <data name="PP_TrayDisconnect" xml:space="preserve">
+    <value>Desconectar</value>
+  </data>
+  <data name="PP_TurboSection" xml:space="preserve">
+    <value>Turbo</value>
+  </data>
+  <data name="PP_TurboOn" xml:space="preserve">
+    <value>Turbo (solo offline)</value>
+  </data>
+  <data name="PP_TurboButton" xml:space="preserve">
+    <value>Botón</value>
+  </data>
+  <data name="PP_TurboRate" xml:space="preserve">
+    <value>Velocidad</value>
+  </data>
+  <data name="PP_TurboRateValue" xml:space="preserve">
+    <value>{0} por segundo</value>
+  </data>
+  <data name="PP_TurboNoteOn" xml:space="preserve">
+    <value>Mantén el botón elegido y PhantomPad lo pulsa por ti. Queda activado en este juego hasta que lo apagues.</value>
+  </data>
+  <data name="PP_TurboNoteOff" xml:space="preserve">
+    <value>Solo para juegos offline. Usarlo en línea puede hacer que te baneen.</value>
+  </data>
+  <data name="PP_TurboChecking" xml:space="preserve">
+    <value>Revisando la carpeta del juego en busca de anti-trampas...</value>
+  </data>
+  <data name="PP_TurboBlockedNote" xml:space="preserve">
+    <value>Bloqueado: este juego tiene un anti-trampas ({0}), así que se juega en línea. El turbo es solo para juegos offline.</value>
+  </data>
+  <data name="PP_BtnCross" xml:space="preserve">
+    <value>X (equis)</value>
+  </data>
+  <data name="PP_BtnSquare" xml:space="preserve">
+    <value>Cuadrado</value>
+  </data>
+  <data name="PP_BtnCircle" xml:space="preserve">
+    <value>Círculo</value>
+  </data>
+  <data name="PP_BtnTriangle" xml:space="preserve">
+    <value>Triángulo</value>
+  </data>
+  <data name="PP_CmdTurboName" xml:space="preserve">
+    <value>Turbo (disparo rápido)</value>
+  </data>
+  <data name="PP_CmdTurboDesc" xml:space="preserve">
+    <value>Mientras mantienes el botón elegido, PhantomPad lo pulsa y lo suelta por ti muchas veces por segundo. Solo para juegos offline: se bloquea si el juego tiene anti-trampas.</value>
+  </data>
+  <data name="PP_CmdTurboWhere" xml:space="preserve">
+    <value>Se activa en Juegos → cada juego (apagado por defecto). Queda activado hasta que lo apagues.</value>
+  </data>
+  <data name="PP_CmdTurboButtons" xml:space="preserve">
+    <value>Mantener el botón elegido (R2 por defecto)</value>
+  </data>
+  <data name="PPC_TurboBlocked" xml:space="preserve">
+    <value>Se apagó el turbo: este juego tiene un anti-trampas ({0}). El turbo es solo para juegos offline.</value>
+  </data>
+  <data name="PPC_TurboSaveFailed" xml:space="preserve">
+    <value>No se pudo guardar el turbo: {0}</value>
+  </data>
+  <data name="PP_UpdNav" xml:space="preserve">
+    <value>Actualizaciones</value>
+  </data>
+  <data name="PP_UpdTitle" xml:space="preserve">
+    <value>Actualizaciones</value>
+  </data>
+  <data name="PP_UpdIntro" xml:space="preserve">
+    <value>PhantomPad busca versiones nuevas al abrirse y al entrar aquí. Si hay una, puedes descargarla mientras juegas: no se instala sola, solo cuando pulses "Reiniciar app".</value>
+  </data>
+  <data name="PP_UpdCheckNow" xml:space="preserve">
+    <value>Buscar ahora</value>
+  </data>
+  <data name="PP_UpdNotConfigured" xml:space="preserve">
+    <value>Las actualizaciones aún no están configuradas</value>
+  </data>
+  <data name="PP_UpdNotConfiguredText" xml:space="preserve">
+    <value>Tienes la versión {0}. Para recibir actualizaciones, primero hay que publicar PhantomPad en GitHub.</value>
+  </data>
+  <data name="PP_UpdChecking" xml:space="preserve">
+    <value>Buscando actualizaciones...</value>
+  </data>
+  <data name="PP_UpdCurrent" xml:space="preserve">
+    <value>Tienes la versión {0}.</value>
+  </data>
+  <data name="PP_UpdUpToDate" xml:space="preserve">
+    <value>Tienes la última versión</value>
+  </data>
+  <data name="PP_UpdAvailable" xml:space="preserve">
+    <value>Nueva versión disponible: {0}</value>
+  </data>
+  <data name="PP_UpdAvailableText" xml:space="preserve">
+    <value>Tienes la versión {0}. Descárgala mientras juegas; solo se instala cuando reinicies la app.</value>
+  </data>
+  <data name="PP_UpdManualText" xml:space="preserve">
+    <value>Tienes la versión {0}. Esta copia no se instaló con el instalador de PhantomPad, así que descarga la nueva versión desde su página.</value>
+  </data>
+  <data name="PP_UpdDownloading" xml:space="preserve">
+    <value>Descargando... {0} %</value>
+  </data>
+  <data name="PP_UpdDownloadingText" xml:space="preserve">
+    <value>Puedes seguir jugando. No se instala nada hasta que pulses "Reiniciar app".</value>
+  </data>
+  <data name="PP_UpdReady" xml:space="preserve">
+    <value>Lista para instalar</value>
+  </data>
+  <data name="PP_UpdReadyText" xml:space="preserve">
+    <value>Pulsa "Reiniciar app" cuando termines de jugar: PhantomPad se cierra, instala la versión {0} y se vuelve a abrir.</value>
+  </data>
+  <data name="PP_UpdError" xml:space="preserve">
+    <value>No se pudo buscar actualizaciones</value>
+  </data>
+  <data name="PP_UpdErrorText" xml:space="preserve">
+    <value>Revisa tu conexión a internet y vuelve a intentarlo. ({0})</value>
+  </data>
+  <data name="PP_UpdWhatsNew" xml:space="preserve">
+    <value>Novedades</value>
+  </data>
+  <data name="PP_UpdDate" xml:space="preserve">
+    <value>Publicada el {0}</value>
+  </data>
+  <data name="PP_UpdNoNotes" xml:space="preserve">
+    <value>Sin descripción.</value>
+  </data>
+  <data name="PP_UpdDownload" xml:space="preserve">
+    <value>Descargar</value>
+  </data>
+  <data name="PP_UpdRestart" xml:space="preserve">
+    <value>Reiniciar app</value>
+  </data>
+  <data name="PP_UpdOpenPage" xml:space="preserve">
+    <value>Ver la página de la versión</value>
+  </data>
+  <data name="PP_UpdNote" xml:space="preserve">
+    <value>Las actualizaciones vienen de la página oficial de PhantomPad en GitHub. Como PhantomPad todavía no tiene firma digital, Windows puede mostrar un aviso de SmartScreen al instalarlo: elige "Más información" → "Ejecutar de todas formas".</value>
+  </data>
+  <data name="PP_UpdHeaderNew" xml:space="preserve">
+    <value>Nueva versión {0}</value>
+  </data>
+  <data name="PP_UpdHeaderDownloading" xml:space="preserve">
+    <value>Descargando {0} %</value>
+  </data>
+  <data name="PPC_UpdateReady" xml:space="preserve">
+    <value>La actualización ya está descargada. Pulsa "Reiniciar app" cuando quieras instalarla.</value>
+  </data>
+</root>

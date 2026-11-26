@@ -1,0 +1,7 @@
+{
+  "PP_CompatMode": "Mando no original",
+  "PP_CompatModeTip": "Para mandos DS4 que no son de Sony: cambia cómo se envían la luz y la vibración. Actívalo si la luz no cambia o no se apaga.",
+  "PP_PowerOffTip": "Pulsa este combo para apagar este mando al instante. El juego no recibe esos botones.",
+  "PP_PowerOffHint": "Púlsalo y el mando se apaga al instante. Solo por Bluetooth (por USB, desconecta el cable).",
+  "PPC_CloneCompatOn": "El mando {0} parece no original: se activó el modo compatible para que funcione la luz."
+}

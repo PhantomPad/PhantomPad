@@ -1,0 +1,15 @@
+{
+  "PP_StartNav": "Startup",
+  "PP_StartTitle": "Startup",
+  "PP_StartIntro": "How PhantomPad opens and what closing the window does. Each option has its own switch to turn it on or off.",
+  "PP_StartWithWindows": "Start PhantomPad with Windows",
+  "PP_StartWithWindowsText": "Opens by itself when the PC turns on.",
+  "PP_StartHidden": "Open hidden in the tray",
+  "PP_StartHiddenText": "When it opens no window appears, only the ghost icon next to the clock. Click the icon to see it.",
+  "PP_StartCloseTray": "When closing the window, keep it in the tray",
+  "PP_StartCloseTrayText": "The X hides the window and PhantomPad keeps working, without asking. To quit completely: right-click the icon → Exit.",
+  "PP_StartAutoConnect": "Connect controllers automatically",
+  "PP_StartAutoConnectText": "When PhantomPad opens, controllers that are on are ready to play without pressing \"Start\". If you turn it off, you will have to press \"Start\" every time.",
+  "PP_StartTip": "With all four options on: turn on the PC and the controller, and you are ready to play.",
+  "PPC_StartupSaveFailed": "Could not save the startup settings: {0}"
+}

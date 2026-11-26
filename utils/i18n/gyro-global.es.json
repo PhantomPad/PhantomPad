@@ -1,0 +1,9 @@
+{
+  "PP_CtrlSettingsSection": "Ajustes del mando",
+  "PP_GyroAimOn": "Gyro aim (al apuntar con L2)",
+  "PP_GyroAimTip": "En todos los juegos, mantén L2 e inclina el mando para apuntar. Mueve el stick derecho, así que funciona en cualquier juego.",
+  "PP_GyroPauseRacing": "Pausar en juegos de carreras",
+  "PP_GyroPauseRacingTip": "En los juegos de carreras L2 es el freno, por eso ahí el gyro se pausa.",
+  "PP_GyroSensitivity": "Sensibilidad del gyro",
+  "PP_GyroHint": "Mantén L2 e inclina el mando para apuntar. Suelta L2 para parar."
+}

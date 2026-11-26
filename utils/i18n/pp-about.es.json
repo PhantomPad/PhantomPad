@@ -1,0 +1,8 @@
+{
+  "PP_AboutHeader": "PhantomPad - basado en DS4Windows de Jays2Kings, Ryochan7 y schmaldeo, GPL v3 (Versión ",
+  "PP_HotkeysHelp": "Ocultar el mando DS4: oculta la entrada normal del DS4 (DInput) a otros programas. Actívalo si tienes entrada doble en los juegos o si R2 pausa el juego\nClic en el lado izquierdo del touchpad: toque izquierdo\nClic en el lado derecho del touchpad: toque derecho\nClic en el touchpad con 2 dedos: multitáctil\nClic en la parte superior del touchpad: toque superior\nPS + Options o mantener PS 10 segundos: desconectar el mando (solo Bluetooth)\nTocar el touchpad + PS: desactivar el movimiento del touchpad (el clic sigue funcionando)\nClic en la esquina inferior derecha: clic derecho (mejor cuando el lado derecho se usa como botón del ratón)\nDos dedos arriba/abajo en el touchpad*: desplazar arriba/abajo\nTocar y mantener el touchpad*: arrastrar con clic izquierdo\nDeslizar 2 dedos a la izquierda o derecha: cambiar de perfil\nModificador Shift: mantén una acción para usar otro conjunto de controles\nAl asignar teclado y ratón:\nAlternar: la tecla queda \"pulsada\" hasta que la vuelvas a pulsar\nMacro: asigna varias teclas a una sola entrada\nCódigo de escaneo: las teclas se interpretan de otra forma. Puede hacer falta en algunos juegos\n*Si está activado",
+  "PP_SourceCode": "Código fuente",
+  "PP_InhexsterCredit": "InhexSTER (creador de DS4Tool)",
+  "PP_ElectrobrainsCredit": "electrobrains (proyecto del que se derivó)",
+  "PP_Contributors": "Colaboradores"
+}

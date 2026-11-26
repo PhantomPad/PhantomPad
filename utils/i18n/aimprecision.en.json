@@ -1,0 +1,9 @@
+{
+  "PP_AimPrecSection": "Aiming sensitivity",
+  "PP_AimPrecOn": "Turn on (L2 and L2 + R2)",
+  "PP_AimPrecTip": "Changes how fast the right stick turns while you aim (L2) and while you aim and shoot (L2 + R2). It never moves the aim on its own.",
+  "PP_AimPrecAim": "Aiming (L2)",
+  "PP_AimPrecFire": "Aiming and shooting (L2 + R2)",
+  "PP_AimPrecNote": "100 % = normal. Lower = slower and more precise aim; higher = faster. It never moves the aim on its own: you stay in control.",
+  "PPC_AimPrecisionSaveFailed": "Could not save the aiming sensitivity settings: {0}"
+}

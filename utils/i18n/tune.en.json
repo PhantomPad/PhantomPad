@@ -1,0 +1,20 @@
+{
+  "PP_TuneButton": "Tune",
+  "PP_TuneButtonTip": "Quick settings for this game: dead zones and response curves",
+  "PP_TuneTitle": "Quick settings",
+  "PP_TuneEditingProfile": "Editing profile:",
+  "PP_TuneSharedWarning": "This profile is shared (normal profile or other games). Changes affect all of them. Use \"Own profile for this game\" to change only this game.",
+  "PP_TuneOwnProfile": "Own profile for this game",
+  "PP_TuneOwnProfileTip": "Creates a copy of the profile with the game name and assigns it to this game",
+  "PP_TunePresets": "Presets",
+  "PP_TunePresetPrecision": "Precision",
+  "PP_TunePresetPrecisionTip": "Small dead zone and enhanced precision curve: fine aiming",
+  "PP_TunePresetFast": "Fast",
+  "PP_TunePresetFastTip": "Minimal dead zone and linear curve: quick reactions",
+  "PP_TunePresetSmooth": "Smooth",
+  "PP_TunePresetSmoothTip": "Quadratic curve: gentle near the center, full speed at the edge",
+  "PP_TunePresetDefault": "Factory values",
+  "PP_TuneGraphTip": "Approximate preview: input (horizontal) vs. output (vertical). Dashed line = linear",
+  "PP_TuneSave": "Save",
+  "PP_TuneHint": "Changes apply to the controller when you save."
+}

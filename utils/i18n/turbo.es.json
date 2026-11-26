@@ -1,0 +1,21 @@
+{
+  "PP_TurboSection": "Turbo",
+  "PP_TurboOn": "Turbo (solo offline)",
+  "PP_TurboButton": "Botón",
+  "PP_TurboRate": "Velocidad",
+  "PP_TurboRateValue": "{0} por segundo",
+  "PP_TurboNoteOn": "Mantén el botón elegido y PhantomPad lo pulsa por ti. Queda activado en este juego hasta que lo apagues.",
+  "PP_TurboNoteOff": "Solo para juegos offline. Usarlo en línea puede hacer que te baneen.",
+  "PP_TurboChecking": "Revisando la carpeta del juego en busca de anti-trampas...",
+  "PP_TurboBlockedNote": "Bloqueado: este juego tiene un anti-trampas ({0}), así que se juega en línea. El turbo es solo para juegos offline.",
+  "PP_BtnCross": "X (equis)",
+  "PP_BtnSquare": "Cuadrado",
+  "PP_BtnCircle": "Círculo",
+  "PP_BtnTriangle": "Triángulo",
+  "PP_CmdTurboName": "Turbo (disparo rápido)",
+  "PP_CmdTurboDesc": "Mientras mantienes el botón elegido, PhantomPad lo pulsa y lo suelta por ti muchas veces por segundo. Solo para juegos offline: se bloquea si el juego tiene anti-trampas.",
+  "PP_CmdTurboWhere": "Se activa en Juegos → cada juego (apagado por defecto). Queda activado hasta que lo apagues.",
+  "PP_CmdTurboButtons": "Mantener el botón elegido (R2 por defecto)",
+  "PPC_TurboBlocked": "Se apagó el turbo: este juego tiene un anti-trampas ({0}). El turbo es solo para juegos offline.",
+  "PPC_TurboSaveFailed": "No se pudo guardar el turbo: {0}"
+}

@@ -1,0 +1,17 @@
+{
+  "PP_ConnSection": "Connection",
+  "PP_SectionCommands": "Commands",
+  "PP_CommandsIntro": "Actions you trigger with the controller buttons. Here you can see what each one does, which buttons trigger it and where to set it up.",
+  "PP_CmdPowerOffName": "Turn off the controller",
+  "PP_CmdPowerOffDesc": "Turns off at once the controller that presses the combo (Bluetooth). While you press it, the game does not receive those buttons. By USB cable it cannot be turned off: unplug the cable.",
+  "PP_CmdPowerOffWhere": "Works for every controller. Choose the buttons here.",
+  "PP_CmdGyroName": "Gyro aim",
+  "PP_CmdGyroDesc": "While you hold L2, tilting the controller moves the aim. Release L2 and it stops. It pauses in racing games if you choose so.",
+  "PP_CmdGyroWhere": "Turn it on in Controllers → Controller settings (on each controller).",
+  "PP_BtnHoldL2": "Hold L2",
+  "PP_BtnTilt": "Tilt the controller",
+  "PP_CmdAimSensName": "Aiming sensitivity",
+  "PP_CmdAimSensDesc": "Changes how fast the right stick turns while you aim and while you aim and shoot. It never moves the aim on its own.",
+  "PP_CmdAimSensWhere": "Turn it on in Games → each game (off by default).",
+  "PPC_CommandsSaveFailed": "Could not save the commands: {0}"
+}

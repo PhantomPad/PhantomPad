@@ -1,0 +1,909 @@
+﻿<Window x:Name="mainDS4Window" x:Class="DS4WinWPF.DS4Forms.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:tb="http://www.hardcodet.net/taskbar"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:lex="http://wpflocalizeextension.codeplex.com"
+        lex:LocalizeDictionary.DesignCulture=""
+        lex:ResxLocalizationProvider.DefaultAssembly="PhantomPad"
+        lex:ResxLocalizationProvider.DefaultDictionary="Strings"
+        xmlns:local="clr-namespace:DS4WinWPF.DS4Forms"
+        xmlns:localConverters="clr-namespace:DS4WinWPF.DS4Forms.Converters"
+        xmlns:gp="clr-namespace:DS4WinWPF.DS4Forms.GameProfiles"
+        xmlns:cal="clr-namespace:DS4WinWPF.DS4Forms.Calibration"
+        xmlns:bat="clr-namespace:DS4WinWPF.DS4Forms.BatteryPage"
+        xmlns:upd="clr-namespace:DS4WinWPF.DS4Forms.Updates"
+        xmlns:system="clr-namespace:System;assembly=mscorlib"
+        xml:lang="en-US"
+        mc:Ignorable="d"
+        Title="PhantomPad" Height="620" Width="1040" Closing="MainDS4Window_Closing" Closed="MainDS4Window_Closed" StateChanged="MainDS4Window_StateChanged" SizeChanged="MainDS4Window_SizeChanged" LocationChanged="MainDS4Window_LocationChanged" MinWidth="780" MinHeight="420"
+        Style="{DynamicResource WindowStyle}">
+    <!--
+        PhantomPad: diseno nuevo.
+        - Barra de iconos a la izquierda (estilo RailTabControlStyle sobre mainTabCon).
+        - Barra superior y barra de estado superpuestas al contenido (mismo Grid).
+        - Mandos como tarjetas grandes; Ajustes en secciones con interruptores.
+        Todos los nombres (x:Name), enlaces y eventos originales se conservan.
+    -->
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PhantomPad;component/DS4Forms/Themes/PhantomPadStyles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+            <local:ImageLocationPaths x:Key="ImgLocPaths" />
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid>
+        <tb:TaskbarIcon x:Name="notifyIcon" IconSource="{Binding IconSource,Mode=OneWay}" ToolTipText="{Binding TooltipText,Mode=OneWay}" MenuActivation="RightClick" TrayRightMouseUp="NotifyIcon_TrayRightMouseUp" TrayMiddleMouseDown="NotifyIcon_TrayMiddleMouseDown" TrayMouseDoubleClick="NotifyIcon_TrayMouseDoubleClick" />
+
+        <TabControl x:Name="mainTabCon" SelectionChanged="MainTabCon_SelectionChanged" Style="{StaticResource RailTabControlStyle}">
+
+            <!-- ================= MANDOS ================= -->
+            <TabItem Header="{lex:Loc Controllers}" Tag="&#xE7FC;" IsEnabled="{Binding FullTabsEnabled,Mode=OneWay}">
+                <Grid Margin="22,18,22,8">
+                    <StackPanel x:Name="noContPanel" VerticalAlignment="Center" HorizontalAlignment="Center"
+                                Visibility="{Binding Visibility, ElementName=noContLb}">
+                        <TextBlock Text="&#xE7FC;" FontFamily="{StaticResource IconFont}" FontSize="56" HorizontalAlignment="Center"
+                                   Foreground="{DynamicResource TileColor}" Margin="0,0,0,12" />
+                        <Label x:Name="noContLb" Visibility="Hidden" Content="{lex:Loc NoControllersConnected}" HorizontalContentAlignment="Center" FontSize="15" />
+                        <TextBlock Text="{lex:Loc PP_ConnectHint}" HorizontalAlignment="Center" Foreground="{DynamicResource MutedForegroundColor}" />
+                    </StackPanel>
+
+                    <ListView x:Name="controllerLV" ItemsSource="{Binding ControllerCol}" SelectionMode="Single" SelectedIndex="{Binding CurrentIndex, Mode=OneWayToSource}" Margin="0"
+                              Background="Transparent" BorderThickness="0" ItemContainerStyle="{StaticResource ControllerHeroItemStyle}">
+                        <ListView.Template>
+                            <ControlTemplate TargetType="{x:Type ListView}">
+                                <ScrollViewer Focusable="False" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                                    <ItemsPresenter />
+                                </ScrollViewer>
+                            </ControlTemplate>
+                        </ListView.Template>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <!-- Dibujo del mando -->
+                                    <Border Width="132" Height="92" CornerRadius="12" Background="{DynamicResource TileColor}" Margin="0,0,20,0" VerticalAlignment="Center">
+                                        <Grid>
+                                            <TextBlock Text="&#xE7FC;" FontFamily="{StaticResource IconFont}" FontSize="52" Foreground="{DynamicResource AccentLightColor}"
+                                                       HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                            <Border CornerRadius="6" Background="{DynamicResource SidebarColor}" Padding="7,2" Margin="6"
+                                                    HorizontalAlignment="Left" VerticalAlignment="Top">
+                                                <TextBlock FontSize="11" FontWeight="SemiBold" Foreground="{DynamicResource Accent2Color}">
+                                                    <Run Text="#" /><Run Text="{Binding DisplayDevIndex, Mode=OneWay}" />
+                                                </TextBlock>
+                                            </Border>
+                                        </Grid>
+                                    </Border>
+
+                                    <!-- Nombre, conexion y bateria -->
+                                    <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                        <TextBlock x:Name="idColumnTxtB" Text="{Binding DeviceName, Mode=OneWay}" FontSize="18" FontWeight="SemiBold"
+                                                   ToolTip="{Binding TooltipIDText, Mode=OneWay}" ToolTipOpening="IdColumnTxtB_ToolTipOpening" Tag="{Binding DevIndex, Mode=OneTime}" />
+                                        <StackPanel Orientation="Horizontal" Margin="0,3,0,12">
+                                            <Image x:Name="contStatusImg" Source="{Binding StatusSource}" Stretch="Uniform" Width="14" Height="14" VerticalAlignment="Center" Margin="0,0,6,0"
+                                                   ToolTip="{lex:Loc PP_RightClickDisconnect}" MouseRightButtonUp="ContStatusImg_MouseRightButtonUp" Tag="{Binding DevIndex}" />
+                                            <TextBlock Foreground="{DynamicResource MutedForegroundColor}" VerticalAlignment="Center">
+                                                <Run Text="{Binding ConnectionText, Mode=OneWay}" /><Run Text="  ·  " /><Run Text="{Binding MacText, Mode=OneWay}" />
+                                            </TextBlock>
+                                            <Image Source="{Binding ExclusiveSource}" Stretch="Uniform" Width="14" Height="14" Margin="12,0,0,0" VerticalAlignment="Center"
+                                                   ToolTip="{Binding IsExclusiveText}" />
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="&#xE83F;" FontFamily="{StaticResource IconFont}" FontSize="15" VerticalAlignment="Center" Margin="0,0,8,0"
+                                                       Foreground="{DynamicResource MutedForegroundColor}" />
+                                            <ProgressBar Style="{StaticResource BatteryBarStyle}" Width="120" Value="{Binding BatteryLevel, Mode=OneWay}" VerticalAlignment="Center" />
+                                            <TextBlock Text="{Binding BatteryState, Mode=OneWay}" Margin="10,0,0,0" VerticalAlignment="Center" />
+                                        </StackPanel>
+                                    </StackPanel>
+
+                                    <!-- Perfil, edicion y color de la luz -->
+                                    <StackPanel Grid.Column="2" Width="250" VerticalAlignment="Center">
+                                        <TextBlock Text="{lex:Loc SelectedProfile, Converter={StaticResource UpperCaseConverter}}" FontSize="10" FontWeight="SemiBold"
+                                                   Foreground="{DynamicResource MutedForegroundColor}" Margin="0,0,0,5"
+                                                   Visibility="{Binding PrimaryDevice, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                                        <ComboBox x:Name="selectProfCombo" ItemsSource="{Binding ProfileListCol}" SelectedIndex="{Binding SelectedIndex}" Height="28" Margin="0,0,0,10"
+                                                  Tag="{Binding DevIndex, Mode=OneTime}" Visibility="{Binding PrimaryDevice, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                                  SelectionChanged="SelectProfCombo_SelectionChanged" KeyDown="SelectProfCombo_KeyDown">
+                                            <ComboBox.ItemTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="{Binding Name,Mode=OneWay,FallbackValue=''}" />
+                                                </DataTemplate>
+                                            </ComboBox.ItemTemplate>
+                                        </ComboBox>
+                                        <DockPanel Margin="0,0,0,8">
+                                            <Button x:Name="LightColorBtn" DockPanel.Dock="Right" Width="44" Height="28" Margin="8,0,0,0" Background="{Binding LightColor, Mode=OneWay}"
+                                                    BorderBrush="{DynamicResource BorderColor}" Tag="{Binding DevIndex, Mode=OneTime}" Click="LightColorBtn_Click"
+                                                    ToolTip="{lex:Loc PP_LightColor}" />
+                                            <xctk:SplitButton x:Name="ProfEditSBtn" Content="{lex:Loc Edit}" Height="28" Visibility="{Binding PrimaryDevice, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                                              Tag="{Binding DevIndex, Mode=OneTime}" Click="ProfEditSBtn_Click">
+                                                <xctk:SplitButton.DropDownContent>
+                                                    <Button x:Name="newProfBtn" Content="{lex:Loc NewProfile}" MinWidth="120" Tag="{Binding DevIndex, Mode=OneTime}" Click="NewProfBtn_Click" />
+                                                </xctk:SplitButton.DropDownContent>
+                                            </xctk:SplitButton>
+                                        </DockPanel>
+                                        <CheckBox Content="{lex:Loc LinkProfileId}" IsChecked="{Binding LinkedProfile}" IsEnabled="{Binding PrimaryDevice}" />
+                                    </StackPanel>
+                                </Grid>
+
+                                <!-- PhantomPad: seccion LUZ DEL MANDO -->
+                                <Border BorderBrush="{DynamicResource BorderColor}" BorderThickness="0,1,0,0" Margin="0,16,0,0" Padding="0,14,0,0">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <!-- Titulo + interruptores -->
+                                        <StackPanel Width="250" Margin="0,0,28,0">
+                                            <StackPanel Orientation="Horizontal" Margin="0,0,0,6">
+                                                <TextBlock Text="&#xE82F;" FontFamily="{StaticResource IconFont}" FontSize="15" Foreground="{DynamicResource Accent2Color}"
+                                                           VerticalAlignment="Center" Margin="0,0,10,0" />
+                                                <TextBlock Text="{lex:Loc PP_LightSection, Converter={StaticResource UpperCaseConverter}}" FontSize="11" FontWeight="SemiBold" VerticalAlignment="Center" />
+                                            </StackPanel>
+                                            <CheckBox Content="{lex:Loc PP_LightOn}" Style="{StaticResource ToggleSwitchStyle}" Padding="0,6" IsChecked="{Binding LightEnabled}" />
+                                            <CheckBox Content="{lex:Loc PP_LightCustomColor}" Style="{StaticResource ToggleSwitchStyle}" Padding="0,6"
+                                                      IsChecked="{Binding UseCustomLightColor}" IsEnabled="{Binding LightEnabled}"
+                                                      ToolTip="{lex:Loc PP_LightCustomColorTip}" />
+                                        </StackPanel>
+
+                                        <!-- Colores rapidos -->
+                                        <StackPanel Grid.Column="1" VerticalAlignment="Top" IsEnabled="{Binding LightEnabled}">
+                                            <TextBlock Text="{lex:Loc PP_LightQuickColors, Converter={StaticResource UpperCaseConverter}}" FontSize="10" FontWeight="SemiBold"
+                                                       Foreground="{DynamicResource MutedForegroundColor}" Margin="0,0,0,8" />
+                                            <WrapPanel>
+                                                <WrapPanel.Resources>
+                                                    <Style TargetType="{x:Type Button}">
+                                                        <Setter Property="Width" Value="26" />
+                                                        <Setter Property="Height" Value="26" />
+                                                        <Setter Property="Margin" Value="0,0,6,6" />
+                                                        <Setter Property="Cursor" Value="Hand" />
+                                                        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+                                                        <Setter Property="Template">
+                                                            <Setter.Value>
+                                                                <ControlTemplate TargetType="{x:Type Button}">
+                                                                    <Border x:Name="sw" CornerRadius="7" Background="{TemplateBinding Background}" BorderThickness="2" BorderBrush="Transparent" />
+                                                                    <ControlTemplate.Triggers>
+                                                                        <Trigger Property="IsMouseOver" Value="True">
+                                                                            <Setter TargetName="sw" Property="BorderBrush" Value="{DynamicResource ForegroundColor}" />
+                                                                        </Trigger>
+                                                                        <Trigger Property="IsEnabled" Value="False">
+                                                                            <Setter TargetName="sw" Property="Opacity" Value="0.35" />
+                                                                        </Trigger>
+                                                                    </ControlTemplate.Triggers>
+                                                                </ControlTemplate>
+                                                            </Setter.Value>
+                                                        </Setter>
+                                                        <EventSetter Event="Click" Handler="QuickLightColor_Click" />
+                                                    </Style>
+                                                </WrapPanel.Resources>
+                                                <Button Background="#FF7C3AED" ToolTip="{lex:Loc PP_ColorViolet}" />
+                                                <Button Background="#FF22D3EE" ToolTip="{lex:Loc PP_ColorCyan}" />
+                                                <Button Background="#FF2563EB" ToolTip="{lex:Loc PP_ColorBlue}" />
+                                                <Button Background="#FF22C55E" ToolTip="{lex:Loc PP_ColorGreen}" />
+                                                <Button Background="#FFFACC15" ToolTip="{lex:Loc PP_ColorYellow}" />
+                                                <Button Background="#FFF97316" ToolTip="{lex:Loc PP_ColorOrange}" />
+                                                <Button Background="#FFEF4444" ToolTip="{lex:Loc PP_ColorRed}" />
+                                                <Button Background="#FFEC4899" ToolTip="{lex:Loc PP_ColorPink}" />
+                                                <Button Background="#FFFFFFFF" ToolTip="{lex:Loc PP_ColorWhite}" />
+                                            </WrapPanel>
+
+                                            <!-- Brillo + mas colores -->
+                                            <DockPanel Margin="0,4,0,6">
+                                                <TextBlock DockPanel.Dock="Right" FontWeight="SemiBold">
+                                                    <Run Text="{Binding LightBrightness, Mode=OneWay, StringFormat={}{0:0}}" /><Run Text=" %" />
+                                                </TextBlock>
+                                                <TextBlock Text="{lex:Loc PP_LightBrightness, Converter={StaticResource UpperCaseConverter}}" FontSize="10" FontWeight="SemiBold"
+                                                           Foreground="{DynamicResource MutedForegroundColor}" VerticalAlignment="Center" />
+                                            </DockPanel>
+                                            <DockPanel>
+                                                <Button DockPanel.Dock="Right" Content="{lex:Loc PP_LightMoreColors}" Click="MoreLightColors_Click" Padding="14,5" Margin="16,0,0,0" />
+                                                <Slider Minimum="0" Maximum="100" SmallChange="1" LargeChange="10" IsSnapToTickEnabled="True" TickFrequency="5"
+                                                        Value="{Binding LightBrightness}" VerticalAlignment="Center" />
+                                            </DockPanel>
+                                        </StackPanel>
+                                    </Grid>
+                                </Border>
+
+                                <!-- PhantomPad: seccion AJUSTES DEL MANDO (gyro aim global) -->
+                                <Border BorderBrush="{DynamicResource BorderColor}" BorderThickness="0,1,0,0" Margin="0,16,0,0" Padding="0,14,0,0">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <StackPanel Width="250" Margin="0,0,28,0">
+                                            <StackPanel Orientation="Horizontal" Margin="0,0,0,6">
+                                                <TextBlock Text="&#xE713;" FontFamily="{StaticResource IconFont}" FontSize="15" Foreground="{DynamicResource Accent2Color}"
+                                                           VerticalAlignment="Center" Margin="0,0,10,0" />
+                                                <TextBlock Text="{lex:Loc PP_CtrlSettingsSection, Converter={StaticResource UpperCaseConverter}}" FontSize="11" FontWeight="SemiBold" VerticalAlignment="Center" />
+                                            </StackPanel>
+                                            <CheckBox Content="{lex:Loc PP_GyroAimOn}" Style="{StaticResource ToggleSwitchStyle}" Padding="0,6"
+                                                      IsChecked="{Binding GyroEnabled}" ToolTip="{lex:Loc PP_GyroAimTip}" />
+                                            <CheckBox Content="{lex:Loc PP_GyroPauseRacing}" Style="{StaticResource ToggleSwitchStyle}" Padding="0,6"
+                                                      IsChecked="{Binding GyroPauseInRacing}" IsEnabled="{Binding GyroEnabled}"
+                                                      ToolTip="{lex:Loc PP_GyroPauseRacingTip}" />
+                                        </StackPanel>
+
+                                        <StackPanel Grid.Column="1" VerticalAlignment="Top" IsEnabled="{Binding GyroEnabled}">
+                                            <DockPanel Margin="0,0,0,6">
+                                                <TextBlock DockPanel.Dock="Right" FontWeight="SemiBold">
+                                                    <Run Text="{Binding GyroSensitivity, Mode=OneWay, StringFormat={}{0:0}}" /><Run Text=" %" />
+                                                </TextBlock>
+                                                <TextBlock Text="{lex:Loc PP_GyroSensitivity, Converter={StaticResource UpperCaseConverter}}" FontSize="10" FontWeight="SemiBold"
+                                                           Foreground="{DynamicResource MutedForegroundColor}" VerticalAlignment="Center" />
+                                            </DockPanel>
+                                            <Slider Minimum="25" Maximum="300" SmallChange="5" LargeChange="25" IsSnapToTickEnabled="True" TickFrequency="5"
+                                                    Value="{Binding GyroSensitivity}" />
+                                            <TextBlock Text="{lex:Loc PP_GyroHint}" TextWrapping="Wrap" FontSize="11" Margin="0,8,0,0"
+                                                       Foreground="{DynamicResource MutedForegroundColor}" />
+                                        </StackPanel>
+                                    </Grid>
+                                </Border>
+
+                                <!-- PhantomPad: seccion CONEXION Y SALIDA (emulacion, apagado, frecuencia, latencia) -->
+                                <Border BorderBrush="{DynamicResource BorderColor}" BorderThickness="0,1,0,0" Margin="0,16,0,0" Padding="0,14,0,0">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <StackPanel Width="250" Margin="0,0,28,0">
+                                            <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                                                <TextBlock Text="&#xE7EF;" FontFamily="{StaticResource IconFont}" FontSize="15" Foreground="{DynamicResource Accent2Color}"
+                                                           VerticalAlignment="Center" Margin="0,0,10,0" />
+                                                <TextBlock Text="{lex:Loc PP_ConnSection, Converter={StaticResource UpperCaseConverter}}" FontSize="11" FontWeight="SemiBold" VerticalAlignment="Center" />
+                                            </StackPanel>
+                                            <!-- Mando no original -->
+                                            <CheckBox Content="{lex:Loc PP_CompatMode}" Style="{StaticResource ToggleSwitchStyle}" Padding="0,6"
+                                                      IsChecked="{Binding CompatMode}" ToolTip="{lex:Loc PP_CompatModeTip}"
+                                                      Visibility="{Binding HasCompatMode, Mode=OneWay, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                                        </StackPanel>
+
+                                        <StackPanel Grid.Column="1" VerticalAlignment="Top">
+                                            <!-- Frecuencia de lectura -->
+                                            <TextBlock Text="{lex:Loc PP_PollRate, Converter={StaticResource UpperCaseConverter}}" FontSize="10" FontWeight="SemiBold"
+                                                       Foreground="{DynamicResource MutedForegroundColor}" Margin="0,0,0,4" />
+                                            <ComboBox ItemsSource="{Binding PollOptions, Mode=OneTime}" SelectedIndex="{Binding PollChoiceIndex}" IsEnabled="{Binding CanSetPollRate, Mode=OneWay}"
+                                                      HorizontalAlignment="Left" MinWidth="220" />
+                                            <TextBlock Text="{Binding PollRateText, Mode=OneWay}" TextWrapping="Wrap" Margin="0,6,0,12" />
+
+                                            <!-- Latencia de lectura -->
+                                            <DockPanel Margin="0,0,0,2">
+                                                <TextBlock DockPanel.Dock="Right" Text="{Binding LatencyText, Mode=OneWay}" FontWeight="SemiBold" />
+                                                <TextBlock Text="{lex:Loc PP_LatencyReading, Converter={StaticResource UpperCaseConverter}}" FontSize="10" FontWeight="SemiBold"
+                                                           Foreground="{DynamicResource MutedForegroundColor}" VerticalAlignment="Center" />
+                                            </DockPanel>
+                                            <TextBlock Text="{lex:Loc PP_PollNote}" TextWrapping="Wrap" FontSize="11" Margin="0,6,0,0"
+                                                       Foreground="{DynamicResource MutedForegroundColor}" />
+                                        </StackPanel>
+                                    </Grid>
+                                </Border>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Grid>
+            </TabItem>
+
+            <!-- ================= PERFILES ================= -->
+            <!-- PhantomPad: "Perfiles" queda oculto en la barra (se abre desde Juegos > ⋮ > Administrar perfiles) -->
+            <TabItem x:Name="profilesTab" Header="{lex:Loc Profiles}" Tag="&#xE77B;" Visibility="Collapsed">
+                <DockPanel x:Name="profDockPanel" Margin="22,14,22,8">
+                    <ToolBar x:Name="profOptsToolbar" Height="34" DockPanel.Dock="Top" Background="{x:Null}" Margin="0,0,0,8">
+                        <Button x:Name="newProfListBtn" Click="NewProfListBtn_Click">
+                            <Button.Content>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="{Binding NewProfile, Source={StaticResource ImgLocPaths}}" />
+                                    <TextBlock Text="{lex:Loc New}" />
+                                </StackPanel>
+                            </Button.Content>
+                        </Button>
+                        <Button x:Name="editProfBtn" Margin="10,0,0,0" IsEnabled="False" Click="EditProfBtn_Click">
+                            <Button.Content>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="{Binding EditProfile, Source={StaticResource ImgLocPaths}}" />
+                                    <TextBlock Text="{lex:Loc Edit}" />
+                                </StackPanel>
+                            </Button.Content>
+                        </Button>
+                        <Button x:Name="deleteProfBtn" Margin="10,0,0,0" IsEnabled="False" Click="DeleteProfBtn_Click">
+                            <Button.Content>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="{Binding DeleteProfile, Source={StaticResource ImgLocPaths}}" />
+                                    <TextBlock Text="{lex:Loc Delete}" />
+                                </StackPanel>
+                            </Button.Content>
+                        </Button>
+                        <Button x:Name="renameProfBtn" Margin="10,0,0,0" IsEnabled="False" Click="RenameProfBtn_Click">
+                            <Button.Content>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="{Binding EditProfile, Source={StaticResource ImgLocPaths}}" />
+                                    <TextBlock Text="{lex:Loc RenameProfile}" />
+                                </StackPanel>
+                            </Button.Content>
+                        </Button>
+                        <Button x:Name="dupProfBtn" Margin="10,0,0,0" IsEnabled="False" Click="DupProfBtn_Click">
+                            <Button.Content>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="{Binding DuplicateProfile, Source={StaticResource ImgLocPaths}}" />
+                                    <TextBlock Text="{lex:Loc Duplicate}" />
+                                </StackPanel>
+                            </Button.Content>
+                        </Button>
+                        <Button x:Name="importProfBtn" Margin="10,0,0,0" Click="ImportProfBtn_Click">
+                            <Button.Content>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="{Binding ImportProfile, Source={StaticResource ImgLocPaths}}" />
+                                    <TextBlock Text="{lex:Loc Import}" />
+                                </StackPanel>
+                            </Button.Content>
+                        </Button>
+                        <Button x:Name="exportProfBtn" Margin="10,0,0,0" IsEnabled="False" Click="ExportProfBtn_Click">
+                            <Button.Content>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="{Binding ExportProfile, Source={StaticResource ImgLocPaths}}" />
+                                    <TextBlock Text="{lex:Loc Export}" />
+                                </StackPanel>
+                            </Button.Content>
+                        </Button>
+                    </ToolBar>
+                    <ToolBar x:Name="dupBoxBar" Height="40" DockPanel.Dock="Top" Background="{x:Null}" HorizontalAlignment="Center" Visibility="Collapsed">
+                        <local:DupBox x:Name="dupBox" />
+                    </ToolBar>
+
+                    <ListBox x:Name="profilesListBox" DockPanel.Dock="Bottom" SelectionChanged="ProfilesListBox_SelectionChanged" MouseDoubleClick="ProfilesListBox_MouseDoubleClick"
+                             Background="{DynamicResource SurfaceColor}" Padding="6">
+                        <ListBox.Resources>
+                            <localConverters:EscapeAccessKeysConverter x:Key="escapeAccessConvert" />
+                        </ListBox.Resources>
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" Margin="4,5">
+                                    <TextBlock Text="&#xE77B;" FontFamily="{StaticResource IconFont}" FontSize="14" Foreground="{DynamicResource AccentLightColor}"
+                                               VerticalAlignment="Center" Margin="0,0,10,0" />
+                                    <Label Content="{Binding Name, Mode=OneWay, Converter={StaticResource escapeAccessConvert}}" Padding="0" VerticalAlignment="Center" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </DockPanel>
+            </TabItem>
+
+            <!-- ================= AUTO-PERFILES ================= -->
+            <!-- PhantomPad: "Juegos" (une Perfiles y Perfiles automaticos) -->
+            <TabItem x:Name="gamesTab" Header="{lex:Loc PP_HubTab}" Tag="&#xE768;" IsEnabled="{Binding FullTabsEnabled,Mode=OneWay}">
+                <Grid Margin="22,14,22,8">
+                    <!-- PhantomPad: pantalla nueva "Perfiles por juego" -->
+                    <gp:GameProfilesControl x:Name="gameProfilesControl" />
+                    <!-- Editor avanzado original (mismo archivo de reglas) -->
+                    <DockPanel x:Name="advancedAutoProfPanel" Visibility="Collapsed">
+                        <Button DockPanel.Dock="Top" HorizontalAlignment="Left" Content="{lex:Loc PP_GamesBackToGames}" Padding="14,5" Margin="0,0,0,10"
+                                Click="BackToGamesBtn_Click" />
+                        <local:AutoProfiles x:Name="autoProfControl" />
+                    </DockPanel>
+                </Grid>
+            </TabItem>
+
+            <!-- ================= SALIDAS ================= -->
+            <TabItem Header="{lex:Loc OutputSlots}" Tag="&#xE703;" IsEnabled="{Binding FullTabsEnabled,Mode=OneWay}">
+                <local:OutputSlotManagerControl x:Name="slotManControl" Margin="22,14,22,8" />
+            </TabItem>
+
+            <!-- ================= AJUSTES ================= -->
+            <TabItem x:Name="settingsTab" Header="{lex:Loc PP_SettingsTab}" Tag="&#xE713;" IsEnabled="{Binding ViewEnabled,Mode=OneWay}">
+                <Grid Background="{DynamicResource BackgroundColor}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="220" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <!-- PhantomPad: menu interno de Configuraciones -->
+                    <Border Background="{DynamicResource HeaderBarColor}" BorderBrush="{DynamicResource BorderColor}" BorderThickness="1" CornerRadius="10"
+                            Margin="22,18,0,14" VerticalAlignment="Top">
+                        <ListBox x:Name="settingsNav" Background="Transparent" BorderThickness="0" Margin="0,8" ItemContainerStyle="{StaticResource SubNavItemStyle}"
+                                 SelectionChanged="SettingsNav_SelectionChanged">
+                            <ListBoxItem Tag="general" IsSelected="True">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="&#xE713;" FontFamily="{StaticResource IconFont}" FontSize="15" Foreground="{DynamicResource AccentLightColor}"
+                                               VerticalAlignment="Center" Margin="0,0,12,0" />
+                                    <TextBlock Text="{lex:Loc PP_SettingsGeneral}" FontWeight="SemiBold" VerticalAlignment="Center" />
+                                </StackPanel>
+                            </ListBoxItem>
+                            <ListBoxItem Tag="commands">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="&#xE765;" FontFamily="{StaticResource IconFont}" FontSize="15" Foreground="{DynamicResource AccentLightColor}"
+                                               VerticalAlignment="Center" Margin="0,0,12,0" />
+                                    <TextBlock Text="{lex:Loc PP_SectionCommands}" FontWeight="SemiBold" VerticalAlignment="Center" />
+                                </StackPanel>
+                            </ListBoxItem>
+                            <ListBoxItem Tag="calibration">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="&#xE7FC;" FontFamily="{StaticResource IconFont}" FontSize="15" Foreground="{DynamicResource AccentLightColor}"
+                                               VerticalAlignment="Center" Margin="0,0,12,0" />
+                                    <TextBlock Text="{lex:Loc PP_CalNav}" FontWeight="SemiBold" VerticalAlignment="Center" />
+                                </StackPanel>
+                            </ListBoxItem>
+                            <ListBoxItem Tag="battery">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="&#xE83F;" FontFamily="{StaticResource IconFont}" FontSize="15" Foreground="{DynamicResource AccentLightColor}"
+                                               VerticalAlignment="Center" Margin="0,0,12,0" />
+                                    <TextBlock Text="{lex:Loc PP_BatNav}" FontWeight="SemiBold" VerticalAlignment="Center" />
+                                </StackPanel>
+                            </ListBoxItem>
+                            <ListBoxItem Tag="startup">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="&#xE7E8;" FontFamily="{StaticResource IconFont}" FontSize="15" Foreground="{DynamicResource AccentLightColor}"
+                                               VerticalAlignment="Center" Margin="0,0,12,0" />
+                                    <TextBlock Text="{lex:Loc PP_StartNav}" FontWeight="SemiBold" VerticalAlignment="Center" />
+                                </StackPanel>
+                            </ListBoxItem>
+                            <ListBoxItem Tag="updates">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="&#xE895;" FontFamily="{StaticResource IconFont}" FontSize="15" Foreground="{DynamicResource AccentLightColor}"
+                                               VerticalAlignment="Center" Margin="0,0,12,0" />
+                                    <TextBlock Text="{lex:Loc PP_UpdNav}" FontWeight="SemiBold" VerticalAlignment="Center" />
+                                </StackPanel>
+                            </ListBoxItem>
+                        </ListBox>
+                    </Border>
+
+                <!-- ===== Configuraciones > General ===== -->
+                <ScrollViewer x:Name="settingsGeneralPage" Grid.Column="1" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                    <WrapPanel Orientation="Horizontal" Margin="16,18,8,8">
+                        <WrapPanel.Resources>
+                            <Thickness x:Key="spaceMargin" Left="16" Right="16" Bottom="8" Top="0" />
+                        </WrapPanel.Resources>
+
+                        <!-- GENERAL -->
+                        <Border Style="{StaticResource SectionCardStyle}" Width="400">
+                            <StackPanel>
+                                <Border Style="{StaticResource SectionHeaderStyle}">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="&#xE713;" Style="{StaticResource SectionIconStyle}" />
+                                        <TextBlock Text="{lex:Loc PP_SectionGeneral, Converter={StaticResource UpperCaseConverter}}" Style="{StaticResource SectionTitleStyle}" />
+                                    </StackPanel>
+                                </Border>
+                                <StackPanel Margin="0,6">
+                                    <CheckBox x:Name="hideDS4ContCk" Content="{lex:Loc HideDS4Controller}" x:Uid="hideDS4Checkbox" Style="{StaticResource ToggleSwitchStyle}"
+                                              IsChecked="{Binding HideDS4Controller}" Click="HideDS4ContCk_Click" />
+                                    <CheckBox x:Name="swipeTouchCk" Content="{lex:Loc SwipeTouchpadToSwitchProfiles}" Style="{StaticResource ToggleSwitchStyle}"
+                                              IsChecked="{Binding SwipeTouchSwitchProfile}" ToolTip="{lex:Loc Resources:TwoFingerSwipe}" Click="SwipeTouchCk_Click" />
+                                    <CheckBox Content="{lex:Loc QuickCharge}" Style="{StaticResource ToggleSwitchStyle}" IsChecked="{Binding QuickCharge}" ToolTip="{lex:Loc Resources:QuickCharge}" />
+                                    <CheckBox Content="{lex:Loc DisconnectFromBtWhenStopping}" Style="{StaticResource ToggleSwitchStyle}" IsChecked="{Binding DisconnectBTStop}" />
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+
+                        <!-- NOTIFICACIONES Y LUZ -->
+                        <Border Style="{StaticResource SectionCardStyle}" Width="400">
+                            <StackPanel>
+                                <Border Style="{StaticResource SectionHeaderStyle}">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="&#xEA8F;" Style="{StaticResource SectionIconStyle}" />
+                                        <TextBlock Text="{lex:Loc PP_SectionNotifications, Converter={StaticResource UpperCaseConverter}}" Style="{StaticResource SectionTitleStyle}" />
+                                    </StackPanel>
+                                </Border>
+                                <StackPanel Margin="0,6">
+                                    <DockPanel Style="{StaticResource SettingRowStyle}">
+                                        <Label Content="{lex:Loc ShowNotifications}" Padding="0" VerticalAlignment="Center" />
+                                        <ComboBox DockPanel.Dock="Right" MinWidth="140" SelectedIndex="{Binding ShowNotificationsIndex}">
+                                            <ComboBoxItem Content="{lex:Loc None}" />
+                                            <ComboBoxItem Content="{lex:Loc WarningsOnly}" />
+                                            <ComboBoxItem Content="{lex:Loc All}" />
+                                        </ComboBox>
+                                    </DockPanel>
+                                    <CheckBox Content="{lex:Loc ProfileSwitchNotification}" Style="{StaticResource ToggleSwitchStyle}" IsChecked="{Binding ProfileChangedNotification}"
+                                              Visibility="{Binding IsProfileChangedCheckVisible}" />
+                                    <CheckBox Content="{lex:Loc FlashLightbarAtHighLatency}" Style="{StaticResource ToggleSwitchStyle}" IsChecked="{Binding FlashHighLatency}" />
+                                    <DockPanel Style="{StaticResource SettingRowStyle}" IsEnabled="{Binding FlashHighLatency,FallbackValue='False'}">
+                                        <Label Content="{lex:Loc PP_LatencyLimit}" Padding="0" VerticalAlignment="Center" Foreground="{DynamicResource MutedForegroundColor}" />
+                                        <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
+                                            <xctk:IntegerUpDown d:IsHidden="True" Value="{Binding FlashHighLatencyAt}" MinWidth="60" ButtonSpinnerLocation="Right" Increment="1" Maximum="100" Minimum="10" />
+                                            <Label Content="ms" VerticalAlignment="Center" />
+                                        </StackPanel>
+                                    </DockPanel>
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+
+                        <!-- APARIENCIA E IDIOMA -->
+                        <Border Style="{StaticResource SectionCardStyle}" Width="400">
+                            <StackPanel>
+                                <Border Style="{StaticResource SectionHeaderStyle}">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="&#xE790;" Style="{StaticResource SectionIconStyle}" />
+                                        <TextBlock Text="{lex:Loc PP_SectionAppearance, Converter={StaticResource UpperCaseConverter}}" Style="{StaticResource SectionTitleStyle}" />
+                                    </StackPanel>
+                                </Border>
+                                <StackPanel Margin="0,8">
+                                    <DockPanel Style="{StaticResource SettingRowStyle}">
+                                        <Label Content="{lex:Loc AppTheme}" Padding="0" VerticalAlignment="Center" />
+                                        <ComboBox x:Name="appThemeCom" DockPanel.Dock="Right" MinWidth="140" SelectedIndex="{Binding AppChoiceIndex,FallbackValue='0'}">
+                                            <ComboBoxItem Content="{lex:Loc Default}"/>
+                                            <ComboBoxItem Content="{lex:Loc Light}"/>
+                                            <ComboBoxItem Content="{lex:Loc Dark}"/>
+                                        </ComboBox>
+                                    </DockPanel>
+                                    <DockPanel Style="{StaticResource SettingRowStyle}">
+                                        <Label Content="{lex:Loc IconChoice}" Padding="0" VerticalAlignment="Center" />
+                                        <ComboBox x:Name="useIconChoiceCom" DockPanel.Dock="Right" MinWidth="140" SelectedIndex="{Binding IconChoiceIndex,FallbackValue='0'}">
+                                            <ComboBoxItem Content="{lex:Loc Default}"/>
+                                            <ComboBoxItem Content="{lex:Loc Colored}"/>
+                                            <ComboBoxItem Content="{lex:Loc White}"/>
+                                            <ComboBoxItem Content="{lex:Loc Black}"/>
+                                            <ComboBoxItem Content="{lex:Loc Battery}"/>
+                                        </ComboBox>
+                                    </DockPanel>
+                                    <local:LanguagePackControl Margin="16,7" />
+
+                                    <!-- PhantomPad: actualizador de schmaldeo desactivado, se ocultan sus opciones -->
+                                    <CheckBox Content="{lex:Loc CheckUpdateStartup}" IsChecked="{Binding CheckForUpdates}" Visibility="Collapsed" />
+                                    <StackPanel x:Name="checkEveryOptionsStack" Orientation="Horizontal" Visibility="Collapsed" IsEnabled="{Binding CheckForUpdates}">
+                                        <Label Content="{lex:Loc CheckEvery}" />
+                                        <xctk:IntegerUpDown d:IsHidden="True" Value="{Binding CheckEvery}" MinWidth="30" Margin="8,0,0,0"
+                                                            ButtonSpinnerLocation="Right" Increment="1" Maximum="30" Minimum="0" />
+                                        <ComboBox SelectedIndex="{Binding CheckEveryUnit,FallbackValue=1}" Margin="8,0,0,0" MinWidth="60">
+                                            <ComboBoxItem Content="{lex:Loc Hours}" />
+                                            <ComboBoxItem Content="{lex:Loc Days}" />
+                                        </ComboBox>
+                                    </StackPanel>
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+
+                        <!-- AVANZADO -->
+                        <Border Style="{StaticResource SectionCardStyle}" Width="400">
+                            <StackPanel>
+                                <Border Style="{StaticResource SectionHeaderStyle}">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="&#xE9E9;" Style="{StaticResource SectionIconStyle}" />
+                                        <TextBlock Text="{lex:Loc PP_SectionAdvanced, Converter={StaticResource UpperCaseConverter}}" Style="{StaticResource SectionTitleStyle}" />
+                                    </StackPanel>
+                                </Border>
+                                <StackPanel Margin="0,6">
+                                    <CheckBox x:Name="customSteamCk" Content="{lex:Loc UseCustomSteamFolder}" Style="{StaticResource ToggleSwitchStyle}" IsChecked="{Binding UseCustomSteamFolder}" />
+                                    <TextBox x:Name="customSteamTxt" Text="{Binding CustomSteamFolder, UpdateSourceTrigger=LostFocus}" IsEnabled="{Binding UseCustomSteamFolder}"
+                                             Margin="16,0,16,8" Height="26" VerticalContentAlignment="Center" />
+                                    <DockPanel Margin="16,7">
+                                        <Label Content="{lex:Loc CustomExeName}" Padding="0" VerticalAlignment="Center" DockPanel.Dock="Top" Margin="0,0,0,5" />
+                                        <Button x:Name="fakeExeNameExplainBtn" DockPanel.Dock="Right" Margin="8,0,0,0" Click="FakeExeNameExplainBtn_Click">
+                                            <Image Source="{Binding QuestionMarkSource, Mode=OneTime}" Width="20" Height="20" Stretch="UniformToFill" />
+                                        </Button>
+                                        <TextBox x:Name="fakeExeNameTxt" Text="{Binding FakeExeName, UpdateSourceTrigger=LostFocus}" Height="26" VerticalContentAlignment="Center" />
+                                    </DockPanel>
+                                    <DockPanel Style="{StaticResource SettingRowStyle}">
+                                        <Label Content="{lex:Loc ProcessPriority}" Padding="0" VerticalAlignment="Center" />
+                                        <ComboBox x:Name="ProcessPriorityComboBox" DockPanel.Dock="Right" MinWidth="140" SelectedIndex="{Binding ProcessPriorityIndex}" SelectionChanged="ProcessPriorityComboBox_OnSelectionChanged" />
+                                    </DockPanel>
+                                    <DockPanel Style="{StaticResource SettingRowStyle}">
+                                        <Label Content="{lex:Loc MainWin.AbsDisplayMonitor}" Padding="0" VerticalAlignment="Center" />
+                                        <ComboBox DockPanel.Dock="Right" MinWidth="140" MaxWidth="200" ItemsSource="{Binding AbsMonitorChoices}" DisplayMemberPath="DisplayItemString" SelectedValuePath="EDID"
+                                                  SelectedValue="{Binding AbsMonitorSettingEDID}" />
+                                    </DockPanel>
+                                    <Button x:Name="deviceOptionSettingsBtn" Content="{lex:Loc DeviceOptions}" Click="DeviceOptionSettingsBtn_Click"
+                                            HorizontalAlignment="Left" Margin="16,8,16,8" Padding="14,5" />
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+
+                        <!-- SERVIDORES OSC / UDP -->
+                        <Border Style="{StaticResource SectionCardStyle}" Width="400">
+                            <StackPanel>
+                                <Border Style="{StaticResource SectionHeaderStyle}">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="&#xE968;" Style="{StaticResource SectionIconStyle}" />
+                                        <TextBlock Text="{lex:Loc OscServerHeading, Converter={StaticResource UpperCaseConverter}}" Style="{StaticResource SectionTitleStyle}" />
+                                    </StackPanel>
+                                </Border>
+                                <StackPanel Margin="0,6">
+                                    <CheckBox x:Name="useOscServerCk" Content="{lex:Loc EnableOscServer}" Style="{StaticResource ToggleSwitchStyle}" IsChecked="{Binding UseOSCServer}" Click="UseOscServerCk_Click" />
+                                    <DockPanel Style="{StaticResource SettingRowStyle}" IsEnabled="{Binding UseOSCServer}">
+                                        <Label Content="{lex:Loc Port}" Padding="0" VerticalAlignment="Center" Foreground="{DynamicResource MutedForegroundColor}" />
+                                        <xctk:IntegerUpDown d:IsHidden="False" x:Name="oscPortNum" DockPanel.Dock="Right" MinWidth="90"
+                                                            Value="{Binding OscPort, UpdateSourceTrigger=LostFocus,FallbackValue='9000'}" ButtonSpinnerLocation="Right" Increment="1" Maximum="65535" Minimum="0" />
+                                    </DockPanel>
+                                    <CheckBox x:Name="interpretingOscMonitoringCk" Content="{lex:Loc EnableInterpretingOscMonitoring}" Style="{StaticResource ToggleSwitchStyle}"
+                                              IsChecked="{Binding InterpretingOscMonitoring}" IsEnabled="{Binding UseOSCServer}" />
+                                    <CheckBox x:Name="useOscSenderCk" Content="{lex:Loc EnableOscSender}" Style="{StaticResource ToggleSwitchStyle}" IsChecked="{Binding UseOSCSender}" Click="UseOscSenderCk_Click" />
+                                    <DockPanel Style="{StaticResource SettingRowStyle}" IsEnabled="{Binding UseOSCSender,Mode=OneWay}">
+                                        <TextBox x:Name="oscSenderTxt" Text="{Binding OscSenderAddress, UpdateSourceTrigger=LostFocus,FallbackValue='127.0.0.1'}" MinWidth="130" Height="26" VerticalContentAlignment="Center" />
+                                        <xctk:IntegerUpDown d:IsHidden="False" x:Name="oscSendPort" DockPanel.Dock="Right" MinWidth="90"
+                                                            Value="{Binding OscSendPort, UpdateSourceTrigger=LostFocus,FallbackValue='9000'}" ButtonSpinnerLocation="Right" Increment="1" Maximum="65535" Minimum="0" />
+                                        <Label Content="{lex:Loc Port}" DockPanel.Dock="Right" Padding="0" Margin="0,0,8,0" VerticalAlignment="Center" Foreground="{DynamicResource MutedForegroundColor}" />
+                                    </DockPanel>
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+
+                        <Border Style="{StaticResource SectionCardStyle}" Width="400">
+                            <StackPanel>
+                                <Border Style="{StaticResource SectionHeaderStyle}">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="&#xE839;" Style="{StaticResource SectionIconStyle}" />
+                                        <TextBlock Text="{lex:Loc UDPServer, Converter={StaticResource UpperCaseConverter}}" Style="{StaticResource SectionTitleStyle}" />
+                                    </StackPanel>
+                                </Border>
+                                <StackPanel Margin="0,6">
+                                    <CheckBox x:Name="useUdpServerCk" Content="{lex:Loc MainWin.EnableServer}" Style="{StaticResource ToggleSwitchStyle}" IsChecked="{Binding UseUDPServer}" Click="UseUdpServerCk_Click" />
+                                    <DockPanel Style="{StaticResource SettingRowStyle}" IsEnabled="{Binding UseUDPServer,Mode=OneWay}">
+                                        <TextBox x:Name="udpServerTxt" Text="{Binding UdpIpAddress, UpdateSourceTrigger=LostFocus,FallbackValue='127.0.0.1'}" MinWidth="130" Height="26" VerticalContentAlignment="Center" />
+                                        <xctk:IntegerUpDown d:IsHidden="True" x:Name="updPortNum" DockPanel.Dock="Right" MinWidth="90"
+                                                            Value="{Binding UdpPort, UpdateSourceTrigger=LostFocus,FallbackValue='26760'}" ButtonSpinnerLocation="Right" Increment="1" Maximum="65535" Minimum="0" />
+                                        <Label Content="{lex:Loc Port}" DockPanel.Dock="Right" Padding="0" Margin="0,0,8,0" VerticalAlignment="Center" Foreground="{DynamicResource MutedForegroundColor}" />
+                                    </DockPanel>
+                                    <CheckBox Content="{lex:Loc UseSmoothing}" Style="{StaticResource ToggleSwitchStyle}" IsChecked="{Binding UseUdpSmoothing,FallbackValue='False'}" IsEnabled="{Binding UseUDPServer,Mode=OneWay}" />
+                                    <StackPanel x:Name="udpEuroPanel" Margin="16,4,16,8" Visibility="{Binding UdpServerOneEuroPanelVisibility,FallbackValue='Collapsed'}">
+                                        <DockPanel Margin="0,0,0,6">
+                                            <Label Content="{lex:Loc MainWin.OneEuroMinCutoff}" Padding="0" VerticalAlignment="Center" />
+                                            <xctk:DoubleUpDown d:IsHidden="True" DockPanel.Dock="Right" HorizontalAlignment="Right" FormatString="F5" Value="{Binding UdpSmoothMinCutoff,FallbackValue=1.0,UpdateSourceTrigger=LostFocus}"
+                                                               Minimum="0.00001" Maximum="100.0" Increment="0.1" MinWidth="90" />
+                                        </DockPanel>
+                                        <DockPanel>
+                                            <Label Content="{lex:Loc MainWin.OneEuroBeta}" Padding="0" VerticalAlignment="Center" />
+                                            <xctk:DoubleUpDown d:IsHidden="True" DockPanel.Dock="Right" HorizontalAlignment="Right" FormatString="F5" Value="{Binding UdpSmoothBeta,FallbackValue=0.0,UpdateSourceTrigger=LostFocus}"
+                                                               Minimum="0.0" Maximum="1.0" Increment="0.1" MinWidth="90" />
+                                        </DockPanel>
+                                    </StackPanel>
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+
+                        <!-- UTILIDADES -->
+                        <Border Style="{StaticResource SectionCardStyle}" Width="400">
+                            <StackPanel>
+                                <Border Style="{StaticResource SectionHeaderStyle}">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="&#xE90F;" Style="{StaticResource SectionIconStyle}" />
+                                        <TextBlock Text="{lex:Loc Utils, Converter={StaticResource UpperCaseConverter}}" Style="{StaticResource SectionTitleStyle}" />
+                                    </StackPanel>
+                                </Border>
+                                <StackPanel Margin="0,6">
+                                    <Button x:Name="profFolderBtn" Style="{StaticResource LinkButtonStyle}" Click="ProfFolderBtn_Click">
+                                        <TextBlock Text="{lex:Loc ProfileFolder}" Foreground="{DynamicResource AccentLightColor}" />
+                                    </Button>
+                                    <Button x:Name="controlPanelBtn" Style="{StaticResource LinkButtonStyle}" Click="ControlPanelBtn_Click">
+                                        <TextBlock Text="{lex:Loc ControlPanel}" Foreground="{DynamicResource AccentLightColor}" />
+                                    </Button>
+                                    <Button x:Name="html5GameBtn" Style="{StaticResource LinkButtonStyle}" Click="Html5GameBtn_Click">
+                                        <TextBlock Text="{lex:Loc GamepadTest}" Foreground="{DynamicResource AccentLightColor}" />
+                                    </Button>
+                                    <Button x:Name="xinputCheckerBtn" Style="{StaticResource LinkButtonStyle}" Click="XinputCheckerBtn_Click">
+                                        <TextBlock Text="{lex:Loc XInputChecker}" Foreground="{DynamicResource AccentLightColor}" />
+                                    </Button>
+                                    <Button x:Name="hidHideBtn" Style="{StaticResource LinkButtonStyle}" Click="HidHideBtn_Click"
+                                            Visibility="{Binding HidHideClientFound, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}">
+                                        <TextBlock Text="{lex:Loc HidHideConfigClient}" Foreground="{DynamicResource AccentLightColor}" />
+                                    </Button>
+                                    <Button x:Name="driverSetupBtn" Style="{StaticResource LinkButtonStyle}" Click="DriverSetupBtn_Click">
+                                        <TextBlock Text="{lex:Loc DriverSetup}" Foreground="{DynamicResource AccentLightColor}" />
+                                    </Button>
+                                    <!-- PhantomPad: actualizador desactivado -->
+                                    <Button x:Name="checkUpdatesBtn" Style="{StaticResource LinkButtonStyle}" Click="CheckUpdatesBtn_Click" Visibility="Collapsed">
+                                        <TextBlock Text="{lex:Loc CheckUpdateNow}" />
+                                    </Button>
+                                    <Button x:Name="checklogViewBtn" Style="{StaticResource LinkButtonStyle}" Click="ChecklogViewBtn_Click" Visibility="Collapsed">
+                                        <TextBlock Text="{lex:Loc Changelog}" />
+                                    </Button>
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+                    </WrapPanel>
+                </ScrollViewer>
+
+                <!-- ===== Configuraciones > Actualizaciones ===== -->
+                <ScrollViewer x:Name="settingsUpdatesPage" Grid.Column="1" Visibility="Collapsed" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                    <upd:UpdatesControl x:Name="updatesControl" />
+                </ScrollViewer>
+
+                <!-- ===== Configuraciones > Inicio ===== -->
+                <ScrollViewer x:Name="settingsStartupPage" Grid.Column="1" Visibility="Collapsed" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                    <StackPanel Margin="16,18,22,8" MaxWidth="1000" HorizontalAlignment="Left">
+                        <TextBlock Text="{lex:Loc PP_StartTitle}" FontSize="20" FontWeight="SemiBold" />
+                        <TextBlock Text="{lex:Loc PP_StartIntro}" TextWrapping="Wrap" Foreground="{DynamicResource MutedForegroundColor}" Margin="0,4,0,16" />
+
+                        <Border Style="{StaticResource SectionCardStyle}" Padding="20,10" Margin="0,0,0,12">
+                            <StackPanel>
+                                <!-- 1. Iniciar con Windows -->
+                                <CheckBox x:Name="runAtStartCk" Content="{lex:Loc PP_StartWithWindows}" Style="{StaticResource ToggleSwitchStyle}"
+                                          IsChecked="{Binding RunAtStartup}" Click="RunAtStartCk_Click" />
+                                <TextBlock Text="{lex:Loc PP_StartWithWindowsText}" TextWrapping="Wrap" FontSize="12" Foreground="{DynamicResource MutedForegroundColor}" Margin="16,-4,16,6" />
+                                <GroupBox x:Name="runAsGroupBox" Header="{lex:Loc RunAs}" BorderThickness="1" Visibility="{Binding ShowRunStartPanel}" Margin="16,0,16,8">
+                                    <StackPanel Orientation="Horizontal">
+                                        <StackPanel>
+                                            <RadioButton Content="{lex:Loc Program}" GroupName="RunAsOpt" Margin="4" IsChecked="{Binding RunStartProg}" />
+                                            <RadioButton Content="{lex:Loc Task}" GroupName="RunAsOpt" Margin="4" IsChecked="{Binding RunStartTask}" IsEnabled="{Binding CanWriteTask}" />
+                                        </StackPanel>
+                                        <Image x:Name="uacImg" Source="{Binding UACSource, Mode=OneTime}" Width="30" Height="30" ToolTip="{lex:Loc Resources:UACTask}" Margin="20,0,0,0" />
+                                    </StackPanel>
+                                </GroupBox>
+
+                                <Border BorderBrush="{DynamicResource BorderColor}" BorderThickness="0,1,0,0" Margin="0,4" />
+
+                                <!-- 2. Abrir escondido en la bandeja -->
+                                <CheckBox Content="{lex:Loc PP_StartHidden}" Style="{StaticResource ToggleSwitchStyle}" IsChecked="{Binding StartHiddenInTray}" />
+                                <TextBlock Text="{lex:Loc PP_StartHiddenText}" TextWrapping="Wrap" FontSize="12" Foreground="{DynamicResource MutedForegroundColor}" Margin="16,-4,16,6" />
+
+                                <Border BorderBrush="{DynamicResource BorderColor}" BorderThickness="0,1,0,0" Margin="0,4" />
+
+                                <!-- 3. Al cerrar, dejarlo en la bandeja -->
+                                <CheckBox Content="{lex:Loc PP_StartCloseTray}" Style="{StaticResource ToggleSwitchStyle}" IsChecked="{Binding CloseToTray}" />
+                                <TextBlock Text="{lex:Loc PP_StartCloseTrayText}" TextWrapping="Wrap" FontSize="12" Foreground="{DynamicResource MutedForegroundColor}" Margin="16,-4,16,6" />
+
+                                <Border BorderBrush="{DynamicResource BorderColor}" BorderThickness="0,1,0,0" Margin="0,4" />
+
+                                <!-- 4. Conectar los mandos automaticamente -->
+                                <CheckBox Content="{lex:Loc PP_StartAutoConnect}" Style="{StaticResource ToggleSwitchStyle}" IsChecked="{Binding AutoConnectControllers}" />
+                                <TextBlock Text="{lex:Loc PP_StartAutoConnectText}" TextWrapping="Wrap" FontSize="12" Foreground="{DynamicResource MutedForegroundColor}" Margin="16,-4,16,6" />
+                            </StackPanel>
+                        </Border>
+
+                        <TextBlock Text="{lex:Loc PP_StartTip}" TextWrapping="Wrap" FontSize="12" Foreground="{DynamicResource AccentLightColor}" Margin="4,0,4,8" />
+                    </StackPanel>
+                </ScrollViewer>
+
+                <!-- ===== Configuraciones > Bateria ===== -->
+                <ScrollViewer x:Name="settingsBatteryPage" Grid.Column="1" Visibility="Collapsed" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                    <bat:BatterySettingsControl x:Name="batterySettingsControl" />
+                </ScrollViewer>
+
+                <!-- ===== Configuraciones > Calibracion ===== -->
+                <ScrollViewer x:Name="settingsCalibrationPage" Grid.Column="1" Visibility="Collapsed" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                    <cal:StickCalibrationControl x:Name="stickCalibrationControl" />
+                </ScrollViewer>
+
+                <!-- ===== Configuraciones > Comandos ===== -->
+                <ScrollViewer x:Name="settingsCommandsPage" Grid.Column="1" Visibility="Collapsed" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                    <StackPanel Margin="16,18,22,8" MaxWidth="1000" HorizontalAlignment="Left">
+                        <TextBlock Text="{lex:Loc PP_SectionCommands}" FontSize="20" FontWeight="SemiBold" />
+                        <TextBlock Text="{lex:Loc PP_CommandsIntro}" TextWrapping="Wrap" Foreground="{DynamicResource MutedForegroundColor}" Margin="0,4,0,16" />
+
+                        <ItemsControl x:Name="commandsList">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Style="{StaticResource SectionCardStyle}" Margin="0,0,0,12" Padding="18,16">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
+
+                                            <!-- Icono -->
+                                            <Border Width="48" Height="48" CornerRadius="12" Background="{DynamicResource TileColor}" Margin="0,0,16,0" VerticalAlignment="Top">
+                                                <TextBlock Text="{Binding Icon, Mode=OneTime}" FontFamily="{StaticResource IconFont}" FontSize="22"
+                                                           Foreground="{DynamicResource AccentLightColor}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                            </Border>
+
+                                            <!-- Que hace -->
+                                            <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="0,0,20,0">
+                                                <TextBlock Text="{Binding Name, Mode=OneTime}" FontSize="15" FontWeight="SemiBold" />
+                                                <TextBlock Text="{Binding Description, Mode=OneTime}" TextWrapping="Wrap" Margin="0,4,0,0"
+                                                           Foreground="{DynamicResource MutedForegroundColor}" />
+                                                <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                                    <TextBlock Text="&#xE8A7;" FontFamily="{StaticResource IconFont}" FontSize="12" Foreground="{DynamicResource AccentLightColor}"
+                                                               VerticalAlignment="Center" Margin="0,0,6,0" />
+                                                    <TextBlock Text="{Binding Where, Mode=OneTime}" TextWrapping="Wrap" FontSize="12" Foreground="{DynamicResource AccentLightColor}" />
+                                                </StackPanel>
+                                            </StackPanel>
+
+                                            <!-- Botones -->
+                                            <Border Grid.Column="2" BorderBrush="{DynamicResource BorderColor}" BorderThickness="1,0,0,0" Padding="20,0,0,0" MinWidth="230">
+                                                <StackPanel VerticalAlignment="Center">
+                                                    <TextBlock Text="{Binding ButtonsLabel, Mode=OneTime}" FontSize="10" FontWeight="SemiBold"
+                                                               Foreground="{DynamicResource MutedForegroundColor}" Margin="0,0,0,8" />
+                                                    <ComboBox ItemsSource="{Binding Options, Mode=OneTime}" SelectedIndex="{Binding SelectedIndex}" MinWidth="200"
+                                                              Visibility="{Binding ConfigVisibility, Mode=OneTime}" />
+                                                    <ItemsControl ItemsSource="{Binding Buttons, Mode=OneTime}" Visibility="{Binding ButtonsVisibility, Mode=OneTime}">
+                                                        <ItemsControl.ItemsPanel>
+                                                            <ItemsPanelTemplate>
+                                                                <WrapPanel MaxWidth="230" />
+                                                            </ItemsPanelTemplate>
+                                                        </ItemsControl.ItemsPanel>
+                                                        <ItemsControl.ItemTemplate>
+                                                            <DataTemplate>
+                                                                <!-- Boton dibujado como una tecla del mando -->
+                                                                <Border Background="{DynamicResource TileColor}" BorderBrush="{DynamicResource Accent2Color}" BorderThickness="1"
+                                                                        CornerRadius="7" Padding="10,5" Margin="0,0,6,6">
+                                                                    <TextBlock Text="{Binding Mode=OneTime}" FontWeight="SemiBold" />
+                                                                </Border>
+                                                            </DataTemplate>
+                                                        </ItemsControl.ItemTemplate>
+                                                    </ItemsControl>
+                                                </StackPanel>
+                                            </Border>
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </ScrollViewer>
+                </Grid>
+            </TabItem>
+
+            <!-- ================= REGISTRO ================= -->
+            <TabItem Header="{lex:Loc Log}" Tag="&#xE8FD;">
+                <DockPanel Margin="22,14,22,8">
+                    <DockPanel Height="30" DockPanel.Dock="Bottom" Margin="0,10,0,0">
+                        <Button x:Name="exportLogBtn" Content="{lex:Loc Export}" HorizontalAlignment="Left" Padding="20,1" Click="ExportLogBtn_Click" />
+                        <Button x:Name="clearLogBtn" Content="{lex:Loc Clear}" DockPanel.Dock="Right" HorizontalAlignment="Right" Padding="20,1" Click="ClearLogBtn_Click" />
+                    </DockPanel>
+                    <ListView x:Name="logListView" DockPanel.Dock="Top" ItemsSource="{Binding LogItems}" MouseDoubleClick="LogListView_MouseDoubleClick" Margin="0"
+                              Background="{DynamicResource SurfaceColor}">
+                        <ListView.View>
+                            <GridView AllowsColumnReorder="False">
+                                <GridViewColumn Header="{lex:Loc PP_LogTime}" Width="150">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Path=Datetime, StringFormat=\{0:G\}}" Foreground="{DynamicResource MutedForegroundColor}" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Header="{lex:Loc PP_LogMessage}" Width="800">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Path=Message}"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </DockPanel>
+            </TabItem>
+        </TabControl>
+
+        <!-- ===== Barra superior (encima del contenido, a la derecha de la barra de iconos) ===== -->
+        <Border Height="60" VerticalAlignment="Top" Margin="86,0,0,0" Background="{DynamicResource HeaderBarColor}"
+                BorderBrush="{DynamicResource BorderColor}" BorderThickness="0,0,0,1">
+            <DockPanel Margin="22,0,18,0">
+                <Button x:Name="StartStopBtn" DockPanel.Dock="Right" Content="{lex:Loc StartText}" Click="StartStopBtn_Click"
+                        Style="{StaticResource OutlineAccentButtonStyle}" MinWidth="120" Height="34" Padding="18,0" VerticalAlignment="Center" />
+                <!-- PhantomPad: aviso de actualizacion ("Nueva version" / "Reiniciar app") -->
+                <Button x:Name="updateHeaderBtn" DockPanel.Dock="Right" Click="UpdateHeaderBtn_Click" Visibility="Collapsed" Height="34" Padding="16,0"
+                        Margin="0,0,12,0" VerticalAlignment="Center" Cursor="Hand" Background="{DynamicResource AccentColor}" Foreground="White" BorderThickness="0">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="&#xE896;" FontFamily="{StaticResource IconFont}" FontSize="14" VerticalAlignment="Center" Margin="0,0,8,0" />
+                        <TextBlock x:Name="updateHeaderText" FontWeight="SemiBold" VerticalAlignment="Center" />
+                    </StackPanel>
+                </Button>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                    <TextBlock Text="{Binding SelectedItem.Header, ElementName=mainTabCon, Converter={StaticResource UpperCaseConverter}}"
+                               FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" Margin="0,0,18,0" />
+                    <Border Style="{StaticResource ChipStyle}" ToolTip="{lex:Loc Controllers}">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="&#xE7FC;" FontFamily="{StaticResource IconFont}" FontSize="13" VerticalAlignment="Center" Margin="0,0,7,0"
+                                       Foreground="{DynamicResource Accent2Color}" />
+                            <TextBlock Text="{Binding Items.Count, ElementName=controllerLV}" VerticalAlignment="Center" />
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+            </DockPanel>
+        </Border>
+
+        <!-- ===== Barra de estado (abajo) ===== -->
+        <Border Height="36" VerticalAlignment="Bottom" Margin="86,0,0,0" Background="{DynamicResource HeaderBarColor}"
+                BorderBrush="{DynamicResource BorderColor}" BorderThickness="0,1,0,0">
+            <DockPanel Margin="16,0,12,0">
+                <Button x:Name="aboutBtn" DockPanel.Dock="Right" BorderThickness="0" Background="{x:Null}" BorderBrush="{x:Null}"
+                        Style="{StaticResource NoBGHoverBtn}" Click="AboutBtn_Click" VerticalAlignment="Center">
+                    <TextBlock Text="{lex:Loc HotkeysAbout}" Foreground="{DynamicResource AccentLightColor}" Cursor="Hand" x:Uid="hotkeysText" />
+                </Button>
+                <Label x:Name="lastMsgLb" Content="{Binding Message}" ToolTip="{Binding Message}" Foreground="{Binding Color}" VerticalAlignment="Center" Padding="0" />
+            </DockPanel>
+        </Border>
+    </Grid>
+</Window>

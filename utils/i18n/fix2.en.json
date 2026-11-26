@@ -1,0 +1,23 @@
+{
+  "PP_MaxLight": "Max Light",
+  "PP_SteeringWheel360": "360 Steering Wheel",
+  "PP_YawShort": "Yaw",
+  "PP_PitchShort": "Pitch",
+  "PP_RollShort": "Roll",
+  "PP_ButtonActivationMode": "Button Activation Mode",
+  "PPN_Off": "Off",
+  "PPN_On": "On",
+  "PPN_OnlyForMultipleControllers": "Only for multiple controllers",
+  "PPN_BatteryPercentage": "Battery Percentage",
+  "PPN_Split": "Split",
+  "PPN_Joined": "Joined",
+  "PPN_Normal": "Normal",
+  "PPN_Disabled": "Disabled",
+  "PPN_Exclusive": "Exclusive",
+  "PPN_HairTrigger": "Hair Trigger",
+  "PPN_HipFire": "Hip Fire",
+  "PPN_HipFireExclusive": "Hip Fire Exclusive",
+  "PPN_Click": "Click",
+  "PPN_Touch": "Touch",
+  "PPN_Release": "Release"
+}

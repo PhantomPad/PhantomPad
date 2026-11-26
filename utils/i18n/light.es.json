@@ -1,0 +1,22 @@
+{
+  "PP_LightSection": "Luz del mando",
+  "PP_LightOn": "Luz encendida",
+  "PP_LightCustomColor": "Usar mi propio color",
+  "PP_LightCustomColorTip": "Activado: usa el color elegido aquí. Desactivado: usa el color definido en el perfil",
+  "PP_LightQuickColors": "Colores rápidos",
+  "PP_LightBrightness": "Brillo",
+  "PP_LightMoreColors": "Más colores...",
+  "PP_ColorViolet": "Violeta",
+  "PP_ColorCyan": "Cian",
+  "PP_ColorBlue": "Azul",
+  "PP_ColorGreen": "Verde",
+  "PP_ColorYellow": "Amarillo",
+  "PP_ColorOrange": "Naranja",
+  "PP_ColorRed": "Rojo",
+  "PP_ColorPink": "Rosa",
+  "PP_ColorWhite": "Blanco",
+  "PPN_UseProfileColor": "Usar color del perfil",
+  "PPN_UseCustomColor": "Usar color personalizado",
+  "PPC_LightPrefsLoadFailed": "No se pudieron leer las preferencias de luz: {0}",
+  "PPC_LightPrefsSaveFailed": "No se pudieron guardar las preferencias de luz: {0}"
+}

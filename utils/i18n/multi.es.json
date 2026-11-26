@@ -1,0 +1,21 @@
+{
+  "PP_PowerOffCombo": "Apagar con",
+  "PP_ComboNone": "Desactivado",
+  "PP_ComboPSCross": "PS + X",
+  "PP_ComboPSCircle": "PS + Círculo",
+  "PP_ComboPSSquare": "PS + Cuadrado",
+  "PP_ComboPSTriangle": "PS + Triángulo",
+  "PP_PollRate": "Frecuencia de lectura (Bluetooth)",
+  "PP_PollAuto": "Automática",
+  "PP_PollUsb": "Cable USB: la frecuencia la fija el propio mando.",
+  "PP_PollFixed": "Este mando fija su propia frecuencia.",
+  "PP_PollManual": "Pedida: {0} Hz (cada {1} ms).",
+  "PP_PollAutoSingle": "Automática: {0} Hz, 100 % para el único mando.",
+  "PP_PollAutoMulti": "Automática: {0} Hz para cada uno de los {1} mandos.",
+  "PP_LatencyReading": "Latencia de lectura",
+  "PP_LatencyValue": "{0} ms entre lecturas (≈ {1} Hz)",
+  "PP_PollNote": "PhantomPad solo le pide al mando cada cuánto enviar datos. Cómo se reparte de verdad el Bluetooth entre los mandos lo decide el adaptador y Windows. La lectura real muestra lo que llega de verdad.",
+  "PPC_PowerOffCombo": "Mando {0}: apagando (combo de botones).",
+  "PPC_PowerOffUsb": "El mando {0} está conectado por cable USB: no se puede apagar desde aquí. Desconecta el cable.",
+  "PPC_ControllerPrefsSaveFailed": "No se pudieron guardar los ajustes del mando: {0}"
+}

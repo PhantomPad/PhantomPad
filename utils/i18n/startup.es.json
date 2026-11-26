@@ -1,0 +1,15 @@
+{
+  "PP_StartNav": "Inicio",
+  "PP_StartTitle": "Inicio",
+  "PP_StartIntro": "Cómo se abre PhantomPad y qué hace al cerrar la ventana. Cada opción tiene su interruptor para encenderla o apagarla.",
+  "PP_StartWithWindows": "Iniciar PhantomPad con Windows",
+  "PP_StartWithWindowsText": "Se abre solo al encender el PC.",
+  "PP_StartHidden": "Abrir escondido en la bandeja",
+  "PP_StartHiddenText": "Al abrirse no aparece la ventana, solo el icono del fantasma junto al reloj. Haz clic en el icono para verla.",
+  "PP_StartCloseTray": "Al cerrar la ventana, dejarlo en la bandeja",
+  "PP_StartCloseTrayText": "La X esconde la ventana y PhantomPad sigue funcionando, sin preguntar. Para salir del todo: clic derecho en el icono → Salir.",
+  "PP_StartAutoConnect": "Conectar los mandos automáticamente",
+  "PP_StartAutoConnectText": "Al abrir PhantomPad, los mandos encendidos quedan listos para jugar sin pulsar \"Iniciar\". Si lo apagas, tendrás que pulsar \"Iniciar\" cada vez.",
+  "PP_StartTip": "Con las cuatro opciones encendidas: enciendes el PC y el mando, y ya puedes jugar.",
+  "PPC_StartupSaveFailed": "No se pudieron guardar las opciones de inicio: {0}"
+}

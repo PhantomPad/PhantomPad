@@ -1,0 +1,50 @@
+<UserControl x:Class="DS4WinWPF.DS4Forms.BatteryPage.BatterySettingsControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:lex="http://wpflocalizeextension.codeplex.com"
+             lex:LocalizeDictionary.DesignCulture=""
+             lex:ResxLocalizationProvider.DefaultAssembly="PhantomPad"
+             lex:ResxLocalizationProvider.DefaultDictionary="Strings"
+             mc:Ignorable="d" d:DesignHeight="600" d:DesignWidth="1000">
+    <!-- PhantomPad: Configuraciones > Bateria (aviso de bateria baja) -->
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PhantomPad;component/DS4Forms/Themes/PhantomPadStyles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <StackPanel Margin="16,18,22,8" MaxWidth="1000" HorizontalAlignment="Left">
+        <TextBlock Text="{lex:Loc PP_BatTitle}" FontSize="20" FontWeight="SemiBold" />
+        <TextBlock Text="{lex:Loc PP_BatIntro}" TextWrapping="Wrap" Foreground="{DynamicResource MutedForegroundColor}" Margin="0,4,0,16" />
+
+        <!-- Aviso -->
+        <Border Style="{StaticResource SectionCardStyle}" Padding="20,16" Margin="0,0,0,12">
+            <StackPanel>
+                <CheckBox x:Name="warnToggle" Content="{lex:Loc PP_BatWarn}" Style="{StaticResource ToggleSwitchStyle}" Padding="0,6"
+                          Checked="WarnToggle_Changed" Unchecked="WarnToggle_Changed" />
+                <TextBlock Text="{lex:Loc PP_BatWarnText}" TextWrapping="Wrap" FontSize="12" Foreground="{DynamicResource MutedForegroundColor}" Margin="0,0,0,12" />
+
+                <DockPanel Margin="0,0,0,12">
+                    <ComboBox x:Name="thresholdCombo" DockPanel.Dock="Right" MinWidth="120" SelectionChanged="ThresholdCombo_SelectionChanged" />
+                    <TextBlock Text="{lex:Loc PP_BatThreshold}" VerticalAlignment="Center" />
+                </DockPanel>
+
+                <CheckBox x:Name="flashToggle" Content="{lex:Loc PP_BatFlash}" Style="{StaticResource ToggleSwitchStyle}" Padding="0,6"
+                          Checked="FlashToggle_Changed" Unchecked="FlashToggle_Changed" />
+                <TextBlock Text="{lex:Loc PP_BatFlashText}" TextWrapping="Wrap" FontSize="12" Foreground="{DynamicResource MutedForegroundColor}" />
+            </StackPanel>
+        </Border>
+
+        <!-- Estado de los mandos -->
+        <Border Style="{StaticResource SectionCardStyle}" Padding="20,16" Margin="0,0,0,12">
+            <StackPanel>
+                <TextBlock Text="{lex:Loc PP_BatStatus, Converter={StaticResource UpperCaseConverter}}" FontSize="11" FontWeight="SemiBold" Margin="0,0,0,10" />
+                <StackPanel x:Name="statusList" />
+            </StackPanel>
+        </Border>
+    </StackPanel>
+</UserControl>

@@ -1,0 +1,12 @@
+{
+  "PP_ConnectHint": "Turn on your controller or connect it by USB or Bluetooth",
+  "PP_RightClickDisconnect": "Right click to disconnect wireless",
+  "PP_LightColor": "Lightbar color",
+  "PP_SectionGeneral": "General",
+  "PP_SectionNotifications": "Notifications and lightbar",
+  "PP_SectionAppearance": "Appearance and language",
+  "PP_SectionAdvanced": "Advanced",
+  "PP_LatencyLimit": "Latency limit",
+  "PP_LogTime": "Time",
+  "PP_LogMessage": "Message"
+}

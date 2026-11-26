@@ -1,0 +1,9 @@
+{
+  "PP_CtrlSettingsSection": "Controller settings",
+  "PP_GyroAimOn": "Gyro aim (when aiming with L2)",
+  "PP_GyroAimTip": "In every game, hold L2 and tilt the controller to aim. It moves the right stick, so it works in any game.",
+  "PP_GyroPauseRacing": "Pause in racing games",
+  "PP_GyroPauseRacingTip": "In racing games L2 is the brake, so the gyro is paused there.",
+  "PP_GyroSensitivity": "Gyro sensitivity",
+  "PP_GyroHint": "Hold L2 and tilt the controller to aim. Release L2 to stop."
+}

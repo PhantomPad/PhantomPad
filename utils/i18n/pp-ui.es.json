@@ -1,0 +1,12 @@
+{
+  "PP_ConnectHint": "Enciende tu mando o conéctalo por USB o Bluetooth",
+  "PP_RightClickDisconnect": "Clic derecho para desconectar el mando inalámbrico",
+  "PP_LightColor": "Color de la luz",
+  "PP_SectionGeneral": "General",
+  "PP_SectionNotifications": "Notificaciones y luz",
+  "PP_SectionAppearance": "Apariencia e idioma",
+  "PP_SectionAdvanced": "Avanzado",
+  "PP_LatencyLimit": "Límite de latencia",
+  "PP_LogTime": "Hora",
+  "PP_LogMessage": "Mensaje"
+}

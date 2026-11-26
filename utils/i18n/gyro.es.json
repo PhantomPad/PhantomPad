@@ -1,0 +1,9 @@
+﻿{
+    "PP_GyroOff":  "Apagado",
+    "PP_GyroWhileAiming":  "Al apuntar (L2)",
+    "PP_GyroAlways":  "Siempre",
+    "PP_GyroHint":  "Inclina el mando para apuntar: el giroscopio mueve el stick derecho.",
+    "PP_GyroMode":  "Modo",
+    "PP_GyroSmoothingTip":  "Mira más estable",
+    "PP_HubStatusStyle2":  "Estilo: {0} · Gyro aim: {1} (recomendado: {2} · {3})"
+}

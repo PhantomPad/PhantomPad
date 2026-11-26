@@ -1,0 +1,8 @@
+{
+  "PP_AboutHeader": "PhantomPad - based on DS4Windows by Jays2Kings, Ryochan7 and schmaldeo, GPL v3 (Version ",
+  "PP_HotkeysHelp": "Hide DS4 Controller: Hides the DS4's regular input (Dinput) from other programs, check if you are getting double input in games or R2 pauses games\nClick left side of touchpad: Left Touch\nClick right side of touchpad: Right Touch\nClick touchpad with 2 fingers: Multitouch\nClick upper part of touchpad: Upper Touch\nPS + Options or hold PS for 10 secs: Disconnect Controller (Only on Bluetooth)\nTouch Touchpad + PS: Turn off touchpad movement (clicking still works)\nPad click on lower right: Right click (Best used when right side is used as a mouse button)\nTwo fingers up/down on touchpad*: Scroll Up/Down\nTap then hold touchpad*: Left mouse drag\n2 finger touchpad swipe left or right: Cycle through profiles\nShift Modifer: Hold an action to use another set of controls\nWhen mapping keyboard and mouse:\nToggle: The key will remain in a \"held down\" state until pressed again\nMacro: Assign multiple keys to one input\nScan Code: Keys are interpreted differently. May be needed for certain games\n*If enabled",
+  "PP_SourceCode": "Source",
+  "PP_InhexsterCredit": "InhexSTER (Starter of DS4Tool)",
+  "PP_ElectrobrainsCredit": "electrobrains (Branched off of)",
+  "PP_Contributors": "Contributors"
+}

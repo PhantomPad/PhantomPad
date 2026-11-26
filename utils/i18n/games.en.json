@@ -1,0 +1,17 @@
+{
+  "PP_GamesTitle": "Profiles per game",
+  "PP_GamesSubtitle": "When a game is in the foreground, PhantomPad loads its profile automatically.",
+  "PP_GamesAdd": "Add game",
+  "PP_GamesAdvancedEditor": "Advanced editor",
+  "PP_GamesBackToGames": "Back to profiles per game",
+  "PP_GamesRevertOnClose": "Return to the normal profile when leaving the game",
+  "PP_GamesRevertOnCloseTip": "When you close the game or switch to another window, the controller goes back to its usual profile",
+  "PP_GamesNotify": "Notify on profile change",
+  "PP_GamesDetected": "Detected games",
+  "PP_GamesSearch": "Search game",
+  "PP_GamesScanning": "Searching for installed games (Steam, Epic, GOG)...",
+  "PP_GamesBrowseExe": "Browse .exe manually",
+  "PP_GamesEmpty": "No games yet. Press \"Add game\" to choose one.",
+  "PP_GamesProfile": "Profile",
+  "PPC_BackToNormalProfile": "Controller {0} is back to profile \"{1}\""
+}

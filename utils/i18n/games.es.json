@@ -1,0 +1,17 @@
+{
+  "PP_GamesTitle": "Perfiles por juego",
+  "PP_GamesSubtitle": "Cuando un juego está en primer plano, PhantomPad carga su perfil automáticamente.",
+  "PP_GamesAdd": "Añadir juego",
+  "PP_GamesAdvancedEditor": "Editor avanzado",
+  "PP_GamesBackToGames": "Volver a perfiles por juego",
+  "PP_GamesRevertOnClose": "Volver al perfil normal al salir del juego",
+  "PP_GamesRevertOnCloseTip": "Al cerrar el juego o cambiar a otra ventana, el mando vuelve a su perfil de siempre",
+  "PP_GamesNotify": "Avisar al cambiar de perfil",
+  "PP_GamesDetected": "Juegos detectados",
+  "PP_GamesSearch": "Buscar juego",
+  "PP_GamesScanning": "Buscando juegos instalados (Steam, Epic, GOG)...",
+  "PP_GamesBrowseExe": "Buscar .exe manualmente",
+  "PP_GamesEmpty": "Aún no hay juegos. Pulsa \"Añadir juego\" para elegir uno.",
+  "PP_GamesProfile": "Perfil",
+  "PPC_BackToNormalProfile": "El mando {0} volvió al perfil \"{1}\""
+}

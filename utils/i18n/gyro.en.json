@@ -1,0 +1,9 @@
+﻿{
+    "PP_GyroOff":  "Off",
+    "PP_GyroWhileAiming":  "While aiming (L2)",
+    "PP_GyroAlways":  "Always",
+    "PP_GyroHint":  "Tilt the controller to aim: the gyroscope moves the right stick.",
+    "PP_GyroMode":  "Mode",
+    "PP_GyroSmoothingTip":  "Steadier aim",
+    "PP_HubStatusStyle2":  "Style: {0} · Gyro aim: {1} (recommended: {2} · {3})"
+}
