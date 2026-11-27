@@ -3854,4 +3854,79 @@ X axis: {0}, Y axis: {1}</value>
   <data name="PP_DrvReboot" xml:space="preserve">
     <value>Restart now</value>
   </data>
+  <data name="PP_UninSection" xml:space="preserve">
+    <value>Uninstall</value>
+  </data>
+  <data name="PP_UninCardText" xml:space="preserve">
+    <value>Removes PhantomPad, its settings, ViGEmBus and HidHide, as if they had never been installed. Useful to try the installer from scratch.</value>
+  </data>
+  <data name="PP_UninCardButton" xml:space="preserve">
+    <value>Uninstall everything...</value>
+  </data>
+  <data name="PP_UninTitle" xml:space="preserve">
+    <value>Uninstall everything</value>
+  </data>
+  <data name="PP_UninIntro" xml:space="preserve">
+    <value>This leaves the PC as if PhantomPad had never been installed. These steps are done in order:</value>
+  </data>
+  <data name="PP_UninSettings" xml:space="preserve">
+    <value>Also delete my settings</value>
+  </data>
+  <data name="PP_UninSettingsText" xml:space="preserve">
+    <value>Profiles, calibrations, games, commands and all PhantomPad options. If you turn this off they are kept for a future installation.</value>
+  </data>
+  <data name="PP_UninNote" xml:space="preserve">
+    <value>Windows will ask for permission for each driver. PhantomPad closes at the end. Then restart the PC before trying the installer.</value>
+  </data>
+  <data name="PP_UninCancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="PP_UninButton" xml:space="preserve">
+    <value>Uninstall everything</value>
+  </data>
+  <data name="PP_UninStepStop" xml:space="preserve">
+    <value>Stop PhantomPad and show the hidden controllers again</value>
+  </data>
+  <data name="PP_UninStepStartup" xml:space="preserve">
+    <value>Remove "Start with Windows"</value>
+  </data>
+  <data name="PP_UninStepHidHide" xml:space="preserve">
+    <value>Uninstall HidHide</value>
+  </data>
+  <data name="PP_UninStepViGEm" xml:space="preserve">
+    <value>Uninstall ViGEmBus</value>
+  </data>
+  <data name="PP_UninStepApp" xml:space="preserve">
+    <value>Close and uninstall PhantomPad</value>
+  </data>
+  <data name="PP_UninNotInstalled" xml:space="preserve">
+    <value>not installed</value>
+  </data>
+  <data name="PP_UninAppNotInstalled" xml:space="preserve">
+    <value>this copy was not installed with Setup.exe: only the settings are deleted</value>
+  </data>
+  <data name="PP_UninWorking" xml:space="preserve">
+    <value>Uninstalling...</value>
+  </data>
+  <data name="PP_UninRunning" xml:space="preserve">
+    <value>in progress...</value>
+  </data>
+  <data name="PP_UninDryScript" xml:space="preserve">
+    <value>(test) script: {0}</value>
+  </data>
+  <data name="PP_UninClosing" xml:space="preserve">
+    <value>closing...</value>
+  </data>
+  <data name="PP_UninAcceptWindows" xml:space="preserve">
+    <value>accept the Windows notice...</value>
+  </data>
+  <data name="PP_UninCancelled" xml:space="preserve">
+    <value>cancelled</value>
+  </data>
+  <data name="PP_UninError" xml:space="preserve">
+    <value>error {0}</value>
+  </data>
+  <data name="PP_UninFinished" xml:space="preserve">
+    <value>PhantomPad, ViGEmBus and HidHide were uninstalled. Restart the PC before trying the installer again.</value>
+  </data>
 </root>

@@ -750,6 +750,18 @@ Suspend support not enabled.", true);
             WindowState = WindowState.Normal;
         }
 
+        /// <summary>PhantomPad: salir del todo sin preguntar (lo usa "Desinstalar todo").</summary>
+        public void ExitApp()
+        {
+            contextclose = true;
+            Close();
+        }
+
+        private void UninstallAllBtn_Click(object sender, RoutedEventArgs e)
+        {
+            new Uninstall.UninstallWindow { Owner = this }.ShowDialog();
+        }
+
         private void TrayIconVM_RequestShutdown(object sender, EventArgs e)
         {
             contextclose = true;

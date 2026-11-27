@@ -719,6 +719,23 @@
                                 </StackPanel>
                             </StackPanel>
                         </Border>
+
+                        <!-- PhantomPad: DESINSTALAR TODO (para probar el instalador desde cero) -->
+                        <Border Style="{StaticResource SectionCardStyle}" Width="400">
+                            <StackPanel>
+                                <Border Style="{StaticResource SectionHeaderStyle}">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="&#xE74D;" Style="{StaticResource SectionIconStyle}" />
+                                        <TextBlock Text="{lex:Loc PP_UninSection, Converter={StaticResource UpperCaseConverter}}" Style="{StaticResource SectionTitleStyle}" />
+                                    </StackPanel>
+                                </Border>
+                                <StackPanel Margin="0,6">
+                                    <TextBlock Text="{lex:Loc PP_UninCardText}" TextWrapping="Wrap" FontSize="12" Foreground="{DynamicResource MutedForegroundColor}" Margin="16,0,16,10" />
+                                    <Button x:Name="uninstallAllBtn" Content="{lex:Loc PP_UninCardButton}" HorizontalAlignment="Left" Margin="16,0,16,8" Padding="16,6"
+                                            Foreground="#FFF87171" Click="UninstallAllBtn_Click" />
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
                     </WrapPanel>
                 </ScrollViewer>
 
