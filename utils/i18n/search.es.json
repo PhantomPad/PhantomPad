@@ -1,0 +1,6 @@
+{
+  "PP_DefsSearchSummary": "Búsqueda a las {0}: {1} mando(s) conectado(s), {2} reconocido(s), {3} sin reconocer.",
+  "PP_DefsNoneConnected": "No hay ningún mando conectado. Enciéndelo o conéctalo por USB o Bluetooth y pulsa \"Buscar de nuevo\".",
+  "PP_DefsRecognized": "Reconocido",
+  "PP_UpdLastChecked": "Última comprobación: hoy a las {0}."
+}

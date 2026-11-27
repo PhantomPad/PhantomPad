@@ -50,7 +50,7 @@ namespace DS4WinWPF.DS4Forms.Updates
                     break;
                 case PhantomUpdater.UpdateState.UpToDate:
                 case PhantomUpdater.UpdateState.Idle:
-                    Show("", PPText.T("PP_UpdUpToDate", "You have the latest version"), PPText.T("PP_UpdCurrent", "You have version {0}.", current));
+                    Show("", PPText.T("PP_UpdUpToDate", "You have the latest version"), PPText.T("PP_UpdCurrent", "You have version {0}.", current) + LastCheckedText());
                     break;
                 case PhantomUpdater.UpdateState.Available:
                     Show("", PPText.T("PP_UpdAvailable", "New version available: {0}", r?.Version),
@@ -104,6 +104,12 @@ namespace DS4WinWPF.DS4Forms.Updates
                 ? Visibility.Visible : Visibility.Collapsed;
             restartBtn.Visibility = ready ? Visibility.Visible : Visibility.Collapsed;
         }
+
+        /// <summary>" Ultima comprobacion: hoy a las 20:15." (vacio si aun no se comprobo).</summary>
+        private static string LastCheckedText() =>
+            PhantomUpdater.LastChecked.HasValue
+                ? " " + PPText.T("PP_UpdLastChecked", "Last check: today at {0}.", PhantomUpdater.LastChecked.Value.ToString("HH:mm:ss"))
+                : "";
 
         private void Show(string icon, string title, string text)
         {

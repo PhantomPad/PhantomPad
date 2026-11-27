@@ -3618,7 +3618,7 @@ Eje X: {0}, eje Y: {1}</value>
     <value>PhantomPad reconoce estos mandos. Si tienes uno que no reconoce (por ejemplo un mando genérico), puedes añadirlo aquí sin esperar a una actualización. Todo se guarda en el archivo Mandos.json.</value>
   </data>
   <data name="PP_DefsUnknownTitle" xml:space="preserve">
-    <value>Mandos conectados que PhantomPad no reconoce</value>
+    <value>Mandos conectados ahora</value>
   </data>
   <data name="PP_DefsRescan" xml:space="preserve">
     <value>Buscar de nuevo</value>
@@ -3709,5 +3709,17 @@ Eje X: {0}, eje Y: {1}</value>
   </data>
   <data name="PPC_ControllerDefsNotSaved" xml:space="preserve">
     <value>El cambio no se guardó porque Mandos.json tiene un error. Arregla el archivo y pulsa "Volver a leer el archivo".</value>
+  </data>
+  <data name="PP_DefsSearchSummary" xml:space="preserve">
+    <value>Búsqueda a las {0}: {1} mando(s) conectado(s), {2} reconocido(s), {3} sin reconocer.</value>
+  </data>
+  <data name="PP_DefsNoneConnected" xml:space="preserve">
+    <value>No hay ningún mando conectado. Enciéndelo o conéctalo por USB o Bluetooth y pulsa "Buscar de nuevo".</value>
+  </data>
+  <data name="PP_DefsRecognized" xml:space="preserve">
+    <value>Reconocido</value>
+  </data>
+  <data name="PP_UpdLastChecked" xml:space="preserve">
+    <value>Última comprobación: hoy a las {0}.</value>
   </data>
 </root>

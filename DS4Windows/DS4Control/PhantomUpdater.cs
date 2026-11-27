@@ -50,6 +50,9 @@ namespace DS4Windows
         public static int DownloadPercent { get; private set; }
         public static string ErrorText { get; private set; }
 
+        /// <summary>Hora de la ultima comprobacion terminada (para mostrarla).</summary>
+        public static DateTime? LastChecked { get; private set; }
+
         /// <summary>Avisa a la interfaz de cualquier cambio (puede llegar desde otro hilo).</summary>
         public static event Action Changed;
 
@@ -100,7 +103,11 @@ namespace DS4Windows
             Set(UpdateState.Checking);
             try
             {
-                ReleaseInfo info = await FetchLatestAsync();
+                // Un momento visible de "Buscando...", asi se nota que el boton hizo algo
+                Task<ReleaseInfo> fetch = FetchLatestAsync();
+                await Task.WhenAll(fetch, Task.Delay(800));
+                ReleaseInfo info = fetch.Result;
+                LastChecked = DateTime.Now;
                 Latest = info;
                 if (info == null || !IsNewer(info.Version, CurrentVersion))
                 {

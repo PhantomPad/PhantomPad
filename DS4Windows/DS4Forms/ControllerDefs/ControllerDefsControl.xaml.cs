@@ -51,40 +51,81 @@ namespace DS4WinWPF.DS4Forms.ControllerDefs
 
         // ===================== Mandos conectados que no se reconocen =====================
 
+        private bool searching;
+
         private async Task RefreshUnknownAsync()
         {
-            unknownList.Children.Clear();
-            unknownList.Children.Add(Muted(PPText.T("PP_DefsSearching", "Looking for connected controllers...")));
-            List<(int Vid, int Pid, string Name)> found = await Task.Run(FindUnknownGamepads);
-            unknownList.Children.Clear();
-            if (found.Count == 0)
+            if (searching) return;
+            searching = true;
+            try
             {
-                unknownList.Children.Add(Muted(PPText.T("PP_DefsNoUnknown",
-                    "All connected controllers are recognized. If yours is not, connect it by USB or Bluetooth and press \"Search again\".")));
-                return;
-            }
+                unknownList.Children.Clear();
+                unknownList.Children.Add(Muted(PPText.T("PP_DefsSearching", "Looking for connected controllers...")));
+                // Un momento visible de "Buscando...", asi se nota que el boton hizo algo
+                var search = Task.Run(FindConnectedGamepads);
+                await Task.WhenAll(search, Task.Delay(800));
+                List<(int Vid, int Pid, string Name, bool Known)> found = search.Result;
 
-            foreach (var g in found)
+                unknownList.Children.Clear();
+                int known = found.Count(f => f.Known), unknown = found.Count - known;
+                var summary = new TextBlock
+                {
+                    Text = PPText.T("PP_DefsSearchSummary", "Searched at {0}: {1} controller(s) connected, {2} recognized, {3} not recognized.",
+                        DateTime.Now.ToString("HH:mm:ss"), found.Count, known, unknown),
+                    FontWeight = FontWeights.SemiBold, Margin = new Thickness(0, 0, 0, 10), TextWrapping = TextWrapping.Wrap,
+                };
+                unknownList.Children.Add(summary);
+
+                if (found.Count == 0)
+                {
+                    unknownList.Children.Add(Muted(PPText.T("PP_DefsNoneConnected",
+                        "No controller is connected. Turn it on or connect it by USB or Bluetooth and press \"Search again\".")));
+                    return;
+                }
+
+                foreach (var g in found.OrderBy(f => f.Known))
+                {
+                    var row = new DockPanel { Margin = new Thickness(0, 0, 0, 8) };
+                    if (g.Known)
+                    {
+                        var ok = new TextBlock { Text = "✓ " + PPText.T("PP_DefsRecognized", "Recognized"), FontWeight = FontWeights.SemiBold, VerticalAlignment = VerticalAlignment.Center,
+                            Foreground = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(0x34, 0xD3, 0x99)) };
+                        DockPanel.SetDock(ok, Dock.Right);
+                        row.Children.Add(ok);
+                    }
+                    else
+                    {
+                        var add = new Button { Content = PPText.T("PP_DefsAdd", "Add"), Padding = new Thickness(16, 0, 16, 0), Height = 30 };
+                        add.Style = (Style)FindResource("OutlineAccentButtonStyle");
+                        var info = g;
+                        add.Click += (s, e) => OpenAddForm(info.Vid, info.Pid, info.Name);
+                        DockPanel.SetDock(add, Dock.Right);
+                        row.Children.Add(add);
+                    }
+
+                    var text = new StackPanel { VerticalAlignment = VerticalAlignment.Center };
+                    text.Children.Add(new TextBlock { Text = g.Name, FontWeight = FontWeights.SemiBold });
+                    text.Children.Add(Muted($"VID {PhantomControllerDefs.FormatId(g.Vid)} · PID {PhantomControllerDefs.FormatId(g.Pid)}"));
+                    row.Children.Add(text);
+                    unknownList.Children.Add(row);
+                }
+
+                if (unknown == 0)
+                {
+                    unknownList.Children.Add(Muted(PPText.T("PP_DefsNoUnknown",
+                        "All connected controllers are recognized. If yours is not, connect it by USB or Bluetooth and press \"Search again\".")));
+                }
+            }
+            finally
             {
-                var row = new DockPanel { Margin = new Thickness(0, 0, 0, 8) };
-                var add = new Button { Content = PPText.T("PP_DefsAdd", "Add"), Padding = new Thickness(16, 0, 16, 0), Height = 30 };
-                add.Style = (Style)FindResource("OutlineAccentButtonStyle");
-                var info = g;
-                add.Click += (s, e) => OpenAddForm(info.Vid, info.Pid, info.Name);
-                DockPanel.SetDock(add, Dock.Right);
-                row.Children.Add(add);
-                var text = new StackPanel { VerticalAlignment = VerticalAlignment.Center };
-                text.Children.Add(new TextBlock { Text = g.Name, FontWeight = FontWeights.SemiBold });
-                text.Children.Add(Muted($"VID {PhantomControllerDefs.FormatId(g.Vid)} · PID {PhantomControllerDefs.FormatId(g.Pid)}"));
-                row.Children.Add(text);
-                unknownList.Children.Add(row);
+                searching = false;
             }
         }
 
-        /// <summary>Mandos (joystick o gamepad HID) conectados que no estan en la lista de mandos compatibles.</summary>
-        private static List<(int Vid, int Pid, string Name)> FindUnknownGamepads()
+        /// <summary>Mandos (joystick o gamepad HID) conectados, reconocidos o no.</summary>
+        private static List<(int Vid, int Pid, string Name, bool Known)> FindConnectedGamepads()
         {
-            var result = new List<(int, int, string)>();
+            var result = new List<(int, int, string, bool)>();
             var seen = new HashSet<(int, int)>();
             try
             {
@@ -94,11 +135,12 @@ namespace DS4WinWPF.DS4Forms.ControllerDefs
                     {
                         if (d.Capabilities.UsagePage != 0x01 || (d.Capabilities.Usage != 0x04 && d.Capabilities.Usage != 0x05)) continue;
                         int vid = d.Attributes.VendorId, pid = d.Attributes.ProductId;
-                        if (PhantomControllerDefs.IsKnown(vid, pid) || !seen.Add((vid, pid))) continue;
+                        if (!seen.Add((vid, pid))) continue;
                         if (Global.CheckIfVirtualDevice(d.DevicePath)) continue; // mandos virtuales (ViGEm)
-                        string name = ReadProductName(d.DevicePath);
+                        VidPidInfo knownInfo = DS4Devices.KnownDevices.FirstOrDefault(i => i.vid == vid && i.pid == pid);
+                        string name = knownInfo?.name ?? ReadProductName(d.DevicePath);
                         if (string.IsNullOrWhiteSpace(name)) name = string.IsNullOrWhiteSpace(d.Description) ? PPText.T("PP_DefsUnnamed", "Controller") : d.Description;
-                        result.Add((vid, pid, name.Trim()));
+                        result.Add((vid, pid, name.Trim(), knownInfo != null));
                     }
                     catch { /* dispositivo que no se deja leer */ }
                 }

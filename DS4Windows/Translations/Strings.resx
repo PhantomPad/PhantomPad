@@ -3621,7 +3621,7 @@ X axis: {0}, Y axis: {1}</value>
     <value>PhantomPad recognizes these controllers. If you have one it does not recognize (for example a generic controller), you can add it here without waiting for an update. Everything is saved in the Mandos.json file.</value>
   </data>
   <data name="PP_DefsUnknownTitle" xml:space="preserve">
-    <value>Connected controllers PhantomPad does not recognize</value>
+    <value>Controllers connected now</value>
   </data>
   <data name="PP_DefsRescan" xml:space="preserve">
     <value>Search again</value>
@@ -3712,5 +3712,17 @@ X axis: {0}, Y axis: {1}</value>
   </data>
   <data name="PPC_ControllerDefsNotSaved" xml:space="preserve">
     <value>The change was not saved because Mandos.json has an error. Fix the file and press "Read the file again".</value>
+  </data>
+  <data name="PP_DefsSearchSummary" xml:space="preserve">
+    <value>Searched at {0}: {1} controller(s) connected, {2} recognized, {3} not recognized.</value>
+  </data>
+  <data name="PP_DefsNoneConnected" xml:space="preserve">
+    <value>No controller is connected. Turn it on or connect it by USB or Bluetooth and press "Search again".</value>
+  </data>
+  <data name="PP_DefsRecognized" xml:space="preserve">
+    <value>Recognized</value>
+  </data>
+  <data name="PP_UpdLastChecked" xml:space="preserve">
+    <value>Last check: today at {0}.</value>
   </data>
 </root>

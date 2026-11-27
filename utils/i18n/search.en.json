@@ -1,0 +1,6 @@
+{
+  "PP_DefsSearchSummary": "Searched at {0}: {1} controller(s) connected, {2} recognized, {3} not recognized.",
+  "PP_DefsNoneConnected": "No controller is connected. Turn it on or connect it by USB or Bluetooth and press \"Search again\".",
+  "PP_DefsRecognized": "Recognized",
+  "PP_UpdLastChecked": "Last check: today at {0}."
+}
