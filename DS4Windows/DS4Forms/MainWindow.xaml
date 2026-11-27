@@ -15,6 +15,7 @@
         xmlns:cal="clr-namespace:DS4WinWPF.DS4Forms.Calibration"
         xmlns:bat="clr-namespace:DS4WinWPF.DS4Forms.BatteryPage"
         xmlns:upd="clr-namespace:DS4WinWPF.DS4Forms.Updates"
+        xmlns:defs="clr-namespace:DS4WinWPF.DS4Forms.ControllerDefs"
         xmlns:system="clr-namespace:System;assembly=mscorlib"
         xml:lang="en-US"
         mc:Ignorable="d"
@@ -436,6 +437,13 @@
                                     <TextBlock Text="{lex:Loc PP_CalNav}" FontWeight="SemiBold" VerticalAlignment="Center" />
                                 </StackPanel>
                             </ListBoxItem>
+                            <ListBoxItem Tag="controllers">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="&#xE7FC;" FontFamily="{StaticResource IconFont}" FontSize="15" Foreground="{DynamicResource AccentLightColor}"
+                                               VerticalAlignment="Center" Margin="0,0,12,0" />
+                                    <TextBlock Text="{lex:Loc PP_DefsNav}" FontWeight="SemiBold" VerticalAlignment="Center" />
+                                </StackPanel>
+                            </ListBoxItem>
                             <ListBoxItem Tag="battery">
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Text="&#xE83F;" FontFamily="{StaticResource IconFont}" FontSize="15" Foreground="{DynamicResource AccentLightColor}"
@@ -701,6 +709,11 @@
                             </StackPanel>
                         </Border>
                     </WrapPanel>
+                </ScrollViewer>
+
+                <!-- ===== Configuraciones > Mandos compatibles ===== -->
+                <ScrollViewer x:Name="settingsControllersPage" Grid.Column="1" Visibility="Collapsed" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                    <defs:ControllerDefsControl x:Name="controllerDefsControl" />
                 </ScrollViewer>
 
                 <!-- ===== Configuraciones > Actualizaciones ===== -->

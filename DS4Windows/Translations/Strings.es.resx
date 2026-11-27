@@ -3608,4 +3608,106 @@ Eje X: {0}, eje Y: {1}</value>
   <data name="PPC_UpdateReady" xml:space="preserve">
     <value>La actualización ya está descargada. Pulsa "Reiniciar app" cuando quieras instalarla.</value>
   </data>
+  <data name="PP_DefsNav" xml:space="preserve">
+    <value>Mandos compatibles</value>
+  </data>
+  <data name="PP_DefsTitle" xml:space="preserve">
+    <value>Mandos compatibles</value>
+  </data>
+  <data name="PP_DefsIntro" xml:space="preserve">
+    <value>PhantomPad reconoce estos mandos. Si tienes uno que no reconoce (por ejemplo un mando genérico), puedes añadirlo aquí sin esperar a una actualización. Todo se guarda en el archivo Mandos.json.</value>
+  </data>
+  <data name="PP_DefsUnknownTitle" xml:space="preserve">
+    <value>Mandos conectados que PhantomPad no reconoce</value>
+  </data>
+  <data name="PP_DefsRescan" xml:space="preserve">
+    <value>Buscar de nuevo</value>
+  </data>
+  <data name="PP_DefsSearching" xml:space="preserve">
+    <value>Buscando mandos conectados...</value>
+  </data>
+  <data name="PP_DefsNoUnknown" xml:space="preserve">
+    <value>Todos los mandos conectados están reconocidos. Si el tuyo no aparece, conéctalo por USB o Bluetooth y pulsa "Buscar de nuevo".</value>
+  </data>
+  <data name="PP_DefsUnnamed" xml:space="preserve">
+    <value>Mando</value>
+  </data>
+  <data name="PP_DefsAdd" xml:space="preserve">
+    <value>Añadir</value>
+  </data>
+  <data name="PP_DefsAddTitle" xml:space="preserve">
+    <value>Añadir mando (VID {0} · PID {1})</value>
+  </data>
+  <data name="PP_DefsName" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="PP_DefsType" xml:space="preserve">
+    <value>Funciona como</value>
+  </data>
+  <data name="PP_DefsTypeDS4" xml:space="preserve">
+    <value>Compatible con PS4 (DS4): la mayoría de mandos genéricos</value>
+  </data>
+  <data name="PP_DefsTypeDualSense" xml:space="preserve">
+    <value>Compatible con PS5 (DualSense)</value>
+  </data>
+  <data name="PP_DefsTypeSwitch" xml:space="preserve">
+    <value>Compatible con Nintendo Switch Pro</value>
+  </data>
+  <data name="PP_DefsTypeDS3" xml:space="preserve">
+    <value>PS3 (DualShock 3)</value>
+  </data>
+  <data name="PP_DefsOptions" xml:space="preserve">
+    <value>Si algo no funciona con este mando, activa lo que corresponda:</value>
+  </data>
+  <data name="PP_DefsOptNoOutput" xml:space="preserve">
+    <value>No tiene luz ni vibración (no enviarle órdenes)</value>
+  </data>
+  <data name="PP_DefsOptNoBattery" xml:space="preserve">
+    <value>No informa de la batería</value>
+  </data>
+  <data name="PP_DefsOptNoGyroCalib" xml:space="preserve">
+    <value>Sin calibración del giroscopio (recomendado en mandos genéricos)</value>
+  </data>
+  <data name="PP_DefsAddSave" xml:space="preserve">
+    <value>Guardar mando</value>
+  </data>
+  <data name="PP_DefsCancel" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="PP_DefsCustomTitle" xml:space="preserve">
+    <value>Mandos añadidos por ti</value>
+  </data>
+  <data name="PP_DefsNoCustom" xml:space="preserve">
+    <value>Todavía no has añadido ningún mando.</value>
+  </data>
+  <data name="PP_DefsRemove" xml:space="preserve">
+    <value>Quitar</value>
+  </data>
+  <data name="PP_DefsBuiltInTitle" xml:space="preserve">
+    <value>Mandos incluidos ({0})</value>
+  </data>
+  <data name="PP_DefsOpenFile" xml:space="preserve">
+    <value>Abrir el archivo Mandos.json (para expertos)</value>
+  </data>
+  <data name="PP_DefsReload" xml:space="preserve">
+    <value>Volver a leer el archivo</value>
+  </data>
+  <data name="PP_DefsNote" xml:space="preserve">
+    <value>Los cambios se usan al volver a conectar el mando (o al pulsar Detener e Iniciar). Si apagas un mando incluido, PhantomPad dejará de usarlo.</value>
+  </data>
+  <data name="PP_DefsFileError" xml:space="preserve">
+    <value>El archivo Mandos.json tiene un error y no se está usando: {0}</value>
+  </data>
+  <data name="PPC_ControllerDefsError" xml:space="preserve">
+    <value>El archivo de mandos (Mandos.json) tiene un error y no se usó: {0}</value>
+  </data>
+  <data name="PPC_ControllerDefsSaveFailed" xml:space="preserve">
+    <value>No se pudo guardar el archivo de mandos: {0}</value>
+  </data>
+  <data name="PPC_ControllerDefAdded" xml:space="preserve">
+    <value>Mando "{0}" añadido. Vuelve a conectarlo (o pulsa Detener e Iniciar) para usarlo.</value>
+  </data>
+  <data name="PPC_ControllerDefsNotSaved" xml:space="preserve">
+    <value>El cambio no se guardó porque Mandos.json tiene un error. Arregla el archivo y pulsa "Volver a leer el archivo".</value>
+  </data>
 </root>

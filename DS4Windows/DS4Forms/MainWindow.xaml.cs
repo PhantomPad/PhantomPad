@@ -1114,7 +1114,7 @@ Suspend support not enabled.", true);
         {
             e.Handled = true; // que no llegue a la barra principal de pestanas
             if (settingsGeneralPage == null || settingsCommandsPage == null || settingsCalibrationPage == null || settingsBatteryPage == null
-                || settingsStartupPage == null || settingsUpdatesPage == null) return;
+                || settingsStartupPage == null || settingsUpdatesPage == null || settingsControllersPage == null) return;
             string page = (settingsNav.SelectedItem as ListBoxItem)?.Tag as string ?? "general";
             settingsGeneralPage.Visibility = page == "general" ? Visibility.Visible : Visibility.Collapsed;
             settingsCommandsPage.Visibility = page == "commands" ? Visibility.Visible : Visibility.Collapsed;
@@ -1122,6 +1122,7 @@ Suspend support not enabled.", true);
             settingsBatteryPage.Visibility = page == "battery" ? Visibility.Visible : Visibility.Collapsed;
             settingsStartupPage.Visibility = page == "startup" ? Visibility.Visible : Visibility.Collapsed;
             settingsUpdatesPage.Visibility = page == "updates" ? Visibility.Visible : Visibility.Collapsed;
+            settingsControllersPage.Visibility = page == "controllers" ? Visibility.Visible : Visibility.Collapsed;
         }
 
         // PhantomPad: boton de la barra superior ("Nueva version" → abre Actualizaciones; "Reiniciar app" → instala)

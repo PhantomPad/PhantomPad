@@ -3611,4 +3611,106 @@ X axis: {0}, Y axis: {1}</value>
   <data name="PPC_UpdateReady" xml:space="preserve">
     <value>The update is downloaded. Press "Restart app" when you want to install it.</value>
   </data>
+  <data name="PP_DefsNav" xml:space="preserve">
+    <value>Supported controllers</value>
+  </data>
+  <data name="PP_DefsTitle" xml:space="preserve">
+    <value>Supported controllers</value>
+  </data>
+  <data name="PP_DefsIntro" xml:space="preserve">
+    <value>PhantomPad recognizes these controllers. If you have one it does not recognize (for example a generic controller), you can add it here without waiting for an update. Everything is saved in the Mandos.json file.</value>
+  </data>
+  <data name="PP_DefsUnknownTitle" xml:space="preserve">
+    <value>Connected controllers PhantomPad does not recognize</value>
+  </data>
+  <data name="PP_DefsRescan" xml:space="preserve">
+    <value>Search again</value>
+  </data>
+  <data name="PP_DefsSearching" xml:space="preserve">
+    <value>Looking for connected controllers...</value>
+  </data>
+  <data name="PP_DefsNoUnknown" xml:space="preserve">
+    <value>All connected controllers are recognized. If yours does not appear, connect it by USB or Bluetooth and press "Search again".</value>
+  </data>
+  <data name="PP_DefsUnnamed" xml:space="preserve">
+    <value>Controller</value>
+  </data>
+  <data name="PP_DefsAdd" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="PP_DefsAddTitle" xml:space="preserve">
+    <value>Add controller (VID {0} · PID {1})</value>
+  </data>
+  <data name="PP_DefsName" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="PP_DefsType" xml:space="preserve">
+    <value>Works as</value>
+  </data>
+  <data name="PP_DefsTypeDS4" xml:space="preserve">
+    <value>PS4 compatible (DS4): most generic controllers</value>
+  </data>
+  <data name="PP_DefsTypeDualSense" xml:space="preserve">
+    <value>PS5 compatible (DualSense)</value>
+  </data>
+  <data name="PP_DefsTypeSwitch" xml:space="preserve">
+    <value>Nintendo Switch Pro compatible</value>
+  </data>
+  <data name="PP_DefsTypeDS3" xml:space="preserve">
+    <value>PS3 (DualShock 3)</value>
+  </data>
+  <data name="PP_DefsOptions" xml:space="preserve">
+    <value>If something does not work with this controller, turn on what applies:</value>
+  </data>
+  <data name="PP_DefsOptNoOutput" xml:space="preserve">
+    <value>It has no light or rumble (do not send it commands)</value>
+  </data>
+  <data name="PP_DefsOptNoBattery" xml:space="preserve">
+    <value>It does not report the battery</value>
+  </data>
+  <data name="PP_DefsOptNoGyroCalib" xml:space="preserve">
+    <value>No gyro calibration (recommended for generic controllers)</value>
+  </data>
+  <data name="PP_DefsAddSave" xml:space="preserve">
+    <value>Save controller</value>
+  </data>
+  <data name="PP_DefsCancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="PP_DefsCustomTitle" xml:space="preserve">
+    <value>Controllers you added</value>
+  </data>
+  <data name="PP_DefsNoCustom" xml:space="preserve">
+    <value>You have not added any controller yet.</value>
+  </data>
+  <data name="PP_DefsRemove" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="PP_DefsBuiltInTitle" xml:space="preserve">
+    <value>Built-in controllers ({0})</value>
+  </data>
+  <data name="PP_DefsOpenFile" xml:space="preserve">
+    <value>Open the Mandos.json file (for experts)</value>
+  </data>
+  <data name="PP_DefsReload" xml:space="preserve">
+    <value>Read the file again</value>
+  </data>
+  <data name="PP_DefsNote" xml:space="preserve">
+    <value>Changes are used when the controller is connected again (or when you press Stop and Start). If you turn off a built-in controller, PhantomPad stops using it.</value>
+  </data>
+  <data name="PP_DefsFileError" xml:space="preserve">
+    <value>The Mandos.json file has an error and is not being used: {0}</value>
+  </data>
+  <data name="PPC_ControllerDefsError" xml:space="preserve">
+    <value>The controllers file (Mandos.json) has an error and was ignored: {0}</value>
+  </data>
+  <data name="PPC_ControllerDefsSaveFailed" xml:space="preserve">
+    <value>Could not save the controllers file: {0}</value>
+  </data>
+  <data name="PPC_ControllerDefAdded" xml:space="preserve">
+    <value>Controller "{0}" added. Reconnect it (or press Stop and Start) to use it.</value>
+  </data>
+  <data name="PPC_ControllerDefsNotSaved" xml:space="preserve">
+    <value>The change was not saved because Mandos.json has an error. Fix the file and press "Read the file again".</value>
+  </data>
 </root>

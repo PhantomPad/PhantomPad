@@ -140,7 +140,8 @@ namespace DS4Windows
         // https://support.steampowered.com/kb_article.php?ref=5199-TOKV-4426&l=english web site has a list of other PS4 compatible device VID/PID values and brand names. 
         // However, not all those are guaranteed to work with DS4Windows app so support is added case by case when users of DS4Windows app tests non-official DS4 gamepads.
 
-        private static VidPidInfo[] knownDevices =
+        // PhantomPad: mandos incluidos de fabrica. Los del archivo Mandos.json se suman encima (PhantomControllerDefs)
+        private static readonly VidPidInfo[] builtInDevices =
         {
             new VidPidInfo(SONY_VID, 0xBA0, "Sony WA", InputDeviceType.DS4),
             new VidPidInfo(SONY_VID, 0x5C4, "DS4 v.1"),
@@ -186,6 +187,12 @@ namespace DS4Windows
             new VidPidInfo(0x0C12, 0x0E15, "Playmax Wired Controller (PS4)", InputDeviceType.DS4, VidPidFeatureSet.NoBatteryReading | VidPidFeatureSet.NoGyroCalib), // Generic PS4 Controller by Playmax (brand primarily in New Zealand). Standard Wired PS4 controller, no Gyro, no Lightbar, no Battery. There is a newer model but I'm not sure if it uses a different Vid or Pid yet.
         };
 
+
+        /// <summary>PhantomPad: lista en uso (incluidos + los del archivo Mandos.json).</summary>
+        private static VidPidInfo[] knownDevices = builtInDevices;
+        public static IReadOnlyList<VidPidInfo> BuiltInDevices => builtInDevices;
+        public static IReadOnlyList<VidPidInfo> KnownDevices => knownDevices;
+        public static void SetKnownDevices(VidPidInfo[] devices) { if (devices != null && devices.Length > 0) knownDevices = devices; }
 
         private static bool detectNewControllers = true;
         private static long timestamp;
@@ -236,10 +243,12 @@ namespace DS4Windows
         {
             lock (Devices)
             {
-                IEnumerable<HidDevice> hDevices = HidDevices.EnumerateDS4(knownDevices);
+                PhantomControllerDefs.EnsureApplied(); // PhantomPad: suma los mandos del archivo Mandos.json
+                VidPidInfo[] known = knownDevices;
+                IEnumerable<HidDevice> hDevices = HidDevices.EnumerateDS4(known);
                 hDevices = hDevices.Where(d =>
                 {
-                    VidPidInfo metainfo = knownDevices.Single(x => x.vid == d.Attributes.VendorId &&
+                    VidPidInfo metainfo = known.Single(x => x.vid == d.Attributes.VendorId &&
                         x.pid == d.Attributes.ProductId);
                     return PreparePendingDevice(d, metainfo);
                 });
@@ -252,7 +261,7 @@ namespace DS4Windows
                 {
                     // Need VidPidInfo instance to get CheckConnectionDelegate and
                     // check the connection type
-                    VidPidInfo metainfo = knownDevices.Single(x => x.vid == d.Attributes.VendorId &&
+                    VidPidInfo metainfo = known.Single(x => x.vid == d.Attributes.VendorId &&
                         x.pid == d.Attributes.ProductId);
 
                     //return DS4Device.HidConnectionType(d);
@@ -270,10 +279,12 @@ namespace DS4Windows
                 //foreach (HidDevice hDevice in hDevices)
                 {
                     HidDevice hDevice = tempList[i];
-                    VidPidInfo metainfo = knownDevices.Single(x => x.vid == hDevice.Attributes.VendorId &&
+                    VidPidInfo metainfo = known.FirstOrDefault(x => x.vid == hDevice.Attributes.VendorId &&
                         x.pid == hDevice.Attributes.ProductId);
 
-                    if (!metainfo.featureSet.HasFlag(VidPidFeatureSet.VendorDefinedDevice) &&
+                    if (metainfo == null)
+                        continue; // PhantomPad: mando desactivado en la lista de mandos compatibles
+                    else if (!metainfo.featureSet.HasFlag(VidPidFeatureSet.VendorDefinedDevice) &&
                         hDevice.Capabilities.UsagePage >= 0xFF00)
                         continue; // Ignore devices using Vendor-Defined HID Usage Pages (expected to ignore the Nacon Revolution Pro programming interface)
                     else if (DevicePaths.Contains(hDevice.DevicePath))
