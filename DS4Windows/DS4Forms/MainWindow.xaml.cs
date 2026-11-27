@@ -1655,33 +1655,13 @@ Suspend support not enabled.", true);
             Process.Start("control", "joy.cpl");
         }
 
-        private async void DriverSetupBtn_Click(object sender, RoutedEventArgs e)
+        private void DriverSetupBtn_Click(object sender, RoutedEventArgs e)
         {
-            StartStopBtn.IsEnabled = false;
-            await Task.Run(() =>
-            {
-                if (App.rootHub.running)
-                    App.rootHub.Stop();
-            });
-
-            StartStopBtn.IsEnabled = true;
-            ProcessStartInfo startInfo = new ProcessStartInfo();
-            startInfo.FileName = Global.exelocation;
-            startInfo.Arguments = "-driverinstall";
-            startInfo.Verb = "runas";
-            startInfo.UseShellExecute = true;
-            try
-            {
-                using (Process temp = Process.Start(startInfo))
-                {
-                    temp.WaitForExit();
-                    Global.RefreshHidHideInfo();
-                    Global.RefreshFakerInputInfo();
-
-                    settingsWrapVM.DriverCheckRefresh();
-                }
-            }
-            catch { }
+            // PhantomPad: el asistente "Terminar instalacion" en lugar de la ventana del programa original
+            new Drivers.DriverSetupWindow { Owner = this }.ShowDialog();
+            Global.RefreshHidHideInfo();
+            Global.RefreshFakerInputInfo();
+            settingsWrapVM.DriverCheckRefresh();
         }
 
         private void CheckUpdatesBtn_Click(object sender, RoutedEventArgs e)

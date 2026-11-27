@@ -206,6 +206,13 @@ namespace DS4WinWPF.DS4Forms.Uninstall
             sb.AppendLine("$ErrorActionPreference = 'SilentlyContinue'");
             sb.AppendLine($"Wait-Process -Id {Environment.ProcessId} -Timeout 60");
             sb.AppendLine("Start-Sleep -Seconds 2");
+            // Borrar una carpeta aunque algun archivo tarde en soltarse (hasta 20 intentos)
+            sb.AppendLine("function Remove-Folder([string]$p) {");
+            sb.AppendLine("  for ($i = 0; $i -lt 20 -and (Test-Path -LiteralPath $p); $i++) {");
+            sb.AppendLine("    cmd.exe /c \"rd /s /q `\"$p`\"\" 2>$null");
+            sb.AppendLine("    if (Test-Path -LiteralPath $p) { Remove-Item -LiteralPath $p -Recurse -Force; Start-Sleep -Seconds 1 }");
+            sb.AppendLine("  }");
+            sb.AppendLine("}");
 
             string appDir = null;
             if (phantomPad != null)
@@ -216,6 +223,9 @@ namespace DS4WinWPF.DS4Forms.Uninstall
                     if (phantomPad.QuietUninstall == null) args += " --silent";
                     sb.AppendLine($"Start-Process -FilePath {Q(exe)} -ArgumentList {Q(args.Trim())} -Wait");
                     appDir = Path.GetDirectoryName(exe);
+                    // El desinstalador puede seguir trabajando un momento despues de "terminar"
+                    sb.AppendLine($"Get-Process | Where-Object {{ $_.Path -like {Q(appDir + "\\*")} }} | Wait-Process -Timeout 60");
+                    sb.AppendLine("Start-Sleep -Seconds 2");
                 }
             }
 
@@ -224,17 +234,19 @@ namespace DS4WinWPF.DS4Forms.Uninstall
             if (deleteSettings && !string.IsNullOrEmpty(settings) &&
                 string.Equals(Path.GetFileName(settings.TrimEnd('\\')), "PhantomPad", StringComparison.OrdinalIgnoreCase))
             {
-                sb.AppendLine($"Remove-Item -LiteralPath {Q(settings)} -Recurse -Force");
+                sb.AppendLine($"Remove-Folder {Q(settings.TrimEnd('\\'))}");
             }
             // Lo que Velopack pueda dejar en %localappdata%\PhantomPad
             if (appDir != null && string.Equals(Path.GetFileName(appDir), "PhantomPad", StringComparison.OrdinalIgnoreCase))
             {
-                sb.AppendLine($"Remove-Item -LiteralPath {Q(appDir)} -Recurse -Force");
+                sb.AppendLine($"Remove-Folder {Q(appDir)}");
             }
 
-            sb.AppendLine("Add-Type -AssemblyName PresentationFramework");
-            sb.AppendLine($"[System.Windows.MessageBox]::Show({Q(PPText.T("PP_UninFinished", "PhantomPad, ViGEmBus and HidHide were uninstalled. Restart the PC before trying the installer again."))}, 'PhantomPad') | Out-Null");
+            // Aviso final con Si / No para reiniciar
             sb.AppendLine("Remove-Item -LiteralPath $MyInvocation.MyCommand.Path -Force");
+            sb.AppendLine("Add-Type -AssemblyName PresentationFramework");
+            sb.AppendLine($"$r = [System.Windows.MessageBox]::Show({Q(PPText.T("PP_UninFinishedAsk", "PhantomPad, ViGEmBus and HidHide were uninstalled. You must restart the PC before trying the installer again. Restart now?"))}, 'PhantomPad', 'YesNo', 'Question')");
+            sb.AppendLine("if ($r -eq 'Yes') { shutdown.exe /r /t 5 }");
 
             string path = Path.Combine(Path.GetTempPath(), "PhantomPad-desinstalar.ps1");
             File.WriteAllText(path, sb.ToString(), new UTF8Encoding(true));

@@ -3929,4 +3929,7 @@ X axis: {0}, Y axis: {1}</value>
   <data name="PP_UninFinished" xml:space="preserve">
     <value>PhantomPad, ViGEmBus and HidHide were uninstalled. Restart the PC before trying the installer again.</value>
   </data>
+  <data name="PP_UninFinishedAsk" xml:space="preserve">
+    <value>PhantomPad, ViGEmBus and HidHide were uninstalled. You must restart the PC before trying the installer again. Restart now?</value>
+  </data>
 </root>

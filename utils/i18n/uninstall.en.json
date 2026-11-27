@@ -23,5 +23,6 @@
   "PP_UninAcceptWindows": "accept the Windows notice...",
   "PP_UninCancelled": "cancelled",
   "PP_UninError": "error {0}",
-  "PP_UninFinished": "PhantomPad, ViGEmBus and HidHide were uninstalled. Restart the PC before trying the installer again."
+  "PP_UninFinished": "PhantomPad, ViGEmBus and HidHide were uninstalled. Restart the PC before trying the installer again.",
+  "PP_UninFinishedAsk": "PhantomPad, ViGEmBus and HidHide were uninstalled. You must restart the PC before trying the installer again. Restart now?"
 }

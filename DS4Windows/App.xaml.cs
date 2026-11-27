@@ -172,20 +172,12 @@ namespace DS4WinWPF
             DS4Windows.Global.FindConfigLocation();
             bool firstRun = DS4Windows.Global.firstRun;
 
-            // Could not find unique profile location; does not exist or multiple places.
-            // Advise user to specify where DS4Windows should save its configuation files
-            // and profiles
+            // PhantomPad: sin preguntar ("Save Where" del programa original). Los ajustes van
+            // siempre a %appdata%\PhantomPad: la carpeta del programa se reemplaza en cada
+            // actualizacion, asi que guardar ahi haria perder los ajustes.
             if (firstRun)
             {
-                DS4Forms.SaveWhere savewh =
-                    new DS4Forms.SaveWhere(DS4Windows.Global.multisavespots);
-                savewh.ShowDialog();
-                if (!savewh.ChoiceMade)
-                {
-                    runShutdown = false;
-                    Current.Shutdown();
-                    return;
-                }
+                DS4Windows.Global.SaveWhere(DS4Windows.Global.appDataPpath);
             }
 
             // Exit if base configuration could not be generated
@@ -195,6 +187,12 @@ namespace DS4WinWPF
                     "PhantomPad", MessageBoxButton.OK, MessageBoxImage.Error);
                 Current.Shutdown(1);
                 return;
+            }
+
+            // Primera vez: archivo de ajustes por defecto (lo que hacia el boton "Appdata")
+            if (firstRun && !DS4Windows.Global.multisavespots)
+            {
+                DS4Windows.Global.SaveDefault(Path.Combine(DS4Windows.Global.appDataPpath, "Profiles.xml"));
             }
 
             logHolder = new LoggerHolder(rootHub);
@@ -217,14 +215,17 @@ namespace DS4WinWPF
                 logger.Info($@"Profiles.xml not read at location ${DS4Windows.Global.appdatapath}\Profiles.xml. Using default app settings");
             }
 
-            // Ask user which devices the mapper should attempt to open when detected.
-            // Currently only support DS4 by default to avoid extra complications from
-            // Steam Input
+            // PhantomPad: sin la ventana "First Launch" del programa original. PhantomPad lee todos
+            // los mandos que conoce desde el principio (los fisicos se ocultan con HidHide, asi que
+            // no choca con Steam Input). Cada tipo se puede apagar despues en Configuraciones.
             if (firstRun)
             {
-                DS4Forms.FirstLaunchUtilWindow firstLaunchUtilWin =
-                    new DS4Forms.FirstLaunchUtilWindow(DS4Windows.Global.DeviceOptions);
-                firstLaunchUtilWin.ShowDialog();
+                DS4Windows.ControlServiceDeviceOptions opts = DS4Windows.Global.DeviceOptions;
+                opts.DS4DeviceOpts.Enabled = true;
+                opts.DualSenseOpts.Enabled = true;
+                opts.SwitchProDeviceOpts.Enabled = true;
+                opts.JoyConDeviceOpts.Enabled = true;
+                opts.DS3DeviceOpts.Enabled = true;
                 DS4Windows.Global.Save();
             }
 

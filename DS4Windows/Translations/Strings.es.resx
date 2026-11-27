@@ -3926,4 +3926,7 @@ Eje X: {0}, eje Y: {1}</value>
   <data name="PP_UninFinished" xml:space="preserve">
     <value>Se desinstalaron PhantomPad, ViGEmBus y HidHide. Reinicia el PC antes de volver a probar el instalador.</value>
   </data>
+  <data name="PP_UninFinishedAsk" xml:space="preserve">
+    <value>Se desinstalaron PhantomPad, ViGEmBus y HidHide. Hay que reiniciar el PC antes de volver a probar el instalador. ¿Reiniciar ahora?</value>
+  </data>
 </root>
