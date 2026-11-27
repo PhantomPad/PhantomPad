@@ -126,7 +126,8 @@
                                         <DockPanel Margin="0,0,0,8">
                                             <Button x:Name="LightColorBtn" DockPanel.Dock="Right" Width="44" Height="28" Margin="8,0,0,0" Background="{Binding LightColor, Mode=OneWay}"
                                                     BorderBrush="{DynamicResource BorderColor}" Tag="{Binding DevIndex, Mode=OneTime}" Click="LightColorBtn_Click"
-                                                    ToolTip="{lex:Loc PP_LightColor}" />
+                                                    ToolTip="{lex:Loc PP_LightColor}"
+                                                    Visibility="{Binding HasLightAndGyro, Mode=OneWay, Converter={StaticResource BooleanToVisibilityConverter}}" />
                                             <xctk:SplitButton x:Name="ProfEditSBtn" Content="{lex:Loc Edit}" Height="28" Visibility="{Binding PrimaryDevice, Converter={StaticResource BooleanToVisibilityConverter}}"
                                                               Tag="{Binding DevIndex, Mode=OneTime}" Click="ProfEditSBtn_Click">
                                                 <xctk:SplitButton.DropDownContent>
@@ -139,7 +140,8 @@
                                 </Grid>
 
                                 <!-- PhantomPad: seccion LUZ DEL MANDO -->
-                                <Border BorderBrush="{DynamicResource BorderColor}" BorderThickness="0,1,0,0" Margin="0,16,0,0" Padding="0,14,0,0">
+                                <Border BorderBrush="{DynamicResource BorderColor}" BorderThickness="0,1,0,0" Margin="0,16,0,0" Padding="0,14,0,0"
+                                        Visibility="{Binding HasLightAndGyro, Mode=OneWay, Converter={StaticResource BooleanToVisibilityConverter}}">
                                     <Grid>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="Auto" />
@@ -218,7 +220,8 @@
                                 </Border>
 
                                 <!-- PhantomPad: seccion AJUSTES DEL MANDO (gyro aim global) -->
-                                <Border BorderBrush="{DynamicResource BorderColor}" BorderThickness="0,1,0,0" Margin="0,16,0,0" Padding="0,14,0,0">
+                                <Border BorderBrush="{DynamicResource BorderColor}" BorderThickness="0,1,0,0" Margin="0,16,0,0" Padding="0,14,0,0"
+                                        Visibility="{Binding HasLightAndGyro, Mode=OneWay, Converter={StaticResource BooleanToVisibilityConverter}}">
                                     <Grid>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="Auto" />

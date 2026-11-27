@@ -93,6 +93,18 @@ namespace DS4Windows
             return foundDevs;
         }
 
+        /// <summary>PhantomPad: mandos XInput (Xbox y compatibles). Windows marca su HID con "IG_" en la ruta.</summary>
+        public static IEnumerable<HidDevice> EnumerateXInput()
+        {
+            List<HidDevice> found = new List<HidDevice>();
+            foreach (DeviceInfo x in EnumerateDevices())
+            {
+                if (x.Path.IndexOf("&ig_", StringComparison.OrdinalIgnoreCase) < 0) continue;
+                try { found.Add(new HidDevice(x.Path, x.Description, x.Parent)); } catch { }
+            }
+            return found;
+        }
+
         public static IEnumerable<HidDevice> Enumerate(int vendorId)
         {
             return EnumerateDevices().Select(x => new HidDevice(x.Path, x.Description)).Where(x => x.Attributes.VendorId == vendorId);

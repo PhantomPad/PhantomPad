@@ -32,7 +32,8 @@ namespace DS4Windows.InputDevices
         JoyConR,
         JoyConGrip,
         DualSense,
-        DS3
+        DS3,
+        Xbox, // PhantomPad: mandos XInput (se crean en DS4Devices.FindXboxControllers)
     }
 
     public abstract class InputDeviceFactory

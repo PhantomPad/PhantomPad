@@ -733,6 +733,9 @@ namespace DS4WinWPF.DS4Forms.ViewModels
         /// <summary>Solo los mandos DS4 tienen el modo compatible para mandos no originales.</summary>
         public bool HasCompatMode => PhantomDevice.GetCompatMode(device).HasValue;
 
+        /// <summary>Los mandos de Xbox no tienen luz ni giroscopio: esas secciones no se muestran.</summary>
+        public bool HasLightAndGyro => device?.DeviceType != DS4Windows.InputDevices.InputDeviceType.Xbox;
+
         /// <summary>Modo compatible para mandos no originales (cambia como se envian luz y vibracion).</summary>
         public bool CompatMode
         {
@@ -780,7 +783,7 @@ namespace DS4WinWPF.DS4Forms.ViewModels
                 int hz = 1000 / ms;
                 if (PhantomDevice.GetPollChoice(devIndex) > 0)
                     return PPText.T("PP_PollManual", "Requested: {0} Hz (every {1} ms).", hz, ms);
-                int count = PhantomDevice.ConnectedCount();
+                int count = PhantomDevice.BluetoothCount();
                 return count <= 1
                     ? PPText.T("PP_PollAutoSingle", "Automatic: {0} Hz, 100 % for the only controller.", hz)
                     : PPText.T("PP_PollAutoMulti", "Automatic: {0} Hz for each of the {1} controllers.", hz, count);

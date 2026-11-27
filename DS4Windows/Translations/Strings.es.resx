@@ -3153,10 +3153,10 @@ Eje X: {0}, eje Y: {1}</value>
     <value>Pedida: {0} Hz (cada {1} ms).</value>
   </data>
   <data name="PP_PollAutoSingle" xml:space="preserve">
-    <value>Automática: {0} Hz, 100 % para el único mando.</value>
+    <value>Automática: {0} Hz, 100 % para el único mando por Bluetooth.</value>
   </data>
   <data name="PP_PollAutoMulti" xml:space="preserve">
-    <value>Automática: {0} Hz para cada uno de los {1} mandos.</value>
+    <value>Automática: {0} Hz para cada uno de los {1} mandos por Bluetooth.</value>
   </data>
   <data name="PP_LatencyReading" xml:space="preserve">
     <value>Latencia de lectura</value>
@@ -3781,5 +3781,14 @@ Eje X: {0}, eje Y: {1}</value>
   </data>
   <data name="PP_HideLogError" xml:space="preserve">
     <value>Ocultar mandos: {0}</value>
+  </data>
+  <data name="PP_XboxToggle" xml:space="preserve">
+    <value>Usar mandos de Xbox</value>
+  </data>
+  <data name="PP_XboxToggleText" xml:space="preserve">
+    <value>Los mandos Xbox 360, One, Series y compatibles también reciben su propio mando Xbox virtual con todas las mejoras (curvas, zonas muertas, sensibilidad al apuntar, turbo...) y se ocultan a los juegos como los demás. Los mandos de Xbox no tienen luz ni giroscopio.</value>
+  </data>
+  <data name="PP_XboxOff" xml:space="preserve">
+    <value>Mandos de Xbox apagados</value>
   </data>
 </root>

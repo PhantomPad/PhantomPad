@@ -3156,10 +3156,10 @@ X axis: {0}, Y axis: {1}</value>
     <value>Requested: {0} Hz (every {1} ms).</value>
   </data>
   <data name="PP_PollAutoSingle" xml:space="preserve">
-    <value>Automatic: {0} Hz, 100 % for the only controller.</value>
+    <value>Automatic: {0} Hz, 100 % for the only Bluetooth controller.</value>
   </data>
   <data name="PP_PollAutoMulti" xml:space="preserve">
-    <value>Automatic: {0} Hz for each of the {1} controllers.</value>
+    <value>Automatic: {0} Hz for each of the {1} Bluetooth controllers.</value>
   </data>
   <data name="PP_LatencyReading" xml:space="preserve">
     <value>Reading latency</value>
@@ -3784,5 +3784,14 @@ X axis: {0}, Y axis: {1}</value>
   </data>
   <data name="PP_HideLogError" xml:space="preserve">
     <value>Hide controllers: {0}</value>
+  </data>
+  <data name="PP_XboxToggle" xml:space="preserve">
+    <value>Use Xbox controllers</value>
+  </data>
+  <data name="PP_XboxToggleText" xml:space="preserve">
+    <value>Xbox 360, One, Series and compatible controllers also get their own virtual Xbox controller with all the improvements (curves, dead zones, aim sensitivity, turbo...) and are hidden from games like the others. Xbox controllers have no light bar or gyro.</value>
+  </data>
+  <data name="PP_XboxOff" xml:space="preserve">
+    <value>Xbox controllers turned off</value>
   </data>
 </root>

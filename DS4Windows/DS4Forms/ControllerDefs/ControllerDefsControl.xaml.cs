@@ -39,8 +39,28 @@ namespace DS4WinWPF.DS4Forms.ControllerDefs
             };
         }
 
+        private bool loadingXbox;
+
+        private void XboxToggle_Changed(object sender, RoutedEventArgs e)
+        {
+            if (loadingXbox) return;
+            bool on = xboxToggle.IsChecked == true;
+            PhantomXboxInput.Enabled = on;
+            // Al momento: encendido → buscar mandos de Xbox; apagado → soltar los que haya
+            System.Threading.Tasks.Task.Run(() =>
+            {
+                if (!on) DS4Devices.ReleaseXboxControllers();
+                if (App.rootHub != null && App.rootHub.running) App.rootHub.HotPlug();
+            });
+            _ = RefreshUnknownAsync();
+        }
+
         private void RefreshAll()
         {
+            loadingXbox = true;
+            xboxToggle.IsChecked = PhantomXboxInput.Enabled;
+            loadingXbox = false;
+
             errorText.Text = PhantomControllerDefs.LastError == null ? "" :
                 PPText.T("PP_DefsFileError", "The Mandos.json file has an error and is being ignored: {0}", PhantomControllerDefs.LastError);
             errorText.Visibility = PhantomControllerDefs.LastError == null ? Visibility.Collapsed : Visibility.Visible;
@@ -137,6 +157,13 @@ namespace DS4WinWPF.DS4Forms.ControllerDefs
                         int vid = d.Attributes.VendorId, pid = d.Attributes.ProductId;
                         if (!seen.Add((vid, pid))) continue;
                         if (Global.CheckIfVirtualDevice(d.DevicePath)) continue; // mandos virtuales (ViGEm)
+                        if (d.DevicePath.IndexOf("&ig_", StringComparison.OrdinalIgnoreCase) >= 0)
+                        {
+                            // Mando de Xbox (XInput): se reconoce con el interruptor "Usar mandos de Xbox"
+                            result.Add((vid, pid, PhantomXboxInput.NameFor(vid, pid) +
+                                (PhantomXboxInput.Enabled ? "" : " · " + PPText.T("PP_XboxOff", "Xbox controllers turned off")), true));
+                            continue;
+                        }
                         VidPidInfo knownInfo = DS4Devices.KnownDevices.FirstOrDefault(i => i.vid == vid && i.pid == pid);
                         string name = knownInfo?.name ?? ReadProductName(d.DevicePath);
                         if (string.IsNullOrWhiteSpace(name)) name = string.IsNullOrWhiteSpace(d.Description) ? PPText.T("PP_DefsUnnamed", "Controller") : d.Description;

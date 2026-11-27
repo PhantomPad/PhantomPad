@@ -525,6 +525,18 @@ namespace DS4Windows
             return count;
         }
 
+        /// <summary>Mandos conectados por Bluetooth: son los que se reparten el adaptador (minimo 1).</summary>
+        public static int BluetoothCount()
+        {
+            int count = 0;
+            DS4Device[] devs = Program.rootHub?.DS4Controllers;
+            for (int i = 0; i < slotMac.Length; i++)
+            {
+                if (slotMac[i] != null && devs != null && i < devs.Length && devs[i]?.ConnectionType == ConnectionType.BT) count++;
+            }
+            return Math.Max(count, 1);
+        }
+
         /// <summary>
         /// Solo los DS4 por Bluetooth aceptan que se les pida la frecuencia. Por USB (o en otros
         /// mandos) la frecuencia la decide el propio mando.
@@ -538,7 +550,7 @@ namespace DS4Windows
         {
             int choice = GetPollChoice(slot);
             if (choice > 0) return choice;
-            int count = ConnectedCount();
+            int count = BluetoothCount(); // un mando por cable no gasta Bluetooth
             return count <= 1 ? 1 : count == 2 ? 2 : 4;
         }
 

@@ -46,6 +46,8 @@ namespace DS4Windows
         /// <summary>Mandos conectados ahora: id de Windows → nombre.</summary>
         private static readonly Dictionary<string, string> connected = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
         private static readonly Dictionary<int, string> slotIds = new Dictionary<int, string>();
+        /// <summary>Mandos de Xbox: id HID → id del dispositivo XUSB (tambien se oculta).</summary>
+        private static readonly Dictionary<string, string> xusbIds = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
 
         /// <summary>Se llama antes de ocultar el primero, para asegurar que PhantomPad esta permitido.</summary>
         public static Action EnsureAppAllowed;
@@ -129,28 +131,69 @@ namespace DS4Windows
             try { id = Global.GetInstanceIdFromDevicePath(device.HidDevice.DevicePath); } catch { }
             if (string.IsNullOrEmpty(id)) return;
 
+            // Mando de Xbox: ocultar tambien su dispositivo XUSB (si no, los juegos lo siguen viendo por XInput)
+            string xusbId = (device as InputDevices.XboxDevice)?.XusbInstanceId;
             lock (hideLock)
             {
                 connected[id] = device.DisplayName;
                 slotIds[slot] = id;
+                if (!string.IsNullOrEmpty(xusbId)) xusbIds[id] = xusbId;
             }
 
-            if (Enabled && Installed) Task.Run(() => Hide(id));
+            if (Enabled && Installed) Task.Run(() =>
+            {
+                Hide(id);
+                if (!string.IsNullOrEmpty(xusbId)) Hide(xusbId);
+            });
             Changed?.Invoke();
         }
 
         /// <summary>Un mando se desconecto. Sigue en la lista: si vuelve, ya esta oculto.</summary>
         public static void OnRemoved(int slot)
         {
+            string releaseId = null, releaseXusb = null;
             lock (hideLock)
             {
                 if (slotIds.TryGetValue(slot, out string id))
                 {
                     slotIds.Remove(slot);
                     if (!slotIds.ContainsValue(id)) connected.Remove(id);
+
+                    // Mando de Xbox soltado con el interruptor apagado: PhantomPad ya no lo leera,
+                    // asi que vuelve a verse en los juegos
+                    if (!PhantomXboxInput.Enabled && xusbIds.TryGetValue(id, out string x))
+                    {
+                        xusbIds.Remove(id);
+                        releaseId = id;
+                        releaseXusb = x;
+                    }
                 }
             }
+            if (releaseId != null) Task.Run(() => Unhide(releaseId, releaseXusb));
             Changed?.Invoke();
+        }
+
+        /// <summary>Volver a mostrar solo estos mandos.</summary>
+        private static void Unhide(params string[] ids)
+        {
+            lock (hideLock)
+            {
+                try
+                {
+                    using (HidHideAPIDevice hh = OpenHidHide())
+                    {
+                        if (!hh.IsOpen()) return;
+                        List<string> list = Clean(hh.GetBlacklist());
+                        if (list.RemoveAll(x => ids.Contains(x, StringComparer.OrdinalIgnoreCase)) > 0) hh.SetBlacklist(list);
+                    }
+                    Prefs.Added.RemoveAll(x => ids.Contains(x, StringComparer.OrdinalIgnoreCase));
+                    Save();
+                }
+                catch (Exception e)
+                {
+                    LastError = e.Message;
+                }
+            }
         }
 
         /// <summary>"Detener" o cerrar: los mandos dejan de pasar por PhantomPad, asi que se muestran.</summary>
@@ -160,6 +203,7 @@ namespace DS4Windows
             {
                 connected.Clear();
                 slotIds.Clear();
+                xusbIds.Clear();
             }
             RestoreAll();
         }
@@ -167,7 +211,7 @@ namespace DS4Windows
         private static void HideAllConnected()
         {
             List<string> ids;
-            lock (hideLock) ids = connected.Keys.ToList();
+            lock (hideLock) ids = connected.Keys.Concat(xusbIds.Where(kv => connected.ContainsKey(kv.Key)).Select(kv => kv.Value)).ToList();
             foreach (string id in ids) Hide(id);
         }
 

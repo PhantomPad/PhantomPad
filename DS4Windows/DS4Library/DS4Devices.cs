@@ -408,9 +408,68 @@ namespace DS4Windows
                         }
                     }
                 }
+
+                FindXboxControllers(); // PhantomPad: mandos de Xbox
             }
         }
-        
+
+        /// <summary>PhantomPad: interruptor de Xbox apagado → soltar los mandos de Xbox conectados.</summary>
+        public static void ReleaseXboxControllers()
+        {
+            lock (Devices)
+            {
+                foreach (DS4Device d in Devices.Values) (d as XboxDevice)?.ForceRemove();
+            }
+        }
+
+        /// <summary>
+        /// PhantomPad: mandos de Xbox (XInput). Se leen por XUSB (ver XboxDevice) y reciben
+        /// su mando Xbox virtual con todas las mejoras, igual que un mando de PlayStation.
+        /// Los mandos virtuales (los de PhantomPad y otros programas) se descartan.
+        /// </summary>
+        private static void FindXboxControllers()
+        {
+            if (!PhantomXboxInput.Enabled) return;
+            foreach (HidDevice hDevice in HidDevices.EnumerateXInput())
+            {
+                try
+                {
+                    if (DevicePaths.Contains(hDevice.DevicePath)) continue;
+                    string xusbPath = XboxDevice.FindXusbPath(hDevice.DevicePath, out string xusbId);
+                    if (xusbPath == null) continue;
+
+                    bool test = false;
+                    if (Global.CheckIfVirtualDevice(hDevice.DevicePath))
+                    {
+                        // Virtual: solo se acepta el mando de prueba (PHANTOMPAD_TEST_XBOX)
+                        if (XboxDevice.TestInstance.Length == 0 || !string.Equals(xusbId, XboxDevice.TestInstance, StringComparison.OrdinalIgnoreCase)) continue;
+                        test = true;
+                    }
+
+                    if (!hDevice.IsOpen) hDevice.OpenDevice(false);
+                    string name = PhantomXboxInput.NameFor(hDevice.Attributes.VendorId, hDevice.Attributes.ProductId) + (test ? " (prueba)" : "");
+                    XboxDevice dev = new XboxDevice(hDevice, name, xusbPath, xusbId);
+                    PrepareDS4Init?.Invoke(dev);
+                    dev.PostInit();
+                    string serial = dev.getMacAddress();
+                    if (deviceSerials.Contains(serial)) continue;
+                    PostDS4Init?.Invoke(dev);
+                    if (!dev.ExitOutputThread)
+                    {
+                        Devices.Add(hDevice.DevicePath, dev);
+                        DevicePaths.Add(hDevice.DevicePath);
+                        deviceSerials.Add(serial);
+                        serialDevices.Add(serial, dev);
+                        AppLogger.LogToGui($"{DS4WinWPF.Properties.Resources.FoundController} {serial} ({dev.getConnectionType()}) ({dev.DisplayName}).", false);
+                    }
+                }
+                catch (Exception e)
+                {
+                    AppLogger.LogToGui("Xbox: " + e.Message, true);
+                }
+            }
+        }
+
         // Returns DS4 controllers that were found and are running
         public static IEnumerable<DS4Device> getDS4Controllers()
         {

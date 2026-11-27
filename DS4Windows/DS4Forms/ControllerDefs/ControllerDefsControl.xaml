@@ -22,6 +22,15 @@
         <TextBlock Text="{lex:Loc PP_DefsIntro}" TextWrapping="Wrap" Foreground="{DynamicResource MutedForegroundColor}" Margin="0,4,0,8" />
         <TextBlock x:Name="errorText" TextWrapping="Wrap" Foreground="#FFF87171" Margin="0,0,0,8" Visibility="Collapsed" />
 
+        <!-- Mandos de Xbox -->
+        <Border Style="{StaticResource SectionCardStyle}" Padding="20,16" Margin="0,8,0,4">
+            <StackPanel>
+                <CheckBox x:Name="xboxToggle" Content="{lex:Loc PP_XboxToggle}" Style="{StaticResource ToggleSwitchStyle}" Padding="0,6"
+                          Checked="XboxToggle_Changed" Unchecked="XboxToggle_Changed" />
+                <TextBlock Text="{lex:Loc PP_XboxToggleText}" TextWrapping="Wrap" FontSize="12" Foreground="{DynamicResource MutedForegroundColor}" />
+            </StackPanel>
+        </Border>
+
         <!-- Mandos conectados que no se reconocen -->
         <Border Style="{StaticResource SectionCardStyle}" Padding="20,16" Margin="0,8,0,12">
             <StackPanel>
