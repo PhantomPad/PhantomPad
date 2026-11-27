@@ -229,7 +229,16 @@ namespace DS4WinWPF.DS4Forms
         {
             Task tempTask = Task.Run(() =>
             {
-                mainWinVM.CheckDrivers();
+                // PhantomPad: asistente "Terminar instalacion" (ViGEmBus + HidHide) en lugar del aviso antiguo
+                if (Drivers.DriverSetupWindow.IsNeeded(App.PhantomFirstRun))
+                {
+                    Dispatcher.Invoke(() =>
+                    {
+                        var setup = new Drivers.DriverSetupWindow();
+                        if (IsVisible) setup.Owner = this;
+                        setup.ShowDialog();
+                    });
+                }
                 // PhantomPad: "Conectar los mandos automaticamente" (Configuraciones > Inicio)
                 if (!parser.Stop && DS4Windows.PhantomStartup.AutoConnect)
                 {

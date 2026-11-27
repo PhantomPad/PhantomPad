@@ -1,0 +1,22 @@
+{
+  "PP_DrvTitle": "Terminar instalación",
+  "PP_DrvIntro": "PhantomPad necesita dos controladores oficiales y gratuitos de Nefarius. Vienen dentro de PhantomPad, no se descarga nada.",
+  "PP_DrvViGEm": "ViGEmBus",
+  "PP_DrvViGEmText": "Crea el mando Xbox virtual que ven los juegos. Imprescindible.",
+  "PP_DrvHidHide": "HidHide",
+  "PP_DrvHidHideText": "Oculta el mando físico a los juegos para que los botones no se dupliquen. Recomendado.",
+  "PP_DrvRebootNote": "Listo. Reinicia el PC para que HidHide empiece a funcionar. Guarda lo que tengas abierto antes de reiniciar.",
+  "PP_DrvRebootLater": "Reiniciar más tarde",
+  "PP_DrvAllOk": "Todo está instalado. PhantomPad está listo.",
+  "PP_DrvClose": "Cerrar",
+  "PP_DrvNote": "Al pulsar \"Instalar todo\" se abren los instaladores oficiales uno detrás del otro: acepta el aviso de Windows y sigue sus pasos. HidHide pide reiniciar el PC al final. También puedes instalarlos más tarde desde Configuraciones → Ocultar mandos.",
+  "PP_DrvStateReboot": "Instalado · falta reiniciar",
+  "PP_DrvStateOkVersion": "✓ Instalado ({0})",
+  "PP_DrvStateOk": "✓ Instalado",
+  "PP_DrvStateWaiting": "Pendiente...",
+  "PP_DrvStateMissing": "No instalado",
+  "PP_DrvInstalling": "Instalando...",
+  "PP_DrvInstallAll": "Instalar todo",
+  "PP_DrvLater": "Más tarde",
+  "PP_DrvReboot": "Reiniciar ahora"
+}

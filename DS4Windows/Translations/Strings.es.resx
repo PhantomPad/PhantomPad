@@ -3791,4 +3791,64 @@ Eje X: {0}, eje Y: {1}</value>
   <data name="PP_XboxOff" xml:space="preserve">
     <value>Mandos de Xbox apagados</value>
   </data>
+  <data name="PP_DrvTitle" xml:space="preserve">
+    <value>Terminar instalación</value>
+  </data>
+  <data name="PP_DrvIntro" xml:space="preserve">
+    <value>PhantomPad necesita dos controladores oficiales y gratuitos de Nefarius. Vienen dentro de PhantomPad, no se descarga nada.</value>
+  </data>
+  <data name="PP_DrvViGEm" xml:space="preserve">
+    <value>ViGEmBus</value>
+  </data>
+  <data name="PP_DrvViGEmText" xml:space="preserve">
+    <value>Crea el mando Xbox virtual que ven los juegos. Imprescindible.</value>
+  </data>
+  <data name="PP_DrvHidHide" xml:space="preserve">
+    <value>HidHide</value>
+  </data>
+  <data name="PP_DrvHidHideText" xml:space="preserve">
+    <value>Oculta el mando físico a los juegos para que los botones no se dupliquen. Recomendado.</value>
+  </data>
+  <data name="PP_DrvRebootNote" xml:space="preserve">
+    <value>Listo. Reinicia el PC para que HidHide empiece a funcionar. Guarda lo que tengas abierto antes de reiniciar.</value>
+  </data>
+  <data name="PP_DrvRebootLater" xml:space="preserve">
+    <value>Reiniciar más tarde</value>
+  </data>
+  <data name="PP_DrvAllOk" xml:space="preserve">
+    <value>Todo está instalado. PhantomPad está listo.</value>
+  </data>
+  <data name="PP_DrvClose" xml:space="preserve">
+    <value>Cerrar</value>
+  </data>
+  <data name="PP_DrvNote" xml:space="preserve">
+    <value>Al pulsar "Instalar todo" se abren los instaladores oficiales uno detrás del otro: acepta el aviso de Windows y sigue sus pasos. HidHide pide reiniciar el PC al final. También puedes instalarlos más tarde desde Configuraciones → Ocultar mandos.</value>
+  </data>
+  <data name="PP_DrvStateReboot" xml:space="preserve">
+    <value>Instalado · falta reiniciar</value>
+  </data>
+  <data name="PP_DrvStateOkVersion" xml:space="preserve">
+    <value>✓ Instalado ({0})</value>
+  </data>
+  <data name="PP_DrvStateOk" xml:space="preserve">
+    <value>✓ Instalado</value>
+  </data>
+  <data name="PP_DrvStateWaiting" xml:space="preserve">
+    <value>Pendiente...</value>
+  </data>
+  <data name="PP_DrvStateMissing" xml:space="preserve">
+    <value>No instalado</value>
+  </data>
+  <data name="PP_DrvInstalling" xml:space="preserve">
+    <value>Instalando...</value>
+  </data>
+  <data name="PP_DrvInstallAll" xml:space="preserve">
+    <value>Instalar todo</value>
+  </data>
+  <data name="PP_DrvLater" xml:space="preserve">
+    <value>Más tarde</value>
+  </data>
+  <data name="PP_DrvReboot" xml:space="preserve">
+    <value>Reiniciar ahora</value>
+  </data>
 </root>

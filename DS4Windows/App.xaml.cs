@@ -46,9 +46,14 @@ namespace DS4WinWPF
         /// desinstalacion y actualizaciones, y si al cerrar quedo una actualizacion descargada
         /// la aplica al volver a abrir.
         /// </summary>
+        /// <summary>PhantomPad: primera vez que se abre despues de instalar con Setup.exe.</summary>
+        public static bool PhantomFirstRun;
+
         public App()
         {
-            Velopack.VelopackApp.Build().Run();
+            Velopack.VelopackApp.Build()
+                .OnFirstRun(v => PhantomFirstRun = true) // recien instalado: asistente "Terminar instalacion"
+                .Run();
         }
 
         [DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Auto)]
