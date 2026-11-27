@@ -123,6 +123,22 @@ namespace DS4WinWPF.DS4Forms
                 Environment.Is64BitOperatingSystem;
         }
 
+        /// <summary>
+        /// PhantomPad: copia el instalador oficial que viene dentro de PhantomPad (carpeta drivers)
+        /// en lugar de descargarlo. Devuelve false si no viene incluido.
+        /// </summary>
+        private static bool CopyBundledInstaller(string fileName, string destination)
+        {
+            try
+            {
+                string bundled = Path.Combine(DS4Windows.Global.exedirpath, "drivers", fileName);
+                if (!File.Exists(bundled)) return false;
+                File.Copy(bundled, destination, true);
+                return true;
+            }
+            catch { return false; }
+        }
+
         private bool IsFakerInputControlCompatible()
         {
             // FakerInput works on Windows 8.1 and later. Going to attempt
@@ -176,11 +192,14 @@ namespace DS4WinWPF.DS4Forms
 
             string finalFilename = Path.Combine(Path.GetTempPath(), $"{installFileName}");
             bool success = false;
-            using (var downloadStream = new FileStream(tempInstFileName, FileMode.CreateNew))
+            if (!CopyBundledInstaller(installFileName, finalFilename))
             {
-                HttpResponseMessage response = await App.requestClient.GetAsync(installDL,
-                    downloadStream, progress);
-                success = response.IsSuccessStatusCode;
+                using (var downloadStream = new FileStream(tempInstFileName, FileMode.CreateNew))
+                {
+                    HttpResponseMessage response = await App.requestClient.GetAsync(installDL,
+                        downloadStream, progress);
+                    success = response.IsSuccessStatusCode;
+                }
             }
 
             if (success)
@@ -294,11 +313,14 @@ namespace DS4WinWPF.DS4Forms
             string tempInstHidFileName = Path.Combine(Path.GetTempPath(), $"{InstHidHideFileNameX64}.tmp");
             string finalFilename = Path.Combine(Path.GetTempPath(), $"{InstHidHideFileNameX64}");
             bool success = false;
-            using (var downloadStream = new FileStream(tempInstHidFileName, FileMode.CreateNew))
+            if (!CopyBundledInstaller(InstHidHideFileNameX64, finalFilename))
             {
-                HttpResponseMessage response = await App.requestClient.GetAsync(InstallerHidHideX64,
-                    downloadStream, progress);
-                success = response.IsSuccessStatusCode;
+                using (var downloadStream = new FileStream(tempInstHidFileName, FileMode.CreateNew))
+                {
+                    HttpResponseMessage response = await App.requestClient.GetAsync(InstallerHidHideX64,
+                        downloadStream, progress);
+                    success = response.IsSuccessStatusCode;
+                }
             }
 
             if (success)

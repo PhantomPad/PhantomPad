@@ -14,6 +14,7 @@
         xmlns:gp="clr-namespace:DS4WinWPF.DS4Forms.GameProfiles"
         xmlns:cal="clr-namespace:DS4WinWPF.DS4Forms.Calibration"
         xmlns:bat="clr-namespace:DS4WinWPF.DS4Forms.BatteryPage"
+        xmlns:hidepg="clr-namespace:DS4WinWPF.DS4Forms.HidePage"
         xmlns:upd="clr-namespace:DS4WinWPF.DS4Forms.Updates"
         xmlns:defs="clr-namespace:DS4WinWPF.DS4Forms.ControllerDefs"
         xmlns:system="clr-namespace:System;assembly=mscorlib"
@@ -444,6 +445,13 @@
                                     <TextBlock Text="{lex:Loc PP_DefsNav}" FontWeight="SemiBold" VerticalAlignment="Center" />
                                 </StackPanel>
                             </ListBoxItem>
+                            <ListBoxItem Tag="hide">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="&#xED1A;" FontFamily="{StaticResource IconFont}" FontSize="15" Foreground="{DynamicResource AccentLightColor}"
+                                               VerticalAlignment="Center" Margin="0,0,12,0" />
+                                    <TextBlock Text="{lex:Loc PP_HideNav}" FontWeight="SemiBold" VerticalAlignment="Center" />
+                                </StackPanel>
+                            </ListBoxItem>
                             <ListBoxItem Tag="battery">
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Text="&#xE83F;" FontFamily="{StaticResource IconFont}" FontSize="15" Foreground="{DynamicResource AccentLightColor}"
@@ -765,6 +773,11 @@
 
                         <TextBlock Text="{lex:Loc PP_StartTip}" TextWrapping="Wrap" FontSize="12" Foreground="{DynamicResource AccentLightColor}" Margin="4,0,4,8" />
                     </StackPanel>
+                </ScrollViewer>
+
+                <!-- ===== Configuraciones > Ocultar mandos ===== -->
+                <ScrollViewer x:Name="settingsHidePage" Grid.Column="1" Visibility="Collapsed" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                    <hidepg:HideSettingsControl x:Name="hideSettingsControl" />
                 </ScrollViewer>
 
                 <!-- ===== Configuraciones > Bateria ===== -->

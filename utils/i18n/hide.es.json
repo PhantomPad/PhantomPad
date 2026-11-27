@@ -1,0 +1,22 @@
+{
+  "PP_HideNav": "Ocultar mandos",
+  "PP_HideTitle": "Ocultar mandos",
+  "PP_HideIntro": "PhantomPad convierte cada mando en un mando Xbox virtual, así funciona en todos los juegos y recibe todas las mejoras. Para que los juegos no vean también el mando físico (y cada botón llegue dos veces), PhantomPad lo oculta mientras está funcionando. Al detener o cerrar PhantomPad, los mandos se vuelven a mostrar.",
+  "PP_HideInstall": "Instalar HidHide",
+  "PP_HideDriverOk": "✓ HidHide está instalado",
+  "PP_HideDriverOkText": "Controlador oficial y gratuito de Nefarius. PhantomPad lo usa para ocultar los mandos físicos.",
+  "PP_HideDriverReboot": "Reinicia el PC para terminar",
+  "PP_HideDriverRebootText": "HidHide se instaló. Empieza a funcionar después de reiniciar el PC.",
+  "PP_HideDriverMissing": "HidHide no está instalado",
+  "PP_HideDriverMissingText": "Sin él, algunos juegos ven dos mandos (el físico y el Xbox virtual) y los botones se duplican. Es gratuito y oficial (de Nefarius, el mismo autor de ViGEmBus). Después tendrás que reiniciar el PC.",
+  "PP_HideToggle": "Ocultar los mandos físicos a los juegos",
+  "PP_HideToggleText": "Encendido: los juegos solo ven el mando Xbox virtual de cada mando (uno por mando, también para jugar en cooperativo). Apagado: los juegos ven los dos.",
+  "PP_HideNow": "Mandos conectados",
+  "PP_HideStateHidden": "Oculto · los juegos solo ven el mando Xbox virtual",
+  "PP_HideStateVisible": "Visible para los juegos",
+  "PP_HideTip": "Si un juego ya estaba abierto antes de conectar el mando, ciérralo y vuelve a abrirlo para que deje de ver el físico.",
+  "PP_HideErrOpen": "No se pudo hablar con HidHide. Reinicia el PC y vuelve a intentarlo.",
+  "PP_HideErrInverse": "HidHide está en modo \"inverso\". Apaga esa opción en la app de HidHide para que PhantomPad pueda ocultar los mandos.",
+  "PP_HideLogHidden": "Mando físico oculto a los juegos (solo ven el Xbox virtual)",
+  "PP_HideLogError": "Ocultar mandos: {0}"
+}

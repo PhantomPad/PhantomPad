@@ -3725,4 +3725,64 @@ X axis: {0}, Y axis: {1}</value>
   <data name="PP_UpdLastChecked" xml:space="preserve">
     <value>Last check: today at {0}.</value>
   </data>
+  <data name="PP_HideNav" xml:space="preserve">
+    <value>Hide controllers</value>
+  </data>
+  <data name="PP_HideTitle" xml:space="preserve">
+    <value>Hide controllers</value>
+  </data>
+  <data name="PP_HideIntro" xml:space="preserve">
+    <value>PhantomPad turns each controller into a virtual Xbox controller, so it works in every game and gets all the improvements. To keep games from also seeing the physical controller (and getting every button twice), PhantomPad hides it while it is running. When you stop or close PhantomPad, the controllers are shown again.</value>
+  </data>
+  <data name="PP_HideInstall" xml:space="preserve">
+    <value>Install HidHide</value>
+  </data>
+  <data name="PP_HideDriverOk" xml:space="preserve">
+    <value>✓ HidHide is installed</value>
+  </data>
+  <data name="PP_HideDriverOkText" xml:space="preserve">
+    <value>Official free driver by Nefarius. PhantomPad uses it to hide the physical controllers.</value>
+  </data>
+  <data name="PP_HideDriverReboot" xml:space="preserve">
+    <value>Restart the PC to finish</value>
+  </data>
+  <data name="PP_HideDriverRebootText" xml:space="preserve">
+    <value>HidHide was installed. It starts working after restarting the PC.</value>
+  </data>
+  <data name="PP_HideDriverMissing" xml:space="preserve">
+    <value>HidHide is not installed</value>
+  </data>
+  <data name="PP_HideDriverMissingText" xml:space="preserve">
+    <value>Without it, some games see two controllers (the physical one and the virtual Xbox one) and the buttons get doubled. It is free and official (by Nefarius, the same author as ViGEmBus). You will need to restart the PC afterwards.</value>
+  </data>
+  <data name="PP_HideToggle" xml:space="preserve">
+    <value>Hide the physical controllers from games</value>
+  </data>
+  <data name="PP_HideToggleText" xml:space="preserve">
+    <value>On: games only see the virtual Xbox controller of each controller (one per controller, also for co-op). Off: games see both.</value>
+  </data>
+  <data name="PP_HideNow" xml:space="preserve">
+    <value>Connected controllers</value>
+  </data>
+  <data name="PP_HideStateHidden" xml:space="preserve">
+    <value>Hidden · games only see the virtual Xbox controller</value>
+  </data>
+  <data name="PP_HideStateVisible" xml:space="preserve">
+    <value>Visible to games</value>
+  </data>
+  <data name="PP_HideTip" xml:space="preserve">
+    <value>If a game was already open before you connected the controller, close it and open it again so it stops seeing the physical one.</value>
+  </data>
+  <data name="PP_HideErrOpen" xml:space="preserve">
+    <value>Could not talk to HidHide. Restart the PC and try again.</value>
+  </data>
+  <data name="PP_HideErrInverse" xml:space="preserve">
+    <value>HidHide is in "inverse" mode. Turn that option off in the HidHide app so PhantomPad can hide the controllers.</value>
+  </data>
+  <data name="PP_HideLogHidden" xml:space="preserve">
+    <value>Physical controller hidden from games (they only see the virtual Xbox one)</value>
+  </data>
+  <data name="PP_HideLogError" xml:space="preserve">
+    <value>Hide controllers: {0}</value>
+  </data>
 </root>

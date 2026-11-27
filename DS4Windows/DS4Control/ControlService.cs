@@ -185,6 +185,7 @@ namespace DS4Windows
         public ControlService(DS4WinWPF.ArgumentParser cmdParser)
         {
             this.cmdParser = cmdParser;
+            PhantomHide.EnsureAppAllowed = () => CheckHidHidePresence(); // PhantomPad: que HidHide deje pasar a PhantomPad
 
             Crc32Algorithm.InitializeTable(DS4Device.DefaultPolynomial);
 
@@ -1561,6 +1562,7 @@ namespace DS4Windows
         public bool Start(bool showlog = true)
         {
             inServiceTask = true;
+            PhantomHide.Init(); // PhantomPad: si la vez anterior se cerro de golpe, mostrar los mandos que quedaron ocultos
             StartViGEm();
             if (vigemTestClient != null)
             //if (x360Bus.Open() && x360Bus.Start())
@@ -1801,6 +1803,7 @@ namespace DS4Windows
                 runHotPlug = false;
                 inServiceTask = true;
                 PreServiceStop?.Invoke(this, EventArgs.Empty);
+                PhantomHide.OnServiceStopped(); // PhantomPad: los juegos vuelven a ver los mandos fisicos
 
                 if (showlog)
                     LogDebug(DS4WinWPF.Properties.Resources.StoppingX360);
@@ -2046,6 +2049,7 @@ namespace DS4Windows
         private void PrepareConnectedInputControllerSettingEvents(int numControllers, DS4Device device, int index)
         {
             PhantomDevice.OnConnected(index, device); // PhantomPad: ajustes propios de este mando (por MAC)
+            PhantomHide.OnConnected(index, device); // PhantomPad: ocultar el mando fisico a los juegos (HidHide)
             Global.RefreshExtrasButtons(index, GetKnownExtraButtons(device));
             Global.LoadControllerConfigs(device);
             device.LoadStoreSettings();
@@ -2563,6 +2567,7 @@ namespace DS4Windows
                     device.Synced = false;
                     DS4Controllers[ind] = null;
                     PhantomDevice.OnRemoved(ind); // PhantomPad: un mando menos (frecuencia automatica)
+                    PhantomHide.OnRemoved(ind);
                     oscState[ind] = new DS4State();
                     //eventDispatcher.Invoke(() =>
                     //{

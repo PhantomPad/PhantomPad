@@ -3722,4 +3722,64 @@ Eje X: {0}, eje Y: {1}</value>
   <data name="PP_UpdLastChecked" xml:space="preserve">
     <value>Última comprobación: hoy a las {0}.</value>
   </data>
+  <data name="PP_HideNav" xml:space="preserve">
+    <value>Ocultar mandos</value>
+  </data>
+  <data name="PP_HideTitle" xml:space="preserve">
+    <value>Ocultar mandos</value>
+  </data>
+  <data name="PP_HideIntro" xml:space="preserve">
+    <value>PhantomPad convierte cada mando en un mando Xbox virtual, así funciona en todos los juegos y recibe todas las mejoras. Para que los juegos no vean también el mando físico (y cada botón llegue dos veces), PhantomPad lo oculta mientras está funcionando. Al detener o cerrar PhantomPad, los mandos se vuelven a mostrar.</value>
+  </data>
+  <data name="PP_HideInstall" xml:space="preserve">
+    <value>Instalar HidHide</value>
+  </data>
+  <data name="PP_HideDriverOk" xml:space="preserve">
+    <value>✓ HidHide está instalado</value>
+  </data>
+  <data name="PP_HideDriverOkText" xml:space="preserve">
+    <value>Controlador oficial y gratuito de Nefarius. PhantomPad lo usa para ocultar los mandos físicos.</value>
+  </data>
+  <data name="PP_HideDriverReboot" xml:space="preserve">
+    <value>Reinicia el PC para terminar</value>
+  </data>
+  <data name="PP_HideDriverRebootText" xml:space="preserve">
+    <value>HidHide se instaló. Empieza a funcionar después de reiniciar el PC.</value>
+  </data>
+  <data name="PP_HideDriverMissing" xml:space="preserve">
+    <value>HidHide no está instalado</value>
+  </data>
+  <data name="PP_HideDriverMissingText" xml:space="preserve">
+    <value>Sin él, algunos juegos ven dos mandos (el físico y el Xbox virtual) y los botones se duplican. Es gratuito y oficial (de Nefarius, el mismo autor de ViGEmBus). Después tendrás que reiniciar el PC.</value>
+  </data>
+  <data name="PP_HideToggle" xml:space="preserve">
+    <value>Ocultar los mandos físicos a los juegos</value>
+  </data>
+  <data name="PP_HideToggleText" xml:space="preserve">
+    <value>Encendido: los juegos solo ven el mando Xbox virtual de cada mando (uno por mando, también para jugar en cooperativo). Apagado: los juegos ven los dos.</value>
+  </data>
+  <data name="PP_HideNow" xml:space="preserve">
+    <value>Mandos conectados</value>
+  </data>
+  <data name="PP_HideStateHidden" xml:space="preserve">
+    <value>Oculto · los juegos solo ven el mando Xbox virtual</value>
+  </data>
+  <data name="PP_HideStateVisible" xml:space="preserve">
+    <value>Visible para los juegos</value>
+  </data>
+  <data name="PP_HideTip" xml:space="preserve">
+    <value>Si un juego ya estaba abierto antes de conectar el mando, ciérralo y vuelve a abrirlo para que deje de ver el físico.</value>
+  </data>
+  <data name="PP_HideErrOpen" xml:space="preserve">
+    <value>No se pudo hablar con HidHide. Reinicia el PC y vuelve a intentarlo.</value>
+  </data>
+  <data name="PP_HideErrInverse" xml:space="preserve">
+    <value>HidHide está en modo "inverso". Apaga esa opción en la app de HidHide para que PhantomPad pueda ocultar los mandos.</value>
+  </data>
+  <data name="PP_HideLogHidden" xml:space="preserve">
+    <value>Mando físico oculto a los juegos (solo ven el Xbox virtual)</value>
+  </data>
+  <data name="PP_HideLogError" xml:space="preserve">
+    <value>Ocultar mandos: {0}</value>
+  </data>
 </root>
