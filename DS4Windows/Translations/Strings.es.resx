@@ -3929,4 +3929,211 @@ Eje X: {0}, eje Y: {1}</value>
   <data name="PP_UninFinishedAsk" xml:space="preserve">
     <value>Se desinstalaron PhantomPad, ViGEmBus y HidHide. Hay que reiniciar el PC antes de volver a probar el instalador. ¿Reiniciar ahora?</value>
   </data>
+  <data name="PP_DesktopMode" xml:space="preserve">
+    <value>Escritorio</value>
+  </data>
+  <data name="PP_ControllerMode" xml:space="preserve">
+    <value>Mando</value>
+  </data>
+  <data name="PP_LibAdd" xml:space="preserve">
+    <value>Añadir juego</value>
+  </data>
+  <data name="PP_LibRefresh" xml:space="preserve">
+    <value>Buscar juegos</value>
+  </data>
+  <data name="PP_LibRefreshTip" xml:space="preserve">
+    <value>Vuelve a buscar los juegos instalados con Steam, Epic y GOG</value>
+  </data>
+  <data name="PP_LibSearch" xml:space="preserve">
+    <value>Buscar en tu biblioteca...</value>
+  </data>
+  <data name="PP_LibFilterAll" xml:space="preserve">
+    <value>Todos</value>
+  </data>
+  <data name="PP_LibFilterManual" xml:space="preserve">
+    <value>Añadidos por ti</value>
+  </data>
+  <data name="PP_LibFilterInstalled" xml:space="preserve">
+    <value>Instalados</value>
+  </data>
+  <data name="PP_LibSourceManual" xml:space="preserve">
+    <value>Añadido por ti</value>
+  </data>
+  <data name="PP_LibNotInstalled" xml:space="preserve">
+    <value>No instalado</value>
+  </data>
+  <data name="PP_LibInstalled" xml:space="preserve">
+    <value>Instalado</value>
+  </data>
+  <data name="PP_LibSearching" xml:space="preserve">
+    <value>Buscando tus juegos...</value>
+  </data>
+  <data name="PP_LibEmpty" xml:space="preserve">
+    <value>Aún no hay juegos. Pulsa "Buscar juegos" o "Añadir juego".</value>
+  </data>
+  <data name="PP_LibNoMatch" xml:space="preserve">
+    <value>Ningún juego coincide con la búsqueda.</value>
+  </data>
+  <data name="PP_LibLastPlayed" xml:space="preserve">
+    <value>Jugado por última vez: {0}</value>
+  </data>
+  <data name="PP_LibPlay" xml:space="preserve">
+    <value>Jugar</value>
+  </data>
+  <data name="PP_LibPlayHint" xml:space="preserve">
+    <value>Si hay un mando conectado, el juego usa todo lo del apartado Mando (perfiles, gyro, sensibilidad, turbo...).</value>
+  </data>
+  <data name="PP_LibControllerSettings" xml:space="preserve">
+    <value>Ajustes del mando</value>
+  </data>
+  <data name="PP_LibOpenFolder" xml:space="preserve">
+    <value>Abrir carpeta</value>
+  </data>
+  <data name="PP_LibRemove" xml:space="preserve">
+    <value>Quitar</value>
+  </data>
+  <data name="PP_LibPickGame" xml:space="preserve">
+    <value>Elige un juego para ver su ficha.</value>
+  </data>
+  <data name="PP_LibLaunchError" xml:space="preserve">
+    <value>No se pudo iniciar {0}: {1}</value>
+  </data>
+  <data name="PP_LibNoLaunch" xml:space="preserve">
+    <value>Este juego no tiene nada que iniciar.</value>
+  </data>
+  <data name="PP_LibRemoveManual" xml:space="preserve">
+    <value>¿Quitar {0} de la biblioteca? El juego no se desinstala.</value>
+  </data>
+  <data name="PP_LibRemoveDetected" xml:space="preserve">
+    <value>¿Ocultar {0} de la biblioteca? El juego no se desinstala. No volverá a aparecer al buscar juegos.</value>
+  </data>
+  <data name="PP_LibAddTitle" xml:space="preserve">
+    <value>Elige el .exe del juego</value>
+  </data>
+  <data name="PP_LibAddFilter" xml:space="preserve">
+    <value>Juegos y accesos directos</value>
+  </data>
+  <data name="PP_LibSaveFailed" xml:space="preserve">
+    <value>No se pudo guardar la biblioteca de juegos: {0}</value>
+  </data>
+  <data name="PP_LibEdit" xml:space="preserve">
+    <value>Editar...</value>
+  </data>
+  <data name="PP_LibEditTitle" xml:space="preserve">
+    <value>Editar juego</value>
+  </data>
+  <data name="PP_LibEditSave" xml:space="preserve">
+    <value>Guardar</value>
+  </data>
+  <data name="PP_LibEditCover" xml:space="preserve">
+    <value>Carátula</value>
+  </data>
+  <data name="PP_LibEditIcon" xml:space="preserve">
+    <value>Icono</value>
+  </data>
+  <data name="PP_LibEditBackground" xml:space="preserve">
+    <value>Fondo</value>
+  </data>
+  <data name="PP_LibEditPick" xml:space="preserve">
+    <value>Elegir...</value>
+  </data>
+  <data name="PP_LibEditDefault" xml:space="preserve">
+    <value>Original</value>
+  </data>
+  <data name="PP_LibEditDropHere" xml:space="preserve">
+    <value>Arrastra una imagen aquí o pulsa "Elegir..."</value>
+  </data>
+  <data name="PP_LibEditImagesHint" xml:space="preserve">
+    <value>PNG, JPG, BMP, GIF o ICO. Para el icono también puedes elegir un .exe. "Original" vuelve a la imagen de siempre (la de Steam o la del .exe del juego).</value>
+  </data>
+  <data name="PP_LibEditName" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="PP_LibEditDescription" xml:space="preserve">
+    <value>Descripción</value>
+  </data>
+  <data name="PP_LibEditGenres" xml:space="preserve">
+    <value>Géneros</value>
+  </data>
+  <data name="PP_LibEditYear" xml:space="preserve">
+    <value>Año</value>
+  </data>
+  <data name="PP_LibEditDeveloper" xml:space="preserve">
+    <value>Desarrollador</value>
+  </data>
+  <data name="PP_LibEditPublisher" xml:space="preserve">
+    <value>Editor</value>
+  </data>
+  <data name="PP_LibEditLaunch" xml:space="preserve">
+    <value>Iniciar (.exe, acceso directo o dirección)</value>
+  </data>
+  <data name="PP_LibEditBrowse" xml:space="preserve">
+    <value>Examinar...</value>
+  </data>
+  <data name="PP_LibEditArgs" xml:space="preserve">
+    <value>Argumentos (opcional)</value>
+  </data>
+  <data name="PP_LibEditLaunchHint" xml:space="preserve">
+    <value>Los juegos de Steam y Epic se inician con su lanzador (steam://, com.epicgames.launcher://). Cámbialo solo si el juego no arranca.</value>
+  </data>
+  <data name="PP_LibEditPickTitle" xml:space="preserve">
+    <value>Elige una imagen</value>
+  </data>
+  <data name="PP_LibEditImages" xml:space="preserve">
+    <value>Imágenes</value>
+  </data>
+  <data name="PP_LibEditBadImage" xml:space="preserve">
+    <value>Ese archivo no es una imagen que PhantomPad pueda mostrar (usa PNG, JPG, BMP, GIF o ICO).</value>
+  </data>
+  <data name="PP_LibEditNeedName" xml:space="preserve">
+    <value>El juego necesita un nombre.</value>
+  </data>
+  <data name="PP_LibEditBadYear" xml:space="preserve">
+    <value>El año debe ser un número como 2008.</value>
+  </data>
+  <data name="PP_LibEditImageError" xml:space="preserve">
+    <value>No se pudo guardar la imagen: {0}</value>
+  </data>
+  <data name="PP_LibSteamDownload" xml:space="preserve">
+    <value>Descargar de Steam</value>
+  </data>
+  <data name="PP_LibSteamSearching" xml:space="preserve">
+    <value>Buscando en la tienda de Steam...</value>
+  </data>
+  <data name="PP_LibSteamNone" xml:space="preserve">
+    <value>No se eligió ningún juego de Steam. No cambió nada.</value>
+  </data>
+  <data name="PP_LibSteamNoData" xml:space="preserve">
+    <value>Steam no tiene datos de ese juego.</value>
+  </data>
+  <data name="PP_LibSteamLoaded" xml:space="preserve">
+    <value>Cargado de Steam: {0}. Pulsa "Guardar" para quedártelo, o "Cancelar" para dejarlo como estaba.</value>
+  </data>
+  <data name="PP_LibSteamError" xml:space="preserve">
+    <value>No se pudo conectar con la tienda de Steam. Revisa tu conexión a internet. ({0})</value>
+  </data>
+  <data name="PP_LibSteamPickTitle" xml:space="preserve">
+    <value>¿Qué juego de Steam es?</value>
+  </data>
+  <data name="PP_LibSteamPickUse" xml:space="preserve">
+    <value>Usar este juego</value>
+  </data>
+  <data name="PP_LibSteamPickIntro" xml:space="preserve">
+    <value>Elige el juego de la lista. Si no está, escribe su nombre y pulsa "Buscar".</value>
+  </data>
+  <data name="PP_LibSteamPickSearch" xml:space="preserve">
+    <value>Buscar</value>
+  </data>
+  <data name="PP_LibSteamPickEmpty" xml:space="preserve">
+    <value>Steam no encontró nada con ese nombre.</value>
+  </data>
+  <data name="PP_LibAutoMeta" xml:space="preserve">
+    <value>Datos de Steam</value>
+  </data>
+  <data name="PP_LibAutoMetaTip" xml:space="preserve">
+    <value>Descarga solo la descripción, géneros e imágenes de los juegos nuevos desde la tienda de Steam (sin cuenta; solo se envía el nombre del juego). Nunca cambia lo que tú editaste.</value>
+  </data>
+  <data name="PP_LibAutoMetaRunning" xml:space="preserve">
+    <value>Descargando datos e imágenes de Steam para {0} juego(s)...</value>
+  </data>
 </root>

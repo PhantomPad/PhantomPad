@@ -169,6 +169,12 @@ namespace DS4WinWPF.DS4Forms
             gameProfilesControl.AdvancedEditorRequested += GameProfilesControl_AdvancedEditorRequested;
             gameProfilesControl.ManageProfilesRequested += (s, e) => mainTabCon.SelectedItem = profilesTab;
             gameProfilesControl.EditProfileRequested += GameProfilesControl_EditProfileRequested;
+
+            // PhantomPad: dos modos. Se abre en Escritorio (biblioteca); "Ajustes del mando" de un
+            // juego lleva a Mando → Juegos.
+            libraryControl.ControllerSettingsRequested += g => mainTabCon.SelectedItem = gamesTab;
+            mainTabCon.SelectedItem = libraryTab;
+            mainTabCon.Loaded += (s, e) => UpdateModeUi();
             gameProfilesControl.ViewModel.NormalProfileChangeRequested += GamesVM_NormalProfileChangeRequested;
 
             // PhantomPad: actualizaciones. Se mira al abrir la app (con un poco de espera para no
@@ -944,6 +950,36 @@ Suspend support not enabled.", true);
             logvm.LogItems.Clear();
         }
 
+        // ===================== PhantomPad: Escritorio / Mando =====================
+
+        /// <summary>Ultimo apartado de Mando abierto (para volver a el desde Escritorio).</summary>
+        private TabItem lastControllerTab;
+
+        // Se llaman al marcar el boton (con el raton, el teclado o desde UpdateModeUi): solo cambian si hace falta
+        private void DesktopModeBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (mainTabCon.SelectedItem != libraryTab) mainTabCon.SelectedItem = libraryTab;
+        }
+
+        private void ControllerModeBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (mainTabCon.SelectedItem == libraryTab) mainTabCon.SelectedItem = lastControllerTab ?? (TabItem)mainTabCon.Items[0];
+        }
+
+        /// <summary>Marca el boton del modo, muestra u oculta la fila de apartados de Mando y pone el titulo.</summary>
+        private void UpdateModeUi()
+        {
+            bool desktop = mainTabCon.SelectedItem == libraryTab;
+            desktopModeBtn.IsChecked = desktop;
+            controllerModeBtn.IsChecked = !desktop;
+            if (!desktop) lastControllerTab = mainTabCon.SelectedItem as TabItem;
+            if (mainTabCon.Template?.FindName("PART_SubTabsHost", mainTabCon) is FrameworkElement strip)
+            {
+                strip.Visibility = desktop ? Visibility.Collapsed : Visibility.Visible;
+            }
+            headerTitle.Text = (desktop ? PPText.T("PP_DesktopMode", "Desktop") : PPText.T("PP_ControllerMode", "Controller")).ToUpperInvariant();
+        }
+
         private void MainTabCon_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             // PhantomPad: SelectionChanged tambien llega desde los ComboBox dentro de las pestanas
@@ -953,6 +989,8 @@ Suspend support not enabled.", true);
             {
                 return;
             }
+
+            UpdateModeUi();
 
             if (mainTabCon.SelectedIndex == 4)
             {

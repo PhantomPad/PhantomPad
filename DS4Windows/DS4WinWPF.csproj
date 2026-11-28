@@ -418,8 +418,9 @@
 	<ItemGroup>
 		<Folder Remove="extras\" />
 	</ItemGroup>
-	<!-- PhantomPad: instaladores oficiales de los controladores (Nefarius, firmados) dentro del paquete -->
-	<ItemGroup Condition="Exists('../../drivers')">
-		<None Include="../../drivers/*.exe;../../drivers/*.txt" Link="drivers/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+	<!-- PhantomPad: instaladores oficiales de los controladores (Nefarius, firmados) dentro del paquete.
+	     Los descarga y verifica build/get-drivers.ps1 (no se guardan en el repositorio). -->
+	<ItemGroup Condition="Exists('../build/drivers')">
+		<None Include="../build/drivers/*.exe;../build/drivers/*.txt" Link="drivers/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
 	</ItemGroup>
 </Project>

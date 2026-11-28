@@ -3932,4 +3932,211 @@ X axis: {0}, Y axis: {1}</value>
   <data name="PP_UninFinishedAsk" xml:space="preserve">
     <value>PhantomPad, ViGEmBus and HidHide were uninstalled. You must restart the PC before trying the installer again. Restart now?</value>
   </data>
+  <data name="PP_DesktopMode" xml:space="preserve">
+    <value>Desktop</value>
+  </data>
+  <data name="PP_ControllerMode" xml:space="preserve">
+    <value>Controller</value>
+  </data>
+  <data name="PP_LibAdd" xml:space="preserve">
+    <value>Add game</value>
+  </data>
+  <data name="PP_LibRefresh" xml:space="preserve">
+    <value>Search games</value>
+  </data>
+  <data name="PP_LibRefreshTip" xml:space="preserve">
+    <value>Looks again for games installed with Steam, Epic and GOG</value>
+  </data>
+  <data name="PP_LibSearch" xml:space="preserve">
+    <value>Search in your library...</value>
+  </data>
+  <data name="PP_LibFilterAll" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="PP_LibFilterManual" xml:space="preserve">
+    <value>Added by you</value>
+  </data>
+  <data name="PP_LibFilterInstalled" xml:space="preserve">
+    <value>Installed</value>
+  </data>
+  <data name="PP_LibSourceManual" xml:space="preserve">
+    <value>Added by you</value>
+  </data>
+  <data name="PP_LibNotInstalled" xml:space="preserve">
+    <value>Not installed</value>
+  </data>
+  <data name="PP_LibInstalled" xml:space="preserve">
+    <value>Installed</value>
+  </data>
+  <data name="PP_LibSearching" xml:space="preserve">
+    <value>Looking for your games...</value>
+  </data>
+  <data name="PP_LibEmpty" xml:space="preserve">
+    <value>No games yet. Press "Search games" or "Add game".</value>
+  </data>
+  <data name="PP_LibNoMatch" xml:space="preserve">
+    <value>No game matches the search.</value>
+  </data>
+  <data name="PP_LibLastPlayed" xml:space="preserve">
+    <value>Last played: {0}</value>
+  </data>
+  <data name="PP_LibPlay" xml:space="preserve">
+    <value>Play</value>
+  </data>
+  <data name="PP_LibPlayHint" xml:space="preserve">
+    <value>If a controller is connected, the game uses everything from the Controller section (profiles, gyro, sensitivity, turbo...).</value>
+  </data>
+  <data name="PP_LibControllerSettings" xml:space="preserve">
+    <value>Controller settings</value>
+  </data>
+  <data name="PP_LibOpenFolder" xml:space="preserve">
+    <value>Open folder</value>
+  </data>
+  <data name="PP_LibRemove" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="PP_LibPickGame" xml:space="preserve">
+    <value>Choose a game to see its details.</value>
+  </data>
+  <data name="PP_LibLaunchError" xml:space="preserve">
+    <value>Could not start {0}: {1}</value>
+  </data>
+  <data name="PP_LibNoLaunch" xml:space="preserve">
+    <value>This game has nothing to launch.</value>
+  </data>
+  <data name="PP_LibRemoveManual" xml:space="preserve">
+    <value>Remove {0} from the library? The game itself is not uninstalled.</value>
+  </data>
+  <data name="PP_LibRemoveDetected" xml:space="preserve">
+    <value>Hide {0} from the library? The game itself is not uninstalled. It will not appear again when searching for games.</value>
+  </data>
+  <data name="PP_LibAddTitle" xml:space="preserve">
+    <value>Choose the game's .exe</value>
+  </data>
+  <data name="PP_LibAddFilter" xml:space="preserve">
+    <value>Games and shortcuts</value>
+  </data>
+  <data name="PP_LibSaveFailed" xml:space="preserve">
+    <value>Could not save the game library: {0}</value>
+  </data>
+  <data name="PP_LibEdit" xml:space="preserve">
+    <value>Edit...</value>
+  </data>
+  <data name="PP_LibEditTitle" xml:space="preserve">
+    <value>Edit game</value>
+  </data>
+  <data name="PP_LibEditSave" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="PP_LibEditCover" xml:space="preserve">
+    <value>Cover</value>
+  </data>
+  <data name="PP_LibEditIcon" xml:space="preserve">
+    <value>Icon</value>
+  </data>
+  <data name="PP_LibEditBackground" xml:space="preserve">
+    <value>Background</value>
+  </data>
+  <data name="PP_LibEditPick" xml:space="preserve">
+    <value>Choose...</value>
+  </data>
+  <data name="PP_LibEditDefault" xml:space="preserve">
+    <value>Default</value>
+  </data>
+  <data name="PP_LibEditDropHere" xml:space="preserve">
+    <value>Drag an image here or press "Choose..."</value>
+  </data>
+  <data name="PP_LibEditImagesHint" xml:space="preserve">
+    <value>PNG, JPG, BMP, GIF or ICO. For the icon you can also choose a .exe. "Default" goes back to the original image (Steam or the game's .exe).</value>
+  </data>
+  <data name="PP_LibEditName" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="PP_LibEditDescription" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="PP_LibEditGenres" xml:space="preserve">
+    <value>Genres</value>
+  </data>
+  <data name="PP_LibEditYear" xml:space="preserve">
+    <value>Year</value>
+  </data>
+  <data name="PP_LibEditDeveloper" xml:space="preserve">
+    <value>Developer</value>
+  </data>
+  <data name="PP_LibEditPublisher" xml:space="preserve">
+    <value>Publisher</value>
+  </data>
+  <data name="PP_LibEditLaunch" xml:space="preserve">
+    <value>Launch (.exe, shortcut or address)</value>
+  </data>
+  <data name="PP_LibEditBrowse" xml:space="preserve">
+    <value>Browse...</value>
+  </data>
+  <data name="PP_LibEditArgs" xml:space="preserve">
+    <value>Arguments (optional)</value>
+  </data>
+  <data name="PP_LibEditLaunchHint" xml:space="preserve">
+    <value>Steam and Epic games start through their launcher (steam://, com.epicgames.launcher://). Change it only if the game does not start.</value>
+  </data>
+  <data name="PP_LibEditPickTitle" xml:space="preserve">
+    <value>Choose an image</value>
+  </data>
+  <data name="PP_LibEditImages" xml:space="preserve">
+    <value>Images</value>
+  </data>
+  <data name="PP_LibEditBadImage" xml:space="preserve">
+    <value>That file is not an image PhantomPad can show (use PNG, JPG, BMP, GIF or ICO).</value>
+  </data>
+  <data name="PP_LibEditNeedName" xml:space="preserve">
+    <value>The game needs a name.</value>
+  </data>
+  <data name="PP_LibEditBadYear" xml:space="preserve">
+    <value>The year must be a number like 2008.</value>
+  </data>
+  <data name="PP_LibEditImageError" xml:space="preserve">
+    <value>Could not save the image: {0}</value>
+  </data>
+  <data name="PP_LibSteamDownload" xml:space="preserve">
+    <value>Download from Steam</value>
+  </data>
+  <data name="PP_LibSteamSearching" xml:space="preserve">
+    <value>Looking in the Steam store...</value>
+  </data>
+  <data name="PP_LibSteamNone" xml:space="preserve">
+    <value>No Steam game was chosen. Nothing changed.</value>
+  </data>
+  <data name="PP_LibSteamNoData" xml:space="preserve">
+    <value>Steam has no data for that game.</value>
+  </data>
+  <data name="PP_LibSteamLoaded" xml:space="preserve">
+    <value>Loaded from Steam: {0}. Press "Save" to keep it, or "Cancel" to leave it as it was.</value>
+  </data>
+  <data name="PP_LibSteamError" xml:space="preserve">
+    <value>Could not connect to the Steam store. Check your internet connection. ({0})</value>
+  </data>
+  <data name="PP_LibSteamPickTitle" xml:space="preserve">
+    <value>Which Steam game is it?</value>
+  </data>
+  <data name="PP_LibSteamPickUse" xml:space="preserve">
+    <value>Use this game</value>
+  </data>
+  <data name="PP_LibSteamPickIntro" xml:space="preserve">
+    <value>Choose the game from the list. If it is not there, write its name and press "Search".</value>
+  </data>
+  <data name="PP_LibSteamPickSearch" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="PP_LibSteamPickEmpty" xml:space="preserve">
+    <value>Steam found nothing with that name.</value>
+  </data>
+  <data name="PP_LibAutoMeta" xml:space="preserve">
+    <value>Steam data</value>
+  </data>
+  <data name="PP_LibAutoMetaTip" xml:space="preserve">
+    <value>Downloads by itself the description, genres and images of new games from the Steam store (no account needed; only the game name is sent). It never changes what you edited.</value>
+  </data>
+  <data name="PP_LibAutoMetaRunning" xml:space="preserve">
+    <value>Downloading data and images from Steam for {0} game(s)...</value>
+  </data>
 </root>

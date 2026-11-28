@@ -332,3 +332,6 @@ ASALocalRun/
 !DS4Windows/libs/x64/
 !DS4Windows/libs/x86/
 
+
+# PhantomPad: drivers descargados por build/get-drivers.ps1 (no se suben al repositorio)
+build/drivers/

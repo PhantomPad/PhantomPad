@@ -1,0 +1,169 @@
+# PhantomPad: compila y publica una version con Velopack (instalador Setup.exe + paquetes de
+# actualizacion automatica), igual que se hacia a mano en el PC (ver build/release.ps1).
+#
+# - Push de una etiqueta v* (p. ej. v1.0.9)  -> compila y crea la GitHub Release de esa version.
+#   Antes de etiquetar: escribir las novedades en release-notes/<version>.md.
+# - "Run workflow" a mano (workflow_dispatch) -> compilacion de prueba: NO publica nada, deja los
+#   paquetes como artefacto descargable del workflow.
+#
+# Firma con SignPath: los pasos estan preparados y apagados. Se encienden creando la variable del
+# repositorio SIGNPATH_ENABLED = true (Settings > Secrets and variables > Actions) junto con:
+#   secreto   SIGNPATH_API_TOKEN
+#   variables SIGNPATH_ORGANIZATION_ID, SIGNPATH_PROJECT_SLUG, SIGNPATH_SIGNING_POLICY_SLUG,
+#             SIGNPATH_APP_ARTIFACT_CONFIG, SIGNPATH_SETUP_ARTIFACT_CONFIG
+# Que se firma:
+#   1) PhantomPad.exe y sus .dll ANTES de "vpk pack": asi el instalador, el portable y los paquetes
+#      .nupkg de Velopack llevan dentro los archivos ya firmados.
+#   2) Setup.exe DESPUES de "vpk pack".
+#   Los .nupkg NO se firman despues de empaquetar: Velopack guarda su huella en releases.win.json
+#   y cambiarlos romperia las actualizaciones. Los instaladores de ViGEmBus y HidHide (carpeta
+#   drivers) conservan su firma original de Nefarius y la configuracion de SignPath debe excluirlos.
+
+name: Release
+
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version para la compilacion de prueba (no se publica). Ej.: 1.0.9'
+        required: true
+        default: '0.0.1'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  VPK_VERSION: '1.2.161'
+  DOTNET_NOLOGO: 'true'
+  DOTNET_CLI_TELEMETRY_OPTOUT: 'true'
+
+jobs:
+  release:
+    runs-on: windows-latest
+    steps:
+      - name: Descargar el codigo
+        uses: actions/checkout@v4
+
+      - name: Version
+        id: ver
+        shell: pwsh
+        run: |
+          if ('${{ github.event_name }}' -eq 'push') { $v = '${{ github.ref_name }}'.TrimStart('v') } else { $v = '${{ inputs.version }}' }
+          if ($v -notmatch '^\d+\.\d+\.\d+$') { throw "Version no valida: '$v' (la etiqueta debe ser como v1.0.9)" }
+          "version=$v" >> $env:GITHUB_OUTPUT
+          Write-Host "Version: $v"
+
+      - name: Instalar .NET 8
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Instalar vpk (Velopack)
+        shell: pwsh
+        run: dotnet tool install -g vpk --version $env:VPK_VERSION
+
+      - name: Compilar (drivers verificados + dotnet publish Release x64)
+        shell: pwsh
+        run: ./build/release.ps1 -Version '${{ steps.ver.outputs.version }}' -Stage publish
+
+      # ===================== SignPath 1/2: PhantomPad.exe y .dll (antes de empaquetar) =====================
+      - name: 'SignPath: subir archivos de la app sin firmar'
+        id: unsigned-app
+        if: vars.SIGNPATH_ENABLED == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: phantompad-app-unsigned
+          path: artifacts/publish/
+          if-no-files-found: error
+
+      - name: 'SignPath: firmar la app'
+        if: vars.SIGNPATH_ENABLED == 'true'
+        uses: signpath/github-action-submit-signing-request@v1
+        with:
+          api-token: ${{ secrets.SIGNPATH_API_TOKEN }}
+          organization-id: ${{ vars.SIGNPATH_ORGANIZATION_ID }}
+          project-slug: ${{ vars.SIGNPATH_PROJECT_SLUG }}
+          signing-policy-slug: ${{ vars.SIGNPATH_SIGNING_POLICY_SLUG }}
+          artifact-configuration-slug: ${{ vars.SIGNPATH_APP_ARTIFACT_CONFIG }}
+          github-artifact-id: ${{ steps.unsigned-app.outputs.artifact-id }}
+          wait-for-completion: true
+          output-artifact-directory: artifacts/publish-signed
+
+      - name: 'SignPath: usar la app firmada'
+        if: vars.SIGNPATH_ENABLED == 'true'
+        shell: pwsh
+        run: |
+          if (-not (Test-Path artifacts/publish-signed/PhantomPad.exe)) { throw 'SignPath no devolvio PhantomPad.exe' }
+          Remove-Item artifacts/publish -Recurse -Force
+          Move-Item artifacts/publish-signed artifacts/publish
+
+      - name: Empaquetar con Velopack (vpk pack)
+        shell: pwsh
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: ./build/release.ps1 -Version '${{ steps.ver.outputs.version }}' -Stage pack
+
+      # ===================== SignPath 2/2: Setup.exe (despues de empaquetar) =====================
+      - name: 'SignPath: subir Setup.exe sin firmar'
+        id: unsigned-setup
+        if: vars.SIGNPATH_ENABLED == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: phantompad-setup-unsigned
+          path: artifacts/releases/PhantomPad-win-Setup.exe
+          if-no-files-found: error
+
+      - name: 'SignPath: firmar Setup.exe'
+        if: vars.SIGNPATH_ENABLED == 'true'
+        uses: signpath/github-action-submit-signing-request@v1
+        with:
+          api-token: ${{ secrets.SIGNPATH_API_TOKEN }}
+          organization-id: ${{ vars.SIGNPATH_ORGANIZATION_ID }}
+          project-slug: ${{ vars.SIGNPATH_PROJECT_SLUG }}
+          signing-policy-slug: ${{ vars.SIGNPATH_SIGNING_POLICY_SLUG }}
+          artifact-configuration-slug: ${{ vars.SIGNPATH_SETUP_ARTIFACT_CONFIG }}
+          github-artifact-id: ${{ steps.unsigned-setup.outputs.artifact-id }}
+          wait-for-completion: true
+          output-artifact-directory: artifacts/setup-signed
+
+      - name: 'SignPath: usar Setup.exe firmado'
+        if: vars.SIGNPATH_ENABLED == 'true'
+        shell: pwsh
+        run: Copy-Item artifacts/setup-signed/PhantomPad-win-Setup.exe artifacts/releases/PhantomPad-win-Setup.exe -Force
+
+      # ===================== Publicar =====================
+      - name: Publicar la GitHub Release
+        if: github.event_name == 'push'
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          $v = '${{ steps.ver.outputs.version }}'
+          $d = 'artifacts/releases'
+          $files = @("$d/PhantomPad-$v-full.nupkg", "$d/PhantomPad-win-Setup.exe", "$d/PhantomPad-win-Portable.zip",
+                     "$d/RELEASES", "$d/releases.win.json", "$d/assets.win.json")
+          if (Test-Path "$d/PhantomPad-$v-delta.nupkg") { $files += "$d/PhantomPad-$v-delta.nupkg" }
+          foreach ($f in $files) { if (-not (Test-Path $f)) { throw "Falta $f" } }
+          $notes = "release-notes/$v.md"
+          if (-not (Test-Path $notes)) {
+            $notes = Join-Path $env:RUNNER_TEMP 'notes.md'
+            "PhantomPad $v. Si ya tienes PhantomPad, se actualiza desde Configuraciones > Actualizaciones." | Set-Content $notes -Encoding utf8
+          }
+          gh release create '${{ github.ref_name }}' @files --title "PhantomPad $v" --notes-file $notes --verify-tag
+
+      - name: Guardar los paquetes (compilacion de prueba)
+        if: github.event_name == 'workflow_dispatch'
+        uses: actions/upload-artifact@v4
+        with:
+          name: PhantomPad-${{ steps.ver.outputs.version }}-prueba
+          path: |
+            artifacts/releases/PhantomPad-win-Setup.exe
+            artifacts/releases/PhantomPad-win-Portable.zip
+            artifacts/releases/PhantomPad-${{ steps.ver.outputs.version }}-*.nupkg
+            artifacts/releases/releases.win.json

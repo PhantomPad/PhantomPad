@@ -50,8 +50,80 @@
         </Setter>
     </Style>
 
+    <!-- ===== Apartados de Mando (fila de pestanas arriba: Mandos, Juegos, Salidas...) ===== -->
+    <Style x:Key="SubTabItemStyle" TargetType="{x:Type TabItem}">
+        <Setter Property="Foreground" Value="{DynamicResource MutedForegroundColor}" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TabItem}">
+                    <Grid x:Name="tab" Background="Transparent" Margin="2,0">
+                        <StackPanel Orientation="Horizontal" Margin="14,0" VerticalAlignment="Center">
+                            <TextBlock Text="{TemplateBinding Tag}" FontFamily="{StaticResource IconFont}" FontSize="15" VerticalAlignment="Center"
+                                       Foreground="{TemplateBinding Foreground}" Margin="0,0,8,0" />
+                            <TextBlock Text="{TemplateBinding Header}" FontWeight="SemiBold" VerticalAlignment="Center" Foreground="{TemplateBinding Foreground}" />
+                        </StackPanel>
+                        <Border x:Name="underline" Height="3" VerticalAlignment="Bottom" CornerRadius="2,2,0,0" Background="Transparent" Margin="8,0" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="{DynamicResource ForegroundColor}" />
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter TargetName="underline" Property="Background" Value="{DynamicResource Accent2Color}" />
+                            <Setter Property="Foreground" Value="{DynamicResource Accent2Color}" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="tab" Property="Opacity" Value="0.35" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- ===== Botones de la barra de la izquierda: Escritorio / Mando ===== -->
+    <Style x:Key="RailModeButtonStyle" TargetType="{x:Type RadioButton}">
+        <Setter Property="Foreground" Value="{DynamicResource MutedForegroundColor}" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type RadioButton}">
+                    <Grid x:Name="railItem" Background="Transparent" Margin="0,2">
+                        <Border x:Name="indicator" Width="3" HorizontalAlignment="Left" Background="Transparent" CornerRadius="0,2,2,0" Margin="0,6" />
+                        <StackPanel Margin="6,11" HorizontalAlignment="Center">
+                            <TextBlock Text="{TemplateBinding Tag}" FontFamily="{StaticResource IconFont}" FontSize="24"
+                                       HorizontalAlignment="Center" Foreground="{TemplateBinding Foreground}" />
+                            <Viewbox StretchDirection="DownOnly" MaxWidth="72" Margin="0,6,0,0" HorizontalAlignment="Center">
+                                <TextBlock Text="{Binding Content, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource UpperCaseConverter}}"
+                                           FontSize="9.5" FontWeight="SemiBold" TextAlignment="Center" Foreground="{TemplateBinding Foreground}" />
+                            </Viewbox>
+                        </StackPanel>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="{DynamicResource ForegroundColor}" />
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="railItem" Property="Background" Value="{DynamicResource SelectedNavColor}" />
+                            <Setter TargetName="indicator" Property="Background" Value="{DynamicResource Accent2Color}" />
+                            <Setter Property="Foreground" Value="{DynamicResource Accent2Color}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--
+        PhantomPad: ventana principal con dos modos. La barra de la izquierda solo lleva el logo
+        (los botones Escritorio / Mando los pone MainWindow encima). Las pestanas de Mando se
+        muestran como una fila arriba del contenido (PART_SubTabsHost; se oculta en Escritorio).
+    -->
     <Style x:Key="RailTabControlStyle" TargetType="{x:Type TabControl}">
-        <Setter Property="ItemContainerStyle" Value="{StaticResource RailTabItemStyle}" />
+        <Setter Property="ItemContainerStyle" Value="{StaticResource SubTabItemStyle}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TabControl}">
@@ -61,16 +133,23 @@
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
                         <Border Background="{DynamicResource SidebarColor}" BorderBrush="{DynamicResource BorderColor}" BorderThickness="0,0,1,0">
-                            <DockPanel>
-                                <Border DockPanel.Dock="Top" Width="40" Height="40" Margin="0,12,0,14" CornerRadius="10" Background="{DynamicResource TileColor}">
-                                    <Image Source="/PhantomPad;component/Resources/PhantomPad-logo.png" Width="34" Height="34"
-                                           RenderOptions.BitmapScalingMode="HighQuality" />
-                                </Border>
-                                <StackPanel IsItemsHost="True" />
-                            </DockPanel>
+                            <Border VerticalAlignment="Top" Width="40" Height="40" Margin="0,12,0,0" CornerRadius="10" Background="{DynamicResource TileColor}">
+                                <Image Source="/PhantomPad;component/Resources/PhantomPad-logo.png" Width="34" Height="34"
+                                       RenderOptions.BitmapScalingMode="HighQuality" />
+                            </Border>
                         </Border>
                         <!-- Margen superior/inferior: deja sitio para la barra superior y la barra de estado de MainWindow -->
-                        <ContentPresenter x:Name="PART_SelectedContentHost" Grid.Column="1" ContentSource="SelectedContent" Margin="0,60,0,36" />
+                        <Grid Grid.Column="1" Margin="0,60,0,36">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Border x:Name="PART_SubTabsHost" Height="44" Background="{DynamicResource HeaderBarColor}"
+                                    BorderBrush="{DynamicResource BorderColor}" BorderThickness="0,0,0,1" Padding="10,0">
+                                <StackPanel IsItemsHost="True" Orientation="Horizontal" />
+                            </Border>
+                            <ContentPresenter x:Name="PART_SelectedContentHost" Grid.Row="1" ContentSource="SelectedContent" />
+                        </Grid>
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>

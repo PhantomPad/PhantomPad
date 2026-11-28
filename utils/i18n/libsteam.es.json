@@ -1,0 +1,16 @@
+{
+  "PP_LibSteamDownload": "Descargar de Steam",
+  "PP_LibSteamSearching": "Buscando en la tienda de Steam...",
+  "PP_LibSteamNone": "No se eligió ningún juego de Steam. No cambió nada.",
+  "PP_LibSteamNoData": "Steam no tiene datos de ese juego.",
+  "PP_LibSteamLoaded": "Cargado de Steam: {0}. Pulsa \"Guardar\" para quedártelo, o \"Cancelar\" para dejarlo como estaba.",
+  "PP_LibSteamError": "No se pudo conectar con la tienda de Steam. Revisa tu conexión a internet. ({0})",
+  "PP_LibSteamPickTitle": "¿Qué juego de Steam es?",
+  "PP_LibSteamPickUse": "Usar este juego",
+  "PP_LibSteamPickIntro": "Elige el juego de la lista. Si no está, escribe su nombre y pulsa \"Buscar\".",
+  "PP_LibSteamPickSearch": "Buscar",
+  "PP_LibSteamPickEmpty": "Steam no encontró nada con ese nombre.",
+  "PP_LibAutoMeta": "Datos de Steam",
+  "PP_LibAutoMetaTip": "Descarga solo la descripción, géneros e imágenes de los juegos nuevos desde la tienda de Steam (sin cuenta; solo se envía el nombre del juego). Nunca cambia lo que tú editaste.",
+  "PP_LibAutoMetaRunning": "Descargando datos e imágenes de Steam para {0} juego(s)..."
+}

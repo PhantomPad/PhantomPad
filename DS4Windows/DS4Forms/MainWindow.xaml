@@ -15,6 +15,7 @@
         xmlns:cal="clr-namespace:DS4WinWPF.DS4Forms.Calibration"
         xmlns:bat="clr-namespace:DS4WinWPF.DS4Forms.BatteryPage"
         xmlns:hidepg="clr-namespace:DS4WinWPF.DS4Forms.HidePage"
+        xmlns:lib="clr-namespace:DS4WinWPF.DS4Forms.Library"
         xmlns:upd="clr-namespace:DS4WinWPF.DS4Forms.Updates"
         xmlns:defs="clr-namespace:DS4WinWPF.DS4Forms.ControllerDefs"
         xmlns:system="clr-namespace:System;assembly=mscorlib"
@@ -910,7 +911,21 @@
                     </ListView>
                 </DockPanel>
             </TabItem>
+
+            <!-- ================= ESCRITORIO (biblioteca de juegos) ================= -->
+            <!-- PhantomPad: no sale en la fila de apartados de Mando; se abre con el boton Escritorio -->
+            <TabItem x:Name="libraryTab" Header="{lex:Loc PP_DesktopMode}" Tag="&#xE765;" Visibility="Collapsed">
+                <lib:LibraryControl x:Name="libraryControl" />
+            </TabItem>
         </TabControl>
+
+        <!-- ===== PhantomPad: los dos modos en la barra de la izquierda (Escritorio / Mando) ===== -->
+        <StackPanel Width="86" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,66,0,0">
+            <RadioButton x:Name="desktopModeBtn" GroupName="appMode" Style="{StaticResource RailModeButtonStyle}" Tag="&#xE765;"
+                         Content="{lex:Loc PP_DesktopMode}" Checked="DesktopModeBtn_Click" />
+            <RadioButton x:Name="controllerModeBtn" GroupName="appMode" Style="{StaticResource RailModeButtonStyle}" Tag="&#xE7FC;"
+                         Content="{lex:Loc PP_ControllerMode}" Checked="ControllerModeBtn_Click" />
+        </StackPanel>
 
         <!-- ===== Barra superior (encima del contenido, a la derecha de la barra de iconos) ===== -->
         <Border Height="60" VerticalAlignment="Top" Margin="86,0,0,0" Background="{DynamicResource HeaderBarColor}"
@@ -927,8 +942,7 @@
                     </StackPanel>
                 </Button>
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                    <TextBlock Text="{Binding SelectedItem.Header, ElementName=mainTabCon, Converter={StaticResource UpperCaseConverter}}"
-                               FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" Margin="0,0,18,0" />
+                    <TextBlock x:Name="headerTitle" FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" Margin="0,0,18,0" />
                     <Border Style="{StaticResource ChipStyle}" ToolTip="{lex:Loc Controllers}">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="&#xE7FC;" FontFamily="{StaticResource IconFont}" FontSize="13" VerticalAlignment="Center" Margin="0,0,7,0"

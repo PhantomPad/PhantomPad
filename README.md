@@ -28,4 +28,6 @@ PhantomPad está basado en [DS4Windows](https://github.com/schmaldeo/DS4Windows)
 
 Igual que DS4Windows, PhantomPad es software libre bajo la licencia **GNU GPL v3** (ver `LICENSE.txt` y `COPYING`): puedes usarlo, estudiarlo, modificarlo y compartirlo, siempre que mantengas la misma licencia.
 
+El apartado **Escritorio** (biblioteca de juegos) está inspirado en [Playnite](https://github.com/JosefNemec/Playnite) © 2020 Josef Nemec, licencia MIT. El aviso completo de su licencia está en `NOTICE.txt`.
+
 PhantomPad no está afiliado a Sony ni a Microsoft. PlayStation, DualShock y Xbox son marcas de sus respectivos dueños.

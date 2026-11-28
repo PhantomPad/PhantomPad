@@ -1,0 +1,161 @@
+<Window x:Class="DS4WinWPF.DS4Forms.Library.EditGameWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:lex="http://wpflocalizeextension.codeplex.com"
+        lex:LocalizeDictionary.DesignCulture=""
+        lex:ResxLocalizationProvider.DefaultAssembly="PhantomPad"
+        lex:ResxLocalizationProvider.DefaultDictionary="Strings"
+        Title="{lex:Loc PP_LibEditTitle}" Width="900" Height="680" MinWidth="760" MinHeight="560"
+        WindowStartupLocation="CenterOwner" Style="{DynamicResource WindowStyle}">
+    <!-- PhantomPad: Escritorio → Editar juego (datos e imagenes, como en Playnite) -->
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PhantomPad;component/DS4Forms/Themes/PhantomPadStyles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <Style x:Key="FieldLabel" TargetType="{x:Type TextBlock}">
+                <Setter Property="Foreground" Value="{DynamicResource MutedForegroundColor}" />
+                <Setter Property="FontSize" Value="12" />
+                <Setter Property="Margin" Value="0,10,0,4" />
+            </Style>
+            <Style x:Key="ImgBox" TargetType="{x:Type Border}">
+                <Setter Property="CornerRadius" Value="8" />
+                <Setter Property="Background" Value="{DynamicResource SecondaryColor}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource BorderColor}" />
+                <Setter Property="BorderThickness" Value="1" />
+                <Setter Property="AllowDrop" Value="True" />
+                <Setter Property="ClipToBounds" Value="True" />
+            </Style>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <DockPanel Margin="24,18,24,18">
+        <!-- Botones -->
+        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,14,0,0">
+            <Button Content="{lex:Loc PP_UninCancel}" Padding="18,7" Margin="0,0,10,0" Click="CancelBtn_Click" IsCancel="True" />
+            <Button Style="{StaticResource OutlineAccentButtonStyle}" Padding="22,7" Click="SaveBtn_Click" IsDefault="True">
+                <TextBlock Text="{lex:Loc PP_LibEditSave}" FontWeight="SemiBold" />
+            </Button>
+        </StackPanel>
+
+        <DockPanel DockPanel.Dock="Top" Margin="0,0,0,10">
+            <Button x:Name="steamBtn" DockPanel.Dock="Right" Padding="14,6" Click="SteamBtn_Click" VerticalAlignment="Center">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="&#xE896;" FontFamily="{StaticResource IconFont}" VerticalAlignment="Center" Margin="0,0,8,0" />
+                    <TextBlock Text="{lex:Loc PP_LibSteamDownload}" VerticalAlignment="Center" />
+                </StackPanel>
+            </Button>
+            <StackPanel>
+                <TextBlock x:Name="titleText" FontSize="20" FontWeight="SemiBold" TextTrimming="CharacterEllipsis" />
+                <TextBlock x:Name="steamStatus" FontSize="12" TextWrapping="Wrap" Foreground="{DynamicResource AccentLightColor}" Margin="0,2,12,0" />
+            </StackPanel>
+        </DockPanel>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="230" />
+                <ColumnDefinition Width="24" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <!-- ===== Imagenes ===== -->
+            <ScrollViewer Grid.Column="0" VerticalScrollBarVisibility="Auto">
+                <StackPanel>
+                    <!-- Caratula -->
+                    <TextBlock Text="{lex:Loc PP_LibEditCover}" Style="{StaticResource FieldLabel}" Margin="0,0,0,4" />
+                    <Border x:Name="coverBox" Style="{StaticResource ImgBox}" Width="160" Height="240" HorizontalAlignment="Left" Drop="CoverBox_Drop" DragOver="ImgBox_DragOver">
+                        <Grid>
+                            <TextBlock x:Name="coverEmpty" Text="{lex:Loc PP_LibEditDropHere}" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Center"
+                                       Margin="12" FontSize="12" Foreground="{DynamicResource MutedForegroundColor}" />
+                            <Image x:Name="coverImage" Stretch="UniformToFill" />
+                        </Grid>
+                    </Border>
+                    <StackPanel Orientation="Horizontal" Margin="0,6,0,0">
+                        <Button Content="{lex:Loc PP_LibEditPick}" Padding="10,4" Margin="0,0,6,0" Click="CoverPick_Click" />
+                        <Button Content="{lex:Loc PP_LibEditDefault}" Padding="10,4" Click="CoverClear_Click" />
+                    </StackPanel>
+
+                    <!-- Icono -->
+                    <TextBlock Text="{lex:Loc PP_LibEditIcon}" Style="{StaticResource FieldLabel}" Margin="0,16,0,4" />
+                    <Border x:Name="iconBox" Style="{StaticResource ImgBox}" Width="80" Height="80" HorizontalAlignment="Left" Drop="IconBox_Drop" DragOver="ImgBox_DragOver">
+                        <Image x:Name="iconImage" Stretch="Uniform" Margin="8" RenderOptions.BitmapScalingMode="HighQuality" />
+                    </Border>
+                    <StackPanel Orientation="Horizontal" Margin="0,6,0,0">
+                        <Button Content="{lex:Loc PP_LibEditPick}" Padding="10,4" Margin="0,0,6,0" Click="IconPick_Click" />
+                        <Button Content="{lex:Loc PP_LibEditDefault}" Padding="10,4" Click="IconClear_Click" />
+                    </StackPanel>
+
+                    <!-- Fondo -->
+                    <TextBlock Text="{lex:Loc PP_LibEditBackground}" Style="{StaticResource FieldLabel}" Margin="0,16,0,4" />
+                    <Border x:Name="bgBox" Style="{StaticResource ImgBox}" Width="200" Height="113" HorizontalAlignment="Left" Drop="BgBox_Drop" DragOver="ImgBox_DragOver">
+                        <Grid>
+                            <TextBlock x:Name="bgEmpty" Text="{lex:Loc PP_LibEditDropHere}" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Center"
+                                       Margin="12" FontSize="12" Foreground="{DynamicResource MutedForegroundColor}" />
+                            <Image x:Name="bgImage" Stretch="UniformToFill" />
+                        </Grid>
+                    </Border>
+                    <StackPanel Orientation="Horizontal" Margin="0,6,0,0">
+                        <Button Content="{lex:Loc PP_LibEditPick}" Padding="10,4" Margin="0,0,6,0" Click="BgPick_Click" />
+                        <Button Content="{lex:Loc PP_LibEditDefault}" Padding="10,4" Click="BgClear_Click" />
+                    </StackPanel>
+                    <TextBlock Text="{lex:Loc PP_LibEditImagesHint}" TextWrapping="Wrap" FontSize="11" Margin="0,12,0,0"
+                               Foreground="{DynamicResource MutedForegroundColor}" />
+                </StackPanel>
+            </ScrollViewer>
+
+            <!-- ===== Datos ===== -->
+            <ScrollViewer Grid.Column="2" VerticalScrollBarVisibility="Auto">
+                <StackPanel>
+                    <TextBlock Text="{lex:Loc PP_LibEditName}" Style="{StaticResource FieldLabel}" Margin="0,0,0,4" />
+                    <TextBox x:Name="nameBox" Height="32" VerticalContentAlignment="Center" Padding="6,0" />
+
+                    <TextBlock Text="{lex:Loc PP_LibEditDescription}" Style="{StaticResource FieldLabel}" />
+                    <TextBox x:Name="descriptionBox" Height="150" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" Padding="6" />
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="14" />
+                            <ColumnDefinition Width="110" />
+                        </Grid.ColumnDefinitions>
+                        <StackPanel>
+                            <TextBlock Text="{lex:Loc PP_LibEditGenres}" Style="{StaticResource FieldLabel}" />
+                            <TextBox x:Name="genresBox" Height="32" VerticalContentAlignment="Center" Padding="6,0" />
+                        </StackPanel>
+                        <StackPanel Grid.Column="2">
+                            <TextBlock Text="{lex:Loc PP_LibEditYear}" Style="{StaticResource FieldLabel}" />
+                            <TextBox x:Name="yearBox" Height="32" VerticalContentAlignment="Center" Padding="6,0" MaxLength="4" />
+                        </StackPanel>
+                    </Grid>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="14" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <StackPanel>
+                            <TextBlock Text="{lex:Loc PP_LibEditDeveloper}" Style="{StaticResource FieldLabel}" />
+                            <TextBox x:Name="developerBox" Height="32" VerticalContentAlignment="Center" Padding="6,0" />
+                        </StackPanel>
+                        <StackPanel Grid.Column="2">
+                            <TextBlock Text="{lex:Loc PP_LibEditPublisher}" Style="{StaticResource FieldLabel}" />
+                            <TextBox x:Name="publisherBox" Height="32" VerticalContentAlignment="Center" Padding="6,0" />
+                        </StackPanel>
+                    </Grid>
+
+                    <!-- Como se inicia -->
+                    <TextBlock Text="{lex:Loc PP_LibEditLaunch}" Style="{StaticResource FieldLabel}" Margin="0,18,0,4" />
+                    <DockPanel>
+                        <Button DockPanel.Dock="Right" Content="{lex:Loc PP_LibEditBrowse}" Padding="12,0" Margin="8,0,0,0" Click="LaunchBrowse_Click" />
+                        <TextBox x:Name="launchBox" Height="32" VerticalContentAlignment="Center" Padding="6,0" />
+                    </DockPanel>
+                    <TextBlock Text="{lex:Loc PP_LibEditArgs}" Style="{StaticResource FieldLabel}" />
+                    <TextBox x:Name="argsBox" Height="32" VerticalContentAlignment="Center" Padding="6,0" />
+                    <TextBlock x:Name="launchHint" Text="{lex:Loc PP_LibEditLaunchHint}" TextWrapping="Wrap" FontSize="11" Margin="0,6,0,0"
+                               Foreground="{DynamicResource MutedForegroundColor}" />
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+    </DockPanel>
+</Window>

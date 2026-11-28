@@ -1,0 +1,16 @@
+{
+  "PP_LibSteamDownload": "Download from Steam",
+  "PP_LibSteamSearching": "Looking in the Steam store...",
+  "PP_LibSteamNone": "No Steam game was chosen. Nothing changed.",
+  "PP_LibSteamNoData": "Steam has no data for that game.",
+  "PP_LibSteamLoaded": "Loaded from Steam: {0}. Press \"Save\" to keep it, or \"Cancel\" to leave it as it was.",
+  "PP_LibSteamError": "Could not connect to the Steam store. Check your internet connection. ({0})",
+  "PP_LibSteamPickTitle": "Which Steam game is it?",
+  "PP_LibSteamPickUse": "Use this game",
+  "PP_LibSteamPickIntro": "Choose the game from the list. If it is not there, write its name and press \"Search\".",
+  "PP_LibSteamPickSearch": "Search",
+  "PP_LibSteamPickEmpty": "Steam found nothing with that name.",
+  "PP_LibAutoMeta": "Steam data",
+  "PP_LibAutoMetaTip": "Downloads by itself the description, genres and images of new games from the Steam store (no account needed; only the game name is sent). It never changes what you edited.",
+  "PP_LibAutoMetaRunning": "Downloading data and images from Steam for {0} game(s)..."
+}
