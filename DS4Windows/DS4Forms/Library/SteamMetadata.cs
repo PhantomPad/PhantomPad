@@ -190,6 +190,25 @@ namespace DS4WinWPF.DS4Forms.Library
             return null;
         }
 
+        /// <summary>
+        /// "Direccion" de una imagen de Steam para la cadena de fuentes: steam:&lt;appid&gt;:&lt;archivo&gt;.
+        /// MetadataHttp la descarga con las alternativas de Steam (otro tamano u otro servidor).
+        /// </summary>
+        public static string ImageUrl(string appId, string file) => $"steam:{appId}:{file}";
+
+        public static Task<string> DownloadByPseudoUrlAsync(string pseudo)
+        {
+            string[] p = pseudo.Split(':');
+            if (p.Length != 3) return Task.FromResult<string>(null);
+            return p[2] switch
+            {
+                "library_600x900_2x.jpg" => DownloadCoverAsync(p[1]),
+                "library_hero.jpg" => DownloadBackgroundAsync(p[1]),
+                "logo.png" => DownloadLogoAsync(p[1]),
+                _ => DownloadImageAsync(p[1], p[2]),
+            };
+        }
+
         public static Task<string> DownloadCoverAsync(string appId) => DownloadImageAsync(appId, "library_600x900_2x.jpg", "library_600x900.jpg");
         public static Task<string> DownloadBackgroundAsync(string appId) => DownloadImageAsync(appId, "library_hero.jpg", "page_bg_raw.jpg", "header.jpg");
         public static Task<string> DownloadLogoAsync(string appId) => DownloadImageAsync(appId, "logo.png");

@@ -238,61 +238,40 @@ namespace DS4WinWPF.DS4Forms.Library
 
         private static string Empty(string s) => string.IsNullOrWhiteSpace(s) ? null : s.Trim();
 
-        // ===================== Descargar de Steam =====================
+        // ===================== Descargar datos (tienda propia, Steam e IGDB) =====================
 
         private async void SteamBtn_Click(object sender, RoutedEventArgs e)
         {
             steamBtn.IsEnabled = false;
-            steamStatus.Text = PPText.T("PP_LibSteamSearching", "Looking in the Steam store...");
+            steamStatus.Text = PPText.T("PP_LibMetaSearching", "Looking for the game's data...");
             try
             {
-                // Juego de Steam: su numero. Otros: el ya emparejado o el que encuentre por el nombre.
-                string id = pendingSteamId ?? await PhantomLibrary.FindSteamIdAsync(game, false);
-                if (id == null)
+                // Con el juego ya emparejado en Steam se usa ese; si no, se busca por el nombre escrito
+                var probe = JsonSerializer.Deserialize<LibraryGame>(JsonSerializer.Serialize(game));
+                if (pendingSteamId != null) probe.MetadataSteamId = pendingSteamId;
+                GameMetadataResult r = await PhantomLibrary.CollectAsync(probe, nameBox.Text,
+                    (name, results) => SteamPickWindow.Pick(this, name, results));
+                if (r.Sources.Count == 0)
                 {
-                    string name = nameBox.Text.Trim();
-                    var results = await SteamMetadata.SearchAsync(name);
-                    id = SteamMetadata.BestMatch(name, results)?.Id ?? SteamPickWindow.Pick(this, name, results);
-                }
-                if (id == null)
-                {
-                    steamStatus.Text = PPText.T("PP_LibSteamNone", "No Steam game was chosen. Nothing changed.");
+                    steamStatus.Text = PPText.T("PP_LibMetaNone", "No data was found for this game. You can fill it in by hand, or set up IGDB in \"Data sources\".");
                     return;
                 }
 
-                SteamGameInfo info = await SteamMetadata.GetDetailsAsync(id);
-                if (info == null)
-                {
-                    steamStatus.Text = PPText.T("PP_LibSteamNoData", "Steam has no data for that game.");
-                    return;
-                }
-                pendingSteamId = id;
-                if (info.Description != null) descriptionBox.Text = info.Description;
-                if (info.Genres != null) genresBox.Text = info.Genres;
-                if (info.Developer != null) developerBox.Text = info.Developer;
-                if (info.Publisher != null) publisherBox.Text = info.Publisher;
-                if (info.Year.HasValue) yearBox.Text = info.Year.Value.ToString();
+                if (r.SteamAppId != null) pendingSteamId = r.SteamAppId;
+                if (r.Description != null) descriptionBox.Text = r.Description;
+                if (r.Genres != null) genresBox.Text = r.Genres;
+                if (r.Developer != null) developerBox.Text = r.Developer;
+                if (r.Publisher != null) publisherBox.Text = r.Publisher;
+                if (r.Year.HasValue) yearBox.Text = r.Year.Value.ToString();
 
-                // Imagenes: los juegos de Steam ya las tienen en el PC; solo se descarga lo que falte
-                bool steamLocal = game.Source == GameProfiles.GameLibraryScanner.SOURCE_STEAM;
-                var shown = JsonSerializer.Deserialize<LibraryGame>(JsonSerializer.Serialize(game));
-                shown.CoverPath = null; shown.BackgroundPath = null; shown.LogoPath = null;
-                if (!steamLocal || PhantomLibrary.CoverFor(shown) == null)
-                {
-                    string c = await SteamMetadata.DownloadCoverAsync(id);
-                    if (c != null) { newCover = c; clearCover = false; }
-                }
-                if (!steamLocal || PhantomLibrary.BackgroundFor(shown) == null)
-                {
-                    string b = await SteamMetadata.DownloadBackgroundAsync(id);
-                    if (b != null) { newBackground = b; clearBackground = false; }
-                }
-                if (!steamLocal || PhantomLibrary.LogoFor(shown) == null)
-                {
-                    newLogo = await SteamMetadata.DownloadLogoAsync(id) ?? newLogo;
-                }
+                // Imagenes (los juegos de Steam ya tienen las suyas en el PC: no vienen en r)
+                string c = await MetadataHttp.DownloadImageAsync(r.CoverUrl);
+                if (c != null) { newCover = c; clearCover = false; }
+                string b = await MetadataHttp.DownloadImageAsync(r.BackgroundUrl);
+                if (b != null) { newBackground = b; clearBackground = false; }
+                newLogo = await MetadataHttp.DownloadImageAsync(r.LogoUrl) ?? newLogo;
                 RefreshImages();
-                steamStatus.Text = PPText.T("PP_LibSteamLoaded", "Loaded from Steam: {0}. Press \"Save\" to keep it, or \"Cancel\" to leave it as it was.", info.Name);
+                steamStatus.Text = PPText.T("PP_LibMetaLoaded", "Data loaded from: {0}. Press \"Save\" to keep it, or \"Cancel\" to leave it as it was.", string.Join(", ", r.Sources));
             }
             catch (Exception ex)
             {

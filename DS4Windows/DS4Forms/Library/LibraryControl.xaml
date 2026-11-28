@@ -137,6 +137,13 @@
 
             <!-- Filtros -->
             <DockPanel DockPanel.Dock="Top" Margin="0,0,0,8">
+                <Button DockPanel.Dock="Right" Padding="10,4" Margin="6,0,0,0" VerticalAlignment="Center" Click="SourcesBtn_Click"
+                        ToolTip="{lex:Loc PP_SrcTitle}">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="&#xE713;" FontFamily="{StaticResource IconFont}" VerticalAlignment="Center" Margin="0,0,6,0" />
+                        <TextBlock Text="{lex:Loc PP_SrcButton}" VerticalAlignment="Center" />
+                    </StackPanel>
+                </Button>
                 <CheckBox x:Name="autoMetaToggle" DockPanel.Dock="Right" Style="{StaticResource ToggleSwitchStyle}" Padding="10,4"
                           Content="{lex:Loc PP_LibAutoMeta}" ToolTip="{lex:Loc PP_LibAutoMetaTip}" VerticalAlignment="Center"
                           Checked="AutoMetaToggle_Changed" Unchecked="AutoMetaToggle_Changed" />

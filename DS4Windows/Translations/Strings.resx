@@ -4098,7 +4098,7 @@ X axis: {0}, Y axis: {1}</value>
     <value>Could not save the image: {0}</value>
   </data>
   <data name="PP_LibSteamDownload" xml:space="preserve">
-    <value>Download from Steam</value>
+    <value>Download data</value>
   </data>
   <data name="PP_LibSteamSearching" xml:space="preserve">
     <value>Looking in the Steam store...</value>
@@ -4131,12 +4131,78 @@ X axis: {0}, Y axis: {1}</value>
     <value>Steam found nothing with that name.</value>
   </data>
   <data name="PP_LibAutoMeta" xml:space="preserve">
-    <value>Steam data</value>
+    <value>Automatic data</value>
   </data>
   <data name="PP_LibAutoMetaTip" xml:space="preserve">
-    <value>Downloads by itself the description, genres and images of new games from the Steam store (no account needed; only the game name is sent). It never changes what you edited.</value>
+    <value>Downloads by itself the description, genres and images of new games: first from the game's own store (Epic, GOG), then Steam and, if you set it up, IGDB. It never changes what you edited.</value>
   </data>
   <data name="PP_LibAutoMetaRunning" xml:space="preserve">
-    <value>Downloading data and images from Steam for {0} game(s)...</value>
+    <value>Downloading data and images for {0} game(s)...</value>
+  </data>
+  <data name="PP_LibMetaSearching" xml:space="preserve">
+    <value>Looking for the game's data...</value>
+  </data>
+  <data name="PP_LibMetaNone" xml:space="preserve">
+    <value>No data was found for this game. You can fill it in by hand, or set up IGDB in "Data sources".</value>
+  </data>
+  <data name="PP_LibMetaLoaded" xml:space="preserve">
+    <value>Data loaded from: {0}. Press "Save" to keep it, or "Cancel" to leave it as it was.</value>
+  </data>
+  <data name="PP_SrcButton" xml:space="preserve">
+    <value>Sources</value>
+  </data>
+  <data name="PP_SrcTitle" xml:space="preserve">
+    <value>Data sources</value>
+  </data>
+  <data name="PP_SrcIntro" xml:space="preserve">
+    <value>Like Playnite, each game takes its data first from its own store and then from general databases. The first source that has each piece of data wins, and nothing you edited is ever changed.</value>
+  </data>
+  <data name="PP_SrcStore" xml:space="preserve">
+    <value>The game's own store</value>
+  </data>
+  <data name="PP_SrcStoreText" xml:space="preserve">
+    <value>Epic: the catalog the Epic launcher keeps on your PC (cover, background, description). GOG: GOG's public database. No accounts.</value>
+  </data>
+  <data name="PP_SrcSteamText" xml:space="preserve">
+    <value>Description in your language, genres, year, developer and images, if the game is also on Steam. No account; only the game name is sent.</value>
+  </data>
+  <data name="PP_SrcOptional" xml:space="preserve">
+    <value>(optional)</value>
+  </data>
+  <data name="PP_SrcIgdbText" xml:space="preserve">
+    <value>The database Playnite uses: almost every game, also the ones you add by hand (descriptions in English). It needs two free keys from a Twitch developer account.</value>
+  </data>
+  <data name="PP_SrcAuto" xml:space="preserve">
+    <value>Download data automatically for new games</value>
+  </data>
+  <data name="PP_SrcIgdbUse" xml:space="preserve">
+    <value>Use IGDB</value>
+  </data>
+  <data name="PP_SrcSecretSaved" xml:space="preserve">
+    <value>(saved; leave it empty to keep it)</value>
+  </data>
+  <data name="PP_SrcTest" xml:space="preserve">
+    <value>Test keys</value>
+  </data>
+  <data name="PP_SrcTesting" xml:space="preserve">
+    <value>Testing...</value>
+  </data>
+  <data name="PP_SrcTestOk" xml:space="preserve">
+    <value>The keys work.</value>
+  </data>
+  <data name="PP_SrcTestFail" xml:space="preserve">
+    <value>They do not work: {0}</value>
+  </data>
+  <data name="PP_SrcHowTo" xml:space="preserve">
+    <value>How to get the keys (free, once): 1) Go to dev.twitch.tv/console and sign in with a Twitch account (it asks to turn on two-step verification). 2) "Register your application": name PhantomPad, OAuth redirect URL http://localhost, category "Application Integration", client type "Confidential". 3) Copy the Client ID, press "New Secret" and copy the Client Secret here. The secret is saved encrypted for your Windows user.</value>
+  </data>
+  <data name="PP_SrcOpenTwitch" xml:space="preserve">
+    <value>Open the Twitch developer console</value>
+  </data>
+  <data name="PP_SrcNeedKeys" xml:space="preserve">
+    <value>To use IGDB, write the Client ID and the Client Secret.</value>
+  </data>
+  <data name="PP_SrcBadKeys" xml:space="preserve">
+    <value>the Client ID or the Client Secret is not correct</value>
   </data>
 </root>

@@ -4095,7 +4095,7 @@ Eje X: {0}, eje Y: {1}</value>
     <value>No se pudo guardar la imagen: {0}</value>
   </data>
   <data name="PP_LibSteamDownload" xml:space="preserve">
-    <value>Descargar de Steam</value>
+    <value>Descargar datos</value>
   </data>
   <data name="PP_LibSteamSearching" xml:space="preserve">
     <value>Buscando en la tienda de Steam...</value>
@@ -4128,12 +4128,78 @@ Eje X: {0}, eje Y: {1}</value>
     <value>Steam no encontró nada con ese nombre.</value>
   </data>
   <data name="PP_LibAutoMeta" xml:space="preserve">
-    <value>Datos de Steam</value>
+    <value>Datos automáticos</value>
   </data>
   <data name="PP_LibAutoMetaTip" xml:space="preserve">
-    <value>Descarga solo la descripción, géneros e imágenes de los juegos nuevos desde la tienda de Steam (sin cuenta; solo se envía el nombre del juego). Nunca cambia lo que tú editaste.</value>
+    <value>Descarga sola la descripción, géneros e imágenes de los juegos nuevos: primero de la tienda del juego (Epic, GOG), después de Steam y, si lo configuras, de IGDB. Nunca cambia lo que tú editaste.</value>
   </data>
   <data name="PP_LibAutoMetaRunning" xml:space="preserve">
-    <value>Descargando datos e imágenes de Steam para {0} juego(s)...</value>
+    <value>Descargando datos e imágenes para {0} juego(s)...</value>
+  </data>
+  <data name="PP_LibMetaSearching" xml:space="preserve">
+    <value>Buscando los datos del juego...</value>
+  </data>
+  <data name="PP_LibMetaNone" xml:space="preserve">
+    <value>No se encontraron datos de este juego. Puedes rellenarlos a mano, o configurar IGDB en "Fuentes de datos".</value>
+  </data>
+  <data name="PP_LibMetaLoaded" xml:space="preserve">
+    <value>Datos cargados de: {0}. Pulsa "Guardar" para quedártelos, o "Cancelar" para dejarlo como estaba.</value>
+  </data>
+  <data name="PP_SrcButton" xml:space="preserve">
+    <value>Fuentes</value>
+  </data>
+  <data name="PP_SrcTitle" xml:space="preserve">
+    <value>Fuentes de datos</value>
+  </data>
+  <data name="PP_SrcIntro" xml:space="preserve">
+    <value>Como en Playnite, cada juego toma sus datos primero de su propia tienda y después de bases de datos generales. La primera fuente que tenga cada dato gana, y nunca se cambia nada de lo que tú editaste.</value>
+  </data>
+  <data name="PP_SrcStore" xml:space="preserve">
+    <value>La tienda del juego</value>
+  </data>
+  <data name="PP_SrcStoreText" xml:space="preserve">
+    <value>Epic: el catálogo que el lanzador de Epic guarda en tu PC (carátula, fondo, descripción). GOG: la base de datos pública de GOG. Sin cuentas.</value>
+  </data>
+  <data name="PP_SrcSteamText" xml:space="preserve">
+    <value>Descripción en español, géneros, año, desarrollador e imágenes, si el juego también está en Steam. Sin cuenta; solo se envía el nombre del juego.</value>
+  </data>
+  <data name="PP_SrcOptional" xml:space="preserve">
+    <value>(opcional)</value>
+  </data>
+  <data name="PP_SrcIgdbText" xml:space="preserve">
+    <value>La base de datos que usa Playnite: casi todos los juegos, también los que añades a mano (descripciones en inglés). Necesita dos claves gratis de una cuenta de desarrollador de Twitch.</value>
+  </data>
+  <data name="PP_SrcAuto" xml:space="preserve">
+    <value>Descargar los datos de los juegos nuevos automáticamente</value>
+  </data>
+  <data name="PP_SrcIgdbUse" xml:space="preserve">
+    <value>Usar IGDB</value>
+  </data>
+  <data name="PP_SrcSecretSaved" xml:space="preserve">
+    <value>(guardado; déjalo vacío para conservarlo)</value>
+  </data>
+  <data name="PP_SrcTest" xml:space="preserve">
+    <value>Probar claves</value>
+  </data>
+  <data name="PP_SrcTesting" xml:space="preserve">
+    <value>Probando...</value>
+  </data>
+  <data name="PP_SrcTestOk" xml:space="preserve">
+    <value>Las claves funcionan.</value>
+  </data>
+  <data name="PP_SrcTestFail" xml:space="preserve">
+    <value>No funcionan: {0}</value>
+  </data>
+  <data name="PP_SrcHowTo" xml:space="preserve">
+    <value>Cómo conseguir las claves (gratis, una sola vez): 1) Entra en dev.twitch.tv/console con una cuenta de Twitch (te pedirá activar la verificación en dos pasos). 2) "Registrar tu aplicación": nombre PhantomPad, URL de redirección OAuth http://localhost, categoría "Application Integration", tipo de cliente "Confidencial". 3) Copia el Client ID, pulsa "Nuevo secreto" y copia aquí el Client Secret. El secreto se guarda cifrado para tu usuario de Windows.</value>
+  </data>
+  <data name="PP_SrcOpenTwitch" xml:space="preserve">
+    <value>Abrir la consola de desarrolladores de Twitch</value>
+  </data>
+  <data name="PP_SrcNeedKeys" xml:space="preserve">
+    <value>Para usar IGDB, escribe el Client ID y el Client Secret.</value>
+  </data>
+  <data name="PP_SrcBadKeys" xml:space="preserve">
+    <value>el Client ID o el Client Secret no son correctos</value>
   </data>
 </root>

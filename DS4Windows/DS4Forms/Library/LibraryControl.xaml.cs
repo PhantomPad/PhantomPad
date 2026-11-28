@@ -145,13 +145,22 @@ namespace DS4WinWPF.DS4Forms.Library
         private async Task AutoMetadataAsync()
         {
             if (!PhantomLibrary.AutoMetadata) return;
-            int pending = PhantomLibrary.Games.Count(g => !g.Hidden && !g.MetadataChecked);
+            int pending = PhantomLibrary.PendingData().Count;
             if (pending == 0) return;
             metaStatus.Text = PPText.T("PP_LibAutoMetaRunning", "Downloading data and images from Steam for {0} game(s)...", pending);
             metaStatus.Visibility = Visibility.Visible;
             try { await PhantomLibrary.AutoFillAsync(); } catch { }
             metaStatus.Visibility = Visibility.Collapsed;
             ShowDetails(Selected);
+        }
+
+        private void SourcesBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (new DataSourcesWindow { Owner = Window.GetWindow(this) }.ShowDialog() != true) return;
+            loadingToggle = true;
+            autoMetaToggle.IsChecked = PhantomLibrary.AutoMetadata;
+            loadingToggle = false;
+            _ = AutoMetadataAsync();
         }
 
         private void AutoMetaToggle_Changed(object sender, RoutedEventArgs e)

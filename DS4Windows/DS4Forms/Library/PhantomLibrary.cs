@@ -61,6 +61,10 @@ namespace DS4WinWPF.DS4Forms.Library
         public string MetadataSteamId { get; set; }
         /// <summary>Ya se busco en Steam automaticamente (encontrado o no): no se vuelve a buscar solo.</summary>
         public bool MetadataChecked { get; set; }
+        /// <summary>Version de la busqueda automatica que ya se hizo (2 = tienda propia + Steam + IGDB).</summary>
+        public int MetadataVersion { get; set; }
+        /// <summary>Numero del juego en su tienda (Epic: CatalogItemId; GOG: id del producto).</summary>
+        public string StoreItemId { get; set; }
     }
 
     /// <summary>
@@ -75,8 +79,12 @@ namespace DS4WinWPF.DS4Forms.Library
 
         private class LibraryFile
         {
-            /// <summary>Descargar solos los datos e imagenes de Steam de los juegos nuevos.</summary>
+            /// <summary>Descargar solos los datos e imagenes de los juegos nuevos.</summary>
             public bool AutoMetadata { get; set; } = true;
+            /// <summary>IGDB (opcional): usarlo y sus claves de Twitch (el secreto va cifrado).</summary>
+            public bool IgdbEnabled { get; set; }
+            public string IgdbClientId { get; set; }
+            public string IgdbSecretProtected { get; set; }
             public List<LibraryGame> Games { get; set; } = new List<LibraryGame>();
         }
 
@@ -89,6 +97,23 @@ namespace DS4WinWPF.DS4Forms.Library
                 Data.AutoMetadata = value;
                 Save();
             }
+        }
+
+        public static bool IgdbEnabled => Data.IgdbEnabled;
+        public static string IgdbClientId => Data.IgdbClientId;
+        public static string IgdbSecret => SecretStore.Unprotect(Data.IgdbSecretProtected);
+        public static bool HasIgdbSecret => !string.IsNullOrEmpty(Data.IgdbSecretProtected);
+
+        /// <summary>Guarda los ajustes de IGDB. secret = null deja el que ya habia.</summary>
+        public static void SetIgdb(bool enabled, string clientId, string secret)
+        {
+            Data.IgdbEnabled = enabled;
+            Data.IgdbClientId = string.IsNullOrWhiteSpace(clientId) ? null : clientId.Trim();
+            if (secret != null) Data.IgdbSecretProtected = secret.Length == 0 ? null : SecretStore.Protect(secret.Trim());
+            Igdb.ForgetToken();
+            Save();
+            // Con IGDB recien activado se vuelve a mirar lo que quedo sin datos
+            if (enabled) lock (fileLock) foreach (LibraryGame g in Data.Games) if (NeedsData(g)) g.MetadataVersion = 0;
         }
 
         private static readonly object fileLock = new object();
@@ -160,6 +185,7 @@ namespace DS4WinWPF.DS4Forms.Library
                     }
                     g.InstallDir = d.InstallDir;
                     g.LaunchUri = d.LaunchUri;
+                    if (!string.IsNullOrEmpty(d.StoreItemId)) g.StoreItemId = d.StoreItemId;
                     g.Installed = true;
                     seen.Add(g.Id);
                 }
@@ -401,39 +427,90 @@ namespace DS4WinWPF.DS4Forms.Library
             return SteamMetadata.BestMatch(g.Name, results)?.Id;
         }
 
+        /// <summary>Al juego le falta algo que una fuente podria dar.</summary>
+        private static bool NeedsData(LibraryGame g) =>
+            g.Description == null || g.Genres == null || g.ReleaseYear == null || CoverFor(g) == null || BackgroundFor(g) == null;
+
         /// <summary>
-        /// Completa un juego con los datos de Steam SIN pisar nada: solo rellena lo que esta vacio
-        /// y solo pone imagenes donde no hay ninguna. Devuelve true si encontro el juego en Steam.
+        /// Reune los datos de un juego, como Playnite: primero su propia tienda (Epic con el catalogo
+        /// del PC, GOG con su base de datos), despues Steam y por ultimo IGDB (si tiene claves).
+        /// La primera fuente que tenga cada dato gana. steamPicker (opcional) deja elegir en Steam
+        /// cuando el nombre no es claro y ninguna otra fuente encontro nada.
         /// </summary>
-        public static async System.Threading.Tasks.Task<bool> FillFromSteamAsync(LibraryGame g)
+        public static async System.Threading.Tasks.Task<GameMetadataResult> CollectAsync(LibraryGame g, string name,
+            Func<string, List<(string Id, string Name)>, string> steamPicker = null)
         {
-            string id = await FindSteamIdAsync(g, true);
-            if (id == null)
-            {
-                g.MetadataChecked = true;
-                Update(g);
-                return false;
-            }
+            name = string.IsNullOrWhiteSpace(name) ? g.Name : name.Trim();
+            var result = new GameMetadataResult();
 
-            SteamGameInfo info = await SteamMetadata.GetDetailsAsync(id);
-            if (info != null)
+            // 1. Su propia tienda
+            if (g.Source == GameLibraryScanner.SOURCE_EPIC) result.Merge(EpicCatalog.Find(g.StoreItemId, name), "Epic");
+            if (g.Source == GameLibraryScanner.SOURCE_GOG)
             {
-                g.Description ??= info.Description;
-                g.Genres ??= info.Genres;
-                g.Developer ??= info.Developer;
-                g.Publisher ??= info.Publisher;
-                g.ReleaseYear ??= info.Year;
+                try { result.Merge(await GogDb.GetAsync(g.StoreItemId), "GOG"); } catch { }
             }
-            if (g.Source != GameLibraryScanner.SOURCE_STEAM) g.MetadataSteamId = id;
+            // Juegos anadidos a mano: puede que esten en el catalogo de Epic del PC
+            if (g.Source == SOURCE_MANUAL) result.Merge(EpicCatalog.Find(null, name), "Epic");
 
-            if (CoverFor(g) == null) g.CoverPath = await StoreDownloaded(g, "cover", SteamMetadata.DownloadCoverAsync(id));
-            if (Existing(g.BackgroundPath) == null && SteamImage(g, "library_hero.jpg") == null)
-                g.BackgroundPath = await StoreDownloaded(g, "background", SteamMetadata.DownloadBackgroundAsync(id)) ?? g.BackgroundPath;
-            if (LogoFor(g) == null) g.LogoPath = await StoreDownloaded(g, "logo", SteamMetadata.DownloadLogoAsync(id));
+            // 2. Steam (el propio juego de Steam, el ya emparejado o uno con el mismo nombre)
+            try
+            {
+                string id = g.Source == GameLibraryScanner.SOURCE_STEAM && !string.IsNullOrEmpty(g.SourceId) ? g.SourceId : g.MetadataSteamId;
+                if (id == null)
+                {
+                    var results = await SteamMetadata.SearchAsync(name);
+                    id = SteamMetadata.BestMatch(name, results)?.Id;
+                    if (id == null && steamPicker != null && result.Sources.Count == 0 && !Igdb.Ready) id = steamPicker(name, results);
+                }
+                if (id != null)
+                {
+                    SteamGameInfo info = await SteamMetadata.GetDetailsAsync(id);
+                    if (info != null)
+                    {
+                        bool local = g.Source == GameLibraryScanner.SOURCE_STEAM; // sus imagenes ya estan en el PC
+                        result.Merge(new GameMetadataResult
+                        {
+                            Description = info.Description, Genres = info.Genres, Developer = info.Developer,
+                            Publisher = info.Publisher, Year = info.Year, SteamAppId = id,
+                            CoverUrl = local ? null : SteamMetadata.ImageUrl(id, "library_600x900_2x.jpg"),
+                            BackgroundUrl = local ? null : SteamMetadata.ImageUrl(id, "library_hero.jpg"),
+                            LogoUrl = local ? null : SteamMetadata.ImageUrl(id, "logo.png"),
+                        }, "Steam");
+                    }
+                }
+            }
+            catch { /* Steam no responde: siguen las demas fuentes */ }
+
+            // 3. IGDB (opcional)
+            if (Igdb.Ready)
+            {
+                try { result.Merge(await Igdb.SearchAsync(name), "IGDB"); } catch { }
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// Completa un juego SIN pisar nada: solo rellena lo que esta vacio y solo pone imagenes
+        /// donde no hay ninguna. Devuelve true si alguna fuente tenia datos.
+        /// </summary>
+        public static async System.Threading.Tasks.Task<bool> FillFromSourcesAsync(LibraryGame g)
+        {
+            GameMetadataResult r = await CollectAsync(g, null);
+            g.Description ??= r.Description;
+            g.Genres ??= r.Genres;
+            g.Developer ??= r.Developer;
+            g.Publisher ??= r.Publisher;
+            g.ReleaseYear ??= r.Year;
+            if (r.SteamAppId != null && g.Source != GameLibraryScanner.SOURCE_STEAM) g.MetadataSteamId ??= r.SteamAppId;
+
+            if (CoverFor(g) == null) g.CoverPath = await StoreDownloaded(g, "cover", MetadataHttp.DownloadImageAsync(r.CoverUrl));
+            if (BackgroundFor(g) == null) g.BackgroundPath = await StoreDownloaded(g, "background", MetadataHttp.DownloadImageAsync(r.BackgroundUrl));
+            if (LogoFor(g) == null) g.LogoPath = await StoreDownloaded(g, "logo", MetadataHttp.DownloadImageAsync(r.LogoUrl));
 
             g.MetadataChecked = true;
+            g.MetadataVersion = 2;
             Update(g);
-            return true;
+            return r.Sources.Count > 0;
         }
 
         /// <summary>Guarda en la carpeta de la biblioteca una imagen recien descargada (y borra la temporal).</summary>
@@ -448,6 +525,10 @@ namespace DS4WinWPF.DS4Forms.Library
 
         private static bool autoRunning;
 
+        /// <summary>Juegos que la busqueda automatica todavia debe mirar.</summary>
+        public static List<LibraryGame> PendingData() =>
+            Games.Where(x => !x.Hidden && (!x.MetadataChecked || (x.MetadataVersion < 2 && NeedsData(x)))).ToList();
+
         /// <summary>Busca en Steam los datos de los juegos que aun no se miraron (si el interruptor esta encendido).</summary>
         public static async System.Threading.Tasks.Task AutoFillAsync()
         {
@@ -455,10 +536,11 @@ namespace DS4WinWPF.DS4Forms.Library
             autoRunning = true;
             try
             {
-                foreach (LibraryGame g in Games.Where(x => !x.Hidden && !x.MetadataChecked))
+                // Nuevos, o ya mirados con la version anterior (solo Steam) y a los que les falta algo
+                foreach (LibraryGame g in PendingData())
                 {
                     if (!AutoMetadata) break;
-                    try { await FillFromSteamAsync(g); }
+                    try { await FillFromSourcesAsync(g); }
                     catch { /* sin internet o Steam no responde: se intenta otro dia */ break; }
                     await System.Threading.Tasks.Task.Delay(400); // no saturar la tienda
                 }

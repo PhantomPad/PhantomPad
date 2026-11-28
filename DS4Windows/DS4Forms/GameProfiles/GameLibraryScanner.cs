@@ -26,6 +26,8 @@ namespace DS4WinWPF.DS4Forms.GameProfiles
         public string SteamAppId { get; set; }
         /// <summary>Direccion para abrir el juego (steam://, com.epicgames.launcher:// o ruta del .exe).</summary>
         public string LaunchUri { get; set; }
+        /// <summary>Numero del juego en su tienda: Epic = CatalogItemId, GOG = id del producto (para sus datos).</summary>
+        public string StoreItemId { get; set; }
     }
 
     /// <summary>
@@ -142,7 +144,7 @@ namespace DS4WinWPF.DS4Forms.GameProfiles
                     string launch = (!string.IsNullOrEmpty(ns) && !string.IsNullOrEmpty(item) && !string.IsNullOrEmpty(appName))
                         ? $"com.epicgames.launcher://apps/{ns}%3A{item}%3A{appName}?action=launch&silent=true"
                         : null;
-                    yield return new DetectedGame { Name = name, InstallDir = dir, Source = SOURCE_EPIC, LaunchUri = launch };
+                    yield return new DetectedGame { Name = name, InstallDir = dir, Source = SOURCE_EPIC, LaunchUri = launch, StoreItemId = item };
                 }
             }
         }
@@ -160,7 +162,7 @@ namespace DS4WinWPF.DS4Forms.GameProfiles
                 string exe = key?.GetValue("exe") as string;
                 if (!string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(dir))
                 {
-                    yield return new DetectedGame { Name = name, InstallDir = dir, Source = SOURCE_GOG, LaunchUri = exe };
+                    yield return new DetectedGame { Name = name, InstallDir = dir, Source = SOURCE_GOG, LaunchUri = exe, StoreItemId = id };
                 }
             }
         }
